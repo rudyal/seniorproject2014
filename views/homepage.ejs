@@ -1,0 +1,163 @@
+<html>
+  <head>
+    <title>Insert Forum Title</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/stylesheets/style2.css">
+  	<script src="http://code.jquery.com/jquery-1.11.0.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.2.19/angular.min.js"></script>
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.2.11/angular-ui-router.min.js"></script>
+    <script type='text/javascript' src='/javascripts/infinite.js'></script>
+    <script src="/javascripts/froala_editor.min.js"></script>
+    <script src="/javascripts/froala-sanitize.js"></script>
+    <script src="/javascripts/angular-froala.js"></script>
+
+	<script src="/javascripts/angularApp.js"></script>
+	  <!-- Initialize the editor. -->
+	  <script>
+		  $(function() {
+		    $('textarea#edit').editable({
+		      inlineMode: false
+		    })
+		  });
+		</script>
+    <base href="/" />
+  </head>
+  <body>
+	<div ng-app="forumBody" ng-controller="BuildCtrl">
+  	<nav class="navbar navbar-inverse" role="navigation">
+		    <div class="navbar-header">
+		    	<div ng-include="nav_partial_url"></div>
+		        <a class="navbar-brand" ui-sref="#">Discussion Forums</a>
+		    </div>
+		    <ul class="nav navbar-nav">
+		        <li><a href="/homepage" target="_self">Home</a></li>
+		        <li ng-show="!isLoggedIn()"><a href="/login" target="_self">Login</a></li>
+		        <li ng-show="!isLoggedIn()"><a href="/signup" target="_self">Sign-up</a></li>
+		        <li><a href="/chat">Chat</a></li>
+		        <li><a href="/builder" target="_self">Builder</a></li>
+		        
+		        <li><a href=""  target="_self"> </a></li>
+		        <li ng-show="isLoggedIn()"><a href="/logout"  target="_self">logout</a></li>
+		        <li ng-show="isLoggedIn()"><a href="/profile"  target="_self">Hello, {{user.username}}</a></li>
+		        
+		    </ul>
+		</nav>
+  	
+		<div class="col-lg-  col-md-offset-1">
+
+			
+    		<ui-view></ui-view>
+    	</div>
+
+    	<script type="text/ng-template" id="/build.html">
+
+    	<a href="/popular" target="_self">Popular Forums</a>
+
+		<div ng-show="isLoggedIn()">
+		    <h2>Logged in.</h2>
+
+		    <form name="buildForum" novalidate>
+		  		
+
+		  		<div class="control-group" ng-class="{error: buildForum.comname.$invalid}">
+						<label>Name</label>
+						<input type="text"  placeholder="Community Name" ng-change="changeURL(comname)" name="comname" ng-model="comname" required  ng-pattern="/^[a-zA-Z][a-zA-Z0-9_ -]{2,25}$/"> </input>
+						<div class="invalid" ng-show="buildForum.comname.$dirty && buildForum.comname.$invalid">Error:<br/>
+						    <span ng-show="buildForum.comname.$error.pattern">Pattern validation fails.<br/></span>
+						</div>
+				</div>
+
+				<label>http://localhost:3000/</label>
+		  		<input type="text" ng-model="comurl" required> </input>
+		  		
+		  		<br>
+		  		<label>Access Code</label>
+		  		<input type="checkbox" ng-model="accesscode" ng-true-value="yes" ng-false-value="no" >
+		  		<input type="text" placeholder="" ng-model="accesscodebox"> </input>
+		  		<br>
+		  		<label>Allow Registered Users</label>
+		  		<input type="checkbox" ng-model="reguserbool" ng-true-value="yes" ng-false-value="no" >
+		  		<br>
+		  		<label>Allow Anonymous Users</label>
+		  		<input type="checkbox" ng-model="anonuserbool" ng-true-value="yes" ng-false-value="no" >
+		  		<br>
+		  		<button ng-click="submitForm()" type="submit">Create</button>
+
+		  	</form>
+		</div>
+
+		<div ng-show="!isLoggedIn()">
+		    <h2>Logged Out.</h2>
+
+
+		    <form name="buildForum" novalidate>
+		  		
+
+		  		<div class="control-group" ng-class="{error: buildForum.comname.$invalid}">
+						<label>Name</label>
+						<input type="text"  placeholder="Community Name" ng-change="changeURL(comname)" name="comname" ng-model="comname" required  ng-pattern="/^[a-zA-Z][a-zA-Z0-9_ -]{2,25}$/"> </input>
+						<div class="invalid" ng-show="buildForum.comname.$dirty && buildForum.comname.$invalid">Error:<br/>
+						    <span ng-show="buildForum.comname.$error.pattern">Pattern validation fails.<br/></span>
+						</div>
+				</div>
+
+				<label>http://localhost:3000/</label>
+		  		<input type="text" ng-model="comurl" required> </input>
+
+		  		<div class="form-group">
+					<label>Email</label>
+					<div class="form-group" ng-class="{ 'has-error' : signup.email.$invalid && !signup.email.$pristine }">
+						<input type="email" class="form-control" ng-model="email" name="email" ng-pattern="/^[_a-z0-9]+(\.[_a-z0-9]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,4})$/" required>
+					</div>
+				</div>
+				<div class="form-group">
+					<label>Username</label>
+					<div class="control-group" ng-class="{ 'has-error' : signup.username.$invalid && !signup.username.$pristine }">
+						<input type="text" class="form-control" ng-model="username"  name="username" ng-minlength="4" ng-maxlength="22" required>
+
+				    </div>
+				</div>
+
+				<div class="form-group">
+					<label>Password</label>
+					<input type="password" class="form-control" ng-model="password" name="password" ng-minlength="6" ng-maxlength="30" required>
+				</div>
+		  		
+		  		<button ng-click="submitFormWU()" type="submit">Create</button>
+
+		  	</form>
+
+
+
+
+		</div>
+
+    	
+
+		  	</script>
+
+	
+   
+		<script type="text/ng-template" id="/homepage.html">
+
+		<a href="/" target="_self">Build a Forum</a>
+			
+		  <div class="page-header">
+		    <h3> Home </h3>
+
+		    <p> List of all forums sort by most posts </p>
+
+		    <div ng-repeat="fo in forum | orderBy:'-posts.length'">
+
+		  		<a href="/{{fo.url}}" target="_self">{{fo.title}} </a>
+		  		</a> Posts: {{fo.posts.length}} 
+				
+		  	</div>
+
+		  </div>
+		</script>
+
+		
+	</div>
+  </body>
+</html>

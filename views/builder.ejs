@@ -1,0 +1,105 @@
+<html>
+  <head>
+    <title>Builder</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/stylesheets/style2.css">
+  	<script src="http://code.jquery.com/jquery-1.11.0.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.2.19/angular.min.js"></script>
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.2.11/angular-ui-router.min.js"></script>
+    <script type='text/javascript' src='/javascripts/infinite.js'></script>
+    <script src="/javascripts/froala_editor.min.js"></script>
+    <script src="/javascripts/froala-sanitize.js"></script>
+    <script src="/javascripts/angular-froala.js"></script>
+
+	<script src="/javascripts/angularApp.js"></script>
+	  <!-- Initialize the editor. -->
+	  <script>
+		  $(function() {
+		    $('textarea#edit').editable({
+		      inlineMode: false
+		    })
+		  });
+		</script>
+		<base href="/" />
+    <style> .glyphicon-thumbs-up { cursor:pointer } </style>
+  </head>
+  <body>
+	<div  ng-app="forumBody" ng-controller="BuildCtrl">
+
+
+  	
+	<nav class="navbar navbar-inverse" role="navigation">
+	    <div class="navbar-header">
+	    	<div ng-include="nav_partial_url"></div>
+	        <a class="navbar-brand" ui-sref="#">AngularUI Router</a>
+	    </div>
+	    <ul class="nav navbar-nav">
+	        <li><a href="/" target="_self">Home</a></li>
+	        <li><a href="/login" target="_self">Login</a></li>
+	        <li><a href="/chat">Chat</a></li>
+	        <li><a href="/builder" target="_self">Builder</a></li>
+	        <li><a href="/signup" target="_self">Sign-up</a></li>
+	        <li><a href="/profile#/profile"  target="_self">Profile</a></li>
+	        <li><a href="/logout"  target="_self">logout</a></li>
+	        <li><a href="/logout">Username: {{user}}</a></li>
+	        
+	</nav>
+
+  
+    <div class="col-lg-  col-md-offset-1">
+
+		<div class="page-header">
+			<h1>Build a Forum!</h1>
+	    </div>  	
+
+	    <div class="row"><div class="col-xs-5">
+
+		  	<form name="buildForum" novalidate>
+		  		
+
+		  		<div class="control-group" ng-class="{error: buildForum.comname.$invalid}">
+						<label>Name</label>
+						<input type="text"  placeholder="Community Name" ng-change="changeURL(comname)" name="comname" ng-model="comname" required  ng-pattern="/^[a-zA-Z][a-zA-Z0-9_ -]{2,25}$/"> </input>
+						<div class="invalid" ng-show="buildForum.comname.$dirty && buildForum.comname.$invalid">Error:<br/>
+						    <span ng-show="buildForum.comname.$error.pattern">Pattern validation fails.<br/></span>
+						</div>
+				</div>
+
+				<label>http://localhost:3000/</label>
+		  		<input type="text" ng-model="comurl" required> </input>
+		  		
+		  		<br>
+		  		<label>Access Code</label>
+		  		<input type="checkbox" ng-model="accesscode" ng-true-value="yes" ng-false-value="no" >
+		  		<input type="text" placeholder="" ng-model="accesscodebox"> </input>
+		  		<br>
+		  		<label>Allow Registered Users</label>
+		  		<input type="checkbox" ng-model="reguserbool" ng-true-value="yes" ng-false-value="no" >
+		  		<br>
+		  		<label>Allow Anonymous Users</label>
+		  		<input type="checkbox" ng-model="anonuserbool" ng-true-value="yes" ng-false-value="no" >
+		  		<br>
+		  		<button ng-click="submitForm()" type="submit">Create</button>
+
+		  	</form>
+
+		  	<ui-view></ui-view>
+
+		</div>
+		</div>
+
+
+		</div>
+
+	</div>
+
+	<script type="text/ng-template" id="/test.html">
+
+		  <div class="page-header">
+		    <h3> Login Page </h3>
+		  </div>
+
+	</script>
+
+  </body>
+</html>

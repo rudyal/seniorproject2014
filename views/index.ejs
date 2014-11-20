@@ -1,0 +1,169 @@
+<html>
+  <head>
+    <title>Insert Forum Title</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/stylesheets/style2.css">
+    <link href="/stylesheets/font-awesome.min.css" rel="stylesheet" type="text/css" />
+    <link href="/stylesheets/froala_editor.min.css" rel="stylesheet" type="text/css" />
+  	<link href="/stylesheets/froala_style.min.css" rel="stylesheet" type="text/css" />
+  	<script src="http://code.jquery.com/jquery-1.11.0.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.2.19/angular.min.js"></script>
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.2.11/angular-ui-router.min.js"></script>
+    <script type='text/javascript' src='/javascripts/infinite.js'></script>
+    <script src="/javascripts/froala_editor.min.js"></script>
+    <script src="/javascripts/froala-sanitize.js"></script>
+    <script src="/javascripts/angular-froala.js"></script>
+
+	<script src="/javascripts/angularApp.js"></script>
+	  <!-- Initialize the editor. -->
+	  <script>
+		  $(function() {
+		    $('textarea#edit').editable({
+		      inlineMode: false
+		    })
+		  });
+		</script>
+    <base href="/" />
+    <style> .glyphicon-thumbs-up { cursor:pointer } </style>
+  </head>
+  <body>
+	<div  ng-app="forumBody" ng-controller="MainCtrl">
+
+    	<ui-view></ui-view>
+
+	
+    <script type="text/ng-template" id="/forum.html">
+
+    </script>
+	<script type="text/ng-template" id="/home.html">
+
+
+	<nav class="navbar navbar-inverse" role="navigation">
+	    <div class="navbar-header">
+	    	<div ng-include="nav_partial_url"></div>
+	        <a class="navbar-brand" ui-sref="#">Discussion Forums</a>
+	    </div>
+	    <ul class="nav navbar-nav">
+	        <li><a href="/" target="_self">Home</a></li>
+	        <li><a href="/login" target="_self">Login</a></li>
+	        <li><a href="/chat">Chat</a></li>
+	        <li><a href="/builder" target="_self">Builder</a></li>
+	        <li><a href="/signup" target="_self">Sign-up</a></li>
+	        <li><a href="/profile#/profile"  target="_self">Profile</a></li>
+	        <li><a href="/logout"  target="_self">logout</a></li>
+	        <li><a href="/logout">Username: {{user}}</a></li>
+	        
+	    </ul>
+	</nav>
+
+
+    <div class="col-lg-  col-md-offset-1">
+
+		<div class="page-header">
+	        <h1>{{forum.title}}</h1>
+	         <br>
+	         <p>Search - Categories - <a ui-sref=".post">Post</a></p>
+	        
+	        
+	     </div>
+
+	    <div class="row"><div class="col-xs-5" infinite-scroll="loadMore()" infinite-scroll-distance="3">
+
+		  	<div ng-repeat="post in forum.posts | orderBy: '-date'">
+
+		  		<a ng-show="post.link" href="{{post.link}}">
+		  		<a ui-sref=".posts({id: post._id })">{{post.title}}</a>
+		  		</a>
+		  		 - Date: {{post.date}} - body: {{post.bode}} By: {{post.user.username}}
+				
+		  	</div>
+
+
+		  	<a href="#/profile">Profile</a> {{user}}
+
+		</div>
+		<div class="col-xs-5">
+			<ui-view></ui-view>
+		</div>
+		</div>
+
+
+		</div>
+
+
+	</script>
+
+		<script type="text/ng-template" id="/login.html">
+		  <div class="page-header">
+		    <h3> Login Page </h3>
+		  </div>
+
+		</script>
+
+
+		<script type="text/ng-template" id="/post.html">
+
+		  <form ng-submit="addPost(forum._id)">
+		  		<input class="form-control"type="text" placeholder="Title" ng-model="title"> </input>
+		  		<br>
+		  		<textarea class="form-control" froala="" id="edit" name="content" rows="4" cols="50" type="text" placeholder="Body" ng-model="bode"> </textarea>
+		  		<br>
+		  		<button class="btn btn-warning btn-lg" type="submit">Post</button>
+		  	</form>
+		
+		</script>
+
+
+		<script type="text/ng-template" id="/posts.html">
+
+
+			  <div class="page-header">
+			    <h3>
+			      <a ng-show="post.link" href="{{post.link}}">
+			        {{post.title}}
+			      </a>
+			      <span ng-hide="post.link">
+			        {{post.title}}
+			      </span>
+			      body: {{post.bode}}
+			      <br>
+			      By: {{post.user.username}}
+			    </h3>
+			  </div>
+
+			  <div ng-repeat="commenter in post.comments | orderBy:'date'">
+			    <img ng-src="/uploads/{{commenter.user.profilepic}}" height="47" width="47" /> - by {{commenter.user.username}}
+			    <span style="font-size:20px; margin-left:10px;">
+			      {{commenter.body}}
+			    </span>
+			  </div>
+
+			  <form ng-submit="addComment()"
+			    style="margin-top:30px;">
+			    <h3>Add a new comment</h3>
+
+			    <div class="form-group">
+			      <input type="text"
+			      class="form-control"
+			      placeholder="Comment"
+			      ng-model="body"></input>
+			    </div>
+			    <button type="submit" class="btn btn-primary">Post</button>
+			  </form>
+
+		</script>
+
+		<script type="text/ng-template" id="/profile.html">
+
+			<h3>Here</h3>
+
+		</script>
+
+		
+
+	</div>
+
+	
+  </body>
+
+</html>

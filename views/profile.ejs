@@ -1,0 +1,69 @@
+<!doctype html>
+<html>
+<head>
+	<title>Node Authentication</title>
+	<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap.min.css">
+	<link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.2.19/angular.min.js"></script>
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.2.11/angular-ui-router.min.js"></script>
+    <script src="/javascripts/angularApp.js"></script>
+	<style>
+		body 		{ padding-top:80px; word-wrap:break-word; }
+	</style>
+</head>
+<body>
+
+	<nav class="navbar navbar-inverse" role="navigation">
+	    <div class="navbar-header">
+	    	<div ng-include="nav_partial_url"></div>
+	        <a class="navbar-brand" ui-sref="#">AngularUI Router</a>
+	    </div>
+	    <ul class="nav navbar-nav">
+	        <li><a ui-sref="home">Home</a></li>
+	        <li><a href="/login" target="_self">Login</a></li>
+	        <li><a href="/chat">Chat</a></li>
+	        <li><a href="/builder" target="_self">Builder</a></li>
+	        <li><a href="/signup" target="_self">Sign-up</a></li>
+	        <li><a href="/profile#/profile"  target="_self">Profile</a></li>
+	        <li><a href="/logout"  target="_self">logout</a></li>
+	        <li><a href="/logout">Username: {{user}}</a></li>
+	        
+	    </ul>
+	</nav>
+	
+<div class="container">
+
+	<div class="page-header text-center">
+		<h1><span class="fa fa-anchor"></span> Profile Page</h1>
+		<a href="/logout" class="btn btn-default btn-sm">Logout</a>
+	</div>
+
+	<div  ng-app="forumBody" ng-controller="ProfileCtrl">
+		<ui-view></ui-view>
+	
+
+	<script type="text/ng-template" id="/profile.html">
+	
+		<div class="row">
+
+				<!-- LOCAL INFORMATION -->
+				<div class="col-sm-6">
+					<div class="well">
+						<h3><span class="fa fa-user"></span> Local</h3>
+
+							<p>
+								Username: {{tester}}
+							</p>
+
+					</div>
+				</div>
+
+			</div>
+	</script>
+
+	</div>
+
+</div>
+</body>
+</html>
