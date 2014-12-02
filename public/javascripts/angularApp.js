@@ -181,7 +181,7 @@ angular.module('forumBody', ['ui.router', 'froala', 'infinite-scroll'])
 		};
 		u.getAllUsers = function() {
 			
-		    return $http.get('/profile').success(function(data){
+		    return $http.get('/api/profile').success(function(data){
 		      angular.copy(data, u.user);
 		    });
 		  };
@@ -240,15 +240,25 @@ angular.module('forumBody', ['ui.router', 'froala', 'infinite-scroll'])
 
 	}])
 	.controller('MainCtrl', 
-		['$scope', 'forum', 'posts', 'user',
-			function($scope, forum, posts, user){
+		['$scope', '$location','forum', 'posts', 'user',
+			function($scope, $location, forum, posts, user){
 				console.log("scope");
 				console.log($scope);
 			  $scope.user = user.user.username;
+
 			  $scope.test = 'Hello world!';
 
 			  $scope.posts = posts.posts;
 			  $scope.forum = forum.forum;
+
+			  $scope.isLoggedIn = function() {
+
+				if (typeof user.user.username != 'undefined')
+				  return true;
+				else 
+				  return false;
+
+				};
 
 			  $scope.loadMore = function() {
 			    var last = $scope.forum.posts[$scope.forum.posts.length - 1];
@@ -271,6 +281,7 @@ angular.module('forumBody', ['ui.router', 'froala', 'infinite-scroll'])
 				}).success(function(post) {
 					console.log("started from the bottom now we here");
 				    $scope.forum.posts.push(post);
+				    $location.path('forum');
 				  });
 				$scope.title = '';
 				$scope.bode = '';
@@ -299,6 +310,16 @@ angular.module('forumBody', ['ui.router', 'froala', 'infinite-scroll'])
 			//$scope.tester = "hello profile";
 			console.log("Forum Control");
 			console.log(user);
+			$scope.user = user.user.username;
+
+			  $scope.isLoggedIn = function() {
+
+				if (typeof user.user.username != 'undefined')
+				  return true;
+				else 
+				  return false;
+
+				};
 			// $scope.getAllByUrl = function(){
 			// 	console.log()
 
@@ -398,10 +419,18 @@ angular.module('forumBody', ['ui.router', 'froala', 'infinite-scroll'])
 		}]
 	)
 	.controller('PostsCtrl', 
-		['$scope', 'posts', 'post',
-			function($scope, posts, post){
+		['$scope','$sce', 'posts', 'post',
+			function($scope, $sce, posts, post){
 
 				$scope.post = post;
+
+				$scope.post.bode = $sce.trustAsHtml(post.bode);
+
+				for (var i = post.comments.length - 1; i >= 0; i--) {
+				    $scope.post.comments[i].body = $sce.trustAsHtml(post.comments[i].body);
+				}
+
+				//$scope.post.comments.body = $sce.trustAsHtml(post.comments.body);
 
 				$scope.addComment = function(){
 				  if($scope.body === '') { return; }
@@ -409,6 +438,7 @@ angular.module('forumBody', ['ui.router', 'froala', 'infinite-scroll'])
 				    body: $scope.body,
 				    author: 'user',
 				  }).success(function(comment) {
+				  	comment.body = $sce.trustAsHtml(comment.body);
 				    $scope.post.comments.push(comment);
 				  });
 				  $scope.body = '';

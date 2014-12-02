@@ -30,11 +30,10 @@
 		        <a class="navbar-brand" ui-sref="#">Discussion Forums</a>
 		    </div>
 		    <ul class="nav navbar-nav">
-		        <li><a href="/homepage" target="_self">Home</a></li>
+		        <li><a href="/" target="_self">Home</a></li>
 		        <li ng-show="!isLoggedIn()"><a href="/login" target="_self">Login</a></li>
 		        <li ng-show="!isLoggedIn()"><a href="/signup" target="_self">Sign-up</a></li>
-		        <li><a href="/chat">Chat</a></li>
-		        <li><a href="/builder" target="_self">Builder</a></li>
+		        <li><a href="/popular" target="_self">Forums</a></li>
 		        
 		        <li><a href=""  target="_self"> </a></li>
 		        <li ng-show="isLoggedIn()"><a href="/logout"  target="_self">logout</a></li>
@@ -54,7 +53,7 @@
     	<a href="/popular" target="_self">Popular Forums</a>
 
 		<div ng-show="isLoggedIn()">
-		    <h2>Logged in.</h2>
+		    <h2>Create a Forum</h2>       Logged In
 
 		    <form name="buildForum" novalidate>
 		  		
@@ -87,7 +86,7 @@
 		</div>
 
 		<div ng-show="!isLoggedIn()">
-		    <h2>Logged Out.</h2>
+		    <h2>Create a Forum</h2>              Logged Out
 
 
 		    <form name="buildForum" novalidate>
@@ -107,20 +106,20 @@
 		  		<div class="form-group">
 					<label>Email</label>
 					<div class="form-group" ng-class="{ 'has-error' : signup.email.$invalid && !signup.email.$pristine }">
-						<input type="email" class="form-control" ng-model="email" name="email" ng-pattern="/^[_a-z0-9]+(\.[_a-z0-9]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,4})$/" required>
+						<input type="email" class="form-control" ng-model="email" style="width:200px;" name="email" ng-pattern="/^[_a-z0-9]+(\.[_a-z0-9]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,4})$/" required>
 					</div>
 				</div>
 				<div class="form-group">
 					<label>Username</label>
 					<div class="control-group" ng-class="{ 'has-error' : signup.username.$invalid && !signup.username.$pristine }">
-						<input type="text" class="form-control" ng-model="username"  name="username" ng-minlength="4" ng-maxlength="22" required>
+						<input type="text" class="form-control" ng-model="username" style="width:200px;" name="username" ng-minlength="4" ng-maxlength="22" required>
 
 				    </div>
 				</div>
 
 				<div class="form-group">
 					<label>Password</label>
-					<input type="password" class="form-control" ng-model="password" name="password" ng-minlength="6" ng-maxlength="30" required>
+					<input type="password" class="form-control" ng-model="password" style="width:200px;" name="password" ng-minlength="6" ng-maxlength="30" required>
 				</div>
 		  		
 		  		<button ng-click="submitFormWU()" type="submit">Create</button>

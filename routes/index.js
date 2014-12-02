@@ -85,7 +85,14 @@ router.get('/posts', function(req, res, next) {
     });
 });
 
-router.get('/profile', isLoggedIn2, function(req, res) {
+// router.get('/profile', isLoggedIn2, function(req, res) {
+//     // res.render('profile.ejs', {
+//     //   user : req.user // get the user out of session and pass to template
+//     // });
+//       res.json(req.user);
+//   });
+
+router.get('/api/profile', isLoggedIn2, function(req, res) {
     // res.render('profile.ejs', {
     //   user : req.user // get the user out of session and pass to template
     // });

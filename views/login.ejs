@@ -17,13 +17,13 @@
 	    </div>
 	    <ul class="nav navbar-nav">
 	        <li><a href="/" target="_self">Home</a></li>
-	        <li><a href="/login" target="_self">Login</a></li>
-	        <li><a href="/chat">Chat</a></li>
-	        <li><a href="/builder" target="_self">Builder</a></li>
-	        <li><a href="/signup" target="_self">Sign-up</a></li>
-	        <li><a href="/profile#/profile"  target="_self">Profile</a></li>
-	        <li><a href="/logout"  target="_self">logout</a></li>
-	        <li><a href="/logout">Username: {{user}}</a></li>
+		    <li ng-show="!isLoggedIn()"><a href="/login" target="_self">Login</a></li>
+		    <li ng-show="!isLoggedIn()"><a href="/signup" target="_self">Sign-up</a></li>
+		    <li><a href="/popular" target="_self">Forums</a></li>
+		        
+		    <li><a href=""  target="_self"> </a></li>
+		    <li ng-show="isLoggedIn()"><a href="/logout"  target="_self">logout</a></li>
+		    <li ng-show="isLoggedIn()"><a href="/profile"  target="_self">Hello, {{user}}</a></li>
 	        
 	    </ul>
 	</nav>

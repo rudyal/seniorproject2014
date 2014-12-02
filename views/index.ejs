@@ -13,6 +13,7 @@
     <script src="/javascripts/froala_editor.min.js"></script>
     <script src="/javascripts/froala-sanitize.js"></script>
     <script src="/javascripts/angular-froala.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.3.4/angular-sanitize.js"></script>
 
 	<script src="/javascripts/angularApp.js"></script>
 	  <!-- Initialize the editor. -->
@@ -44,15 +45,15 @@
 	        <a class="navbar-brand" ui-sref="#">Discussion Forums</a>
 	    </div>
 	    <ul class="nav navbar-nav">
-	        <li><a href="/" target="_self">Home</a></li>
-	        <li><a href="/login" target="_self">Login</a></li>
-	        <li><a href="/chat">Chat</a></li>
-	        <li><a href="/builder" target="_self">Builder</a></li>
-	        <li><a href="/signup" target="_self">Sign-up</a></li>
-	        <li><a href="/profile#/profile"  target="_self">Profile</a></li>
-	        <li><a href="/logout"  target="_self">logout</a></li>
-	        <li><a href="/logout">Username: {{user}}</a></li>
-	        
+
+			<li><a href="/" target="_self">Home</a></li>
+		    <li ng-show="!isLoggedIn()"><a href="/login" target="_self">Login</a></li>
+		    <li ng-show="!isLoggedIn()"><a href="/signup" target="_self">Sign-up</a></li>
+		    <li><a href="/popular" target="_self">Forums</a></li>
+		        
+		    <li><a href=""  target="_self"> </a></li>
+		    <li ng-show="isLoggedIn()"><a href="/logout"  target="_self">logout</a></li>
+		    <li ng-show="isLoggedIn()"><a href="/profile"  target="_self">Hello, {{user}}</a></li>
 	    </ul>
 	</nav>
 
@@ -67,14 +68,14 @@
 	        
 	     </div>
 
-	    <div class="row"><div class="col-xs-5" infinite-scroll="loadMore()" infinite-scroll-distance="3">
+	    <div class="row" style="margin-left:0px;margin-right:0px;"><div class="col-xs-5" style="height:65%;overflow:auto;">
 
-		  	<div ng-repeat="post in forum.posts | orderBy: '-date'">
+		  	<div ng-repeat="post in forum.posts | orderBy: '-date'" >
 
 		  		<a ng-show="post.link" href="{{post.link}}">
 		  		<a ui-sref=".posts({id: post._id })">{{post.title}}</a>
 		  		</a>
-		  		 - Date: {{post.date}} - body: {{post.bode}} By: {{post.user.username}}
+		  		 - Date: {{post.date}} - By: {{post.user.username}}
 				
 		  	</div>
 
@@ -110,12 +111,14 @@
 		  		<br>
 		  		<button class="btn btn-warning btn-lg" type="submit">Post</button>
 		  	</form>
+
+		  	<a ui-sref="forum">back</a>
 		
 		</script>
 
 
 		<script type="text/ng-template" id="/posts.html">
-
+			<div class="show-post" style="height:65%;overflow:auto;">
 
 			  <div class="page-header">
 			    <h3>
@@ -125,31 +128,38 @@
 			      <span ng-hide="post.link">
 			        {{post.title}}
 			      </span>
-			      body: {{post.bode}}
+			      
 			      <br>
-			      By: {{post.user.username}}
+			      <img ng-src="/uploads/{{post.user.profilepic}}" height="47" width="47" /><small> By: {{post.user.username}} </small>
 			    </h3>
 			  </div>
+
+				<div class="page-body">
+				<br>
+
+				  <p ng-bind-html="post.bode"></p>
+				</div
+				<br>
+				<hr>
 
 			  <div ng-repeat="commenter in post.comments | orderBy:'date'">
 			    <img ng-src="/uploads/{{commenter.user.profilepic}}" height="47" width="47" /> - by {{commenter.user.username}}
 			    <span style="font-size:20px; margin-left:10px;">
-			      {{commenter.body}}
+
+			      <p ng-bind-html="commenter.body"></p>
 			    </span>
 			  </div>
 
 			  <form ng-submit="addComment()"
 			    style="margin-top:30px;">
-			    <h3>Add a new comment</h3>
 
 			    <div class="form-group">
-			      <input type="text"
-			      class="form-control"
-			      placeholder="Comment"
-			      ng-model="body"></input>
+			    	<textarea class="form-control" froala="" id="edit" name="content" rows="4" cols="50" type="text" placeholder="Insert text here ..." ng-model="body"> </textarea>
+			      
 			    </div>
 			    <button type="submit" class="btn btn-primary">Post</button>
 			  </form>
+			</div>
 
 		</script>
 
