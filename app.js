@@ -13,7 +13,11 @@ var AnonymousStrategy = require('passport-anonymous').Strategy;
 var LocalStrategy = require('passport-local').Strategy;
 //var basic = require('passport-http').Strategy;
 
-mongoose.connect('mongodb://localhost/forumappdb');
+
+// Local
+//mongoose.connect('mongodb://localhost/forumappdb');
+
+mongoose.connect('mongodb://rudyal:i70paint@linus.mongohq.com:10046/app30586382');
 require('./models/Posts');
 require('./models/Comments');
 require('./models/User');
