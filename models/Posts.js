@@ -5,6 +5,7 @@ var PostSchema = new mongoose.Schema({
   link: String,
   quality: String,
   date: { type: Date, default: Date.now },
+  expirationdate: { type: Date},
   upvotes: {type: Number, default: 0},
   comments: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Comment' }],
   bode: { type: String, default: 'neverborn' },

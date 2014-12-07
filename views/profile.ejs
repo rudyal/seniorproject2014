@@ -2,33 +2,47 @@
 <html>
 <head>
 	<title>Node Authentication</title>
-	<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap.min.css">
-	<link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css">
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
-    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.2.19/angular.min.js"></script>
-    <script src="http://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.2.11/angular-ui-router.min.js"></script>
+	 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/stylesheets/style2.css">
+    <link href="/stylesheets/font-awesome.min.css" rel="stylesheet" type="text/css" />
+    <link href="/stylesheets/froala_editor.min.css" rel="stylesheet" type="text/css" />
+  	<link href="/stylesheets/froala_style.min.css" rel="stylesheet" type="text/css" />
+  	<script type='text/javascript' src='/javascripts/jquery-1.11.0.js'></script>
+    <script type='text/javascript' src="/javascripts/angular.min.js"></script>
+    <script type='text/javascript' src="/javascripts/angular-ui-router.min.js"></script>
+    <script type='text/javascript' src='/javascripts/infinite.js'></script>
+    <script src="/javascripts/froala_editor.min.js"></script>
+    <script src="/javascripts/froala-sanitize.js"></script>
+    <script src="/javascripts/angular-froala.js"></script>
+    <script type='text/javascript' src="/javascripts/angular-sanitize.js"></script>
     <script src="/javascripts/angularApp.js"></script>
-	<style>
-		body 		{ padding-top:80px; word-wrap:break-word; }
-	</style>
+	  <!-- Initialize the editor. -->
+	  <script>
+		  $(function() {
+		    $('textarea#edit').editable({
+		      inlineMode: false
+		    })
+		  });
+		</script>
+    <base href="/" />
 </head>
-<body>
+<body ng-app="forumBody" ng-controller="ProfileCtrl">
 
 	<nav class="navbar navbar-inverse" role="navigation">
 	    <div class="navbar-header">
 	    	<div ng-include="nav_partial_url"></div>
-	        <a class="navbar-brand" ui-sref="#">AngularUI Router</a>
+	        <a class="navbar-brand" ui-sref="#">Discussion Forums</a>
 	    </div>
 	    <ul class="nav navbar-nav">
-	        <li><a ui-sref="home">Home</a></li>
-	        <li><a href="/login" target="_self">Login</a></li>
-	        <li><a href="/chat">Chat</a></li>
-	        <li><a href="/builder" target="_self">Builder</a></li>
-	        <li><a href="/signup" target="_self">Sign-up</a></li>
-	        <li><a href="/profile#/profile"  target="_self">Profile</a></li>
-	        <li><a href="/logout"  target="_self">logout</a></li>
-	        <li><a href="/logout">Username: {{user}}</a></li>
-	        
+
+			<li><a href="/" target="_self">Home</a></li>
+		    <li ng-show="!isLoggedIn()"><a href="/login" target="_self">Login</a></li>
+		    <li ng-show="!isLoggedIn()"><a href="/signup" target="_self">Sign-up</a></li>
+		    <li><a href="/popular" target="_self">Forums</a></li>
+		        
+		    <li><a href=""  target="_self"> </a></li>
+		    <li ng-show="isLoggedIn()"><a href="/logout"  target="_self">logout</a></li>
+		    <li ng-show="isLoggedIn()"><a href="/profile"  target="_self">Hello, {{user.username}}</a></li>
 	    </ul>
 	</nav>
 	
@@ -39,7 +53,7 @@
 		<a href="/logout" class="btn btn-default btn-sm">Logout</a>
 	</div>
 
-	<div  ng-app="forumBody" ng-controller="ProfileCtrl">
+	<div>
 		<ui-view></ui-view>
 	
 
@@ -48,13 +62,29 @@
 		<div class="row">
 
 				<!-- LOCAL INFORMATION -->
-				<div class="col-sm-6">
+				<div class="col-sm-4">
 					<div class="well">
-						<h3><span class="fa fa-user"></span> Local</h3>
+						<h3><span class="fa fa-user"></span>      {{user.username}}</h3>
 
-							<p>
-								Username: {{tester}}
-							</p>
+							<p>{{user.local.email}} - edit</p>
+							<p>Password - edit</p>
+							<p><img ng-src="/uploads/{{user.profilepic}}" height="47" width="47" /> - edit</p>
+
+					</div>
+				</div>
+				<div class="col-sm-8">
+					<div class="well">
+						<h3><span class="fa fa-user"></span> Your Discussion Forums</h3>
+						<table>
+							<tr> 
+								<th>Title</th> 
+								<th style="padding-left:100px;"> Settings </th>
+							</tr>
+							  	<tr ng-repeat="forums in userforums | orderBy:'date'">
+									<td> <a href="/{{forums.url}}" target="_self">{{forums.title}} </a> </td>
+									<td style="padding-left:100px;"> <a href="#" target="_self"> edit </a></td>
+								</tr>
+						</table>
 
 					</div>
 				</div>

@@ -229,6 +229,15 @@ angular.module('forumBody', ['ui.router', 'froala', 'infinite-scroll'])
 		  	return u.forum;
 		  });
 		};
+		u.getAllByCreater = function(createrID) {
+		  return $http.get('api/forums/' + createrID).then(function(res){
+		  	console.log("returning data");
+		  	console.log(res.data);
+		  	angular.copy(res.data, u.forum);
+		  	console.log(u.forum);
+		  	return u.forum;
+		  });
+		};
 		u.create = function(forum) {
 		    var b = $http.post('/builder', forum).success(function(data){
 		    	console.log("Forum Build Success");
@@ -277,6 +286,7 @@ angular.module('forumBody', ['ui.router', 'froala', 'infinite-scroll'])
 					title: $scope.title,
 					link: $scope.link,
 					bode: $scope.bode,
+					expirationdate: $scope.exdate,
 					forumtype: forumtypeid
 				}).success(function(post) {
 					console.log("started from the bottom now we here");
@@ -298,11 +308,24 @@ angular.module('forumBody', ['ui.router', 'froala', 'infinite-scroll'])
 		]
 	)
 	.controller('ProfileCtrl',
-		['$scope', 'user', function($scope, user){
+		['$scope', 'user', 'forum', function($scope, user, forum){
 			//$scope.tester = "hello profile";
-			console.log("hello");
-			console.log(user);
-			$scope.tester=user.user.username;
+			console.log("profile controller");
+			
+			// Get User
+			$scope.user=user.user;
+			// Get All Forums by this user
+			if (typeof user.user._id !== 'undefined') {
+			    console.log("my user");
+				console.log(user.user._id);
+				forum.getAllByCreater(user.user._id).then(function(data) {
+	            	$scope.userforums = data;
+	        	});
+			}
+			
+			//$scope.userforums = $scope.getforums();
+			console.log($scope);
+			console.log($scope.userforums);
 		}]
 	)
 	.controller('ForumCtrl',

@@ -15,16 +15,24 @@ var LocalStrategy = require('passport-local').Strategy;
 
 
 // Local
-//mongoose.connect('mongodb://localhost/forumappdb');
+mongoose.connect('mongodb://localhost/forumappdb');
 
-mongoose.connect('mongodb://rudyal:i70paint@linus.mongohq.com:10046/app30586382');
+// Heroku
+//mongoose.connect('mongodb://rudyal:i70paint@linus.mongohq.com:10046/app30586382');
+
+// models
 require('./models/Posts');
 require('./models/Comments');
 require('./models/User');
 require('./models/ForumType');
+require('./models/Expire');
 require('./models/ForumCategory');
 require('./models/UserForumMeta');
 
+// crons
+require('./cron/expire');
+
+// passports
 require('./config/passport')(passport); // pass passport for configuration
 
 

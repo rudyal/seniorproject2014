@@ -4,7 +4,10 @@ var mongoose = require('mongoose');
 var Post = mongoose.model('Post');
 var user =  mongoose.model('User');
 var ForumType =  mongoose.model('ForumType');
+var Expire =  mongoose.model('Expire');
 var Comment = mongoose.model('Comment');
+var ObjectId = require('mongoose').Types.ObjectId; 
+
 
 
 /* GET home page. */
@@ -35,6 +38,20 @@ router.get('/forums', function(req, res, next) {
       //console.log(posts);
         res.json(forumtype);
     });
+});
+
+router.get('/api/forums/:createrID', function(req, res, next) {
+
+    ForumType
+    .find({ user: ObjectId(req.params.createrID) })
+    .exec(function(err, forumtype){
+      if(err){ return next(err); }
+      //console.log(posts);
+        res.json(forumtype);
+    });
+
+
+
 });
 
 
@@ -149,9 +166,7 @@ router.get('/posts/:post', function(req, res, next) {
           console.log(post2);
           res.json(post2);
         });
-
       });  
-
 });
 
 
@@ -159,7 +174,8 @@ router.post('/posts', function(req, res, next) {
   var post = new Post(req.body);
   var FT = new ForumType();
   // ref user for post table
-  console.log(req);
+  //console.log(req);
+
 
 
 
@@ -168,32 +184,57 @@ router.post('/posts', function(req, res, next) {
         .populate('posts')
         .exec(function (err, forumtype) {
 
-            if(req.user._id != 'undefined'){
-              post.user = req.user;
+            //if(req.user._id !== 'undefined'){
+            if (typeof req.user !== 'undefined') {
+              if (typeof req.user._id !== 'undefined') {
+                post.user = req.user;
+                //console.log(post.user);
+                console.log("col1");
+              }else{
+                console.log("col2");
+                //Can set User here
+
+                //Maybe call a function that create anonymous user ex. "anon-4523452", then set set session with that, returns user_id
+                //post.user = ObjectId("54839caf1ea7c61425e29756");
+              }
+              
             }else{
-              post.user = null;
+              console.log("col2");
+              //Can set User here
+              //post.user = ObjectId("54839caf1ea7c61425e29756");
             }
 
             post.save(function(err, post){
               if(err){ return next(err); }
               forumtype.posts.push(post);
               forumtype.save(function(err, forumtype) {
-                res.json(post)
+                //res.json(post)
               });
                 //res.json(post);
             });
 
         });
+        if (typeof post.expirationdate !== 'undefined') {
+          console.log("ex Date is: ");
+          console.log(post.expirationdate);
+          // insert data into another model
+          var expire = new Expire();
 
-  console.log(post);
-  console.log("ForumType is: ");
-  console.log(ForumType);
-  console.log("FT is: ");
-  console.log(FT);
+            expire.type = "Posts";
+            expire.type_Id = post._id;
+            expire.expirationdate = post.expirationdate;
 
+            expire.save(function(err, expire){
+              
+            });
+        }
 
-
-
+  console.log("post id is: ");
+  console.log(post._id);
+ // console.log("ForumType is: ");
+  //console.log(ForumType);
+  //console.log("FT is: ");
+ // console.log(FT);
 
 });
 
