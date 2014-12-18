@@ -169,22 +169,68 @@ router.get('/posts/:post', function(req, res, next) {
       });  
 });
 
+router.post('/posts/edit/:id', function(req, res, next) {
+  var myID = req.params.id;
+    
+      Post.findById(myID, function (err, post) {
+          if (typeof req.user == 'undefined') { return "Edit your own";}
+
+          console.log("POST USER");
+          console.log(post.user);
+          var postUser = parseInt(post.user);
+
+          console.log("REQ USER");
+          console.log(req.user._id);
+          var reqUser = parseInt(req.user._id);
+
+          if (reqUser == postUser) { 
+            console.log("same Guy");
+            post.update({ title: req.body.title, bode: req.body.bode }).exec(res.json(post));
+          }else{
+            console.log("not same guy");
+            return "e";
+          }
+      });
+});
+
+router.delete('/posts/delete/:id', function(req, res, next) {
+  var myID = req.params.id;
+  console.log("deleteing");
+  console.log(myID);
+    
+      Post.findById(myID, function (err, post) {
+          if (typeof req.user == 'undefined') { return "Edit your own";}
+
+          console.log("POST USER");
+          console.log(post.user);
+          var postUser = parseInt(post.user);
+
+          console.log("REQ USER");
+          console.log(req.user._id);
+          var reqUser = parseInt(req.user._id);
+
+          if (reqUser == postUser) { 
+            console.log("same Guy");
+            post.remove(function (err, post) { return res.json(post); });
+          }else{
+            console.log("not same guy");
+            return "e";
+          }
+      });
+});
 
 router.post('/posts', function(req, res, next) {
   var post = new Post(req.body);
   var FT = new ForumType();
   // ref user for post table
   //console.log(req);
-
-
-
-
   ForumType
         .findOne({ _id: post.forumtype })
         .populate('posts')
         .exec(function (err, forumtype) {
 
-            //if(req.user._id !== 'undefined'){
+          if (err) { return next(err); }
+
             if (typeof req.user !== 'undefined') {
               if (typeof req.user._id !== 'undefined') {
                 post.user = req.user;
@@ -195,20 +241,20 @@ router.post('/posts', function(req, res, next) {
                 //Can set User here
 
                 //Maybe call a function that create anonymous user ex. "anon-4523452", then set set session with that, returns user_id
-                //post.user = ObjectId("54839caf1ea7c61425e29756");
+                post.user = ObjectId("54839caf1ea7c61425e29756");
               }
               
             }else{
               console.log("col2");
               //Can set User here
-              //post.user = ObjectId("54839caf1ea7c61425e29756");
+              post.user = ObjectId("54839caf1ea7c61425e29756");
             }
 
             post.save(function(err, post){
               if(err){ return next(err); }
               forumtype.posts.push(post);
               forumtype.save(function(err, forumtype) {
-                //res.json(post)
+                res.json(post);
               });
                 //res.json(post);
             });
@@ -231,10 +277,6 @@ router.post('/posts', function(req, res, next) {
 
   console.log("post id is: ");
   console.log(post._id);
- // console.log("ForumType is: ");
-  //console.log(ForumType);
-  //console.log("FT is: ");
- // console.log(FT);
 
 });
 

@@ -117,6 +117,22 @@
 		
 		</script>
 
+		<script type="text/ng-template" id="/edit.html">
+			<div ng-show="loadEdit(post)"></div>
+
+
+			  <form ng-submit="editPost(post._id)">
+			  		<input class="form-control"type="text" placeholder="Title" ng-model="title"></input>
+			  		<br>
+			  		<textarea class="form-control" froala="" id="edit" name="content" rows="4" cols="50" type="text" placeholder="Body" ng-model="bode"> </textarea>
+			  		<br>
+			  		<button class="btn btn-warning btn-lg" type="submit">Save</button>
+			  	</form>
+
+			  	<a ui-sref="forum">back</a>
+			
+		</script>
+
 
 		<script type="text/ng-template" id="/posts.html">
 			<div class="show-post" style="height:65%;overflow:auto;">
@@ -132,6 +148,12 @@
 			      
 			      <br>
 			      <img ng-src="/uploads/{{post.user.profilepic}}" height="47" width="47" /><small> By: {{post.user.username}} </small>
+
+			      <div ng-show="isCreater(post.user._id)">  <a ui-sref="forum.edit({id: post._id })">edit</a> 
+			      
+			      <form ng-submit="deletePost(post._id)">
+			      	<button type="submit" class="btn btn-primary">Delete</button>
+			      </form>
 			    </h3>
 			  </div>
 
