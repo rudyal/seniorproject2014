@@ -3,19 +3,24 @@
 <html>
 <head>
 	<title>Node Authentication</title>
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
     <link rel="stylesheet" href="/stylesheets/style2.css">
-    <script type='text/javascript' src='/javascripts/jquery-1.11.0.js'></script>
+  	<script type='text/javascript' src='/javascripts/jquery-1.11.0.js'></script>
     <script type='text/javascript' src="/javascripts/angular.min.js"></script>
     <script type='text/javascript' src="/javascripts/angular-ui-router.min.js"></script>
+    <script type='text/javascript' src='/javascripts/infinite.js'></script>
+    <script src="/javascripts/froala_editor.min.js"></script>
+    <script src="/javascripts/froala-sanitize.js"></script>
+    <script src="/javascripts/angular-froala.js"></script>
 
-    <script src="/javascripts/angularApp.js"></script>
+	<script src="/javascripts/angularApp.js"></script>
 	<style>
 		
 	</style>
+	<base href="/" />
 </head>
 <body>
-
+<div ng-app="forumBody" ng-controller="BuildCtrl">
 	<nav class="navbar navbar-inverse" role="navigation">
 	    <div class="navbar-header">
 	    	<div ng-include="nav_partial_url"></div>
@@ -49,24 +54,31 @@
 	<% } %>
 
 	<!-- LOGIN FORM -->
-	<form name="signup2" action="/signup" method="post" enctype="multipart/form-data" novalidate>
+	<form name="signup2" action="/signup" method="post" enctype="multipart/form-data">
 		<div class="form-group">
-			<label>Email</label>
-			<div class="form-group" ng-class="{ 'has-error' : signup.email.$invalid && !signup.email.$pristine }">
-				<input type="email" class="form-control" ng-model="email" name="email" ng-pattern="/^[_a-z0-9]+(\.[_a-z0-9]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,4})$/" required>
-			</div>
-		</div>
+					<label>Email</label>
+					<div class="form-group" >
+						<input type="email" class="form-control" ng-model="email" data-wc-unique="{property: 'email'}" style="width:200px;" name="email" ng-pattern="/^[_a-z0-9]+(\.[_a-z0-9]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,4})$/" required>
+						<span class="errorMessage" ng-show="signup2.email.$dirty && signup2.email.$error.unique">Email already in use</span>
+						<span class="errorMessage" ng-show="signup2.email.$error.pattern">Invalid Email<br/></span>
+					</div>
+				</div>
 		<div class="form-group">
-			<label>Username</label>
-			<div class="control-group" ng-class="{ 'has-error' : signup.username.$invalid && !signup.username.$pristine }">
-				<input type="text" class="form-control" ng-model="username"  name="username" ng-minlength="4" ng-maxlength="22" required>
+					<label>Username</label>
+					<div class="control-group">
+						<input type="text" class="form-control" ng-model="username" data-wc-unique="{property: 'username'}" style="width:200px;" name="username" ng-minlength="4" ng-maxlength="22" ng-pattern="/^[a-zA-Z0-9_-]{3,16}$/" required>
+						<span class="errorMessage" ng-show="signup2.username.$dirty && signup2.username.$error.unique">Username already in use</span>
+						<span class="errorMessage" ng-show="signup2.username.$dirty && signup2.username.$error.pattern">Invalid Username</span>
 
-		    </div>
-		</div>
+				    </div>
+				</div>
 
 		<div class="form-group">
 			<label>Password</label>
-			<input type="password" class="form-control" name="password" ng-minlength="6" ng-maxlength="30" required>
+			<div class="control-group">
+			<input type="password" class="form-control" ng-model="password" name="password" ng-minlength="6" ng-maxlength="30" ng-pattern="/^[a-zA-Z0-9!@#$%^*]{6,16}$/"  required>
+			<span class="errorMessage" ng-show="signup2.password.$dirty && signup2.password.$error.pattern">Password Invalid</span>
+			 </div>
 		</div>
 
 		<div class="form-group">
@@ -83,6 +95,8 @@
 
 	<p>Already have an account? <a href="/login">Login</a></p>
 	<p>Or go <a href="/">home</a>.</p>
+
+</div>
 
 </div>
 

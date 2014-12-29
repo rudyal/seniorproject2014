@@ -146,6 +146,53 @@ angular.module('forumBody', ['ui.router', 'froala', 'infinite-scroll'])
 
 		}
 	])
+	.factory('uniqueService', ['$http', function ($http) {
+        var dataFactory = {};
+
+        dataFactory.checkEmail = function (id) {
+            if (!id) id = 0;
+            return $http.get('/api/unemail/' + id).then(
+                function (results) {
+                	console.log(results);
+                	if(results.data.length>0){
+                		return results.data.status;
+                	}else{
+                		return "Unique";
+                	}
+                    
+                });
+        };
+        dataFactory.checkUser = function (id) {
+            if (!id) id = 0;
+            return $http.get('/api/unuser/' + id).then(
+                function (results) {
+                	console.log("results");
+                	console.log(results);
+                	if(results.data.length>0){
+                		return results.data.status;
+                	}else{
+                		return "Unique";
+                	}
+                    
+                });
+        };
+        dataFactory.checkForum = function (id) {
+            if (!id) id = 0;
+            return $http.get('/api/unforum/' + id).then(
+                function (results) {
+                	console.log("results");
+                	console.log(results);
+                	if(results.data.length>0){
+                		return results.data.status;
+                	}else{
+                		return "Unique";
+                	}
+                    
+                });
+        };
+         return dataFactory;
+	}])
+       
 	.factory('posts', ['$http', function($http){
 		var o = {
 			posts: [
@@ -193,6 +240,10 @@ angular.module('forumBody', ['ui.router', 'froala', 'infinite-scroll'])
 		  	console.log(res.data);
 		  	return res.data;
 		  });
+		};
+		o.editCom = function(comment, id) {
+			console.log("edit comment");
+		  return $http.post('/comments/edit/' + id, comment);
 		};
 		o.addComment2 = function(id, comment) {
 		  return $http.post('/posts/' + id + '/comments', comment);
@@ -249,16 +300,16 @@ angular.module('forumBody', ['ui.router', 'froala', 'infinite-scroll'])
 		  };
 		u.getAllByUrl = function(murl) {
 		  return $http.get('api/' + murl).then(function(res){
-		  	console.log("returning data");
-		  	console.log(res.data);
+		  	//console.log("returning data");
+		  	//console.log(res.data);
 		  	angular.copy(res.data, u.forum);
 		  	return u.forum;
 		  });
 		};
 		u.getAllByCreater = function(createrID) {
 		  return $http.get('api/forums/' + createrID).then(function(res){
-		  	console.log("returning data");
-		  	console.log(res.data);
+		  	//console.log("returning data");
+		  	//console.log(res.data);
 		  	angular.copy(res.data, u.forum);
 		  	console.log(u.forum);
 		  	return u.forum;
@@ -274,6 +325,73 @@ angular.module('forumBody', ['ui.router', 'froala', 'infinite-scroll'])
 		return u;
 
 	}])
+
+.directive('wcUnique', ['uniqueService', function (uniqueService) {
+    return {
+        restrict: 'A',
+        require: 'ngModel',
+        link: function (scope, element, attrs, ngModel) {
+        	element.bind('blur', function (e) {
+                if (!ngModel || !element.val()) return;
+                var keyProperty = scope.$eval(attrs.wcUnique);
+                var currentValue = element.val();
+                console.log(keyProperty);
+                if(keyProperty.property=='email'){
+                	uniqueService.checkEmail(currentValue)
+                    .then(function (unique) {
+                        //Ensure value that being checked hasn't changed
+                        //since the Ajax call was made
+                        if (currentValue == element.val()) { 
+                            ngModel.$setValidity('unique', unique);
+                        }
+                    }, function () {
+                        //Probably want a more robust way to handle an error
+                        //For this demo we'll set unique to true though
+                        ngModel.$setValidity('unique', true);
+                    });
+                }
+                if(keyProperty.property=='username'){
+                	uniqueService.checkUser(currentValue)
+                    .then(function (unique) {
+                        //Ensure value that being checked hasn't changed
+                        //since the Ajax call was made
+                        if (currentValue == element.val()) { 
+                        	console.log("hete");
+                        	console.log(unique);
+                            ngModel.$setValidity('unique', unique);
+                        }
+                    }, function () {
+                        //Probably want a more robust way to handle an error
+                        //For this demo we'll set unique to true though
+                        ngModel.$setValidity('unique', true);
+                    });
+                }
+                if(keyProperty.property=='forum'){
+                	uniqueService.checkForum(currentValue)
+                    .then(function (unique) {
+                        //Ensure value that being checked hasn't changed
+                        //since the Ajax call was made
+                        if (currentValue == element.val()) { 
+                        	console.log("hete");
+                        	console.log(unique);
+                            ngModel.$setValidity('unique', unique);
+                        }
+                        console.log("test");
+                    }, function () {
+                        //Probably want a more robust way to handle an error
+                        //For this demo we'll set unique to true though
+                        console.log("hete22");
+                        ngModel.$setValidity('unique', true);
+                    });
+                }
+                
+            });
+		}
+    }
+}])
+
+
+
 	.controller('MainCtrl', 
 		['$scope', '$location','forum', 'posts', 'user', 
 			function($scope, $location, forum, posts, user){
@@ -315,11 +433,25 @@ angular.module('forumBody', ['ui.router', 'froala', 'infinite-scroll'])
 				};
 
 				$scope.isCreater = function(postuser) {
-
 				if (user.user._id == postuser)
 				  return true;
 				else 
 				  return false;
+				};
+
+				$scope.loadComment = function(comment) {
+
+					
+					//console.log("LOADINGGGGGG COMMMENTNNTT");
+
+					if(typeof $scope.body != 'undefined'){
+						return false;
+					}else{
+						$scope.isEdit = comment;
+				  		$scope.body = comment.body.$$unwrapTrustedValue();
+
+				  		return true;
+					}
 
 				};
 
@@ -433,9 +565,15 @@ angular.module('forumBody', ['ui.router', 'froala', 'infinite-scroll'])
 			//$scope.forum = forum;
 			$scope.user = user.user;
 			$scope.changeURL = function(comname) {
-				$comname2 = comname.replace(/^\s\s*/, '').replace(/\s\s*$/, '');
-				$comname3 = $comname2.replace(/\s+/g, '-').toLowerCase();
-		        $scope.comurl = $comname3;
+				if(typeof comname != 'undefined'){
+					comname2 = comname.replace(/^\s\s*/, '');
+					$comname3 = comname2.replace(/\s\s*$/, '');
+					$comname4 = $comname3.replace(/\s+/g, '-').toLowerCase();
+			        $scope.comurl = $comname4;
+				}else{
+					$scope.comurl = " ";
+				}
+				
 		     }
 		     console.log('user');
 		     
@@ -532,6 +670,34 @@ angular.module('forumBody', ['ui.router', 'froala', 'infinite-scroll'])
 				  });
 				  $scope.body = '';
 				};
+
+				$scope.addEditComment = function(comment){
+					  	console.log("editing comment");
+					  	console.log($scope.body);
+					  	console.log(comment);
+					  	console.log(comment._id);
+					  	//comment.body = $sce.trustAsHtml(comment.body);
+					  	console.log(comment.body.$$unwrapTrustedValue());
+					  	if($scope.body === '') { return; }
+					  	
+						posts.editCom({
+							body: $scope.body
+						}, comment._id).success(function(post) {
+							$scope.body = '';
+							console.log("started from the bottom now we here");
+							console.log($scope.isEdit);
+							$scope.isEdit = null;
+							console.log($scope.isEdit);
+							// We Need Post ID
+
+							// We Need Comment ID
+
+							// Update scope comment to editted one
+							    
+						  });
+						$scope.body = '';
+						delete $scope.isEdit;
+					  }
 
 				$scope.loadEdit = function(post){
 

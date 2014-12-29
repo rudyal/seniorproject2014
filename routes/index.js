@@ -7,8 +7,61 @@ var ForumType =  mongoose.model('ForumType');
 var Expire =  mongoose.model('Expire');
 var Comment = mongoose.model('Comment');
 var ObjectId = require('mongoose').Types.ObjectId; 
+var access = require('context-access');
 
 
+//unique email
+router.get('/api/unemail/:unemail', function(req, res, next) {
+  console.log(req.params.unemail);
+    user
+    .find({'local.email': req.params.unemail })
+    .limit(20)
+    .exec(function(err, user){
+      if(err){ return next(err); }
+      if(user.length > 0){
+        // not unique
+        res.json(user);
+      }else{
+        //console.log(user);
+        res.json(user);
+      }
+    });
+});
+//unique username
+router.get('/api/unuser/:unusername', function(req, res, next) {
+  console.log(req.params.unemail);
+    user
+    .find({'username': req.params.unusername })
+    .limit(20)
+    .exec(function(err, user){
+      if(err){ return next(err); }
+      if(user.length > 0){
+        // not unique
+        res.json(user);
+      }else{
+        //console.log(user);
+        res.json(user);
+      }
+    });
+});
+//unique forum
+router.get('/api/unforum/:unforum', function(req, res, next) {
+  console.log(req.params.unforum);
+    ForumType
+    .find({url: req.params.unforum })
+    .limit(20)
+    .exec(function(err, forum){
+      if(err){ return next(err); }
+      if(forum.length > 0){
+        // not unique
+        //console.log(forum);
+        res.json(forum);
+      }else{
+        //console.log(forum);
+        res.json(forum);
+      }
+    });
+});
 
 /* GET home page. */
 router.get('/', function(req, res) {
@@ -49,8 +102,6 @@ router.get('/api/forums/:createrID', function(req, res, next) {
       //console.log(posts);
         res.json(forumtype);
     });
-
-
 
 });
 
@@ -193,6 +244,33 @@ router.post('/posts/edit/:id', function(req, res, next) {
       });
 });
 
+router.post('/comments/edit/:id', function(req, res, next) {
+  var myID = req.params.id;
+  console.log(myID);
+    
+      Comment.findById(myID, function (err, comment) {
+          if (typeof req.user == 'undefined') { return "Edit your own";}
+
+          console.log("POST USER");
+          console.log(comment.user);
+          var postUser = parseInt(comment.user);
+
+          console.log("REQ USER");
+          console.log(req.user._id);
+          var reqUser = parseInt(req.user._id);
+
+          if (reqUser == postUser) { 
+            console.log("same Guy");
+            console.log(req.body);
+            console.log(req.body.body);
+            comment.update({ body: req.body.body }).exec(res.json(comment));
+          }else{
+            console.log("not same guy");
+            return "e";
+          }
+      });
+});
+
 router.delete('/posts/delete/:id', function(req, res, next) {
   var myID = req.params.id;
   console.log("deleteing");
@@ -306,6 +384,8 @@ router.post('/posts/:post/comments', function(req, res, next) {
 
 router.get('/api/:murl', function(req, res) {
 
+
+
     console.log(req.params.murl);
     var myPath = req.params.murl;
     // if( myPath.charAt( 0 ) === '/api' ){
@@ -318,6 +398,18 @@ router.get('/api/:murl', function(req, res) {
         .findOne({ url: myPath })
         .populate('posts')
         .exec(function (err, forumtype) {
+          // Check if it has an access code
+
+            // If so, check if access code is set as param
+
+            // How do we keep it set though? like after a page refresh
+
+                // if not redirect to collections page
+
+            // Collections page will query for access code
+
+            //
+
 
           if (err) return handleError(err);
           if(forumtype!=null){

@@ -167,21 +167,42 @@
 
 			  <div ng-repeat="commenter in post.comments | orderBy:'date'">
 			    <img ng-src="/uploads/{{commenter.user.profilepic}}" height="47" width="47" /> - by {{commenter.user.username}}
-			    <span style="font-size:20px; margin-left:10px;">
 
-			      <p ng-bind-html="commenter.body"></p>
+
+			    <div ng-show="isCreater(commenter.user._id)">  
+			    <a ui-sref="forum.edit({id: commenter._id })">edit</a>
+			    <button ng-click='loadComment(commenter)' type="submit" class="btn btn-primary">edit ng</button> 
+			      
+			      <form ng-submit="deletePost(commenter._id)">
+			      	<button type="submit" class="btn btn-primary">Delete</button>
+			      </form>
+			    </div>
+
+
+
+			    <span style="font-size:20px; margin-left:10px;">
+			      	<p ng-bind-html="commenter.body"></p>
 			    </span>
 			  </div>
 
-			  <form ng-submit="addComment()"
-			    style="margin-top:30px;">
+			  <div ng-show="isEdit != null"> 
+			  	  <form ng-submit="addEditComment(isEdit)" style="margin-top:30px;">
+				    <div class="form-group">
+				    	<textarea class="form-control" froala="" id="edit" name="content" rows="4" cols="50" type="text" placeholder="Insert text here ..." ng-model="body"> </textarea>
+				    </div>
+				    <button type="submit" class="btn btn-primary">Save</button>
+				  </form>
+			  </div>
 
-			    <div class="form-group">
-			    	<textarea class="form-control" froala="" id="edit" name="content" rows="4" cols="50" type="text" placeholder="Insert text here ..." ng-model="body"> </textarea>
-			      
-			    </div>
-			    <button type="submit" class="btn btn-primary">Post</button>
-			  </form>
+			  <div ng-hide="isEdit != null">
+			  	<form ng-submit="addComment()" style="margin-top:30px;">
+				    <div class="form-group">
+				    	<textarea class="form-control" froala="" id="edit" name="content" rows="4" cols="50" type="text" placeholder="Insert text here ..." ng-model="body"> </textarea>
+				    </div>
+				    <button type="submit" class="btn btn-primary">Post</button>
+			    </form>
+			  </div>
+
 			</div>
 
 		</script>
