@@ -70,7 +70,9 @@
 
 	    <div class="row" style="margin-left:0px;margin-right:0px;"><div class="col-xs-5" style="height:65%;overflow:auto;">
 
-		  	<div ng-repeat="post in forum.posts | orderBy: '-date'" >
+
+
+		  	<div ng-repeat="post in forum.posts | postOrderBy track by $index" >
 
 		  		<a ng-show="post.link" href="{{post.link}}">
 		  		<a ui-sref=".posts({id: post._id })">{{post.title}}</a>

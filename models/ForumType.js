@@ -7,6 +7,7 @@ var ForumTypeSchema = new mongoose.Schema({
   allowanon: Boolean,
   allowreg: Boolean,
   user: { type: mongoose.Schema.Types.ObjectId, ref: 'User' },
+  forumcategory: [{type: mongoose.Schema.Types.ObjectId, ref: 'ForumCategory' }],
   posts: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Post' }]
 });
 

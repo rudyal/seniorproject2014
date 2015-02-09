@@ -10,7 +10,7 @@ var PostSchema = new mongoose.Schema({
   comments: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Comment' }],
   bode: { type: String, default: 'neverborn' },
   user: { type: mongoose.Schema.Types.ObjectId, ref: 'User' },
-  forumcategory: {type: mongoose.Schema.Types.ObjectId, ref: 'ForumCategory' },
+  forumcategory: [{type: mongoose.Schema.Types.ObjectId, ref: 'ForumCategory' }],
   forumtype: { type: mongoose.Schema.Types.ObjectId, ref: 'ForumType' }
 });
 

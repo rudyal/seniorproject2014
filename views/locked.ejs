@@ -1,0 +1,78 @@
+<html>
+  <head>
+    <title>Insert Forum Title</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/stylesheets/style2.css">
+  	<script type='text/javascript' src='/javascripts/jquery-1.11.0.js'></script>
+    <script type='text/javascript' src="/javascripts/angular.min.js"></script>
+    <script type='text/javascript' src="/javascripts/angular-ui-router.min.js"></script>
+    <script type='text/javascript' src='/javascripts/infinite.js'></script>
+    <script src="/javascripts/froala_editor.min.js"></script>
+    <script src="/javascripts/froala-sanitize.js"></script>
+    <script src="/javascripts/angular-froala.js"></script>
+
+	<script src="/javascripts/angularApp.js"></script>
+	  <!-- Initialize the editor. -->
+	  <script>
+		  $(function() {
+		    $('textarea#edit').editable({
+		      inlineMode: false
+		    })
+		  });
+		</script>
+    <base href="/" />
+  </head>
+  <body>
+	<div ng-app="forumBody" ng-controller="BuildCtrl">
+  	<nav class="navbar navbar-inverse" role="navigation">
+		    <div class="navbar-header">
+		    	<div ng-include="nav_partial_url"></div>
+		        <a class="navbar-brand" ui-sref="#">Discussion Forums</a>
+		    </div>
+		    <ul class="nav navbar-nav">
+		        <li><a href="/" target="_self">Home</a></li>
+		        <li ng-show="!isLoggedIn()"><a href="/login" target="_self">Login</a></li>
+		        <li ng-show="!isLoggedIn()"><a href="/signup" target="_self">Sign-up</a></li>
+		        <li><a href="/popular" target="_self">Forums</a></li>
+		        
+		        <li><a href=""  target="_self"> </a></li>
+		        <li ng-show="isLoggedIn()"><a href="/logout"  target="_self">logout</a></li>
+		        <li ng-show="isLoggedIn()"><a href="/profile"  target="_self">Hello, {{user.username}}</a></li>
+		        
+		    </ul>
+		</nav>
+  	
+		<div class="col-lg-  col-md-offset-1">
+
+			
+    		<ui-view></ui-view>
+    	</div>
+
+    	<script type="text/ng-template" id="/locked.html">
+
+    	<p> Forum Locked, Access Code Required </p>
+    	<div id="access-code-form">
+
+    		<form name="accesscodeinput">
+		  	
+		  		<label>Access Code</label>
+		  		<input type="text" placeholder="" ng-model="accesscode"> </input>
+		  		<button ng-click="submitAccessForm()" type="submit">Go</button>
+
+		  		<span class="errorMessage" ng-show="wrongcode"> <br> Error: Incorrect Access Code<br/></span>
+
+		  	</form>
+
+    	</div>
+
+		
+
+		  	</script>
+
+	
+   
+
+		
+	</div>
+  </body>
+</html>

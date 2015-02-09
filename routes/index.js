@@ -7,7 +7,7 @@ var ForumType =  mongoose.model('ForumType');
 var Expire =  mongoose.model('Expire');
 var Comment = mongoose.model('Comment');
 var ObjectId = require('mongoose').Types.ObjectId; 
-var access = require('context-access');
+//var access = require('context-access');
 
 
 //unique email
@@ -72,6 +72,42 @@ router.get('/popular', function(req, res) {
   console.log("homepage ejs");
   res.render('homepage.ejs', { title: 'Express' });
 });
+router.get('/locked', function(req, res, next) {
+    //req.params.createrID
+    console.log("lockede ejs");
+    res.render('locked.ejs', { title: 'Access Code Required' });
+});
+router.get('/locked/:murl', function(req, res, next) {
+    //req.params.createrID
+    console.log("lockede ejs");
+    res.render('locked.ejs', { title: 'Access Code Required' });
+});
+
+router.post('/api/locked', function(req, res, next) {
+    //req.params.createrID
+    console.log("API lockede ejs");
+    //console.log(req);
+    //console.log(req.body);
+
+    // Get forum access code, where forumurl = req.body.murl
+     ForumType
+        .findOne({ url: req.body.murl })
+        .exec(function (err, forumtype) {
+          if(req.body.access == forumtype.access){
+            console.log("CORRRECTTT");
+            // Set a friggin cookie
+            var code = forumtype.access + forumtype.url;
+            res.cookie('accesscode', code, {  maxAge: 900000000, httpOnly: true  });
+            // return 200
+            res.status(200).json({"correct": "correct", "murl": forumtype.url});
+
+          }else{
+            // return 500
+            res.status(500).json({"error": "0001", "URL": forumtype.url});
+            // message saying incorrect 
+          }
+    });
+});
 
 /* GET home page. */
 router.get('/builder', function(req, res) {
@@ -109,7 +145,7 @@ router.get('/api/forums/:createrID', function(req, res, next) {
 router.post('/builder', function(req, res, next) {
   var forumType = new ForumType(req.body);
   // ref user for post table
- 
+ console.log(forumType);
     
   if(req.user._id != 'undefined'){
     forumType.user = req.user;
@@ -120,7 +156,7 @@ router.post('/builder', function(req, res, next) {
   var myPath;
   forumType.save(function(err, forumType){
     if(err){ return next(err); }
-    console.log(forumType.url);
+    
      var myPath = "/" + forumType.url;
      
      console.log(myPath);
@@ -136,8 +172,37 @@ router.post('/builder', function(req, res, next) {
 
 });
 
+
 router.get('/chat', function(req, res) {
-  res.render('chat.ejs', { title: 'Express' });
+
+console.log("here111");
+  //passport.use(new LocalStrategy(
+    //function(username, password, done) {
+      console.log(req.user);
+      
+        console.log("here1");
+        //if (err) { return done(err); }
+        if (req.user) {
+          // user.findOne({ username: req.user.username }, function(err, user) {
+          //    if (!user) {
+          //     return done(null, false, { message: 'Incorrect username.' });
+          //   }
+          //   if (!user.validPassword(req.user.password)) {
+          //     return done(null, false, { message: 'Incorrect password.' });
+          //   }
+            res.json({ name: req.user.username });
+         // });
+        }else{
+          console.log("here");
+          res.json({ name: 'anonymous' });
+        }
+        
+      
+  //  }
+  //));
+
+
+  //res.render('chat.ejs', { title: 'Express' });
 });
 
 
@@ -363,9 +428,27 @@ router.post('/posts/:post/comments', function(req, res, next) {
   var comment = new Comment(req.body);
   comment.post = req.post;
   
-  if(req.user._id != 'undefined'){
-    comment.user = req.user;
-  }
+  // if(req.user._id != 'undefined'){
+  //   comment.user = req.user;
+  // }
+          if (typeof req.user !== 'undefined') {
+              if (typeof req.user._id !== 'undefined') {
+                comment.user = req.user;
+                //console.log(post.user);
+                console.log("col1");
+              }else{
+                console.log("col2");
+                //Can set User here
+
+                //Maybe call a function that create anonymous user ex. "anon-4523452", then set set session with that, returns user_id
+                comment.user = ObjectId("54839caf1ea7c61425e29756");
+              }
+              
+            }else{
+              console.log("col2");
+              //Can set User here
+              comment.user = ObjectId("54839caf1ea7c61425e29756");
+            }
 
   comment.save(function(err, comment){
     if(err){ return next(err); }
@@ -382,61 +465,130 @@ router.post('/posts/:post/comments', function(req, res, next) {
   });
 });
 
-router.get('/api/:murl', function(req, res) {
+router.get('/access/:murl', function(req, res) {
+  res.send("hellooo " + req.params.murl );
+});
+
+router.get('/api/:murl', function(req, res, next) {
 
 
-
-    console.log(req.params.murl);
+    //console.log(req.params.murl);
     var myPath = req.params.murl;
     // if( myPath.charAt( 0 ) === '/api' ){
     //   myPath = myPath.slice( 1 );
     // }
     console.log("mongoose");
-    console.log(myPath);
+    //console.log(myPath);
 
       ForumType
         .findOne({ url: myPath })
         .populate('posts')
         .exec(function (err, forumtype) {
-          // Check if it has an access code
+          // console.log("forumtyp");
+          // console.log(forumtype);
+          // console.log("access");
+          // console.log(forumtype.access);
+          // console.log(forumtype.allowanon);
+          // console.log(forumtype.allowreg);
 
-            // If so, check if access code is set as param
+          var access = 3403;
+          var redirectGuy = false;
 
-            // How do we keep it set though? like after a page refresh
+          // CHECK ACCESS CODE
+          if(forumtype.access != null){
+            if(typeof forumtype.access != 'undefined'){
+            // First we need to init anon users IDK DROP a Cookie??
+            // Maybe drop the cookie in collections function?? then check here
+            
+            //res.clearCookie('accesscode');
+            //res.clearCookie('tobi');
+            //console.log(req.cookies.accesscode);
 
-                // if not redirect to collections page
-
-            // Collections page will query for access code
-
-            //
-
-
-          if (err) return handleError(err);
-          if(forumtype!=null){
-            console.log("forumtype");
-            console.log(forumtype);
-            req.forumtype = forumtype;
-
-          req.forumtype.populate({
-            path: 'posts.user',
-            model: user
-          }, function (err, forumtype) {
-                if(err){ return next(err); }
-                res.json(req.forumtype);
-              
-            });
-
-
-            // req.forumtype.populate('posts.user').save(function(err, forumtype) {
-            //   if(err){ return next(err); }
-
-            //   res.json(req.forumtype);
-            // });
-          }else{
-            res.redirect('/');
+              // If so, check if access code is set as param
+              var code = forumtype.access + forumtype.url;
+              if(req.cookies.accesscode == code){
+                console.log("settt");
+              }else{
+                //console.log("redirect 1");
+                //console.log(forumtype.url);
+                return res.status(500).json({"error": "0001", "URL": forumtype.url});
+                next();
+              }
+            }
           }
+          // DO NOT DELETE YET
+          // if(typeof forumtype.allowanon == 'undefined'){
+          //   // Forum does not allow anonymous users
+          //     // If user is not logged in redirect to login or register page
 
-        });
+          //      if (typeof req.user !== 'undefined') {
+          //       if (typeof req.user._id !== 'undefined') {
+          //         post.user = req.user;
+          //         //console.log(post.user);
+          //         console.log("col1");
+          //       }else{
+          //         console.log("redirect 2");
+          //         return res.status(500).json({"error": "0002", "URL": forumtype.url});
+          //         next();
+          //       }
+          //     }else{
+          //       console.log("redirect 3");
+          //       var return_array = ['0002', forumtype.url];
+          //       return res.status(500).json({"error": "0002", "URL": forumtype.url});
+          //       //return res.status(500).send('0002');
+          //       next();
+          //     }
+
+          // }
+          // if(typeof forumtype.allowreg !== 'undefined'){
+          //   // Forum only allows anonymous users
+          //     // We should prolly only need to check this when posting and set user to anon
+          // }
+
+          // CHECK ALLOW ANON USERS
+
+         
+
+
+
+          
+            if (err) return handleError(err);
+            if(forumtype!=null){
+              console.log("forumtype");
+              //console.log(forumtype);
+              req.forumtype = forumtype;
+
+            req.forumtype.populate({
+              path: 'posts.user',
+              model: user
+            }, function (err, forumtype) {
+                  if(err){ return next(err); }
+
+                  req.forumtype.populate({
+                    path: 'posts.comments',
+                    model: Comment
+                  }, function (err, forumtype) {
+                      res.json(req.forumtype);
+
+                    });
+
+
+                    //res.json(req.forumtype);
+
+              });
+              // req.forumtype.populate('posts.user').save(function(err, forumtype) {
+              //   if(err){ return next(err); }
+
+              //   res.json(req.forumtype);
+              // });
+            }else{
+              res.redirect('/');
+            }
+
+    });
+
+
+    
 });
 
 router.post('/*/posts', function(req, res, next) {
