@@ -1,0 +1,21 @@
+/* line 3, ../scss/base.scss */
+body {
+  font-size: 1.2rem;
+}
+
+/* line 7, ../scss/base.scss */
+.main-front-wrapper {
+  background-color: white;
+}
+/* line 9, ../scss/base.scss */
+.main-front-wrapper nav {
+  background-color: #555555;
+  height: 60px;
+  width: 100%;
+}
+/* line 13, ../scss/base.scss */
+.main-front-wrapper nav .nav-content-wrapper {
+  width: 80%;
+  margin-right: auto;
+  margin-left: auto;
+}

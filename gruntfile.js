@@ -8,17 +8,10 @@ module.exports = function(grunt) {
 	    		} //options
 	    	} //dev
 	    },
-		sass: {
-			dist: {
-				files: {
-					'public/stylesheets/dist/style.css' : 'sass/style.scss'
-				}
-			}
-		},
 		watch: {
-			css: {
+			sass: {
 				files: 'public/stylesheets/scss/*.scss',
-				tasks: ['sass']
+				tasks: ['compass:dev']
 			}
 		}
 	});
