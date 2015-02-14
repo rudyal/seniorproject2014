@@ -63,24 +63,152 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
   display: block;
 }
 
-/* line 3, ../scss/base.scss */
-body {
-  font-size: 1.2rem;
+@font-face {
+  font-family: "soft";
+  src: url('../../fonts/LaoUI.ttf?1244666632') format('truetype');
 }
-
-/* line 7, ../scss/base.scss */
+@font-face {
+  font-family: "thin";
+  src: url('../../fonts/DistProTh.otf?1413693555') format('opentype');
+}
+/* line 14, ../scss/_base.scss */
 .main-front-wrapper {
   background-color: white;
 }
-/* line 9, ../scss/base.scss */
+/* line 16, ../scss/_base.scss */
 .main-front-wrapper nav {
   background-color: #555555;
   height: 60px;
   width: 100%;
 }
-/* line 13, ../scss/base.scss */
+/* line 20, ../scss/_base.scss */
 .main-front-wrapper nav .nav-content-wrapper {
   width: 80%;
+  height: 40px;
+  padding-top: 10px;
   margin-right: auto;
   margin-left: auto;
+}
+/* line 27, ../scss/_base.scss */
+.main-front-wrapper nav .logo-wrapper {
+  width: 400px;
+  display: inline-block;
+}
+/* line 31, ../scss/_base.scss */
+.main-front-wrapper nav .account-wrapper {
+  float: right;
+  width: 400px;
+  display: inline-block;
+  color: #7D7D7D;
+  font-size: 14px;
+}
+/* line 37, ../scss/_base.scss */
+.main-front-wrapper nav .account-wrapper a {
+  color: #7D7D7D;
+  font-size: 14px;
+}
+/* line 41, ../scss/_base.scss */
+.main-front-wrapper nav .account-wrapper ul {
+  float: right;
+}
+/* line 44, ../scss/_base.scss */
+.main-front-wrapper nav .account-wrapper li {
+  display: inline-block;
+  list-style-type: none;
+}
+/* line 48, ../scss/_base.scss */
+.main-front-wrapper nav .account-wrapper li.right {
+  padding-left: 7px;
+}
+/* line 51, ../scss/_base.scss */
+.main-front-wrapper nav .account-wrapper li.left {
+  border-right: 1px solid #7D7D7D;
+  padding-right: 10px;
+}
+/* line 57, ../scss/_base.scss */
+.main-front-wrapper .main-content-wrapper {
+  background-color: white;
+  height: 1200px;
+}
+/* line 60, ../scss/_base.scss */
+.main-front-wrapper .main-content-wrapper .front.cheesy-sentance {
+  height: 85px;
+  margin-bottom: 20px;
+  padding-top: 30px;
+  width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+  font-size: 40px;
+  text-align: center;
+}
+/* line 70, ../scss/_base.scss */
+.main-front-wrapper .main-content-wrapper .second-main-wrapper {
+  width: 90%;
+  margin-left: auto;
+  margin-right: auto;
+  border: 1px solid #7D7D7D;
+}
+/* line 75, ../scss/_base.scss */
+.main-front-wrapper .main-content-wrapper .second-main-wrapper .front.info-wrapper {
+  height: 700px;
+  width: 70%;
+  background-color: pink;
+  display: inline-block;
+  vertical-align: top;
+  padding: 10px 10px 10px 10px;
+}
+/* line 82, ../scss/_base.scss */
+.main-front-wrapper .main-content-wrapper .second-main-wrapper .front.info-wrapper .laptop-i-cant-afford {
+  border: 1px solid #7D7D7D;
+  margin: 10px 10px 10px 10px;
+  height: 500px;
+  display: inline-block;
+}
+/* line 85, ../scss/_base.scss */
+.main-front-wrapper .main-content-wrapper .second-main-wrapper .front.info-wrapper .laptop-i-cant-afford img {
+  width: 80%;
+}
+/* line 97, ../scss/_base.scss */
+.main-front-wrapper .main-content-wrapper .second-main-wrapper .front.info-wrapper .more-bs {
+  border: 1px solid #7D7D7D;
+  margin: 10px 10px 10px 10px;
+  width: 100px;
+  display: inline-block;
+}
+/* line 104, ../scss/_base.scss */
+.main-front-wrapper .main-content-wrapper .second-main-wrapper .front.form-wrapper {
+  float: right;
+  margin: 20px 20px 20px 20px;
+  padding: 10px 10px 10px 10px;
+  height: 600px;
+  width: 300px;
+  background-color: #E5E5E5;
+  display: inline-block;
+}
+/* line 112, ../scss/_base.scss */
+.main-front-wrapper .main-content-wrapper .second-main-wrapper .front.form-wrapper label {
+  display: block;
+  font-size: 16px;
+}
+/* line 116, ../scss/_base.scss */
+.main-front-wrapper .main-content-wrapper .second-main-wrapper .front.form-wrapper button.submit {
+  background-color: #555555;
+  width: 100px;
+  height: 50px;
+  margin-left: auto;
+  margin-right: auto;
+}
+/* line 131, ../scss/_base.scss */
+.main-front-wrapper .front.first-footer {
+  background-color: #555555;
+  border: 1px solid #7D7D7D;
+  height: 60px;
+  width: 100%;
+}
+/* line 137, ../scss/_base.scss */
+.main-front-wrapper .front.last-footer {
+  background-color: #555555;
+  border: 1px solid #7D7D7D;
+  height: 60px;
+  width: 100%;
 }

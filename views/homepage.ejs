@@ -3,7 +3,7 @@
     <title>Insert Forum Title</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
     <link rel="stylesheet" href="/stylesheets/style2.css">
-    <link rel="stylesheet" href="/stylesheets/dist/base.css">
+    <link rel="stylesheet" href="/stylesheets/dist/style.css">
   	<script type='text/javascript' src='/javascripts/jquery-1.11.0.js'></script>
     <script type='text/javascript' src="/javascripts/angular.min.js"></script>
     <script type='text/javascript' src="/javascripts/angular-ui-router.min.js"></script>
@@ -46,152 +46,156 @@
 
 	    		<div class="account-wrapper">
 	    			<ul>
-	    				<li ng-show="!isLoggedIn()"><a href="/login" target="_self">Login</a></li>
-					    <li ng-show="!isLoggedIn()"><a href="/signup" target="_self">Sign-up</a></li>
-					    <li ng-show="isLoggedIn()"><a href="/logout"  target="_self">logout</a></li>
-					    <li ng-show="isLoggedIn()"><a href="/profile"  target="_self">Hello, {{user.username}}</a></li>
+	    				<li class="left" ng-show="!isLoggedIn()"><a href="/login" target="_self">Login</a></li>
+					    <li class="right" ng-show="!isLoggedIn()"><a href="/signup" target="_self">Sign-up</a></li>
+					    <li class="left" ng-show="isLoggedIn()"><a href="/profile"  target="_self">Hello, {{user.username}}</a></li>
+					    <li class="right" ng-show="isLoggedIn()"><a href="/logout"  target="_self">logout</a></li>
+					    
 	    			</ul>
 	    		</div>
 	    	</div>
 
     	</nav>
 
+    	<div class="main-content-wrapper">
 
-    	<div class="front cheesy-sentance">
-    		<span class="front cheesy">Create a Discussion Forum in Seconds</span>
-    	</div>
+	    	<div class="front cheesy-sentance">
+	    		<span class="front cheesy">Create a Discussion Forum in Seconds</span>
+	    	</div>
 
-    	<div class="front info-wrapper">
-    		<div class="laptop-i-cant-afford">
-    			<p>Im a laptop</p>
-    		</div>
+	    	<div class="second-main-wrapper">
 
-    		<div class="more-bs">
-    			<p>reasons to join</p>
-    		</div>
-    	</div>
+		    	<div class="front info-wrapper">
+		    		<div class="laptop-i-cant-afford">
+		    			<img src="/images/laptop2-837-500.png" class="img-laptop" alt="Forum Design Preview">
+		    		</div>
 
+		    		<div class="more-bs">
+		    			<p>reasons to join</p>
+		    		</div>
+		    	</div>
 
-    	<div class="front form-wrapper">
+		    	<div class="front form-wrapper">
 
-			<div class="creator-form reg" ng-show="isLoggedIn()">
-			    <h2>Create a Forum</h2>       Logged In
+					<div class="creator-form reg" ng-show="isLoggedIn()">
 
-			    <form class="homepage-forum reg" name="buildForumWU">
-			  		
-			  	<div class="input name" ng-class="{error: buildForumWU.comname.$invalid}">
-							<label>Name</label>
-							<input class="text name" type="text"  placeholder="Community Name" data-wc-unique="{property: 'forumfirst'}" ng-change="changeURL(comname)" name="comname" ng-model="comname" ng-pattern="/^[a-zA-Z][a-zA-Z0-9_ -]{2,25}$/" required> </input>
-							
-							<div class="invalid" ng-show="buildForumWU.comname.$dirty && buildForumWU.comname.$invalid"><br/>
-							    <span class="errorMessage" ng-show="buildForumWU.comname.$error.pattern">Error: Invalid Name<br/></span>
+					    <form class="homepage-forum reg" name="buildForumWU">
+					  		
+					  		<div class="input name" ng-class="{error: buildForumWU.comname.$invalid}">
+									<label>Name</label>
+									<input class="text name" type="text"  placeholder="Community Name" data-wc-unique="{property: 'forumfirst'}" ng-change="changeURL(comname)" name="comname" ng-model="comname" ng-pattern="/^[a-zA-Z][a-zA-Z0-9_ -]{2,25}$/" required> </input>
+									
+									<div class="invalid" ng-show="buildForumWU.comname.$dirty && buildForumWU.comname.$invalid"><br/>
+									    <span class="errorMessage" ng-show="buildForumWU.comname.$error.pattern">Error: Invalid Name<br/></span>
+									</div>
 							</div>
+
+							<div class="input url">
+								<label>discussone.com/</label>
+								<div class="form-group" ng-class="{ 'has-error' : signup.comurl.$invalid && !signup.comurl.$pristine }">
+							  		<input class="text url" type="text" ng-model="comurl" name="comurl" ng-change="updateURL(comurl)" data-wc-unique="{property: 'forum'}" ng-pattern="/^[a-zA-Z][a-zA-Z0-9-]{2,25}$/" required> </input>
+							  		<span class="errorMessage" ng-show="buildForumWU.comurl.$dirty && buildForumWU.comurl.$error.unique">URL already in use</span>
+							  		<span class="errorMessage" ng-show="buildForumWU.comname.$dirty && buildForumWU.comname.$error.unique">URL already in use</span>
+							  		<span class="errorMessage" ng-show="buildForumWU.comurl.$error.pattern">Error: Invalid link<br/></span>
+						  		</div>
+					  		</div>
+
+					  		
+					  		<br>
+					  		<div class="input access">
+						  		<label>Access Code</label>
+						  		<input type="checkbox" ng-model="accesscode" ng-true-value="yes" ng-false-value="no" >
+						  		<input type="text" placeholder="" ng-model="accesscodebox"> </input>
+					  		</div>
+					  		<br>
+					  		<label class="reg">Allow Registered Users</label>
+					  		<input type="checkbox" ng-model="reguserbool" ng-true-value="true" ng-false-value="false" >
+					  		<br>
+					  		<label class="anon">Allow Anonymous Users</label>
+					  		<input type="checkbox" ng-model="anonuserbool" ng-true-value="true" ng-false-value="false" >
+					  		<br>
+					  		<button class="submit" ng-click="submitForm()" ng-disabled="buildForumWU.$invalid" type="submit">Create</button>
+
+					  	</form>
 					</div>
 
-					<div class="input url">
-						<label>discussone.com/</label>
-						<div class="form-group" ng-class="{ 'has-error' : signup.comurl.$invalid && !signup.comurl.$pristine }">
-					  		<input class="text url" type="text" ng-model="comurl" name="comurl" ng-change="updateURL(comurl)" data-wc-unique="{property: 'forum'}" ng-pattern="/^[a-zA-Z][a-zA-Z0-9-]{2,25}$/" required> </input>
-					  		<span class="errorMessage" ng-show="buildForumWU.comurl.$dirty && buildForumWU.comurl.$error.unique">URL already in use</span>
-					  		<span class="errorMessage" ng-show="buildForumWU.comname.$dirty && buildForumWU.comname.$error.unique">URL already in use</span>
-					  		<span class="errorMessage" ng-show="buildForumWU.comurl.$error.pattern">Error: Invalid link<br/></span>
-				  		</div>
-			  		</div>
+					<div class="creator-form anon" ng-show="!isLoggedIn()">
 
-			  		
-			  		<br>
-			  		<div class="input access">
-				  		<label>Access Code</label>
-				  		<input type="checkbox" ng-model="accesscode" ng-true-value="yes" ng-false-value="no" >
-				  		<input type="text" placeholder="" ng-model="accesscodebox"> </input>
-			  		</div>
-			  		<br>
-			  		<label class="reg">Allow Registered Users</label>
-			  		<input type="checkbox" ng-model="reguserbool" ng-true-value="true" ng-false-value="false" >
-			  		<br>
-			  		<label class="anon">Allow Anonymous Users</label>
-			  		<input type="checkbox" ng-model="anonuserbool" ng-true-value="true" ng-false-value="false" >
-			  		<br>
-			  		<button class="submit" ng-click="submitForm()" ng-disabled="buildForumWU.$invalid" type="submit">Create</button>
-
-			  	</form>
-			</div>
-
-			<div class="creator-form anon" ng-show="!isLoggedIn()">
-			    <h2>Create a Forum</h2>              Logged Out
-
-			    <form class="homepage-forum anon" name="buildForum">
-			  		
-			  		<div class="input name" ng-class="{error: buildForum.comname.$invalid}">
-							<label class="name">Name</label>
-							<input class="text name" type="text"  placeholder="Community Name" data-wc-unique="{property: 'forumfirst'}" ng-change="changeURL(comname)" name="comname" ng-model="comname" ng-pattern="/^[a-zA-Z][a-zA-Z0-9_ -]{2,25}$/" required> </input>
-							<div class="invalid" ng-show="buildForum.comname.$dirty && buildForum.comname.$invalid"><br/>
-							    <span class="errorMessage" ng-show="buildForum.comname.$error.pattern">Error: Invalid Name<br/></span>
+					    <form class="homepage-forum anon" name="buildForum">
+					  		
+					  		<div class="input name" ng-class="{error: buildForum.comname.$invalid}">
+									<label class="name">Community Name</label>
+									<input class="text name" type="text"  placeholder="Community Name" data-wc-unique="{property: 'forumfirst'}" ng-change="changeURL(comname)" name="comname" ng-model="comname" ng-pattern="/^[a-zA-Z][a-zA-Z0-9_ -]{2,25}$/" required> </input>
+									<div class="invalid" ng-show="buildForum.comname.$dirty && buildForum.comname.$invalid"><br/>
+									    <span class="errorMessage" ng-show="buildForum.comname.$error.pattern">Error: Invalid Name<br/></span>
+									</div>
 							</div>
+
+							<div class="input url">
+								<label class="url">discussone.com/</label>
+								<div class="form-group" ng-class="{ 'has-error' : signup.comurl.$invalid && !signup.comurl.$pristine }">
+							  		<input class="text url" type="text" ng-model="comurl" name="comurl" ng-change="updateURL(comurl)" data-wc-unique="{property: 'forum'}" ng-pattern="/^[a-zA-Z][a-zA-Z0-9-]{2,25}$/" required> </input>
+							  		<span class="errorMessage" ng-show="buildForum.comurl.$dirty && buildForum.comurl.$error.unique">URL already in use</span>
+							  		<span class="errorMessage" ng-show="buildForum.comname.$dirty && buildForum.comname.$error.unique">URL already in use</span>
+							  		<span class="errorMessage" ng-show="buildForum.comurl.$error.pattern">Error: Invalid link<br/></span>
+						  		</div>
+					  		</div>
+
+					  		<div class="input email">
+								<label class="email">Email</label>
+								<div class="form-group" ng-class="{ 'has-error' : signup.email.$invalid && !signup.email.$pristine }">
+									<input class="text url" type="email" placeholder="Email" ng-model="email" data-wc-unique="{property: 'email'}" style="width:200px;" name="email" ng-pattern="/^[_a-z0-9]+(\.[_a-z0-9]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,4})$/" required>
+									<span class="errorMessage" ng-show="buildForum.email.$dirty && buildForum.email.$error.unique">Email already in use</span>
+									<span class="errorMessage" ng-show="buildForum.email.$error.pattern">Invalid Email<br/></span>
+								</div>
+							</div>
+							<div class="input username">
+								<label class="username">Username</label>
+								<div class="control-group" ng-class="{ 'has-error' : signup.username.$invalid && !signup.username.$pristine }">
+									<input class="text username" type="text" placeholder="Username" ng-model="username"  data-wc-unique="{property: 'username'}" style="width:200px;" name="username" ng-minlength="4" ng-maxlength="22" required>
+									<span class="errorMessage" ng-show="buildForum.username.$dirty && buildForum.username.$error.unique">Username already in use</span>
+
+							    </div>
+							</div>
+
+							<div class="input password">
+								<label class="password">Password</label>
+								<div class="control-group">
+								<input class="text password" type="password" placeholder="Password" ng-model="password" style="width:200px;" name="password" ng-minlength="6" ng-maxlength="30" ng-pattern="/^[a-zA-Z0-9!@#$%^*]{6,16}$/"  required>
+								<span class="errorMessage" ng-show="buildForum.password.$dirty && buildForum.password.$error.pattern">Password Invalid</span>
+								 </div>
+							</div>
+
+							<br>
+							<div class="input access">
+						  		<label class="access">Access Code</label>
+						  		<input class="checkbox access" type="checkbox" ng-model="accesscode" ng-true-value="yes" ng-false-value="no" >
+						  		<input class="text access" type="text" placeholder="" ng-model="accesscodebox"> </input>
+						  	</div>
+					  		<br>
+					  		<div class="input reg">
+						  		<label class="reg">Allow Registered Users</label>
+						  		<input type="checkbox" ng-model="reguserbool" ng-true-value="true" ng-false-value="false" >
+					  		</div>
+					  		<br>
+					  		<div class="input anon">
+						  		<label class="anon">Allow Anonymous Users</label>
+						  		<input type="checkbox" ng-model="anonuserbool" ng-true-value="true" ng-false-value="false" >
+					  		</div>
+					  		<br>
+
+					  		
+					  		<button class="submit" ng-click="submitFormWU()" ng-disabled="buildForum.$invalid" type="submit">Create</button>
+
+					  	</form>
+
+
 					</div>
 
-					<div class="input url">
-						<label class="url">discussone.com/</label>
-						<div class="form-group" ng-class="{ 'has-error' : signup.comurl.$invalid && !signup.comurl.$pristine }">
-					  		<input class="text url" type="text" ng-model="comurl" name="comurl" ng-change="updateURL(comurl)" data-wc-unique="{property: 'forum'}" ng-pattern="/^[a-zA-Z][a-zA-Z0-9-]{2,25}$/" required> </input>
-					  		<span class="errorMessage" ng-show="buildForum.comurl.$dirty && buildForum.comurl.$error.unique">URL already in use</span>
-					  		<span class="errorMessage" ng-show="buildForum.comname.$dirty && buildForum.comname.$error.unique">URL already in use</span>
-					  		<span class="errorMessage" ng-show="buildForum.comurl.$error.pattern">Error: Invalid link<br/></span>
-				  		</div>
-			  		</div>
+				</div> <!--second-main-wrapper-->
 
-			  		<div class="input email">
-						<label class="email">Email</label>
-						<div class="form-group" ng-class="{ 'has-error' : signup.email.$invalid && !signup.email.$pristine }">
-							<input class="text url" type="email" ng-model="email" data-wc-unique="{property: 'email'}" style="width:200px;" name="email" ng-pattern="/^[_a-z0-9]+(\.[_a-z0-9]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,4})$/" required>
-							<span class="errorMessage" ng-show="buildForum.email.$dirty && buildForum.email.$error.unique">Email already in use</span>
-							<span class="errorMessage" ng-show="buildForum.email.$error.pattern">Invalid Email<br/></span>
-						</div>
-					</div>
-					<div class="input username">
-						<label class="username">Username</label>
-						<div class="control-group" ng-class="{ 'has-error' : signup.username.$invalid && !signup.username.$pristine }">
-							<input class="text username" type="text" ng-model="username"  data-wc-unique="{property: 'username'}" style="width:200px;" name="username" ng-minlength="4" ng-maxlength="22" required>
-							<span class="errorMessage" ng-show="buildForum.username.$dirty && buildForum.username.$error.unique">Username already in use</span>
-
-					    </div>
-					</div>
-
-					<div class="input password">
-						<label class="password">Password</label>
-						<div class="control-group">
-						<input class="text password" type="password" ng-model="password" style="width:200px;" name="password" ng-minlength="6" ng-maxlength="30" ng-pattern="/^[a-zA-Z0-9!@#$%^*]{6,16}$/"  required>
-						<span class="errorMessage" ng-show="buildForum.password.$dirty && buildForum.password.$error.pattern">Password Invalid</span>
-						 </div>
-					</div>
-
-					<br>
-					<div class="input access">
-				  		<label class="access">Access Code</label>
-				  		<input class="checkbox access" type="checkbox" ng-model="accesscode" ng-true-value="yes" ng-false-value="no" >
-				  		<input class="text access" type="text" placeholder="" ng-model="accesscodebox"> </input>
-				  	</div>
-			  		<br>
-			  		<div class="input reg">
-				  		<label class="reg">Allow Registered Users</label>
-				  		<input type="checkbox" ng-model="reguserbool" ng-true-value="true" ng-false-value="false" >
-			  		</div>
-			  		<br>
-			  		<div class="input anon">
-				  		<label class="anon">Allow Anonymous Users</label>
-				  		<input type="checkbox" ng-model="anonuserbool" ng-true-value="true" ng-false-value="false" >
-			  		</div>
-			  		<br>
-
-			  		
-			  		<button class="submit" ng-click="submitFormWU()" ng-disabled="buildForum.$invalid" type="submit">Create</button>
-
-			  	</form>
-
-
-			</div>
-
-		</div> <!--front-form-wrapper-->
+			</div> <!--front-form-wrapper-->
+		</div> <!--main-content-wrapper-->
 
 
 		<div class="front first-footer">
@@ -199,9 +203,9 @@
 		</div>
 
 		<div class="front last-footer">
+			<p>Contact | About | Team | Policy</p>
 
-
-
+		</div>
 					<nav class="navbar navbar-inverse" role="navigation">
 					    <div class="navbar-header">
 					    	<div ng-include="nav_partial_url"></div>
@@ -220,7 +224,7 @@
 					    </ul>
 					</nav>
 			
-		</div>
+		
 
 
 

@@ -1,6 +1,7 @@
 @import "compass";
 @import "compass/reset";
 @import "compass/css3";
+@import "compass/css3/font-face";
 @import "susy";
 @import "breakpoint";
 
@@ -8,4 +9,3 @@
 @import "mixins";
 @import "base";
 @import "layout";
-//@import "modules";
