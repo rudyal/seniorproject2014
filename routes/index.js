@@ -495,24 +495,26 @@ router.get('/api/:murl', function(req, res, next) {
           var redirectGuy = false;
 
           // CHECK ACCESS CODE
-          if(forumtype.access != null){
-            if(typeof forumtype.access != 'undefined'){
-            // First we need to init anon users IDK DROP a Cookie??
-            // Maybe drop the cookie in collections function?? then check here
-            
-            //res.clearCookie('accesscode');
-            //res.clearCookie('tobi');
-            //console.log(req.cookies.accesscode);
+          if(forumtype != null){
+            if(forumtype.access != null){
+              if(typeof forumtype.access != 'undefined'){
+              // First we need to init anon users IDK DROP a Cookie??
+              // Maybe drop the cookie in collections function?? then check here
+              
+              //res.clearCookie('accesscode');
+              //res.clearCookie('tobi');
+              //console.log(req.cookies.accesscode);
 
-              // If so, check if access code is set as param
-              var code = forumtype.access + forumtype.url;
-              if(req.cookies.accesscode == code){
-                console.log("settt");
-              }else{
-                //console.log("redirect 1");
-                //console.log(forumtype.url);
-                return res.status(500).json({"error": "0001", "URL": forumtype.url});
-                next();
+                // If so, check if access code is set as param
+                var code = forumtype.access + forumtype.url;
+                if(req.cookies.accesscode == code){
+                  console.log("settt");
+                }else{
+                  //console.log("redirect 1");
+                  //console.log(forumtype.url);
+                  return res.status(500).json({"error": "0001", "URL": forumtype.url});
+                  next();
+                }
               }
             }
           }

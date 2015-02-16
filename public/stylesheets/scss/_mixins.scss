@@ -3,13 +3,13 @@
      @media (min-width: 80em) { @content ; }
   }
    @else if $point == laptop {
-     @media (min-width: 68em) { @content ; }
+     @media (max-width: 74em) { @content ; }
   }
     @else if $point == tablet {
-     @media (min-width: 42em) { @content ; }
+     @media (max-width: 58em) { @content ; }
   }
    @else if $point == phablet {
-     @media (min-width: 27.5em) and (max-width: 42em)  { @content ; }
+     @media (max-width: 40em) { @content ; }
     // @media (min-width: 27.5em)  { @content ; }
   }
   @else if $point == mobileonly {
@@ -17,3 +17,36 @@
 
   }
 }
+
+$image-path: '/images' !default;
+$fallback-extension: 'png' !default;
+$retina-suffix: '@2x';
+@mixin background-image($name, $size:false){
+    background-image: url(#{$image-path}/#{$name}.svg);
+    @if($size){
+        background-size: $size;
+    }
+    .no-svg &{
+        background-image: url(#{$image-path}/#{$name}.#{$fallback-extension});
+
+        @media only screen and (-moz-min-device-pixel-ratio: 1.5), only screen and (-o-min-device-pixel-ratio: 3/2), only screen and (-webkit-min-device-pixel-ratio: 1.5), only screen and (min-device-pixel-ratio: 1.5) {
+          background-image: url(#{$image-path}/#{$name}#{$retina-suffix}.#{$fallback-extension});
+        }
+    }
+}
+
+  @include breakpoint(mobileonly) {
+
+  }
+  @include breakpoint(phablet) {
+
+  }
+  @include breakpoint(tablet) {
+
+  }
+  @include breakpoint(laptop) {
+
+  }
+  @include breakpoint(desktop) {
+
+  }

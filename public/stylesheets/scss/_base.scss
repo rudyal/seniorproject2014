@@ -5,120 +5,332 @@ $gutter-width			: 1em;
 $grid-padding			: $gutter-width;
 $bg-img: image-url('bg-pattern-690-717.png', false, false);
 $laptop-img: image-url('laptop2-837-500.png', false, false);
+
+$toy : 1px solid #7D7D7D;
+$toy : none;
 //@include border-box-sizing;
 @include font-face("soft", font-files("LaoUI.ttf"));
 @include font-face("thin", font-files("DistProTh.otf"));
 
 // Landing Page
-
+.html{
+	background-color: #333333;
+}
 .main-front-wrapper{
-	background-color:white;
+	//background-color:white;
+	background-color: #333333;
 	nav{
-		background-color: #555555;
+		//background-color: #555555;
+		//background-color: #333333;
+		background-color: #404040;
 		height: 60px;
 		width: 100%;
+		@include breakpoint(phablet) {height: 50px;}
+		@include breakpoint(mobileonly) {height: 45px;}
 		.nav-content-wrapper{
 			width: 80%;
 			height: 40px;
+			
 			padding-top: 10px;
+			@include breakpoint(tablet) {padding-top: 8px;}
+			@include breakpoint(phablet) {padding-top: 5px;}
+			@include breakpoint(mobileonly) { padding-top: 4px;}
 			margin-right:auto;
 			margin-left:auto;
 		}
 		.logo-wrapper{
-			width: 400px;
+			width: 30%;
 			display: inline-block;
+			margin-top: 1px;
+			h1{
+				font-size: 35px;
+				@include breakpoint(tablet) {font-size: 28px;margin-top: 7px;}
+				@include breakpoint(phablet) {font-size: 18px;margin-top: 9.5px;}
+				@include breakpoint(mobileonly) { font-size: 14px;margin-top: 7px;}
+				color: white;
+				//font-family: sans-serif;
+				font-family: "soft";
+			}
 		}
 		.account-wrapper{
 			float: right;
-			width: 400px;
+			width: 60%;
 			display: inline-block;
-			color: #7D7D7D;
-			font-size: 14px;
+			.second-account{
+				width: 100%;
+				float: right;
+				padding-top:5px;
+			}
 			a{
+				font-size: 20px;
+				@include breakpoint(phablet) {font-size: 17px;}
+				@include breakpoint(mobileonly) {font-size: 14px;}
+				font-family: "soft";
 				color: #7D7D7D;
-				font-size: 14px;
+				//color: #A8A8A8;
 			}
 			ul{
+				display: inline-block;
+				vertical-align: top;
+				padding-top: 5px;
+				@include breakpoint(mobileonly) {padding-top: 0;}
 				float: right;
 			}
 			li{
 				display: inline-block;
 				list-style-type:none;
+				
 			}
 			li.right{
 				padding-left: 7px;
 			}
 			li.left{
-					border-right: 1px solid #7D7D7D;
-					padding-right:10px;
+				border-right: 1px solid #7D7D7D;
+				padding-right:10px;
+			}
+			.social{
+				display: inline-block;
+				padding-left:10px;
+				float: right;
+				img{
+					width: 35px;
+					margin-left:10px;
+					@include breakpoint(phablet) {width: 25px;margin-left:8px;}
+					@include breakpoint(mobileonly) { width: 21px;margin-left:6px;}
 				}
+			}
 		}
 	}
 	.main-content-wrapper{
 		background-color:white;
-		height: 1200px;
+		//height: 1200px;
+		@include background-image('bg-pattern-690-717');
+		
+		// background-image: $bg-img;
+		// @include background-size(auto);
+		//background-position: 0 0;
+	  	background-repeat: repeat;
+	  	//background-position: center center;
+
 		.front.cheesy-sentance{
-			height: 85px;
+			//height: 85px;
 			margin-bottom: 20px;
+
 			padding-top: 30px;
-			width: 800px;
+			width: 90%;
+			@include breakpoint(laptop) {width: 95%;}
 			margin-left: auto;
 			margin-right: auto;
-			font-size: 40px;
+			font-size: 48px;
+			@include breakpoint(laptop) {font-size: 42px;margin-bottom: 15px;padding-top: 20px;}
+			@include breakpoint(tablet) {font-size: 38px;margin-bottom: 10px;padding-top: 10px;}
+			@include breakpoint(phablet) {font-size: 25px;margin-bottom: 10px;padding-top: 10px;}
+			@include breakpoint(mobileonly) { font-size: 18px;margin-bottom: 10px;padding-top: 10px;}
+			font-weight: thin;
 			text-align: center;
+			font-family: "thin";
+			h1{
+				background: rgba(255,255,255, 0.16);
+			}
 		}
 		.second-main-wrapper{
 			width: 90%;
+			max-width: 1300px;
+			@include breakpoint(laptop) {width: 95%;}
+			@include breakpoint(tablet) {width: 95%;}
+			@include breakpoint(phablet) {width: 95%;min-height: 1000px;}
+			@include breakpoint(mobileonly) { width: 98%;min-height: 1000px;}
+
 			margin-left: auto;
 			margin-right: auto;
-			border: 1px solid #7D7D7D;
+			border: $toy;
+			min-height: 550px;
+			@include breakpoint(laptop) {
+				
+			}
 			.front.info-wrapper{
-				height: 700px;
-				width: 70%;
-				background-color: pink;
+				float: left;
+				//height: 700px;
+				width: 67%;
+				padding: 10px 10px 10px 10px;
+				@include breakpoint(laptop) {width: 64%; padding: 5px 5px 5px 5px;}
+				@include breakpoint(tablet) {width: 55%; padding: 5px 5px 5px 5px;}
+				@include breakpoint(phablet) {width: 90%; padding: 3px 3px 3px 3px;}
+				@include breakpoint(mobileonly) {width: 90%; padding: 3px 3px 3px 3px;}
+
+				//background-color: pink;
 				display: inline-block;
 				vertical-align: top;
-				padding: 10px 10px 10px 10px;
+				border: $toy;
+				//@include breakpoint(laptop) {float: right;}
 				.laptop-i-cant-afford{
-					border: 1px solid #7D7D7D;
+					border: $toy;
 					margin: 10px 10px 10px 10px;
+					width: 70%;
+					@include breakpoint(laptop) {width: 65%; margin: 10px 5px 10px 5px;}
+					@include breakpoint(tablet) {width: 100%; margin: 10px 5px 10px 5px;}
+					@include breakpoint(phablet) {width: 100%; margin: 10px 5px 10px 5px;}
+					@include breakpoint(mobileonly) {width: 100%; margin: 10px 5px 10px 5px;}
+					padding-top:30px;
 					img{
-						width: 80%;
+						width: 100%;
 					}
-					
-					height: 500px;
 					display: inline-block;
-					// background-image: $laptop-img;
-					// background-position: 0 0;
-				 //  	background-repeat: no-repeat;
-				 //  	background-position: center center;
-					// @include background-size(cover);
 				}
 				.more-bs{
-					border: 1px solid #7D7D7D;
-					margin: 10px 10px 10px 10px;
-					width: 100px;
+					vertical-align: top;
+					border: $toy;
+					margin: 100px 2px 10px 7px;
+					@include breakpoint(laptop) {margin: 70px 2px 10px 7px;}
+					@include breakpoint(tablet) {width: 90%; margin: 10px 2px 10px 5%;}
+					@include breakpoint(phablet) {margin: 10px 2px 10px 7px;}
+					@include breakpoint(mobileonly) {margin: 10px 2px 10px 7px;}
+					//width: 25%;
 					display: inline-block;
+					ul{
+						@include breakpoint(tablet) {display: block; text-align: center;}
+					}
+					h2{
+						font-size: 26px;
+						line-height: 50px;
+						@include breakpoint(laptop) {font-size: 26px;line-height: 50px;}
+						@include breakpoint(tablet) {font-size: 26px;line-height: 40px;}
+						@include breakpoint(phablet) {font-size: 26px;line-height: 30px;}
+						@include breakpoint(mobileonly) {font-size: 26px;line-height: 30px;}
+						
+						font-weight: thin;
+						font-family: "thin";
+						
+					}
 				}
 			}
 			.front.form-wrapper{
-				float: right;
+				//float: right;
 				margin: 20px 20px 20px 20px;
-				padding: 10px 10px 10px 10px;
-				height: 600px;
-				width: 300px;
-				background-color: #E5E5E5;
+				@include breakpoint(laptop) {margin: 10px 10px 10px 10px;}
+				padding: 25px 2% 25px 2%;
+				//height: 600px;
+				width: 28%;
+				max-width: 300px;
+				@include breakpoint(laptop) {width: 33%;}
+				@include breakpoint(tablet) {width: 40%;}
+				@include breakpoint(phablet) {width: 90%;margin-left: 16%}
+				@include breakpoint(mobileonly) {width: 90%;margin-left: 8%}
+				background: rgba(230,230,230, 0.55);
 				display: inline-block;
+				font-family: "soft";
+				
 				label{
 					display: block;
 					font-size: 16px;
+					font-weight: bold;
+					padding-left: 10px;
+					@include breakpoint(laptop) {
+						font-size: 14px;
+						font-weight: bold;
+						padding-left: 6px;
+					}
+					@include breakpoint(laptop) {}
+					@include breakpoint(tablet) {}
+					@include breakpoint(phablet) {}
+					@include breakpoint(mobileonly) {}
+				}
+				.faketb{
+					background-color:white;
+					border: 1px solid black;
+					margin-top: 6px; 
+					margin-bottom: 10px;
+					input{
+						margin: 3px 3px 3px 3px;
+						display: inline-block;
+						border:none;
+						background-color:inherit;
+						font-size: 19px;
+						max-width: 80%;
+						@include input-placeholder {
+						    padding-top:2px;
+						  }
+					}
+					i{
+						display: inline-block;
+						margin-left: 3px;
+						max-width: 9%;
+						vertical-align: top;
+						padding: 9px 23px 1px 7px;
+						font-size: 1.3rem;
+					}
+					i.fa-lock{
+						padding: 9px 20px 1px 10px;
+					}
+					i.fa-user{
+						padding: 9px 20px 1px 10px;
+					}
+				}
+				label.url{
+					display: inline-block;
+					font-weight: normal;
+					padding-left:0;
+				}
+				.input.url .form-group{
+					margin-bottom: 19px;
+					margin-top: -6px;
+					
+					input.text.url{
+						display: inline-block;
+						width: 50%;
+						border:none;
+						background-color:inherit;
+						text-decoration: underline;
+						margin-left: -2px;
+					}
+					span.errorMessage{
+						display: block;
+					}
+				}
+				.input.url .form-group.two{
+					margin-bottom: 1px;
+					margin-top: 0;
+				}
+				a.options{
+					float: right;
+					color: grey;
+					width: 100%;
+					text-align: right;
+					margin-bottom: 10px;
+					span{
+						color: grey;
+						font-weight: normal;
+					}
+				}
+				.input.access{
+					display: none;
+					margin-bottom: 25px;
+					label span{
+						color: grey;
+						font-weight: normal;
+					}
+				}
+				.input.reg{
+					display: none;
+				}
+				.input.anon{
+					display: none;
+				}
+				.submit-button{
+					margin-left:auto;
+					margin-right:auto;
+					width: 130px;
 				}
 				button.submit{
 					background-color: #555555;
-					width: 100px;
-					height: 50px;
+					width: 130px;
+					height: 43px;
 					margin-left: auto;
 					margin-right: auto;
+					color: white;
+					font-size: 25px;
+					border: 0;
+
 				}
 
 			}
@@ -130,15 +342,57 @@ $laptop-img: image-url('laptop2-837-500.png', false, false);
 	}
 	.front.first-footer{
 		background-color: #555555;
-		border: 1px solid #7D7D7D;
-		height: 60px;
+		height: 65px;
 		width: 100%;
+		padding-top: 10px;
+		.foot{
+			width: 160px;
+			height: 43px;
+			margin-left: auto;
+			margin-right:auto;
+			background-color: #7F7F7F;
+			.f{
+				padding: 11px 9px 9px 14px;
+			}
+			a{
+				width: 160px;
+				height: 43px;
+				padding: 5px 5px 5px 5px;
+				color: white;
+				font-size: 18px;
+				border: 0;
+				font-family: "soft";
+			}
+		}
 	}
 	.front.last-footer{
-		background-color: #555555;
-		border: 1px solid #7D7D7D;
+		background-color: #333333;
 		height: 60px;
 		width: 100%;
+		.last-wrap{
+			margin-left: auto;
+			margin-right:auto;
+			padding-top:22px;
+			width: 30%;
+			ul{
+				display: block; 
+				text-align:center;
+				li{
+					display: inline-block;
+					padding-left: 10px;
+					a{
+						font-size: 12px;
+						font-family: "soft";
+						//color: #7D7D7D;
+						color: #7D7D7D;
+					}
+				}
+				li.left{
+					border-right: 1px solid #7D7D7D;
+					padding-right:10px;
+				}
+			}
+		}
 	}
 }
 

@@ -779,6 +779,9 @@ angular.module('forumBody', ['ui.router', 'froala', 'infinite-scroll'])
 			console.log(user.user);
 			//$scope.forum = forum;
 			$scope.user = user.user;
+			$scope.options = function() {
+				$(".input.access").toggle();
+			}
 			$scope.changeURL = function(comname) {
 				if(typeof comname != 'undefined'){
 					comname2 = comname.replace(/^\s\s*/, '');
