@@ -741,3 +741,477 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
   border-right: 1px solid #7D7D7D;
   padding-right: 10px;
 }
+
+/* line 405, ../scss/_base.scss */
+body.main-app nav {
+  position: fixed;
+  z-index: 10;
+  background-color: #404040;
+  height: 60px;
+  width: 100%;
+}
+@media (max-width: 40em) {
+  /* line 405, ../scss/_base.scss */
+  body.main-app nav {
+    height: 50px;
+  }
+}
+@media (max-width: 27.5em) {
+  /* line 405, ../scss/_base.scss */
+  body.main-app nav {
+    height: 45px;
+  }
+}
+/* line 415, ../scss/_base.scss */
+body.main-app nav .nav-content-wrapper {
+  width: 90%;
+  height: 40px;
+  padding-top: 10px;
+  margin-right: auto;
+  margin-left: auto;
+}
+@media (max-width: 58em) {
+  /* line 415, ../scss/_base.scss */
+  body.main-app nav .nav-content-wrapper {
+    padding-top: 8px;
+  }
+}
+@media (max-width: 40em) {
+  /* line 415, ../scss/_base.scss */
+  body.main-app nav .nav-content-wrapper {
+    padding-top: 5px;
+  }
+}
+@media (max-width: 27.5em) {
+  /* line 415, ../scss/_base.scss */
+  body.main-app nav .nav-content-wrapper {
+    padding-top: 4px;
+  }
+}
+/* line 426, ../scss/_base.scss */
+body.main-app nav .logo-wrapper {
+  width: 30%;
+  display: inline-block;
+  margin-top: 1px;
+}
+/* line 430, ../scss/_base.scss */
+body.main-app nav .logo-wrapper h1 {
+  font-size: 40px;
+  color: white;
+  font-family: "soft";
+}
+@media (max-width: 58em) {
+  /* line 430, ../scss/_base.scss */
+  body.main-app nav .logo-wrapper h1 {
+    font-size: 28px;
+    margin-top: 7px;
+  }
+}
+@media (max-width: 40em) {
+  /* line 430, ../scss/_base.scss */
+  body.main-app nav .logo-wrapper h1 {
+    font-size: 18px;
+    margin-top: 9.5px;
+  }
+}
+@media (max-width: 27.5em) {
+  /* line 430, ../scss/_base.scss */
+  body.main-app nav .logo-wrapper h1 {
+    font-size: 14px;
+    margin-top: 7px;
+  }
+}
+/* line 440, ../scss/_base.scss */
+body.main-app nav .account-wrapper {
+  float: right;
+  width: 60%;
+  display: inline-block;
+}
+/* line 444, ../scss/_base.scss */
+body.main-app nav .account-wrapper .second-account {
+  width: 100%;
+  float: right;
+  padding-top: 5px;
+}
+/* line 449, ../scss/_base.scss */
+body.main-app nav .account-wrapper a {
+  font-size: 20px;
+  font-family: "soft";
+  color: #7D7D7D;
+}
+@media (max-width: 40em) {
+  /* line 449, ../scss/_base.scss */
+  body.main-app nav .account-wrapper a {
+    font-size: 17px;
+  }
+}
+@media (max-width: 27.5em) {
+  /* line 449, ../scss/_base.scss */
+  body.main-app nav .account-wrapper a {
+    font-size: 14px;
+  }
+}
+/* line 457, ../scss/_base.scss */
+body.main-app nav .account-wrapper ul {
+  display: inline-block;
+  vertical-align: top;
+  padding-top: 5px;
+  float: right;
+}
+@media (max-width: 27.5em) {
+  /* line 457, ../scss/_base.scss */
+  body.main-app nav .account-wrapper ul {
+    padding-top: 0;
+  }
+}
+/* line 464, ../scss/_base.scss */
+body.main-app nav .account-wrapper li {
+  display: inline-block;
+  list-style-type: none;
+}
+/* line 469, ../scss/_base.scss */
+body.main-app nav .account-wrapper li.right {
+  padding-left: 7px;
+}
+/* line 472, ../scss/_base.scss */
+body.main-app nav .account-wrapper li.left {
+  border-right: 1px solid #7D7D7D;
+  padding-right: 10px;
+}
+/* line 476, ../scss/_base.scss */
+body.main-app nav .account-wrapper .social {
+  display: inline-block;
+  padding-left: 10px;
+  float: right;
+}
+/* line 480, ../scss/_base.scss */
+body.main-app nav .account-wrapper .social img {
+  width: 35px;
+  margin-left: 10px;
+}
+@media (max-width: 40em) {
+  /* line 480, ../scss/_base.scss */
+  body.main-app nav .account-wrapper .social img {
+    width: 25px;
+    margin-left: 8px;
+  }
+}
+@media (max-width: 27.5em) {
+  /* line 480, ../scss/_base.scss */
+  body.main-app nav .account-wrapper .social img {
+    width: 21px;
+    margin-left: 6px;
+  }
+}
+/* line 491, ../scss/_base.scss */
+body.main-app .content-wrapper .sidebar-wrapper {
+  display: inline-block;
+  width: 32%;
+}
+/* line 494, ../scss/_base.scss */
+body.main-app .content-wrapper .sidebar-wrapper .sidebar-buttons {
+  position: fixed;
+  width: 32%;
+  top: 60px;
+  height: 40px;
+  padding: 13px 5px 10px 5px;
+}
+/* line 500, ../scss/_base.scss */
+body.main-app .content-wrapper .sidebar-wrapper .sidebar-buttons .search {
+  display: inline-block;
+  margin-left: 7%;
+  vertical-align: top;
+}
+/* line 504, ../scss/_base.scss */
+body.main-app .content-wrapper .sidebar-wrapper .sidebar-buttons .search input {
+  width: 90px;
+  border: 0;
+  border-bottom: 1px solid black;
+}
+/* line 510, ../scss/_base.scss */
+body.main-app .content-wrapper .sidebar-wrapper .sidebar-buttons .categories {
+  vertical-align: top;
+  display: inline-block;
+  margin-left: 10%;
+}
+/* line 514, ../scss/_base.scss */
+body.main-app .content-wrapper .sidebar-wrapper .sidebar-buttons .categories a {
+  font-family: "soft";
+  font-weight: bold;
+  font-size: 20px;
+  color: black;
+}
+/* line 520, ../scss/_base.scss */
+body.main-app .content-wrapper .sidebar-wrapper .sidebar-buttons .categories a:hover {
+  text-decoration: none;
+}
+/* line 524, ../scss/_base.scss */
+body.main-app .content-wrapper .sidebar-wrapper .sidebar-buttons .post {
+  display: inline-block;
+  margin-left: 10%;
+  vertical-align: top;
+}
+/* line 528, ../scss/_base.scss */
+body.main-app .content-wrapper .sidebar-wrapper .sidebar-buttons .post a {
+  font-family: "soft";
+  font-weight: bold;
+  font-size: 20px;
+  color: black;
+}
+/* line 534, ../scss/_base.scss */
+body.main-app .content-wrapper .sidebar-wrapper .sidebar-buttons .post a:hover {
+  text-decoration: none;
+}
+/* line 539, ../scss/_base.scss */
+body.main-app .content-wrapper .sidebar-wrapper .post-list-wrapper {
+  width: 32%;
+  overflow-x: hidden;
+  overflow-y: auto;
+  position: fixed;
+  top: 105px;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+/* line 549, ../scss/_base.scss */
+body.main-app .content-wrapper .sidebar-wrapper .post-list {
+  position: relative;
+  background-color: #404040;
+}
+/* line 554, ../scss/_base.scss */
+body.main-app .content-wrapper .sidebar-wrapper .post-list .active {
+  border: 1px solid #5FC6FF !important;
+}
+/* line 557, ../scss/_base.scss */
+body.main-app .content-wrapper .sidebar-wrapper .post-list .post-link-wrapper {
+  height: 60px;
+  padding: 19px 2% 0 9%;
+  position: relative;
+  border-bottom: 1px solid #424242;
+}
+/* line 563, ../scss/_base.scss */
+body.main-app .content-wrapper .sidebar-wrapper .post-list .post-link-wrapper span.empty {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  z-index: 1;
+  background-image: url('../../images/empty.gif');
+}
+/* line 572, ../scss/_base.scss */
+body.main-app .content-wrapper .sidebar-wrapper .post-list .post-link-wrapper .post-link {
+  font-weight: thin;
+  font-size: 22px;
+  font-family: "thin";
+  color: white;
+  text-decoration: none;
+  width: 100%;
+  display: inline-block;
+  margin-bottom: 4px;
+}
+/* line 583, ../scss/_base.scss */
+body.main-app .content-wrapper .sidebar-wrapper .post-list .post-link-wrapper .post-meta {
+  width: 40%;
+  float: right;
+  display: inline-block;
+  color: #8A8A8A;
+  font-size: 10px;
+  font-family: "soft";
+  margin-right: 25px;
+}
+/* line 591, ../scss/_base.scss */
+body.main-app .content-wrapper .sidebar-wrapper .post-list .post-link-wrapper .post-meta span.username {
+  display: inline-block;
+  float: right;
+}
+/* line 595, ../scss/_base.scss */
+body.main-app .content-wrapper .sidebar-wrapper .post-list .post-link-wrapper .post-meta span.date {
+  margin-left: 10px;
+  display: inline-block;
+  float: right;
+}
+/* line 602, ../scss/_base.scss */
+body.main-app .content-wrapper .sidebar-wrapper .post-list .post-link-wrapper:hover {
+  background-color: #474747;
+}
+/* line 607, ../scss/_base.scss */
+body.main-app .content-wrapper .info-wrapper {
+  display: inline-block;
+  z-index: 2;
+  width: 67%;
+  top: 20px;
+  margin-left: -6px;
+  position: relative;
+}
+/* line 616, ../scss/_base.scss */
+body.main-app .content-wrapper .info-wrapper .post-wrapper .content-wrapper .first-post {
+  border-bottom: 1px solid #F2F2F2;
+}
+/* line 618, ../scss/_base.scss */
+body.main-app .content-wrapper .info-wrapper .post-wrapper .content-wrapper .first-post .page-header {
+  height: 47px;
+  border: 0;
+  margin-bottom: 0;
+}
+/* line 622, ../scss/_base.scss */
+body.main-app .content-wrapper .info-wrapper .post-wrapper .content-wrapper .first-post .page-header .profilepic-wrapper {
+  width: 47px;
+  display: inline-block;
+}
+/* line 625, ../scss/_base.scss */
+body.main-app .content-wrapper .info-wrapper .post-wrapper .content-wrapper .first-post .page-header .profilepic-wrapper img {
+  opacity: 0.67;
+}
+/* line 629, ../scss/_base.scss */
+body.main-app .content-wrapper .info-wrapper .post-wrapper .content-wrapper .first-post .page-header .username-wrapper {
+  font-family: "soft";
+  font-size: 11px;
+  color: #878787;
+  width: 20%;
+  display: inline-block;
+  vertical-align: top;
+  padding-top: 8px;
+}
+/* line 637, ../scss/_base.scss */
+body.main-app .content-wrapper .info-wrapper .post-wrapper .content-wrapper .first-post .page-header .username-wrapper .in {
+  display: inline-block;
+  width: 30px;
+}
+/* line 641, ../scss/_base.scss */
+body.main-app .content-wrapper .info-wrapper .post-wrapper .content-wrapper .first-post .page-header .username-wrapper a {
+  font-family: "soft";
+  font-size: 11px;
+  color: #878787;
+  width: 10%;
+  text-decoration: none;
+}
+/* line 648, ../scss/_base.scss */
+body.main-app .content-wrapper .info-wrapper .post-wrapper .content-wrapper .first-post .page-header .username-wrapper a:hover {
+  text-decoration: underline;
+}
+/* line 651, ../scss/_base.scss */
+body.main-app .content-wrapper .info-wrapper .post-wrapper .content-wrapper .first-post .page-header .username-wrapper button {
+  background: transparent;
+  border: 0;
+}
+/* line 655, ../scss/_base.scss */
+body.main-app .content-wrapper .info-wrapper .post-wrapper .content-wrapper .first-post .page-header .username-wrapper button:hover {
+  text-decoration: underline;
+}
+/* line 659, ../scss/_base.scss */
+body.main-app .content-wrapper .info-wrapper .post-wrapper .content-wrapper .first-post .page-header .edit-delete-wrapper {
+  width: 100%;
+  padding-top: 5px;
+  display: none;
+}
+/* line 664, ../scss/_base.scss */
+body.main-app .content-wrapper .info-wrapper .post-wrapper .content-wrapper .first-post .page-header .title-wrapper {
+  width: 70%;
+  display: inline-block;
+  font-family: "thin";
+  font-size: 28px;
+  vertical-align: top;
+  padding-top: 12px;
+}
+/* line 673, ../scss/_base.scss */
+body.main-app .content-wrapper .info-wrapper .post-wrapper .content-wrapper .first-post .body-wrapper {
+  width: 80%;
+  margin-right: auto;
+  margin-left: auto;
+  font-family: "soft";
+  font-size: 14px;
+  margin-bottom: 20px;
+}
+/* line 683, ../scss/_base.scss */
+body.main-app .content-wrapper .info-wrapper .post-wrapper .content-wrapper .first-post:hover .edit-delete-wrapper {
+  display: inline-block;
+}
+/* line 695, ../scss/_base.scss */
+body.main-app .post-form-wrapper .title-wrapper {
+  padding: 50px 50px 10px 25%;
+  margin-left: auto;
+  margin-right: auto;
+}
+/* line 699, ../scss/_base.scss */
+body.main-app .post-form-wrapper .title-wrapper input {
+  width: 400px;
+}
+/* line 704, ../scss/_base.scss */
+body.main-app .post-form-wrapper .body-wrapper {
+  padding: 5px 50px 5px 50px;
+}
+/* line 706, ../scss/_base.scss */
+body.main-app .post-form-wrapper .body-wrapper .froala-element.not-msie.f-basic {
+  height: 250px;
+  background-color: #F7F7F7;
+}
+/* line 711, ../scss/_base.scss */
+body.main-app .post-form-wrapper .icon-wrapper {
+  display: inline-block;
+  padding: 5px 50px 5px 100px;
+  width: 70%;
+}
+/* line 715, ../scss/_base.scss */
+body.main-app .post-form-wrapper .icon-wrapper .icon {
+  display: inline-block;
+  margin-right: 35px;
+}
+/* line 720, ../scss/_base.scss */
+body.main-app .post-form-wrapper .icon-wrapper .bomb select.setext {
+  vertical-align: top;
+  margin-left: -40px;
+  z-index: 11;
+  background: transparent;
+  background-image: url('../../images/empty.gif');
+  width: 35px;
+  font-size: 16px;
+  border: 0;
+  height: 34px;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  font-family: "soft";
+  font-size: 14px;
+  color: transparent;
+}
+/* line 736, ../scss/_base.scss */
+body.main-app .post-form-wrapper .icon-wrapper .bomb select.setext span {
+  font-family: "soft";
+  font-size: 14px;
+  color: white;
+}
+/* line 742, ../scss/_base.scss */
+body.main-app .post-form-wrapper .icon-wrapper .bomb select:focus {
+  background: transparent;
+  color: white;
+  opacity: 0;
+}
+/* line 749, ../scss/_base.scss */
+body.main-app .post-form-wrapper .icon-wrapper .bomb option {
+  border: 1px solid #111;
+  background-color: #404040;
+  color: white;
+}
+/* line 756, ../scss/_base.scss */
+body.main-app .post-form-wrapper .date-wrapper {
+  display: none;
+}
+/* line 759, ../scss/_base.scss */
+body.main-app .post-form-wrapper .button-wrapper {
+  vertical-align: top;
+  display: inline-block;
+  width: 20%;
+}
+/* line 763, ../scss/_base.scss */
+body.main-app .post-form-wrapper .button-wrapper button {
+  width: 120px;
+  font-weight: bold;
+  height: 43px;
+  padding: 5px 5px 5px 5px;
+  color: white;
+  font-size: 20px;
+  border: 0;
+  font-family: "soft";
+  background-color: #595959;
+}

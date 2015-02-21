@@ -11,6 +11,8 @@ var flash    = require('connect-flash');
 var session      = require('express-session');
 var AnonymousStrategy = require('passport-anonymous').Strategy;
 var LocalStrategy = require('passport-local').Strategy;
+var moment = require('moment');
+
 //var basic = require('passport-http').Strategy;
 
 
@@ -39,7 +41,7 @@ require('./config/passport')(passport); // pass passport for configuration
 var app = express();
 
 
-
+moment().format();
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');

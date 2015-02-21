@@ -414,6 +414,8 @@ router.post('/posts', function(req, res, next) {
             expire.expirationdate = post.expirationdate;
 
             expire.save(function(err, expire){
+              console.log("error: " + err);
+              console.log(expire);
               
             });
         }

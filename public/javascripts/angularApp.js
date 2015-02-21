@@ -1,6 +1,6 @@
 
 
-angular.module('forumBody', ['ui.router', 'froala', 'infinite-scroll'])
+angular.module('forumBody', ['ui.router', 'froala', 'infinite-scroll', 'angular-momentjs'])
 	.value('froalaConfig', {
         inlineMode: false,
         placeholder: 'Enter Text Here'
@@ -264,7 +264,13 @@ angular.module('forumBody', ['ui.router', 'froala', 'infinite-scroll'])
 		o.getCom = function(id) {
 		  return $http.get('/posts/' + id).then(function(res){
 		  	console.log("single Post");
-		  	//console.log(res.data);
+		  	console.log(res.data);
+		  	if (typeof res.data.user.profilepic != 'undefined'){
+				console.log("has it");
+			}else {
+				console.log("doesnt");
+				res.data.user.profilepic ='user.png';
+			}
 		  	return res.data;
 		  });
 		};
@@ -418,55 +424,28 @@ angular.module('forumBody', ['ui.router', 'froala', 'infinite-scroll'])
 
 	}])
 
-.filter('postOrderBy', function () {
-   return function (arr) {
+// .filter('postOrderBy', function () {
+//    return function (arr) {
 
-   	console.log("custom sort");
-   	console.log(arr);
+//    	console.log("custom sort");
+//    	console.log(arr);
 
-     var numbers = [];
-     var newWorldOrder = [];
+//      var numbers = [];
+//      var newWorldOrder = [];
 
-  //      angular.forEach(arr, function(item){
-  //      	console.log("comments");
-  //      	console.log(item.comments);
-
-  //      	item.comments.sort(function(a, b) {
-  //      		console.log("a");
-  //      	console.log(a);
-  //      	console.log("b");
-  //      	console.log(b);
-		//     a = new Date(a.dateModified);
-		//     b = new Date(b.dateModified);
-		//     return a>b ? -1 : a<b ? 1 : 0;
-		// });
-
-		// console.log("comments sorted");
-  //      	console.log(item.comments);
-
-
-
-  //           if(typeof item == 'number' ){
-  //             numbers.push(item);     
-  //           }
-  //           else
-  //             newWorldOrder.push(item);   
-
-
-  //          });
-			return arr.sort(
-				(function(index){
-				    return function(a, b){
-				    	console.log("a");
-				    	console.log(a);
-				    	console.log(a.comments);
-				        return (a[index] === b[index] ? 0 : (a[index] < b[index] ? -1 : 1));
-				    };
-				})(3)
-			); // 2 is the index
-        //return numbers.sort().concat(newWorldOrder);
-     };
-})
+// 			return arr.sort(
+// 				(function(index){
+// 				    return function(a, b){
+// 				    	console.log("a");
+// 				    	console.log(a);
+// 				    	console.log(a.comments);
+// 				        return (a[index] === b[index] ? 0 : (a[index] < b[index] ? -1 : 1));
+// 				    };
+// 				})(3)
+// 			); // 2 is the index
+//         //return numbers.sort().concat(newWorldOrder);
+//      };
+// })
 
 .directive('wcUnique', ['uniqueService', function (uniqueService) {
     return {
@@ -578,8 +557,8 @@ angular.module('forumBody', ['ui.router', 'froala', 'infinite-scroll'])
 
 
 	.controller('MainCtrl', 
-		['$scope', '$location','forum', 'posts', 'user', 
-			function($scope, $location, forum, posts, user){
+		['$scope', '$filter', '$location', '$moment', 'forum', 'posts', 'user', 
+			function($scope, $filter, $location, $moment, forum, posts, user){
 				console.log("scope");
 				console.log($scope);
 			  $scope.user = user.user.username;
@@ -588,6 +567,62 @@ angular.module('forumBody', ['ui.router', 'froala', 'infinite-scroll'])
 
 			  $scope.posts = posts.posts;
 			  $scope.forum = forum.forum;
+
+			  $scope.relDate = function(bomb){
+					console.log("Meow: " + bomb);
+					if(bomb=="Hour"){
+						x = new moment();
+						z = x.clone().add('hours',1);
+						$scope.exdate = z;
+					}
+					else if(bomb=="Day"){
+						x = new moment();
+						z = x.clone().add('days',1);
+						$scope.exdate = z;
+					}else if(bomb=="Month"){
+						x = new moment();
+						z = x.clone().add('months',1);
+						$scope.exdate = z;
+					}else if(bomb=="Minute"){
+						x = new moment();
+						z = x.clone().add('minute',2);
+						$scope.exdate = z;
+					}else{
+						$scope.exdate = null;
+					}
+				  	
+				  };	
+
+				$scope.findActive = function(poster){
+					//console.log(poster._id);
+				  	//console.log($location.path());
+				  	var n = $location.path().lastIndexOf('/');
+					var result = $location.path().substring(n + 1);
+					//console.log(result);
+				  	//.substr(0, path.length)
+					if (result == poster._id) {
+				      return "active";
+				    } else {
+				      return "";
+				    }
+				  	
+				  };	  	
+
+			  $scope.dateMaster = function(date){
+			  	var today = new Date();
+			  	var today2 = $filter('date')(today, "dd/MM/yyyy");
+			  	var date2 = $filter('date')(date, "dd/MM/yyyy");
+			  	if(date2 === today2){
+
+			  		var date3 = $filter('date')(date, "h:mma");
+			  		//console.log(date3);
+			  		return date3.toLowerCase();
+			  	}
+
+			  	var date11 = $filter('date')(date, "shortDate");
+			  	//console.log(date2);
+			  	return date11;
+			  };
 
 			  $scope.isLoggedIn = function() {
 
@@ -867,8 +902,12 @@ angular.module('forumBody', ['ui.router', 'froala', 'infinite-scroll'])
 	.controller('PostsCtrl', 
 		['$scope', '$location', '$sce', 'forum', 'posts', 'post',
 			function($scope, $location, $sce, forum, posts, post){
+				
+				
 
 				$scope.post = post;
+				console.log("scope post");
+				console.log($scope.post);
 
 				$scope.forum = forum.forum;
 
@@ -877,6 +916,8 @@ angular.module('forumBody', ['ui.router', 'froala', 'infinite-scroll'])
 				for (var i = post.comments.length - 1; i >= 0; i--) {
 				    $scope.post.comments[i].body = $sce.trustAsHtml(post.comments[i].body);
 				}
+
+				
 
 				//$scope.post.comments.body = $sce.trustAsHtml(post.comments.body);
 

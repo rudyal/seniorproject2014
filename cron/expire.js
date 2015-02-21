@@ -21,11 +21,14 @@ new CronJob('0 * * * * *', function(){
 		    		console.log("here");
 		    		console.log(expireone.type_Id);
 		    		//we have the id, now remove the post from existence
-		    		Post.findOne({ _id: expireone.type_Id }).remove().exec();
+		    		Post.findOne({ _id: expireone.type_Id }).remove().exec(
+		    			Expire.find({expirationdate: {"$lt": now}}).remove().exec()
+		    		);
+		    		
 		    	});
 		    	//innerID[] = expire.type_Id;
 		    	console.log(innerID);
 		    	
-	}).remove().exec();
-    
+	});
+
 }, null, true, "America/Los_Angeles");
