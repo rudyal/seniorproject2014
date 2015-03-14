@@ -3,6 +3,7 @@
     <title>Insert Forum Title</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
     <link rel="stylesheet" href="/stylesheets/style2.css">
+    <link rel="stylesheet" href="/stylesheets/dist/style.css">
   	<script type='text/javascript' src='/javascripts/jquery-1.11.0.js'></script>
     <script type='text/javascript' src="/javascripts/angular.min.js"></script>
     <script type='text/javascript' src="/javascripts/angular-ui-router.min.js"></script>
@@ -25,40 +26,43 @@
 		</script>
     <base href="/" />
   </head>
-  <body>
+  <body class="white">
 	<div ng-app="forumBody" ng-controller="BuildCtrl">
-  	<nav class="navbar navbar-inverse" role="navigation">
-		    <div class="navbar-header">
-		    	<div ng-include="nav_partial_url"></div>
-		        <a class="navbar-brand" ui-sref="#">Discussion Forums</a>
+  	<nav class="front top-nav">
+    		<div class="nav-content-wrapper">
+	    		<div class="logo-wrapper">
+	    			<h1>Discuss One</h1>
+	    		</div>
+	    		<div class="account-wrapper">
+	    			<div class="second-account">
+	    				<div class="social">
+		    				<img src="/images/facebook-gray.png" class="img-laptop" alt="Forum Design Preview">
+		    				<img src="/images/twitter-gray.png" class="img-laptop" alt="Forum Design Preview">
+		    			</div>
+		    			<ul>
+		    				<li class="left" ng-show="!isLoggedIn()"><a href="/login" target="_self">Login</a></li>
+						    <li class="right" ng-show="!isLoggedIn()"><a href="/signup" target="_self">Sign-up</a></li>
+						    <li class="left" ng-show="isLoggedIn()"><a href="/profile"  target="_self">{{user.username}}</a></li>
+						    <li class="right" ng-show="isLoggedIn()"><a href="/logout"  target="_self">logout</a></li>
+		    			</ul>
+	    			</div>
+	    		</div>
+	    	</div>
+    	</nav>
+  		<div class="main-content-wrapper pro locked">
+  			<div class="container">
+				<div class="col-lg-  col-md-offset-1">
+		    		<ui-view></ui-view>
+		    	</div>
 		    </div>
-		    <ul class="nav navbar-nav">
-		        <li><a href="/" target="_self">Home</a></li>
-		        <li ng-show="!isLoggedIn()"><a href="/login" target="_self">Login</a></li>
-		        <li ng-show="!isLoggedIn()"><a href="/signup" target="_self">Sign-up</a></li>
-		        <li><a href="/popular" target="_self">Forums</a></li>
-		        
-		        <li><a href=""  target="_self"> </a></li>
-		        <li ng-show="isLoggedIn()"><a href="/logout"  target="_self">logout</a></li>
-		        <li ng-show="isLoggedIn()"><a href="/profile"  target="_self">Hello, {{user.username}}</a></li>
-		        
-		    </ul>
-		</nav>
-  	
-		<div class="col-lg-  col-md-offset-1">
-
-			
-    		<ui-view></ui-view>
     	</div>
-
     	<script type="text/ng-template" id="/locked.html">
 
-    	<p> Forum Locked, Access Code Required </p>
+    	<h1> {{murl}} - Access Code Required </h1>
     	<div id="access-code-form">
 
     		<form name="accesscodeinput">
 		  	
-		  		<label>Access Code</label>
 		  		<input type="text" placeholder="" ng-model="accesscode"> </input>
 		  		<button ng-click="submitAccessForm()" type="submit">Go</button>
 

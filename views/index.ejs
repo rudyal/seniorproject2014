@@ -22,15 +22,9 @@
 
 	<script src="/javascripts/angularApp.js"></script>
 	  <!-- Initialize the editor. -->
-	  <script>
-		  $(function() {
-		    $('textarea#edit').editable({
-		      inlineMode: false
-		    })
-		  });
-		</script>
     <base href="/" />
     <style> .glyphicon-thumbs-up { cursor:pointer } </style>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"> 
   </head>
   <body class="main-app">
 	<div  ng-app="forumBody" ng-controller="MainCtrl">
@@ -57,7 +51,7 @@
 			    			<ul>
 			    				<li class="left" ng-show="!isLoggedIn()"><a href="/login" target="_self">Login</a></li>
 							    <li class="right" ng-show="!isLoggedIn()"><a href="/signup" target="_self">Sign-up</a></li>
-							    <li class="left" ng-show="isLoggedIn()"><a href="/profile"  target="_self">Hello, {{$$childTail.user}}</a></li>
+							    <li class="left" ng-show="isLoggedIn()"><a href="/profile"  target="_self">{{$$childTail.user}}</a></li>
 							    <li class="right" ng-show="isLoggedIn()"><a href="/logout"  target="_self">logout</a></li>
 							    
 			    			</ul>
@@ -65,7 +59,6 @@
 		    			</div>
 		    		</div>
 		    	</div>
-
 	    </nav>
 
 
@@ -104,9 +97,10 @@
 					</div>
 				</div>
 
-				<div class="info-wrapper">
-					<ui-view></ui-view>
-				</div>
+				<div ng-class="infoSelector()">
+		            <ui-view></ui-view>
+		        </div>
+
 			</div><!-- second-wrapper-->
 		</div> <!-- content-wrapper-->
 
@@ -187,6 +181,15 @@
 		<script type="text/ng-template" id="/posts.html">
 			<div class="post-wrapper">
 			  <div class="content-wrapper">
+
+			  <div class="back-div">
+			  	<div class="back-box">
+			  		<a ng-click="showShit()" ui-sref="forum"><span class="empty"></span></a>
+			  		<i class="fa fa-arrow-left"></i>
+			  		<a ng-click="showShit()" ui-sref="forum"><h3>Back</h3></a>
+			  	</div>
+			  </div>
+
 			  	<div class="first-post">
 				  <div class="page-header">
 				  	<div class="profilepic-wrapper">
@@ -209,7 +212,7 @@
 				  	</div>
 				  	
 				  	<div class="title-wrapper">
-						<h3> {{post.title}} </h3>
+						<h3> {{post.title}} </h3> 
 				  	</div>
 				  </div>
 				  <div class="body-wrapper">
@@ -220,50 +223,60 @@
 				  </div>
 				</div>
 
-				  <div ng-repeat="commenter in post.comments | orderBy:'date'">
-				  	
-				  	<div ng-if="commenter.user.profilepic">
-			            <img ng-src="/uploads/{{commenter.user.profilepic}}" height="47" width="47" /> - by {{commenter.user.username}}
-			        </div>
-			        <div ng-if="!commenter.user.profilepic">
-			            <img ng-src="/uploads/user.png" height="47" width="47" /> - by {{commenter.user.username}}
-			        </div>
-				    
+				  <div class="comment-wrapper" ng-repeat="commenter in post.comments | orderBy:'date'">
+				  	<div class="page-header2">
+					  	<div class="profilepic-wrapper" ng-if="commenter.user.profilepic">
+				            <img ng-src="/uploads/{{commenter.user.profilepic}}" height="47" width="47" />
+				        </div>
 
+				        <div class="profilepic-wrapper" ng-if="!commenter.user.profilepic">
+				            <img ng-src="/uploads/user.png" height="47" width="47" /> 
+				        </div>
 
-				    <div ng-show="isCreater(commenter.user._id)">  
-				    <a ui-sref="forum.edit({id: commenter._id })">edit</a>
-				    <button ng-click='loadComment(commenter)' type="submit" class="btn btn-primary">edit ng</button> 
-				      
-				      <form ng-submit="deletePost(commenter._id)">
-				      	<button type="submit" class="btn btn-primary">Delete</button>
-				      </form>
+				        <div class="username-wrapper">
+					  		<span class="username">{{commenter.user.username}}</span>
+					  		<div class="edit-delete-wrapper">
+						  		<div ng-show="isCreater(commenter.user._id)">  
+						  		  <div class="in">
+						  		  	<button ng-click='loadComment(commenter)' type="submit" class="btn btn-primary">Edit</button>
+						  		  </div>
+						  		  <div class="in">
+						  		  	<form ng-submit="deletePost(commenter._id)">
+								      <!-- <button type="submit" class="delete">Delete</button> -->
+								    </form>
+						  		  </div>
+							    </div>
+						  	</div>
+					  	</div>
+					</div>
+
+				    <div class="comment-body"> 
+				    	<p ng-bind-html="commenter.body"></p>
 				    </div>
-
-
-
-				    <span style="font-size:20px; margin-left:10px;">
-				      	<p ng-bind-html="commenter.body"></p>
-				    </span>
 				  </div>
-				</div>
+			  </div>
 
 				<div class="reply-wrapper">
-				  <div ng-show="isEdit != null"> 
-				  	  <form ng-submit="addEditComment(isEdit)" style="margin-top:30px;">
-					    <div class="form-group">
-					    	<textarea class="form-control" froala="" id="edit" name="content" rows="4" cols="50" type="text" placeholder="Insert text here ..." ng-model="body"> </textarea>
+				  <div class="r2" ng-show="isEdit != null"> 
+				  	  <form ng-submit="addEditComment(isEdit)">
+					    <div class="comment-area">
+					    	<textarea froala="edit2" class="form-control" froala="" id="edit" name="content" rows="4" cols="50" type="text" placeholder="Insert text here ..." ng-model="body"> </textarea>
 					    </div>
 					    <button type="submit" class="btn btn-primary">Save</button>
 					  </form>
 				  </div>
 
-				  <div ng-hide="isEdit != null">
-				  	<form ng-submit="addComment()" style="margin-top:30px;">
-					    <div class="form-group">
-					    	<textarea class="form-control" froala="" id="edit" name="content" rows="4" cols="50" type="text" placeholder="Insert text here ..." ng-model="body"> </textarea>
+				  <div class="r2" ng-hide="isEdit != null">
+				  	<form ng-submit="addComment()">
+					    <div class="comment-area">
+					    	<textarea froala="edit2" class="form-control" froala="" id="edit" name="content" rows="4" cols="50" type="text" placeholder="Insert text here ..." ng-model="body"> </textarea>
 					    </div>
-					    <button type="submit" class="btn btn-primary">Post</button>
+					    <div class="comment-footer">
+					    	<div class="cb">
+								<button type="submit" class="bu-post">Post</button>
+							</div>
+					    </div>
+					    
 				    </form>
 				  </div>
 				</div>

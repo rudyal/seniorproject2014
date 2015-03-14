@@ -263,12 +263,12 @@ angular.module('forumBody', ['ui.router', 'froala', 'infinite-scroll', 'angular-
 		  };
 		o.getCom = function(id) {
 		  return $http.get('/posts/' + id).then(function(res){
-		  	console.log("single Post");
-		  	console.log(res.data);
+		  	//console.log("single Post");
+		  	//console.log(res.data);
 		  	if (typeof res.data.user.profilepic != 'undefined'){
-				console.log("has it");
+				//console.log("has it");
 			}else {
-				console.log("doesnt");
+				//console.log("doesnt");
 				res.data.user.profilepic ='user.png';
 			}
 		  	return res.data;
@@ -707,19 +707,22 @@ angular.module('forumBody', ['ui.router', 'froala', 'infinite-scroll', 'angular-
 				$scope.exdate = '';
 			  }
 
-			  
+			  	var n = $location.path().lastIndexOf('/');
+				var result = $location.path().substring(n + 1);
+				$scope.location = result;
+				console.log("current location");
+				console.log($location);
+				var lo = $location.$$path.indexOf("posts") > -1;
+				console.log("lo: " + lo);
 
+				$scope.infoSelector = function(){
+					if(lo){
+						return 'info-wrapper post-mode';
+					}else{
+						return 'info-wrapper';
+					}
+				}
 
-			 
-
-			 
-			  $scope.incrementUpvotes = function(post){
-			  	post.upvotes += 1;
-			  }
-			  $scope.addLeg = function(){
-			  	$scope.sidebar = true;
-    			$scope.sidebar_template = '/posts/5436f7f947c04b74308e645e'; 
-			  }
 			}
 		]
 	)
@@ -902,12 +905,34 @@ angular.module('forumBody', ['ui.router', 'froala', 'infinite-scroll', 'angular-
 	.controller('PostsCtrl', 
 		['$scope', '$location', '$sce', 'forum', 'posts', 'post',
 			function($scope, $location, $sce, forum, posts, post){
-				
-				
+
+				var n = $location.path().lastIndexOf('/');
+				var result = $location.path().substring(n + 1);
+				$scope.location = result;
+				console.log("current location");
+				console.log($location);
+				var lo = $location.$$path.indexOf("posts") > -1;
+				console.log("lo: " + lo);
+
+				// WE NEED TO CHANGE THE info-wrapper CLASS to info-wrapper-post
+				$('.info-wrapper').removeClass('info-wrapper').addClass('info-wrapper post-mode');
+				$('.sidebar-wrapper').removeClass('sidebar-wrapper').addClass('sidebar-wrapper post-mode');
+
+				$scope.infoSelector = function(){
+					if(lo){
+						return 'info-wrapper-post';
+					}else{
+						return 'info-wrapper';
+					}
+				}
+
+				$scope.showShit = function(){
+					$('.info-wrapper.post-mode').removeClass('post-mode');
+					$('.sidebar-wrapper.post-mode').removeClass('post-mode');
+					return "showShit";
+				}
 
 				$scope.post = post;
-				console.log("scope post");
-				console.log($scope.post);
 
 				$scope.forum = forum.forum;
 
@@ -917,9 +942,11 @@ angular.module('forumBody', ['ui.router', 'froala', 'infinite-scroll', 'angular-
 				    $scope.post.comments[i].body = $sce.trustAsHtml(post.comments[i].body);
 				}
 
-				
-
 				//$scope.post.comments.body = $sce.trustAsHtml(post.comments.body);
+				$scope.edit2 = {
+			        inlineMode : ["true"],
+			        placeholder: ['Reply Here ...']
+			    }
 
 				$scope.addComment = function(){
 				  if($scope.body === '') { return; }

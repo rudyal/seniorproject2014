@@ -18,14 +18,8 @@
 	<script src="/javascripts/angularApp.js"></script>
 	<script type='text/javascript' src='/javascripts/fixing.js'></script>
 	  <!-- Initialize the editor. -->
-	  <script>
-		  $(function() {
-		    $('textarea#edit').editable({
-		      inlineMode: false
-		    })
-		  });
-		</script>
     <base href="/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"> 
   </head>
   <body>
 	<div ng-app="forumBody" ng-controller="BuildCtrl">
@@ -57,7 +51,7 @@
 		    			<ul>
 		    				<li class="left" ng-show="!isLoggedIn()"><a href="/login" target="_self">Login</a></li>
 						    <li class="right" ng-show="!isLoggedIn()"><a href="/signup" target="_self">Sign-up</a></li>
-						    <li class="left" ng-show="isLoggedIn()"><a href="/profile"  target="_self">Hello, {{user.username}}</a></li>
+						    <li class="left" ng-show="isLoggedIn()"><a href="/profile"  target="_self">{{user.username}}</a></li>
 						    <li class="right" ng-show="isLoggedIn()"><a href="/logout"  target="_self">logout</a></li>
 						    
 		    			</ul>
@@ -252,30 +246,7 @@
 			</div>
 
 		</div>
-				<!--	
-					<nav class="navbar navbar-inverse" role="navigation">
-					    <div class="navbar-header">
-					    	<div ng-include="nav_partial_url"></div>
-					        <a class="navbar-brand" ui-sref="#">Discussion Forums</a>
-					    </div>
-					    <ul class="nav navbar-nav">
-					        <li><a href="/" target="_self">Home</a></li>
-					        <li ng-show="!isLoggedIn()"><a href="/login" target="_self">Login</a></li>
-					        <li ng-show="!isLoggedIn()"><a href="/signup" target="_self">Sign-up</a></li>
-					        <li><a href="/popular" target="_self">Forums</a></li>
-					        
-					        <li><a href=""  target="_self"> </a></li>
-					        <li ng-show="isLoggedIn()"><a href="/logout"  target="_self">logout</a></li>
-					        <li ng-show="isLoggedIn()"><a href="/profile"  target="_self">Hello, {{user.username}}</a></li>
-					        
-					    </ul>
-					</nav>
-				-->
 			
-		
-
-
-
 		</div> <!--main-front-wrapper-->
 
     	
@@ -286,21 +257,62 @@
    
 		<script type="text/ng-template" id="/homepage.html">
 
-		<a href="/" target="_self">Build a Forum</a>
-			
-		  <div class="page-header">
-		    <h3> Home </h3>
+			<div class="main-front-wrapper">
 
-		    <p> List of all forums sort by most posts </p>
+		    	<nav class="front top-nav">
+		    		<div class="nav-content-wrapper">
+			    		<div class="logo-wrapper">
+			    			<h1>Discuss One</h1>
+			    		</div>
 
-		    <div ng-repeat="fo in forum | orderBy:'-posts.length'">
+			    		<div class="account-wrapper">
+			    			<div class="second-account">
+			    				<div class="social">
+				    				<img src="/images/facebook-gray.png" class="img-laptop" alt="Forum Design Preview">
+				    				<img src="/images/twitter-gray.png" class="img-laptop" alt="Forum Design Preview">
+				    			</div>
+				    			<ul>
+				    				<li class="left" ng-show="!isLoggedIn()"><a href="/login" target="_self">Login</a></li>
+								    <li class="right" ng-show="!isLoggedIn()"><a href="/signup" target="_self">Sign-up</a></li>
+								    <li class="left" ng-show="isLoggedIn()"><a href="/profile"  target="_self">{{user.username}}</a></li>
+								    <li class="right" ng-show="isLoggedIn()"><a href="/logout"  target="_self">logout</a></li>
+								    
+				    			</ul>
+				    			
+			    			</div>
+			    		</div>
+			    	</div>
 
-		  		<a href="/{{fo.url}}" target="_self">{{fo.title}} </a>
-		  		</a> Posts: {{fo.posts.length}} 
-				
-		  	</div>
+		    	</nav>
 
-		  </div>
+	    		<div class="main-content-wrapper">
+	    			<div class="second-main-wrapper pop">
+	    			  <div class="pop-table">
+	    			  	<table>
+						  <caption>Popular Communities</caption>
+						    <tr>
+						      <th>Community</th>
+						      <th class="po-cell">Posts</th>
+						    </tr>
+		    			  	<tr ng-repeat="fo in forum | orderBy:'-posts.length' | limitTo:10">
+							  <td><a href="/{{fo.url}}" target="_self">{{fo.title}} </a></td>
+							  <td class="po-cell"></a>{{fo.posts.length}} </td>
+						  	</tr>
+						</table>  	
+	    			  </div>
+	    			  
+				    </div>
+	    		</div>
+	    		<div class="pop-build">
+	    			    <div class="front first-footer">
+							<div class="foot">
+								<div class="f">
+									<a href="/" target="_self">Build a Forum</a>
+								</div>
+							</div>
+						</div>
+	    		</div>
+	    	</div>
 		</script>
 
 		
