@@ -15,8 +15,12 @@
     <script src="/javascripts/froala-sanitize.js"></script>
     <script src="/javascripts/angular-froala.js"></script>
     <script type='text/javascript' src="/javascripts/angular-sanitize.js"></script>
-
+	<script type='text/javascript' src="/javascripts/angular-perfect-scrollbar-master/src/angular-perfect-scrollbar.js"></script>
+    <script type='text/javascript' src="/javascripts/angular-perfect-scrollbar-master/bower_components/perfect-scrollbar/src/perfect-scrollbar.js"></script>
+    <script type='text/javascript' src="/javascripts/angular-perfect-scrollbar-master/bower_components/perfect-scrollbar/src/jquery.mousewheel.js"></script>
+    <link href="/javascripts/angular-perfect-scrollbar-master/bower_components/perfect-scrollbar/src/perfect-scrollbar.css" rel="stylesheet" type="text/css" />
     <script type='text/javascript' src="/javascripts/moment.min.js"></script>
+    <script type='text/javascript' src="/javascripts/ga.js"></script>
 	<script type='text/javascript' src="/javascripts/angular-momentjs/angular-momentjs.js"></script>
 
 
@@ -26,7 +30,7 @@
     <style> .glyphicon-thumbs-up { cursor:pointer } </style>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"> 
   </head>
-  <body class="main-app">
+  <body class="main-app pat">
 	<div  ng-app="forumBody" ng-controller="MainCtrl">
 
     	<ui-view></ui-view>
@@ -47,6 +51,7 @@
 		    				<div class="social">
 			    				<img src="/images/facebook-gray.png" class="img-laptop" alt="Forum Design Preview">
 			    				<img src="/images/twitter-gray.png" class="img-laptop" alt="Forum Design Preview">
+			    				<a href="/" target="_self"><img src="/images/home-gray.png" class="img-laptop" alt="Forum Design Preview"></a>
 			    			</div>
 			    			<ul>
 			    				<li class="left" ng-show="!isLoggedIn()"><a href="/login" target="_self">Login</a></li>
@@ -77,10 +82,10 @@
 				    		<a ui-sref="#">Categories</a>
 				    	</div>
 				    	<div class="post">
-							<a ui-sref=".post">+Post</a>
+							<a ng-click="hideShit()"  ui-sref=".post">+Post</a>
 				    	</div>
 			    	</div>
-			    	<div class="post-list-wrapper">
+			    	<div perfect-scrollbar class="post-list-wrapper scroller">
 				    	<div class="post-list">
 						  	<div class="post-link-wrapper {{findActive(post)}}" ng-repeat="post in forum.posts | orderBy: '-date'" >
 						  		<a class="po-link" ui-sref=".posts({id: post._id })"><span class="empty"></span></a>
@@ -117,6 +122,15 @@
 
 		<script type="text/ng-template" id="/post.html">
 			<div class="post-form-wrapper">
+
+			<div class="back-div">
+			  	<div class="back-box">
+			  		<a ng-click="showShit()" ui-sref="forum"><span class="empty"></span></a>
+			  		<i class="fa fa-arrow-left"></i>
+			  		<a ng-click="showShit()" ui-sref="forum"><h3>Back</h3></a>
+			  	</div>
+			</div>
+
 			    <form ng-submit="addPost(forum._id)">
 			    	<div class="title-wrapper">
 			  			<input class="form-control"type="text" placeholder="Title" ng-model="title"> </input>
@@ -152,11 +166,10 @@
 			  			<input class="form-control" type="datetime" placeholder="Expiration Date" ng-model="exdate"> </input>
 			  		</div>
 			  		<div class="button-wrapper">
-			  			<button class="btn btn-warning btn-lg" type="submit">Post</button>
+			  			<button ng-click="showShit()" class="btn btn-warning btn-lg" type="submit">Post</button>
 			  		</div>
 			  	</form>
 		  	</div>
-
 		  	<!-- <a ui-sref="forum">back</a> -->
 		
 		</script>

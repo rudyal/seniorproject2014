@@ -361,7 +361,7 @@ angular.module('forumBody', ['ui.router', 'froala', 'infinite-scroll', 'angular-
 		}
 		u.getAllForums = function() {
 			return $http.get('/forums').success(function(data){
-		    	//console.log(data);
+		    	
 		      angular.copy(data, u.forum);
 		    });
 		  };
@@ -369,8 +369,11 @@ angular.module('forumBody', ['ui.router', 'froala', 'infinite-scroll', 'angular-
 
 		  var b =  $http.get('api/' + murl).then(function(res){
 		  	console.log("returning data");
-		  	console.log(res);
-		  	
+		  	console.log(JSON.stringify(res.data.posts));
+		  	if(res.data.posts.length <= 0){
+		  		// Bring in a welcome post
+		  		res.data.posts = [{"_id":"551700121f24f11827281357","user":{"_id":"5516f0691f24f11827281354","__v":0,"ip":"127.0.0.1","username":"efvevevf","updated":"2015-03-28T18:18:17.413Z","datejoined":"2015-03-28T18:18:17.413Z","local":{"password":"$2a$08$Q9tDOuiSnOq9lG38hIjnhOsb9iJIGc8ZnnEzdY7mQxS90HGeKygWC","email":"fwerfwer@errf.com"}},"title":"Welcome to Discuss One","forumtype":"5516fa971f24f11827281356","__v":0,"forumcategory":[],"bode":"<h3 style=\"margin-left: 0px; text-align: center;\" class=\"\">This is place to build forums quickly and share what's important.</h3><p class=\"\"><br></p><blockquote class=\"\">Like a killer quote</blockquote><p class=\"\"><br></p><pre class=\"\">&lt;h1&gt; Some nice functionality &lt;/h1&gt;</pre><p class=\"\"><br></p><p class=\"\"><br></p><p class=\"\"><img class=\"fr-fin\" data-fr-image-preview=\"false\" alt=\"Image title\" src=\"http://rack.0.mshcdn.com/media/ZgkyMDEyLzEyLzA0LzlkLzE1YmVzdGNhdG1lLmFIOC5q…B4NTM0IwplCWpwZw/81fb5716/5f7/15-best-cat-memes-ever-meow--3283dd863e.jpg\" width=\"286\"></p><p class=\"\"><br></p>","comments":[],"upvotes":0,"date":"2015-03-28T19:25:06.206Z"}]
+		  	}
 		  	//$window.location.href = '/popular';
 		  	angular.copy(res.data, u.forum);
 		  	return u.forum;
@@ -557,8 +560,8 @@ angular.module('forumBody', ['ui.router', 'froala', 'infinite-scroll', 'angular-
 
 
 	.controller('MainCtrl', 
-		['$scope', '$filter', '$location', '$moment', 'forum', 'posts', 'user', 
-			function($scope, $filter, $location, $moment, forum, posts, user){
+		['$scope', '$timeout', '$filter', '$location', '$moment', 'forum', 'posts', 'user', 
+			function($scope, $timeout, $filter, $location, $moment, forum, posts, user){
 				console.log("scope");
 				console.log($scope);
 			  $scope.user = user.user.username;
@@ -682,25 +685,19 @@ angular.module('forumBody', ['ui.router', 'froala', 'infinite-scroll', 'angular-
 			    }
 			  };
 
-
-			  
 			  $scope.addPost = function(forumtypeid){
-			  	console.log("postingggg");
-			  	console.log($scope);
 			  	if($scope.title === '') { return; }
-			  	//if($scope.$$childTail.title === '') { return; }
-			  	
-				posts.create({
-					title: $scope.title,
-					link: $scope.link,
-					bode: $scope.bode,
-					expirationdate: $scope.exdate,
-					forumtype: forumtypeid
-				}).success(function(post) {
-					console.log("started from the bottom now we here");
-				    $scope.forum.posts.push(post);
-				    $location.path(forum.forum.url);
+			  	posts.create({
+						title: $scope.title,
+						link: $scope.link,
+						bode: $scope.bode,
+						expirationdate: $scope.exdate,
+						forumtype: forumtypeid
+					}).success(function(post) {
+						$scope.forum.posts.push(post);
+						$location.path(forum.forum.url);
 				  });
+     			
 				$scope.title = '';
 				$scope.bode = '';
 				$scope.link = '';
@@ -713,10 +710,27 @@ angular.module('forumBody', ['ui.router', 'froala', 'infinite-scroll', 'angular-
 				console.log("current location");
 				console.log($location);
 				var lo = $location.$$path.indexOf("posts") > -1;
+				var lo2 = $location.$$path.indexOf("post") > -1;
 				console.log("lo: " + lo);
+				console.log("lo2: " + lo2);
+
+				$scope.hideShit = function(){
+					$('.info-wrapper').removeClass('info-wrapper').addClass('info-wrapper post-mode');
+					$('.sidebar-wrapper').removeClass('sidebar-wrapper').addClass('sidebar-wrapper post-mode');
+					return "hideShit";
+				}
+
+				$scope.showShit = function(){
+					
+
+					$('.info-wrapper.post-mode').removeClass('post-mode');
+					$('.sidebar-wrapper.post-mode').removeClass('post-mode');
+					return "showShit";
+				}
 
 				$scope.infoSelector = function(){
-					if(lo){
+					if(lo||lo2){
+						$('.sidebar-wrapper').removeClass('sidebar-wrapper').addClass('sidebar-wrapper post-mode');
 						return 'info-wrapper post-mode';
 					}else{
 						return 'info-wrapper';
@@ -1029,5 +1043,77 @@ angular.module('forumBody', ['ui.router', 'froala', 'infinite-scroll', 'angular-
 			  	
 			}
 		]
-	);
+	)
+	.directive('perfectScrollbar',
+	  ['$parse', '$window', function($parse, $window) {
+	  var psOptions = [
+	    'wheelSpeed', 'wheelPropagation', 'minScrollbarLength', 'useBothWheelAxes',
+	    'useKeyboard', 'suppressScrollX', 'suppressScrollY', 'scrollXMarginOffset',
+	    'scrollYMarginOffset', 'includePadding'//, 'onScroll', 'scrollDown'
+	  ];
 
+	  return {
+	    restrict: 'EA',
+	    transclude: true,
+	    template: '<div><div ng-transclude></div></div>',
+	    replace: true,
+	    link: function($scope, $elem, $attr) {
+	      var jqWindow = angular.element($window);
+	      var options = {};
+
+	      for (var i=0, l=psOptions.length; i<l; i++) {
+	        var opt = psOptions[i];
+	        if ($attr[opt] !== undefined) {
+	          options[opt] = $parse($attr[opt])();
+	        }
+	      }
+
+	      $scope.$evalAsync(function() {
+	        $elem.perfectScrollbar(options);
+	        var onScrollHandler = $parse($attr.onScroll)
+	        $elem.scroll(function(){
+	          var scrollTop = $elem.scrollTop()
+	          var scrollHeight = $elem.prop('scrollHeight') - $elem.height()
+	          $scope.$apply(function() {
+	            onScrollHandler($scope, {
+	              scrollTop: scrollTop,
+	              scrollHeight: scrollHeight
+	            })
+	          })
+	        });
+	      });
+
+	      function update(event) {
+	        $scope.$evalAsync(function() {
+	          if ($attr.scrollDown == 'true' && event != 'mouseenter') {
+	            setTimeout(function () {
+	              $($elem).scrollTop($($elem).prop("scrollHeight"));
+	            }, 100);
+	          }
+	          $elem.perfectScrollbar('update');
+	        });
+	      }
+
+	      // This is necessary when you don't watch anything with the scrollbar
+	      $elem.bind('mouseenter', update('mouseenter'));
+
+	      // Possible future improvement - check the type here and use the appropriate watch for non-arrays
+	      if ($attr.refreshOnChange) {
+	        $scope.$watchCollection($attr.refreshOnChange, function() {
+	          update();
+	        });
+	      }
+
+	      // this is from a pull request - I am not totally sure what the original issue is but seems harmless
+	      if ($attr.refreshOnResize) {
+	        jqWindow.on('resize', update);
+	      }
+
+	      $elem.bind('$destroy', function() {
+	        jqWindow.off('resize', update);
+	        $elem.perfectScrollbar('destroy');
+	      });
+
+	    }
+	  };
+	}]);
