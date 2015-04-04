@@ -439,7 +439,7 @@ angular.module('forumBody', ['ui.router', 'froala', 'infinite-scroll', 'angular-
         restrict: 'A',
         require: 'ngModel',
         link: function (scope, element, attrs, ngModel) {
-        	//element.bind('keyup', function (e) {
+        	element.bind('keyup', function (e) {
                 if (!ngModel || !element.val()) return;
                 var keyProperty = scope.$eval(attrs.wcUnique);
                 var currentValue = element.val();
@@ -520,7 +520,7 @@ angular.module('forumBody', ['ui.router', 'froala', 'infinite-scroll', 'angular-
                     });
                 }
                 
-            //});
+            });
 		}
     }
 }])
