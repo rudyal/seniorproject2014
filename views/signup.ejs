@@ -22,7 +22,7 @@
     <script src="/javascripts/angularApp.js"></script>
     <base href="/" />
 </head>
-<body class="white" >
+<body ng-app="forumBody" class="white" >
 	<nav class="front top-nav">
 	    	<div class="nav-content-wrapper">
 		    	<div class="logo-wrapper">
@@ -60,7 +60,7 @@
 	<form name="signup2" action="/signup" method="post" enctype="multipart/form-data">
 		<div class="form-group">
 					<label>Email</label>
-					<div class="form-group" >
+					<div class="form-group" ng-class="{ 'has-error' : signup2.email.$invalid && !signup2.email.$pristine }">
 						<input type="email" class="form-control" ng-model="email" data-wc-unique="{property: 'email'}" style="width:200px;" name="email" ng-pattern="/^[_a-z0-9]+(\.[_a-z0-9]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,4})$/" required>
 						<span class="errorMessage" ng-show="signup2.email.$dirty && signup2.email.$error.unique">Email already in use</span>
 						<span class="errorMessage" ng-show="signup2.email.$error.pattern">Invalid Email<br/></span>

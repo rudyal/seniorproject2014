@@ -9,11 +9,6 @@ angular.module('forumBody', ['ui.router', 'froala', 'infinite-scroll', 'angular-
 		'$stateProvider',
 		'$urlRouterProvider', '$locationProvider', 
 		function($stateProvider, $urlRouterProvider, $locationProvider){
-			// $urlRouterProvider.when('builder', '/builder');
-			//$urlRouterProvider.when('/login', '/loginer');
-			console.log($locationProvider);
-			
-			
 			$stateProvider
 				.state('forum.posts', {
 					url: '/posts/{id}',
@@ -21,7 +16,6 @@ angular.module('forumBody', ['ui.router', 'froala', 'infinite-scroll', 'angular-
 					controller: 'PostsCtrl',
 					resolve: {
 					  post: ['$stateParams', 'posts', function($stateParams, posts) {
-						console.log($stateParams);
 					    return posts.getCom($stateParams.id);
 					  }]
 					  // ,
@@ -41,7 +35,6 @@ angular.module('forumBody', ['ui.router', 'froala', 'infinite-scroll', 'angular-
 					controller: 'PostsCtrl',
 					resolve: {
 					  post: ['$stateParams', 'posts', function($stateParams, posts) {
-						console.log($stateParams);
 					    return posts.getCom($stateParams.id);
 					  }]
 					}
@@ -96,7 +89,6 @@ angular.module('forumBody', ['ui.router', 'froala', 'infinite-scroll', 'angular-
 					controller: 'HomeCtrl',
 					resolve: {
 					  forumPromise: ['$stateParams', 'forum', function($stateParams, forum){
-					  	console.log("home get all forums");
 					    return forum.getAllForums();
 					  }],
 					  userPromise: ['user', function(user){
@@ -110,8 +102,6 @@ angular.module('forumBody', ['ui.router', 'froala', 'infinite-scroll', 'angular-
 					controller: 'HomeCtrl',
 					resolve: {
 					  forumPromise: ['$stateParams', 'forum', function($stateParams, forum){
-					  	console.log("home get all forums");
-					  	console.log(forum.getAllForums());
 					    return forum.getAllForums();
 					  }],
 					  userPromise: ['user', function(user){
@@ -145,7 +135,6 @@ angular.module('forumBody', ['ui.router', 'froala', 'infinite-scroll', 'angular-
 					controller: 'ForumCtrl',
 					resolve: {
 					  forumPromise: ['$stateParams', 'forum', function($stateParams, forum){
-					  	console.log("get forumtype");
 					  	//$state.go('/popular');
 
 					  	// $location.path('/popular');
@@ -180,7 +169,6 @@ angular.module('forumBody', ['ui.router', 'froala', 'infinite-scroll', 'angular-
             if (!id) id = 0;
             return $http.get('/api/unemail/' + id).then(
                 function (results) {
-                	console.log(results);
                 	if(results.data.length>0){
                 		return results.data.status;
                 	}else{
@@ -193,8 +181,6 @@ angular.module('forumBody', ['ui.router', 'froala', 'infinite-scroll', 'angular-
             if (!id) id = 0;
             return $http.get('/api/unuser/' + id).then(
                 function (results) {
-                	console.log("results");
-                	console.log(results);
                 	if(results.data.length>0){
                 		return results.data.status;
                 	}else{
@@ -207,8 +193,6 @@ angular.module('forumBody', ['ui.router', 'froala', 'infinite-scroll', 'angular-
             if (!id) id = 0;
             return $http.get('/api/unforum/' + id).then(
                 function (results) {
-                	console.log("results");
-                	console.log(results);
                 	if(results.data.length>0){
                 		return results.data.status;
                 	}else{
@@ -369,7 +353,7 @@ angular.module('forumBody', ['ui.router', 'froala', 'infinite-scroll', 'angular-
 
 		  var b =  $http.get('api/' + murl).then(function(res){
 		  	console.log("returning data");
-		  	console.log(JSON.stringify(res.data.posts));
+		  	//console.log(JSON.stringify(res.data.posts));
 		  	if(res.data.posts.length <= 0){
 		  		// Bring in a welcome post
 		  		res.data.posts = [{"_id":"551700121f24f11827281357","user":{"_id":"5516f0691f24f11827281354","__v":0,"ip":"127.0.0.1","username":"efvevevf","updated":"2015-03-28T18:18:17.413Z","datejoined":"2015-03-28T18:18:17.413Z","local":{"password":"$2a$08$Q9tDOuiSnOq9lG38hIjnhOsb9iJIGc8ZnnEzdY7mQxS90HGeKygWC","email":"fwerfwer@errf.com"}},"title":"Welcome to Discuss One","forumtype":"5516fa971f24f11827281356","__v":0,"forumcategory":[],"bode":"<h3 style=\"margin-left: 0px; text-align: center;\" class=\"\">This is place to build forums quickly and share what's important.</h3><p class=\"\"><br></p><blockquote class=\"\">Like a killer quote</blockquote><p class=\"\"><br></p><pre class=\"\">&lt;h1&gt; Some nice functionality &lt;/h1&gt;</pre><p class=\"\"><br></p><p class=\"\"><br></p><p class=\"\"><img class=\"fr-fin\" data-fr-image-preview=\"false\" alt=\"Image title\" src=\"http://rack.0.mshcdn.com/media/ZgkyMDEyLzEyLzA0LzlkLzE1YmVzdGNhdG1lLmFIOC5q…B4NTM0IwplCWpwZw/81fb5716/5f7/15-best-cat-memes-ever-meow--3283dd863e.jpg\" width=\"286\"></p><p class=\"\"><br></p>","comments":[],"upvotes":0,"date":"2015-03-28T19:25:06.206Z"}]
@@ -393,15 +377,15 @@ angular.module('forumBody', ['ui.router', 'froala', 'infinite-scroll', 'angular-
 		  		// dont redirect here
 
 		  	}
-		  	console.log("returning data 2");
-		  	console.log(res);
-		  	console.log(status);
-		  	console.log("res.data");
+		  	// console.log("returning data 2");
+		  	// console.log(res);
+		  	// console.log(status);
+		  	// console.log("res.data");
 
-		  	console.log(res.data);
+		  	// console.log(res.data);
 
 		  	$window.location.href = '/locked/'+res.data.URL;
-		    console.error('Gists error', res.status, res.data);
+		    //console.error('Gists error', res.status, res.data);
 		  });
 		  //);
 		 return b;
@@ -412,13 +396,13 @@ angular.module('forumBody', ['ui.router', 'froala', 'infinite-scroll', 'angular-
 		  	//console.log("returning data");
 		  	//console.log(res.data);
 		  	angular.copy(res.data, u.forum);
-		  	console.log(u.forum);
+		  	//console.log(u.forum);
 		  	return u.forum;
 		  });
 		};
 		u.create = function(forum) {
 		    var b = $http.post('/builder', forum).success(function(data){
-		    	console.log("Forum Build Success");
+		    	//console.log("Forum Build Success");
 		    	$window.location.href = '/'+ forum.url;
 		    });
 		  return b;
@@ -455,11 +439,11 @@ angular.module('forumBody', ['ui.router', 'froala', 'infinite-scroll', 'angular-
         restrict: 'A',
         require: 'ngModel',
         link: function (scope, element, attrs, ngModel) {
-        	element.bind('keyup', function (e) {
+        	//element.bind('keyup', function (e) {
                 if (!ngModel || !element.val()) return;
                 var keyProperty = scope.$eval(attrs.wcUnique);
                 var currentValue = element.val();
-                console.log(keyProperty);
+                //console.log(keyProperty);
                 if(keyProperty.property=='email'){
                 	uniqueService.checkEmail(currentValue)
                     .then(function (unique) {
@@ -480,8 +464,6 @@ angular.module('forumBody', ['ui.router', 'froala', 'infinite-scroll', 'angular-
                         //Ensure value that being checked hasn't changed
                         //since the Ajax call was made
                         if (currentValue == element.val()) { 
-                        	console.log("hete");
-                        	console.log(unique);
                             ngModel.$setValidity('unique', unique);
                         }
                     }, function () {
@@ -496,10 +478,7 @@ angular.module('forumBody', ['ui.router', 'froala', 'infinite-scroll', 'angular-
                         //Ensure value that being checked hasn't changed
                         //since the Ajax call was made
                         if (currentValue == element.val()) { 
-                        	console.log("hete");
-                        	console.log(unique);
                         	if (typeof unique !== 'undefined') {
-                        		console.log("unset comname");
                         		if(scope.buildForum.comname.$dirty == true){
 									scope.buildForum.comname.$setValidity('unique', unique);
                         		}else{
@@ -510,49 +489,38 @@ angular.module('forumBody', ['ui.router', 'froala', 'infinite-scroll', 'angular-
                         	}
                             ngModel.$setValidity('unique', unique);
                         }
-                        console.log("test");
+                        
                     }, function () {
                         //Probably want a more robust way to handle an error
                         //For this demo we'll set unique to true though
-                        console.log("hete22");
                         ngModel.$setValidity('unique', true);
                     });
                 }
                 if(keyProperty.property=='forumfirst'){
                 	//set currentValue to scope comurl
-                	console.log("heyho");
-                	console.log(scope);
                 	currentValue = scope.comurl;
                 	uniqueService.checkForum(currentValue)
                     .then(function (unique) {
                         //Ensure value that being checked hasn't changed
                         //since the Ajax call was made
                         if (currentValue == element.val()) { 
-                        	console.log("hete");
-                        	console.log(unique);
                         	// if (typeof unique !== 'undefined') {
                         	// 	scope.comurl.$setValidity('unique', unique);
                         	// } else{
                         	// 	 ngModel.$setValidity('unique', unique);
                         	// }
-                        	console.log("ngmodel");
-                        	console.log(ngModel);
                         	ngModel.$setValidity('unique', unique);
                         	//scope.comurl.$setValidity('unique', unique);
                            
                         }else{
                         	console.log("danger");
                         }
-                        console.log("test");
                     }, function () {
-                        //Probably want a more robust way to handle an error
-                        //For this demo we'll set unique to true though
-                        console.log("hete22");
                         ngModel.$setValidity('unique', true);
                     });
                 }
                 
-            });
+            //});
 		}
     }
 }])
@@ -562,8 +530,8 @@ angular.module('forumBody', ['ui.router', 'froala', 'infinite-scroll', 'angular-
 	.controller('MainCtrl', 
 		['$scope', '$timeout', '$filter', '$location', '$moment', 'forum', 'posts', 'user', 
 			function($scope, $timeout, $filter, $location, $moment, forum, posts, user){
-				console.log("scope");
-				console.log($scope);
+				// console.log("scope");
+				// console.log($scope);
 			  $scope.user = user.user.username;
 
 			  $scope.test = 'Hello world!';
@@ -707,12 +675,12 @@ angular.module('forumBody', ['ui.router', 'froala', 'infinite-scroll', 'angular-
 			  	var n = $location.path().lastIndexOf('/');
 				var result = $location.path().substring(n + 1);
 				$scope.location = result;
-				console.log("current location");
-				console.log($location);
+				//console.log("current location");
+				//console.log($location);
 				var lo = $location.$$path.indexOf("posts") > -1;
 				var lo2 = $location.$$path.indexOf("post") > -1;
-				console.log("lo: " + lo);
-				console.log("lo2: " + lo2);
+				//console.log("lo: " + lo);
+				//console.log("lo2: " + lo2);
 
 				$scope.hideShit = function(){
 					$('.info-wrapper').removeClass('info-wrapper').addClass('info-wrapper post-mode');
@@ -742,94 +710,62 @@ angular.module('forumBody', ['ui.router', 'froala', 'infinite-scroll', 'angular-
 	)
 	.controller('ProfileCtrl',
 		['$scope', 'user', 'forum', function($scope, user, forum){
-			//$scope.tester = "hello profile";
-			console.log("profile controller");
-			
 			// Get User
 			$scope.user=user.user;
 			// Get All Forums by this user
 			if (typeof user.user._id !== 'undefined') {
-			    console.log("my user");
-				console.log(user.user._id);
 				forum.getAllByCreater(user.user._id).then(function(data) {
 	            	$scope.userforums = data;
 	        	});
 			}
-			
-			//$scope.userforums = $scope.getforums();
-			//console.log($scope);
-			//console.log($scope.userforums);
-		}]
-	)
-	.controller('AccessCtrl',
-		['$scope', '$stateParams', 'user', 'access',  function($scope, $stateParams, user, access){
-			//$scope.tester = "hello profile";
-			console.log("Access controller");
-			//console.log($stateParams.murl);
-			
-			// Get User
-			$scope.user=user.user;
-			// Get murl and set it in scope
-			$scope.murl=$stateParams.murl
-
-			$scope.wrongcode = false;
-			// Make a Function for forum submit
-			$scope.submitAccessForm = function(){
-				
-		      	access.check({
-					  access: $scope.accesscode,
-					  murl: $stateParams.murl,
-				}).then(function(data) {
-					
-					console.log(data);
-					if(data==0001){
-						$scope.wrongcode = true;
-					}
-				    
-				  });
-		     }
-
-		}]
-	)
-	.controller('ForumCtrl',
-		['$scope', 'user', 'forum', function($scope, user, forum){
-			//$scope.tester = "hello profile";
-			console.log("Forum Control");
-			console.log(user);
-			$scope.user = user.user.username;
-
-			  $scope.isLoggedIn = function() {
-
+			$scope.isLoggedIn = function() {
 				if (typeof user.user.username != 'undefined')
 				  return true;
 				else 
 				  return false;
-
 				};
-			// $scope.getAllByUrl = function(){
-			// 	console.log()
-
-			// }
+		}]
+	)
+	.controller('AccessCtrl',
+		['$scope', '$stateParams', 'user', 'access',  function($scope, $stateParams, user, access){
+			// Get User
+			$scope.user=user.user;
+			// Get murl and set it in scope
+			$scope.murl=$stateParams.murl
+			$scope.wrongcode = false;
+			// Make a Function for forum submit
+			$scope.submitAccessForm = function(){
+		      	access.check({
+					  access: $scope.accesscode,
+					  murl: $stateParams.murl,
+				}).then(function(data) {
+					if(data==0001){
+						$scope.wrongcode = true;
+					}
+				  });
+		     }
+		}]
+	)
+	.controller('ForumCtrl',
+		['$scope', 'user', 'forum', function($scope, user, forum){
+			$scope.user = user.user.username;
+			  $scope.isLoggedIn = function() {
+				if (typeof user.user.username != 'undefined')
+				  return true;
+				else 
+				  return false;
+				};
 		}]
 	)
 	.controller('HomeCtrl',
 		['$scope', 'user', 'forum', function($scope, user, forum){
-			//$scope.tester = "hello profile";
-			console.log("Home Control");
-			
 			forum.getAllForums().then(function(data) {
 	            $scope.forum = data.data;
 	        });
-
-			console.log($scope);
-
 		}]
 	)
 	.controller('BuildCtrl',
 		['$scope', '$timeout', '$location', 'forum',  'user', function($scope, $timeout, $location, forum, user){
-			//$scope.tester = "hello profile";
-			console.log(user.user);
-			//$scope.forum = forum;
 			$scope.user = user.user;
 			$scope.options = function() {
 				$(".input.access").toggle();
@@ -848,9 +784,6 @@ angular.module('forumBody', ['ui.router', 'froala', 'infinite-scroll', 'angular-
 		     $scope.updateURL = function(comurl) {
 				$scope.comurl = comurl;
 		     }
-		     console.log('user');
-		     
-		     console.log($scope);
 		     $scope.isLoggedIn = function() {
 
 				if (typeof user.user.username != 'undefined')
@@ -878,8 +811,6 @@ angular.module('forumBody', ['ui.router', 'froala', 'infinite-scroll', 'angular-
 					  allowanon: $scope.$$childTail.anonuserbool,
 					  allowreg: $scope.$$childTail.reguserbool
 				});
-				//var url = $scope.comurl;
-				//$scope.changeRoute('/'+url);
 		      }
 		      $scope.submitFormWU = function(){
 
@@ -896,20 +827,14 @@ angular.module('forumBody', ['ui.router', 'froala', 'infinite-scroll', 'angular-
 					allowanon: $scope.$$childTail.anonuserbool,
 					allowreg: $scope.$$childTail.reguserbool
 				});
-				//$scope.changeRoute('/'+url)
 		      }
 		      $scope.changeRoute = function(url, forceReload) {
 			        $scope = $scope || angular.element(document).scope();
-			        if(forceReload || $scope.$$phase) { // that's right TWO dollar signs: $$phase
-			            console.log(1);
-			        console.log(url);
+			        if(forceReload || $scope.$$phase) { 
 			            window.location = url;
 			        
 			        } else {
-			        	console.log(2);
-			        	console.log(url);
 			            $location.path(url);
-			             
 			            $scope.$apply();
 			        }
 			    };
@@ -923,10 +848,7 @@ angular.module('forumBody', ['ui.router', 'froala', 'infinite-scroll', 'angular-
 				var n = $location.path().lastIndexOf('/');
 				var result = $location.path().substring(n + 1);
 				$scope.location = result;
-				console.log("current location");
-				console.log($location);
 				var lo = $location.$$path.indexOf("posts") > -1;
-				console.log("lo: " + lo);
 
 				// WE NEED TO CHANGE THE info-wrapper CLASS to info-wrapper-post
 				$('.info-wrapper').removeClass('info-wrapper').addClass('info-wrapper post-mode');
@@ -975,22 +897,13 @@ angular.module('forumBody', ['ui.router', 'froala', 'infinite-scroll', 'angular-
 				};
 
 				$scope.addEditComment = function(comment){
-					  	console.log("editing comment");
-					  	console.log($scope.body);
-					  	console.log(comment);
-					  	console.log(comment._id);
-					  	//comment.body = $sce.trustAsHtml(comment.body);
-					  	console.log(comment.body.$$unwrapTrustedValue());
 					  	if($scope.body === '') { return; }
 					  	
 						posts.editCom({
 							body: $scope.body
 						}, comment._id).success(function(post) {
 							$scope.body = '';
-							console.log("started from the bottom now we here");
-							console.log($scope.isEdit);
 							$scope.isEdit = null;
-							console.log($scope.isEdit);
 							// We Need Post ID
 
 							// We Need Comment ID
@@ -1010,16 +923,12 @@ angular.module('forumBody', ['ui.router', 'froala', 'infinite-scroll', 'angular-
 
 						$scope.title = post.title;
 				  		$scope.bode = post.bode.$$unwrapTrustedValue();
-		            	//console.log(post.bode.$$unwrapTrustedValue());
-				  		console.log($scope.title);
 				  		return true;
 					}
 				  	
 				}
 
 				  	 $scope.editPost = function(postid, forumurl){
-					  	console.log("editing");
-					  	console.log(postid);
 					  	if($scope.title === '') { return; }
 					  	//if($scope.$$childTail.title === '') { return; }
 					  	

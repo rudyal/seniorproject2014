@@ -185,9 +185,9 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
 /* line 22, ../scss/_base.scss */
 body {
   background-color: #333333;
-  -moz-animation: fadeIn 2s;
-  -webkit-animation: fadeIn 2s;
-  animation: fadeIn 2s;
+  -moz-animation: fadeIn 1s;
+  -webkit-animation: fadeIn 1s;
+  animation: fadeIn 1s;
 }
 
 /* line 26, ../scss/_base.scss */
@@ -559,9 +559,9 @@ nav .account-wrapper .social img {
 /* line 215, ../scss/_base.scss */
 .main-front-wrapper .main-content-wrapper .front.cheesy-sentance {
   margin-bottom: 20px;
-  -moz-animation: fadeIn 2s;
-  -webkit-animation: fadeIn 2s;
-  animation: fadeIn 2s;
+  -moz-animation: fadeIn 1s;
+  -webkit-animation: fadeIn 1s;
+  animation: fadeIn 1s;
   padding-top: 30px;
   width: 90%;
   margin-left: auto;
@@ -693,9 +693,9 @@ nav .account-wrapper .social img {
 }
 /* line 267, ../scss/_base.scss */
 .main-front-wrapper .main-content-wrapper .second-main-wrapper .front.info-wrapper .laptop-i-cant-afford {
-  -moz-animation: fadeIn 2s;
-  -webkit-animation: fadeIn 2s;
-  animation: fadeIn 2s;
+  -moz-animation: fadeIn 1s;
+  -webkit-animation: fadeIn 1s;
+  animation: fadeIn 1s;
   border: none;
   margin: 10px 10px 10px 10px;
   width: 70%;
@@ -736,9 +736,9 @@ nav .account-wrapper .social img {
 }
 /* line 282, ../scss/_base.scss */
 .main-front-wrapper .main-content-wrapper .second-main-wrapper .front.info-wrapper .more-bs {
-  -moz-animation: fadeIn 2s;
-  -webkit-animation: fadeIn 2s;
-  animation: fadeIn 2s;
+  -moz-animation: fadeIn 1s;
+  -webkit-animation: fadeIn 1s;
+  animation: fadeIn 1s;
   vertical-align: top;
   border: none;
   margin: 100px 2px 10px 7px;
@@ -813,9 +813,9 @@ nav .account-wrapper .social img {
 }
 /* line 310, ../scss/_base.scss */
 .main-front-wrapper .main-content-wrapper .second-main-wrapper .front.form-wrapper {
-  -moz-animation: fadeIn 2s;
-  -webkit-animation: fadeIn 2s;
-  animation: fadeIn 2s;
+  -moz-animation: fadeIn 1s;
+  -webkit-animation: fadeIn 1s;
+  animation: fadeIn 1s;
   margin: 20px 20px 20px 20px;
   padding: 25px 2% 25px 2%;
   width: 28%;

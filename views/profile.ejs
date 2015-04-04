@@ -26,20 +26,24 @@
 	<nav class="front top-nav">
 	    		<div class="nav-content-wrapper">
 		    		<div class="logo-wrapper">
-		    			<h1>Discuss One</h1>
+		    			<h1>{{forum.title}}</h1>
 		    		</div>
+
 		    		<div class="account-wrapper">
 		    			<div class="second-account">
 		    				<div class="social">
 			    				<img src="/images/facebook-gray.png" class="img-laptop" alt="Forum Design Preview">
 			    				<img src="/images/twitter-gray.png" class="img-laptop" alt="Forum Design Preview">
+			    				<a href="/" target="_self"><img src="/images/home-gray.png" class="img-laptop" alt="Forum Design Preview"></a>
 			    			</div>
 			    			<ul>
 			    				<li class="left" ng-show="!isLoggedIn()"><a href="/login" target="_self">Login</a></li>
 							    <li class="right" ng-show="!isLoggedIn()"><a href="/signup" target="_self">Sign-up</a></li>
-							    <li class="left" ng-show="isLoggedIn()"><a href="/profile"  target="_self">{{$$childTail.user}}</a></li>
+							    <li class="left" ng-show="isLoggedIn()"><a href="/profile"  target="_self">{{user.username}}</a></li>
 							    <li class="right" ng-show="isLoggedIn()"><a href="/logout"  target="_self">logout</a></li>
+							    
 			    			</ul>
+			    			
 		    			</div>
 		    		</div>
 		    	</div>

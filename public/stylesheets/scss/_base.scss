@@ -21,7 +21,7 @@ $toy : none;
 }
 body{
 	background-color: #333333;
-	@include animation(fadeIn 2s);
+	@include animation(fadeIn 1s);
 }
 body.main-app{
 	background-color: white;
@@ -215,7 +215,7 @@ nav{
 		.front.cheesy-sentance{
 			//height: 85px;
 			margin-bottom: 20px;
-			@include animation(fadeIn 2s);
+			@include animation(fadeIn 1s);
 
 			padding-top: 30px;
 			width: 90%;
@@ -265,7 +265,7 @@ nav{
 				border: $toy;
 				//@include breakpoint(laptop) {float: right;}
 				.laptop-i-cant-afford{
-					@include animation(fadeIn 2s);
+					@include animation(fadeIn 1s);
 					border: $toy;
 					margin: 10px 10px 10px 10px;
 					width: 70%;
@@ -280,7 +280,7 @@ nav{
 					display: inline-block;
 				}
 				.more-bs{
-					@include animation(fadeIn 2s);
+					@include animation(fadeIn 1s);
 					vertical-align: top;
 					border: $toy;
 					margin: 100px 2px 10px 7px;
@@ -309,7 +309,7 @@ nav{
 			}
 			.front.form-wrapper{
 				//float: right;
-				@include animation(fadeIn 2s);
+				@include animation(fadeIn 1s);
 				margin: 20px 20px 20px 20px;
 				@include breakpoint(laptop) {margin: 10px 10px 10px 10px;}
 				padding: 25px 2% 25px 2%;
