@@ -55,17 +55,20 @@ module.exports = function(app, passport) {
 		        targetPath = path.resolve('/public/tmp/image.jpg');
 
 		    if(typeof req.files.file != 'undefined'){
-		    	if (path.extname(req.files.file.name).toLowerCase() === '.jpg') {
+		    	var type = ['.jpg', '.png', '.bmp']
+		    	//if (path.extname(req.files.file.name).toLowerCase() === '.jpg') {
+		    	if (type.indexOf(path.extname(req.files.file.name).toLowerCase()) > -1) {
 				        //fs.rename(tempPath, targetPath, function(err) {
 				            if (err) throw err;
 				            console.log("Upload completed!");
 				            id.profilepic = req.files.file.name;
 				       // });
 				    } else {
-				        fs.unlink(tempPath, function () {
-				            if (err) throw err;
-				            console.error("Only .jpg files are allowed!");
-				        });
+				    	console.log("only pictures allowed");
+				        // fs.unlink(tempPath, function () {
+				        //     if (err) throw err;
+				        //     console.error("Only picture files are allowed!");
+				        // });
 				    }
 		    }
 		    

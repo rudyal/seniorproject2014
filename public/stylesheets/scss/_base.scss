@@ -10,8 +10,8 @@ $laptop-img: image-url('laptop2-837-500.png', false, false);
 $toy2 : 1px solid #7D7D7D;
 $toy : none;
 //@include border-box-sizing;
-@include font-face("soft", font-files("LaoUI.ttf"));
-@include font-face("thin", font-files("DistProTh.otf"));
+@include font-face("soft", font-files("LaoUI.ttf", "LaoUI.eot"));
+@include font-face("thin", font-files("DistProTh.otf", "DistProTh.eot"));
 
 // Landing Page
 .html{
@@ -313,6 +313,7 @@ nav{
 				margin: 20px 20px 20px 20px;
 				@include breakpoint(laptop) {margin: 10px 10px 10px 10px;}
 				padding: 25px 2% 25px 2%;
+				border-radius: 3px;
 				//height: 600px;
 				width: 28%;
 				max-width: 300px;
@@ -344,6 +345,7 @@ nav{
 					border: 1px solid black;
 					margin-top: 6px; 
 					margin-bottom: 10px;
+					border-radius: 3px;
 					input{
 						margin: 3px 3px 3px 3px;
 						display: inline-block;
@@ -400,7 +402,7 @@ nav{
 					color: grey;
 					width: 100%;
 					text-align: right;
-					margin-bottom: 10px;
+					margin-bottom: 14px;
 					span{
 						color: grey;
 						font-weight: normal;
@@ -414,6 +416,10 @@ nav{
 						font-weight: normal;
 					}
 				}
+				input.text:required{
+					border:none;
+					box-shadow:none;
+				}
 				.input.reg{
 					display: none;
 				}
@@ -423,18 +429,23 @@ nav{
 				.submit-button{
 					margin-left:auto;
 					margin-right:auto;
-					width: 130px;
+					width: 220px;
 				}
 				button.submit{
-					background-color: #555555;
-					width: 130px;
+					background-color: #5FC6FF;
+					@include transition(background-color 0.3s ease);
+					width: 220px;
+					border-radius: 6px;
 					height: 43px;
 					margin-left: auto;
 					margin-right: auto;
 					color: white;
-					font-size: 25px;
+					font-size: 21px;
 					border: 0;
-
+				}
+				button.submit:hover{
+					background-color: #0CA7FB;
+					cursor: pointer;
 				}
 
 			}
@@ -452,6 +463,7 @@ nav{
 		.foot{
 			width: 160px;
 			height: 43px;
+			border-radius: 4px;
 			margin-left: auto;
 			margin-right:auto;
 			background-color: #7F7F7F;
@@ -979,6 +991,12 @@ body.main-app{
 							}
 						}
 						.body-wrapper{
+							p{
+								word-wrap: break-word;
+							}
+							span{
+								 word-wrap: break-word;
+							}
 							width: 80%;
 							margin-right: auto;
 							margin-left: auto;
@@ -1091,6 +1109,12 @@ body.main-app{
 							font-family: "soft";
 							font-size: 14px;
 							margin-bottom: 20px;
+							p{
+								word-wrap: break-word;
+							}
+							span{
+								 word-wrap: break-word;
+							}
 						}
 					}
 					.comment-wrapper:hover{

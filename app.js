@@ -56,6 +56,7 @@ app.use(multer({ dest: './public/uploads/'}));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
+
 // passport.use(new LocalStrategy(
 //   function(username, password, done) {
 //     User.findOne({ username: username }, function(err, user) {
@@ -89,6 +90,14 @@ app.use(passport.initialize());
 app.use(passport.session()); // persistent login sessions
 app.use(flash()); // use connect-flash for flash messages stored in session
 
+// // Add headers
+// app.use(function (req, res, next) {
+
+//     // Website you wish to allow to connect
+//     res.setHeader('Access-Control-Allow-Origin', '*');
+//     // Pass to next layer of middleware
+//     next();
+// });
 
 
 var router = express.Router();
