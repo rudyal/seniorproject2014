@@ -85,7 +85,7 @@
 			    	<div class="sidebar-buttons">
 				    	<div class="search">
 				    		<i class="fa fa-search"></i>
-				    		<input class="search-bar"> </input>
+				    		<input ng-model="searchText" class="search-bar"> </input>
 
 				    	</div>
 				    	<div class="categories">
@@ -98,7 +98,7 @@
 			    	</div>
 			    	<div perfect-scrollbar class="post-list-wrapper scroller">
 				    	<div class="post-list">
-						  	<div class="post-link-wrapper {{findActive(post)}}" ng-repeat="post in forum.posts | orderBy: '-date'" >
+						  	<div class="post-link-wrapper {{findActive(post)}}" ng-repeat="post in forum.posts | filter:searchText | orderBy: '-date'" >
 						  		<a class="po-link" ui-sref=".posts({id: post._id })"><span class="empty"></span></a>
 							  		</a>
 						  		<div class="post-link">

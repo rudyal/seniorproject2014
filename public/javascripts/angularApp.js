@@ -109,6 +109,26 @@ angular.module('forumBody', ['ui.router', 'froala', 'infinite-scroll', 'angular-
 					  }]
 					}
 				})
+				.state('about',{
+					url: '/about',
+					templateUrl: '/about.html',
+					controller: 'HomeCtrl',
+					resolve: {
+					  userPromise: ['user', function(user){
+					    return user.getAllUsers();
+					  }]
+					}
+				})
+				.state('contact',{
+					url: '/contact',
+					templateUrl: '/contact.html',
+					controller: 'HomeCtrl',
+					resolve: {
+					  userPromise: ['user', function(user){
+					    return user.getAllUsers();
+					  }]
+					}
+				})
 				.state('locked',{
 					url: '/locked',
 					templateUrl: '/locked.html',
@@ -290,6 +310,12 @@ angular.module('forumBody', ['ui.router', 'froala', 'infinite-scroll', 'angular-
 				console.log("Creating Forum");
 		     	forum.create(forumd);
 		    	console.log("User Account Created");
+		    });
+		  return b;
+		  };
+		 u.addContact = function(contact) {
+		    var b = $http.post('/api/contact', contact).success(function(data){
+				console.log("Saved Contact Us Info");
 		    });
 		  return b;
 		  };
@@ -974,6 +1000,31 @@ angular.module('forumBody', ['ui.router', 'froala', 'infinite-scroll', 'angular-
 
 			  	
 			}
+		]
+	)
+	.controller('ContactController',
+		['$scope', 'user', function($scope, user){
+		  $scope.success = false;
+		  $scope.error = false;
+		  $scope.send = function () {
+		 
+		  var htmlBody = '<div>Name: ' + $scope.user.name + '</div>' +
+		                 '<div>Email: ' + $scope.user.email + '</div>' +
+		                 '<div>Message: ' + $scope.user.body + '</div>' +
+		                 '<div>Date: ' + (new Date()).toString() + '</div>';
+
+		  user.addContact({
+				  contactData: htmlBody
+			})
+		    .success(function (data) {
+		    	$scope.success = true;
+		    	$scope.user = {};
+		    })
+		    .error(function (data) {
+		    	$scope.error = true;
+		    });
+	      }
+		}	
 		]
 	)
 	.directive('perfectScrollbar',

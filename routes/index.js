@@ -6,6 +6,7 @@ var user =  mongoose.model('User');
 var ForumType =  mongoose.model('ForumType');
 var Expire =  mongoose.model('Expire');
 var Comment = mongoose.model('Comment');
+var Contact = mongoose.model('Contact');
 var ObjectId = require('mongoose').Types.ObjectId; 
 //var access = require('context-access');
 
@@ -66,11 +67,19 @@ router.get('/api/unforum/:unforum', function(req, res, next) {
 /* GET home page. */
 router.get('/', function(req, res) {
   console.log("homepage ejs");
-  res.render('homepage.ejs', { title: 'Express' });
+  res.render('homepage.ejs', { title: 'Create a Discussion Forum in Seconds | Discuss One' });
 });
 router.get('/popular', function(req, res) {
   console.log("homepage ejs");
-  res.render('homepage.ejs', { title: 'Express' });
+  res.render('homepage.ejs', { title: 'Create a Discussion Forum in Seconds | Discuss One' });
+});
+router.get('/about', function(req, res) {
+  console.log("homepage ejs");
+  res.render('homepage.ejs', { title: 'Create a Discussion Forum in Seconds | Discuss One' });
+});
+router.get('/contact', function(req, res) {
+  console.log("homepage ejs");
+  res.render('homepage.ejs', { title: 'Create a Discussion Forum in Seconds | Discuss One' });
 });
 router.get('/locked', function(req, res, next) {
     //req.params.createrID
@@ -141,6 +150,15 @@ router.get('/api/forums/:createrID', function(req, res, next) {
 
 });
 
+router.post('/api/contact', function(req, res, next) {
+  var vContact = new Contact(req.body);
+  // ref user for post table
+ console.log(vContact);
+  vContact.save(function(err, vContact){
+    if(err){ return next(err); }
+    res.json(vContact);
+  });
+});
 
 router.post('/builder', function(req, res, next) {
   var forumType = new ForumType(req.body);

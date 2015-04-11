@@ -253,12 +253,11 @@
 		<div class="front last-footer">
 			<div class="last-wrap">
 				<ul>
-					<li class="left"><a href="#" target="_self">About</a></li>
-					<li class="left"><a href="#" target="_self">Contact</a></li>
-					<li><a href="#" target="_self">Policy</a></li>
+					<li class="left"><a href="/" target="_self">About</a></li>
+					<li class="left"><a href="/contact" target="_self">Contact</a></li>
+					<li><a href="/" target="_self">Policy</a></li>
 				</ul>
 			</div>
-
 		</div>
 			
 		</div> <!--main-front-wrapper-->
@@ -304,11 +303,11 @@
 
 	    		<div class="main-content-wrapper">
 		    		<ul class="mobile-menu">
-	    			<li class="left" ng-show="!isLoggedIn()"><a href="/login" target="_self"><div>Login</div></a></li>
-					<li class="right" ng-show="!isLoggedIn()"><a href="/signup" target="_self"><div>Sign-up</div></a></li>
-					<li class="left" ng-show="isLoggedIn()"><a href="/profile"  target="_self"><div>{{user.username}}</div></a></li>
-					<li class="right" ng-show="isLoggedIn()"><a href="/logout"  target="_self"><div>logout</div></a></li>
-	    		</ul>
+		    			<li class="left" ng-show="!isLoggedIn()"><a href="/login" target="_self"><div>Login</div></a></li>
+						<li class="right" ng-show="!isLoggedIn()"><a href="/signup" target="_self"><div>Sign-up</div></a></li>
+						<li class="left" ng-show="isLoggedIn()"><a href="/profile"  target="_self"><div>{{user.username}}</div></a></li>
+						<li class="right" ng-show="isLoggedIn()"><a href="/logout"  target="_self"><div>logout</div></a></li>
+		    		</ul>
 	    			<div class="second-main-wrapper pop">
 	    			  <div class="pop-table">
 	    			  	<table>
@@ -334,10 +333,103 @@
 								</div>
 							</div>
 						</div>
+						<div class="front last-footer">
+						<div class="last-wrap">
+							<ul>
+								<li class="left"><a href="/" target="_self">About</a></li>
+								<li class="left"><a href="/contact" target="_self">Contact</a></li>
+								<li><a href="/" target="_self">Policy</a></li>
+							</ul>
+						</div>
+					</div>
 	    		</div>
 	    	</div>
 		</script>
 
+		<script type="text/ng-template" id="/contact.html">
+			<div class="main-front-wrapper">
+		    	<nav class="front top-nav">
+		    		<div class="nav-content-wrapper">
+			    		<div class="logo-wrapper">
+			    			<a href="/"><img src="/images/discuss-one-logo-2.png" class="img-laptop" alt="DiscussOne Logo"></a>
+			    		</div>
+
+			    		<div class="account-wrapper">
+			    			<div class="second-account">
+			    				<div class="social">
+				    				<img src="/images/facebook-gray.png" class="img-laptop" alt="Forum Design Preview">
+				    				<img src="/images/twitter-gray.png" class="img-laptop" alt="Forum Design Preview">
+				    			</div>
+				    			<ul>
+				    				<li class="left" ng-show="!isLoggedIn()"><a href="/login" target="_self">Login</a></li>
+								    <li class="right" ng-show="!isLoggedIn()"><a href="/signup" target="_self">Sign-up</a></li>
+								    <li class="left" ng-show="isLoggedIn()"><a href="/profile"  target="_self">{{user.username}}</a></li>
+								    <li class="right" ng-show="isLoggedIn()"><a href="/logout"  target="_self">logout</a></li>
+								    
+				    			</ul>
+				    			
+			    			</div>
+			    		</div>
+			    		<div class="account-wrapper-mobile">
+			    			<div><a ng-click="showMobile()" href="javascript:void(0)">Menu</a></div>	    			
+					    </div>
+			    	</div>
+
+		    	</nav>
+
+	    		<div class="main-content-wrapper">
+		    		<ul class="mobile-menu">
+		    			<li class="left" ng-show="!isLoggedIn()"><a href="/login" target="_self"><div>Login</div></a></li>
+						<li class="right" ng-show="!isLoggedIn()"><a href="/signup" target="_self"><div>Sign-up</div></a></li>
+						<li class="left" ng-show="isLoggedIn()"><a href="/profile"  target="_self"><div>{{user.username}}</div></a></li>
+						<li class="right" ng-show="isLoggedIn()"><a href="/logout"  target="_self"><div>logout</div></a></li>
+		    		</ul>
+	    			<div class="second-main-wrapper">
+	    			  <h1 class="contact-us">Contact Us</h1>
+
+	    			  <div class="col-lg-12 col-md-12 col-sm-12" ng-controller="ContactController">
+						  <div class="alert alert-danger" ng-show="error">
+						    <button class="close" data-dismiss="alert">x</button>
+						    <strong>Error!</strong> An error occured while trying to send message.
+						  </div>
+						  <div class="alert alert-success" ng-show="success">
+						    <button class="close" data-dismiss="alert">x</button>
+						    <strong>Success! </strong> Your message was successfully sent.
+						  </div>
+						  <form role="form" name="contactForm">
+						    <div class="form-group" ng-class="{error: contactForm.name.$invalid}">
+						    <label>Full Name</label>
+						    <input class="form-control" type="text" name="name" ng-model="user.name" required="required" placeholder="Your name">
+						      <span class="help-block" ng-show="contactForm.name.$error.required">Required</span>
+						    </div>
+						    <div class="form-group" ng-class="{error: contactForm.email.$invalid}">
+						      <label>Email</label>
+						      <input class="form-control" type="email" name="email" ng-model="user.email" required="required" placeholder="Your email address">
+						      <span class="help-block" ng-show="contactForm.email.$error.required">Required</span>
+						      <span class="help-block" ng-show="contactForm.email.$error.email">Invalid email address</span>
+						    </div>
+						    <div class="form-group" ng-class="{error: contactForm.message.$invalid}">
+						      <label>Message</label>
+						      <textarea class="form-control" rows="5" name="message" ng-model="user.body" required="required" placeholder="Your messsage"></textarea>
+						      <span class="help-inline" ng-show="contactForm.message.$error.required">Required</span>
+						    </div>
+						    <button class="btn btn-primary btn-lg btn-block" ng-click="send()" ng-disabled="contactForm.$invalid">Send</button>
+						  </form>
+						</div>
+	    			  
+				    </div>
+	    		</div>
+	    		<div class="pop-build">
+	    			    <div class="front first-footer">
+							<div class="foot">
+								<div class="f">
+									<a href="/" target="_self">Build a Forum</a>
+								</div>
+							</div>
+						</div>
+	    		</div>
+	    	</div>
+		</script>
 		
 	</div>
   </body>

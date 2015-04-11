@@ -25,6 +25,7 @@ mongoose.connect('mongodb://localhost/forumappdb');
 // models
 require('./models/Posts');
 require('./models/Comments');
+require('./models/Contact');
 require('./models/User');
 require('./models/ForumType');
 require('./models/Expire');
