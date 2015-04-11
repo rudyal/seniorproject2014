@@ -5,6 +5,8 @@
 	<meta charset="utf-8">
 	<meta name="keywords" content="discussone profile, discussone profile, discuss one profile, discussone profile">
   	<meta name="description" content="Your Profile | DiscussOne">
+  	<link rel="icon" type="image/png" href="favicon-32x32.png" sizes="32x32" />
+	<link rel="icon" type="image/png" href="favicon-16x16.png" sizes="16x16" />
 	 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
     <link rel="stylesheet" href="/stylesheets/style2.css">
     <link rel="stylesheet" href="/stylesheets/dist/style.css">
@@ -29,15 +31,14 @@
 	<nav class="front top-nav">
 	    		<div class="nav-content-wrapper">
 		    		<div class="logo-wrapper">
-		    			<h1>{{forum.title}}</h1>
-		    		</div>
+	    			<a href="#"><img src="/images/discuss-one-logo-2.png" class="img-laptop" alt="DiscussOne Logo"></a>
+	    			</div>
 
 		    		<div class="account-wrapper">
 		    			<div class="second-account">
 		    				<div class="social">
-			    				<img src="/images/facebook-gray.png" class="img-laptop" alt="Forum Design Preview">
-			    				<img src="/images/twitter-gray.png" class="img-laptop" alt="Forum Design Preview">
-			    				<a href="/" target="_self"><img src="/images/home-gray.png" class="img-laptop" alt="Forum Design Preview"></a>
+			    				<a href="https://www.facebook.com/DiscussOne" target="_blank"><img src="/images/facebook-gray.png" class="img-laptop" alt="Facebook Icon"></a>
+		    					<a href="https://twitter.com/discussone" target="_blank"><img src="/images/twitter-gray.png" class="img-laptop" alt="Twitter Icon"></a>
 			    			</div>
 			    			<ul>
 			    				<li class="left" ng-show="!isLoggedIn()"><a href="/login" target="_self">Login</a></li>
@@ -49,9 +50,18 @@
 			    			
 		    			</div>
 		    		</div>
+		    		<div class="account-wrapper-mobile">
+		    			<div><a ng-click="showMobile()" href="javascript:void(0)">Menu</a></div>	    			
+				    </div>
 		    	</div>
 	    </nav>
 	<div class="main-content-wrapper pro">
+		<ul class="mobile-menu">
+			<li class="left" ng-show="!isLoggedIn()"><a href="/login" target="_self"><div>Login</div></a></li>
+			<li class="right" ng-show="!isLoggedIn()"><a href="/signup" target="_self"><div>Sign-up</div></a></li>
+			<li class="left" ng-show="isLoggedIn()"><a href="/profile"  target="_self"><div>{{user.username}}</div></a></li>
+			<li class="right" ng-show="isLoggedIn()"><a href="/logout"  target="_self"><div>logout</div></a></li>
+		</ul>
 	    <div class="second-main-wrapper pro">
 			<div class="container">
 				<div class="page-header text-center">

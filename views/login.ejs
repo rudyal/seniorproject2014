@@ -5,6 +5,8 @@
 	<meta charset="utf-8">
 	<meta name="keywords" content="discussone login, discussone log in, discuss one login, discussone log-in">
   	<meta name="description" content="Login to DiscussOne to start creating discussion forums instantly">
+  	<link rel="icon" type="image/png" href="favicon-32x32.png" sizes="32x32" />
+	<link rel="icon" type="image/png" href="favicon-16x16.png" sizes="16x16" />
 	 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
     <link rel="stylesheet" href="/stylesheets/style2.css">
     <link rel="stylesheet" href="/stylesheets/dist/style.css">
@@ -24,28 +26,38 @@
 	<script type='text/javascript' src="/javascripts/angular-momentjs/angular-momentjs.js"></script>
     <script src="/javascripts/angularApp.js"></script>
     <base href="/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"> 
 </head>
-<body class="white" >
+<body ng-app="forumBody" class="white" ng-controller="ForumCtrl">
 	<nav class="front top-nav">
 	    	<div class="nav-content-wrapper">
 		    	<div class="logo-wrapper">
-		    		<h1>Discuss One</h1>
-		    	</div>
+	    			<a href="/"><img src="/images/discuss-one-logo-2.png" class="img-laptop" alt="DiscussOne Logo"></a>
+	    		</div>
 		    	<div class="account-wrapper">
 		    		<div class="second-account">
 		    			<div class="social">
-			    			<img src="/images/facebook-gray.png" class="img-laptop" alt="Forum Design Preview">
-			    			<img src="/images/twitter-gray.png" class="img-laptop" alt="Forum Design Preview">
-			    		</div>
+			    				<a href="https://www.facebook.com/DiscussOne" target="_blank"><img src="/images/facebook-gray.png" class="img-laptop" alt="Facebook Icon"></a>
+		    					<a href="https://twitter.com/discussone" target="_blank"><img src="/images/twitter-gray.png" class="img-laptop" alt="Twitter Icon"></a>
+			    			</div>
 			    		<ul>
-			    		<li class="left" ng-show="!isLoggedIn()"><a href="/login" target="_self">Login</a></li>
-						<li class="right" ng-show="!isLoggedIn()"><a href="/signup" target="_self">Sign-up</a></li>
-			    	</ul>
+				    		<li class="left" ng-show="!isLoggedIn()"><a href="/login" target="_self">Login</a></li>
+							<li class="right" ng-show="!isLoggedIn()"><a href="/signup" target="_self">Sign-up</a></li>
+				    	</ul>
+			    	</div>
 		    	</div>
-		    </div>
+		    	<div class="account-wrapper-mobile">
+	    			<div><a ng-click="showMobile()" href="javascript:void(0)">Menu</a></div>	    			
+			    </div>
 		</div>
 	</nav>
 <div class="main-content-wrapper pro account">
+	<ul class="mobile-menu">
+		<li class="left" ng-show="!isLoggedIn()"><a href="/login" target="_self"><div>Login</div></a></li>
+		<li class="right" ng-show="!isLoggedIn()"><a href="/signup" target="_self"><div>Sign-up</div></a></li>
+		<li class="left" ng-show="isLoggedIn()"><a href="/profile"  target="_self"><div>{{user.username}}</div></a></li>
+		<li class="right" ng-show="isLoggedIn()"><a href="/logout"  target="_self"><div>logout</div></a></li>
+	</ul>
 <div class="container">
 
 <div class="col-sm-6 col-sm-offset-3">

@@ -40,6 +40,7 @@ nav{
 		background-color: #404040;
 		height: 60px;
 		width: 100%;
+		
 		@include breakpoint(phablet) {height: 50px;}
 		@include breakpoint(mobileonly) {height: 45px;}
 		.nav-content-wrapper{
@@ -54,22 +55,25 @@ nav{
 			margin-left:auto;
 		}
 		.logo-wrapper{
-			width: 58%;
-			display: inline-block;
-			margin-top: 1px;
-			h1{
-				font-size: 35px;
-				@include breakpoint(tablet) {font-size: 28px;margin-top: 7px;}
-				@include breakpoint(phablet) {font-size: 18px;margin-top: 9.5px;}
-				@include breakpoint(mobileonly) { font-size: 14px;margin-top: 7px;}
-				color: white;
-				//font-family: sans-serif;
-				font-family: "soft";
+			img{
+				@include breakpoint(tablet) {width:250px;}
+				@include breakpoint(phablet) {width:220px;}
+				@include breakpoint(mobileonly) {width:100%;}
 			}
+			display: inline-block;
+			margin-top: -2px;
+			@include breakpoint(tablet) {margin-top: 3px;}
+			@include breakpoint(mobileonly) {width:70%;}
+		}
+		.account-wrapper-mobile{
+			display: none;
+			@include breakpoint(phablet) {width:25%;display: inline-block;}
+			@include breakpoint(mobileonly) {width:25%;display: inline-block;}
 		}
 		.account-wrapper{
+			@include breakpoint(phablet) {display: none;}
+			@include breakpoint(mobileonly) { display: none;}
 			float: right;
-			width: 40%;
 			display: inline-block;
 			.second-account{
 				width: 100%;
@@ -116,6 +120,60 @@ nav{
 			}
 		}
 	}
+.account-wrapper-mobile{
+	display: none;
+	vertical-align: top;
+	margin-top: 4px;
+	float: right;
+	@include breakpoint(phablet) {width:25%;display: inline-block;}
+	@include breakpoint(mobileonly) {width:25%;display: inline-block;}
+	div{
+		background-color: #5FC6FF;
+		@include transition(background-color 0.3s ease);
+		width: 70px;
+		border-radius: 6px;
+		height: 33px;
+		@include breakpoint(mobileonly) {height: 30px;}
+		margin-right: 5%;
+		color: white;
+		font-size: 21px;
+		border: 0;
+		padding: 5px 1px 0 10px;
+		@include breakpoint(mobileonly) {padding: 4px 1px 0 10px;}
+		a{
+			font-family: "soft";
+			color: white;
+			text-decoration: none;
+			font-size: 20px;
+		}
+	}
+	div:hover{
+		background-color: #0CA7FB;
+	}
+}
+ul.mobile-menu{
+	@include transition(all 1s ease);
+	display: none;
+	// @include breakpoint(phablet) {display: block;}
+// @include breakpoint(mobileonly) {display: block;}
+	li{
+		width: 100%;
+		@include transition(background-color 0.3s ease);
+		background-color: #5FC6FF;
+		a{
+			text-decoration: none;
+			div{
+				padding: 10px 10px 10px 30px;
+				color: white;
+				font-size: 35px;
+				font-family: "soft";
+			}
+		}
+	}
+	li:hover{
+		background-color: #0CA7FB;
+	}
+}
 .main-front-wrapper{
 	//background-color:white;
 	background-color: #333333;
@@ -139,22 +197,21 @@ nav{
 			margin-left:auto;
 		}
 		.logo-wrapper{
-			width: 58%;
-			display: inline-block;
-			margin-top: 1px;
-			h1{
-				font-size: 35px;
-				@include breakpoint(tablet) {font-size: 28px;margin-top: 7px;}
-				@include breakpoint(phablet) {font-size: 18px;margin-top: 9.5px;}
-				@include breakpoint(mobileonly) { font-size: 14px;margin-top: 7px;}
-				color: white;
-				//font-family: sans-serif;
-				font-family: "soft";
+			img{
+				@include breakpoint(tablet) {width:250px;}
+				@include breakpoint(phablet) {width:220px;}
+				@include breakpoint(mobileonly) {width:100%;}
 			}
+			display: inline-block;
+			margin-top: -2px;
+			@include breakpoint(tablet) {margin-top: 3px;}
+			@include breakpoint(mobileonly) {width:70%;}
 		}
+		
 		.account-wrapper{
+			@include breakpoint(phablet) {display: none;}
+			@include breakpoint(mobileonly) { display: none;}
 			float: right;
-			width: 40%;
 			display: inline-block;
 			.second-account{
 				width: 100%;
@@ -201,17 +258,12 @@ nav{
 			}
 		}
 	}
+
 	.main-content-wrapper{
 		background-color:white;
-		//height: 1200px;
 		@include background-image('bg-pattern-690-717');
-		
-		// background-image: $bg-img;
-		// @include background-size(auto);
-		//background-position: 0 0;
 	  	background-repeat: repeat;
-	  	//background-position: center center;
-
+	  	
 		.front.cheesy-sentance{
 			//height: 85px;
 			margin-bottom: 20px;
@@ -224,9 +276,9 @@ nav{
 			margin-right: auto;
 			font-size: 48px;
 			@include breakpoint(laptop) {font-size: 42px;margin-bottom: 15px;padding-top: 20px;}
-			@include breakpoint(tablet) {font-size: 38px;margin-bottom: 10px;padding-top: 10px;}
-			@include breakpoint(phablet) {font-size: 25px;margin-bottom: 10px;padding-top: 10px;}
-			@include breakpoint(mobileonly) { font-size: 18px;margin-bottom: 10px;padding-top: 10px;}
+			@include breakpoint(tablet) {font-size: 38px;margin-bottom: 15px;padding-top: 10px;}
+			@include breakpoint(phablet) {font-size: 25px;margin-bottom: 15px;padding-top: 10px;}
+			@include breakpoint(mobileonly) { font-size: 18px;margin-bottom: 15px;padding-top: 10px;}
 			font-weight: thin;
 			text-align: center;
 			font-family: "thin";
@@ -679,9 +731,9 @@ body.main-app{
 			margin-left:auto;
 		}
 		.logo-wrapper{
-			width: 58%;
+			width: 39%;
 			display: inline-block;
-			margin-top: 1px;
+			margin-top: -2px;
 			h1{
 				font-size: 40px;
 				@include breakpoint(tablet) {font-size: 28px;margin-top: 7px;}
@@ -694,7 +746,7 @@ body.main-app{
 		}
 		.account-wrapper{
 			float: right;
-			width: 40%;
+			width: 60%;
 			display: inline-block;
 			.second-account{
 				width: 100%;
@@ -1318,7 +1370,13 @@ body.main-app{
 				}
 			}
 		}
+		.body-wrapper.edit-mode{
+			span.fr-placeholder{
+				display: none;
+			}
+		}
 		.body-wrapper{
+			
 			padding: 5px 50px 5px 50px;
 			.froala-box{
 				h1{

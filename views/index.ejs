@@ -4,6 +4,8 @@
     <meta charset="utf-8">
     <meta name="keywords" content="created forum, made forum, built forum, hosted forum">
   	<meta name="description" content="This is forum created using our forum builder tool.">
+  	<link rel="icon" type="image/png" href="favicon-32x32.png" sizes="32x32" />
+	<link rel="icon" type="image/png" href="favicon-16x16.png" sizes="16x16" />
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
     <link rel="stylesheet" href="/stylesheets/style2.css">
     <link rel="stylesheet" href="/stylesheets/dist/style.css">
@@ -52,8 +54,8 @@
 		    		<div class="account-wrapper">
 		    			<div class="second-account">
 		    				<div class="social">
-			    				<img src="/images/facebook-gray.png" class="img-laptop" alt="Forum Design Preview">
-			    				<img src="/images/twitter-gray.png" class="img-laptop" alt="Forum Design Preview">
+			    				<a href="https://www.facebook.com/DiscussOne" target="_blank"><img src="/images/facebook-gray.png" class="img-laptop" alt="Facebook Icon"></a>
+		    					<a href="https://twitter.com/discussone" target="_blank"><img src="/images/twitter-gray.png" class="img-laptop" alt="Twitter Icon"></a>
 			    				<a href="/" target="_self"><img src="/images/home-gray.png" class="img-laptop" alt="Forum Design Preview"></a>
 			    			</div>
 			    			<ul>
@@ -71,6 +73,12 @@
 
 
 	    <div class="content-wrapper">
+		    <ul class="mobile-menu">
+				<li class="left" ng-show="!isLoggedIn()"><a href="/login" target="_self"><div>Login</div></a></li>
+				<li class="right" ng-show="!isLoggedIn()"><a href="/signup" target="_self"><div>Sign-up</div></a></li>
+				<li class="left" ng-show="isLoggedIn()"><a href="/profile"  target="_self"><div>{{user.username}}</div></a></li>
+				<li class="right" ng-show="isLoggedIn()"><a href="/logout"  target="_self"><div>logout</div></a></li>
+			</ul>
 	    	<div class="second-wrapper">
 		    	<div class="sidebar-wrapper">
 
@@ -178,19 +186,55 @@
 		</script>
 
 		<script type="text/ng-template" id="/edit.html">
-			<div ng-show="loadEdit(post)"></div>
+			<div class="post-form-wrapper">
 
-
-			  <form ng-submit="editPost(post._id)">
-			  		<input class="form-control"type="text" placeholder="Title" ng-model="title"></input>
+			<div class="back-div">
+			  	<div class="back-box">
+			  		<a ng-click="showShit()" ui-sref="forum"><span class="empty"></span></a>
+			  		<i class="fa fa-arrow-left"></i>
+			  		<a ng-click="showShit()" ui-sref="forum"><h3>Back</h3></a>
+			  	</div>
+			</div>
+				<div ng-show="loadEdit(post)"></div>
+			    <form ng-submit="editPost(post._id)">
+			    	<div class="title-wrapper">
+			  			<input class="form-control"type="text" placeholder="Title" ng-model="title"> </input>
+			  		</div>
 			  		<br>
-			  		<textarea class="form-control" froala="" id="edit" name="content" rows="4" cols="50" type="text" placeholder="Body" ng-model="bode"> </textarea>
+			  		<div class="body-wrapper edit-mode">
+			  			<textarea class="form-control edit-mode" froala="" id="edit" name="content" rows="15" cols="50" type="text" placeholder="Body" ng-model="bode"> </textarea>
+			  		</div>
 			  		<br>
-			  		<button class="btn btn-warning btn-lg" type="submit">Save</button>
+			  		<div class="icon-wrapper">
+			  			<div class="icon bomb">
+			  			<i class="fa fa-bomb fa-2x"></i>
+			  				<select class="setext" ng-model="bomb" ng-change="relDate(bomb)">
+			  					<option value="null" selected>- None -</option>
+			  					<option><span>Minute</span></option>
+						        <option><span>Hour</span></option>
+						        <option><span>Day</span></option>
+						        <option><span>Month</span></option>
+						    </select>
+						
+			  			</div>
+			  			<div class="icon pencil">
+			  				<i class="fa fa-pencil fa-2x"></i>
+			  			</div>
+			  			<div class="icon camera">
+			  				<i class="fa fa-camera fa-2x"></i>
+			  			</div>
+			  			<div class="icon soundcloud">
+			  				<i class="fa fa-soundcloud fa-2x"></i>
+			  			</div>
+			  		</div>
+			  		<div class="date-wrapper">
+			  			<input class="form-control" type="datetime" placeholder="Expiration Date" ng-model="exdate"> </input>
+			  		</div>
+			  		<div class="button-wrapper">
+			  			<button ng-click="showShit()" class="btn btn-warning btn-lg" type="submit">Post</button>
+			  		</div>
 			  	</form>
-
-			  	<a ui-sref="forum">back</a>
-			
+		  	</div>
 		</script>
 
 
