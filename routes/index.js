@@ -485,24 +485,26 @@ router.post('/posts/:post/comments', function(req, res, next) {
   });
 });
 
-router.get('/access/:murl', function(req, res) {
-  res.send("hellooo " + req.params.murl );
-});
 
 router.get('/api/:murl', function(req, res, next) {
 
-
-    //console.log(req.params.murl);
     var myPath = req.params.murl;
+    var forumT = new ForumType();
+
+    var matchQuery = {path: 'posts', model: Post, options: { sort: '-date', limit: 10} };
+    console.log(req.query.start);
+
+    if(req.query.start){
+      matchQuery = {path: 'posts', model: Post, match: { date : { "$lt" : req.query.start} }, options: { sort: '-date', limit: 10} };
+    }
+    
     // if( myPath.charAt( 0 ) === '/api' ){
     //   myPath = myPath.slice( 1 );
     // }
-    console.log("mongoose");
-    //console.log(myPath);
 
       ForumType
         .findOne({ url: myPath })
-        .populate('posts')
+        .populate( matchQuery )
         .exec(function (err, forumtype) {
           // console.log("forumtyp");
           // console.log(forumtype);
@@ -569,35 +571,28 @@ router.get('/api/:murl', function(req, res, next) {
 
           // CHECK ALLOW ANON USERS
 
-         
-
-
-
-          
-            if (err) return handleError(err);
+            if (err) return err;
             if(forumtype!=null){
-              console.log("forumtype");
+              console.log("More than 5?");
+              console.log(forumtype);
               //console.log(forumtype);
               req.forumtype = forumtype;
+                
+                req.forumtype.populate({
+                  path: 'posts.user',
+                  model: user
+                }, function (err, forumtype) {
 
-            req.forumtype.populate({
-              path: 'posts.user',
-              model: user
-            }, function (err, forumtype) {
-                  if(err){ return next(err); }
+                    req.forumtype.populate({
+                      path: 'posts.comments',
+                      model: Comment
+                    }, function (err, forumtype) {
+                        res.json(req.forumtype);
+                      });
 
-                  req.forumtype.populate({
-                    path: 'posts.comments',
-                    model: Comment
-                  }, function (err, forumtype) {
-                      res.json(req.forumtype);
+                });
 
-                    });
-
-
-                    //res.json(req.forumtype);
-
-              });
+              
               // req.forumtype.populate('posts.user').save(function(err, forumtype) {
               //   if(err){ return next(err); }
 
@@ -659,6 +654,18 @@ router.post('/*/posts', function(req, res, next) {
 
 
 });
+
+// Post.plugin(mongoosePaginate);
+
+// Post.paginate({}, 2, 10, function(error, pageCount, paginatedResults, itemCount) {
+//   if (error) {
+//     console.error(error);
+//   } else {
+//     console.log('Pages:', pageCount);
+//     console.log(paginatedResults);
+//   }
+// });
+
 
 
 

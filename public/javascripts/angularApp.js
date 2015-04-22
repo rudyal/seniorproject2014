@@ -89,7 +89,7 @@ angular.module('forumBody', ['ui.router', 'froala', 'infinite-scroll', 'angular-
 					controller: 'HomeCtrl',
 					resolve: {
 					  forumPromise: ['$stateParams', 'forum', function($stateParams, forum){
-					    return forum.getAllForums();
+					    //return forum.getAllForums();
 					  }],
 					  userPromise: ['user', function(user){
 					    return user.getAllUsers();
@@ -162,7 +162,12 @@ angular.module('forumBody', ['ui.router', 'froala', 'infinite-scroll', 'angular-
 					  	// if(b.status == 500) {
 					   //      $urlRouterProvider.url('/popular');
 					   //  }
-					    return forum.getAllByUrl($stateParams.murl);
+					   console.log("return all dis");
+					   return forum.setMurl($stateParams.murl);
+					   //console.log(forum.getAllByUrl($stateParams.murl));
+
+					   //return forum.getAllByUrl($stateParams.murl);
+					   //return $stateParams.murl;
 					  }],
 					  userPromise: ['user', function(user){
 					    return user.getAllUsers();
@@ -357,6 +362,11 @@ angular.module('forumBody', ['ui.router', 'froala', 'infinite-scroll', 'angular-
 
 	}])
 	.factory('forum', ['$http', '$window', function($http, $window){
+		var Forum = function() {
+	      this.items = [];
+	      this.busy = false;
+	      this.after = '';
+	    };
 		var u = {
 			forum: [
 				{title: 'forum itelle'}
@@ -369,6 +379,11 @@ angular.module('forumBody', ['ui.router', 'froala', 'infinite-scroll', 'angular-
 				]}
 			]
 		}
+		u.setMurl = function(murl) {
+			angular.copy({murl}, u);
+			return murl;
+		  };
+		
 		u.getAllForums = function() {
 			return $http.get('/forums').success(function(data){
 		    	
@@ -376,18 +391,32 @@ angular.module('forumBody', ['ui.router', 'froala', 'infinite-scroll', 'angular-
 		    });
 		  };
 		u.getAllByUrl = function(murl) {
+			console.log("test");
+			if (this.busy) return;
+    		this.busy = true;
 
 		  var b =  $http.get('api/' + murl).then(function(res){
-		  	console.log("returning data");
+		  	
 		  	//console.log(JSON.stringify(res.data.posts));
 		  	if(res.data.posts.length <= 0){
 		  		// Bring in a welcome post
 		  		//res.data.posts = [{"_id":"551700121f24f11827281357","user":{"_id":"5516f0691f24f11827281354","__v":0,"ip":"127.0.0.1","username":"efvevevf","updated":"2015-03-28T18:18:17.413Z","datejoined":"2015-03-28T18:18:17.413Z","local":{"password":"$2a$08$Q9tDOuiSnOq9lG38hIjnhOsb9iJIGc8ZnnEzdY7mQxS90HGeKygWC","email":"fwerfwer@errf.com"}},"title":"Welcome to Discuss One","forumtype":"5516fa971f24f11827281356","__v":0,"forumcategory":[],"bode":"<h3 style=\"margin-left: 0px; text-align: center;\" class=\"\">This is place to build forums quickly and share what's important.</h3><p class=\"\"><br></p><blockquote class=\"\">Like a killer quote</blockquote><p class=\"\"><br></p><pre class=\"\">&lt;h1&gt; Some nice functionality &lt;/h1&gt;</pre><p class=\"\"><br></p><p class=\"\"><br></p><p class=\"\"><img class=\"fr-fin\" data-fr-image-preview=\"false\" alt=\"Image title\" src=\"http://rack.0.mshcdn.com/media/ZgkyMDEyLzEyLzA0LzlkLzE1YmVzdGNhdG1lLmFIOC5q…B4NTM0IwplCWpwZw/81fb5716/5f7/15-best-cat-memes-ever-meow--3283dd863e.jpg\" width=\"286\"></p><p class=\"\"><br></p>","comments":[],"upvotes":0,"date":"2015-03-28T19:25:06.206Z"}]
 		  		//Prod
 		  		res.data.posts = [{"__v":0,"_id":"55186abbac189b11007a864f","forumtype":"55186a07ac189b11007a864e","title":"Welcome to Discuss One","user":{"__v":0,"_id":"551869feac189b11007a864d","ip":"75.185.195.141","profilepic":"1ad4641475d9fa66c23e0b7ebe67cbec.jpg","username":"Drew","updated":"2015-03-29T21:09:18.798Z","datejoined":"2015-03-29T21:09:18.798Z","local":{"password":"$2a$08$qVEo3tRmKNqK52eCa4AGvebAjAVCWS2nO.9Igj8bW1ysBa7I46gn.","email":"tecfcst@fccctest.com"}},"forumcategory":[],"bode":"<h3 class=\"\" style=\"text-align: center;\">This is place to build forums quickly and share what's important.</h3><p class=\"\" style=\"text-align: center;\"><br></p><blockquote class=\"\">Like a killer &nbsp;quote</blockquote><p class=\"\"><br></p><pre class=\"\">&lt;h1&gt;Or some nice functionality&lt;/h1&gt;</pre><p class=\"\"><br></p><p class=\"\"><br></p><p class=\"\"><img class=\"fr-fin\" data-fr-image-preview=\"false\" alt=\"Image title\" src=\"http://rack.0.mshcdn.com/media/ZgkyMDEyLzEyLzA0LzlkLzE1YmVzdGNhdG1lLmFIOC5q…B4NTM0IwplCWpwZw/81fb5716/5f7/15-best-cat-memes-ever-meow--3283dd863e.jpg\" width=\"300\"></p><p class=\"\"><br></p>","comments":[],"upvotes":0,"date":"2015-03-29T21:12:27.296Z"}]
-
 		  	}
 		  	//$window.location.href = '/popular';
+		  	console.log("returning data");
+		  	console.log(res.data);
+
+		  	var items = res.data.children;
+
+		    for (var i = 0; i < items.length; i++) {
+		      this.items.push(items[i].data);
+		    }
+
+		      this.after = "t3_" + this.items[this.items.length - 1].id;
+		      this.busy = false;
+
 		  	angular.copy(res.data, u.forum);
 		  	return u.forum;
 		  }).catch(function(res, status) {
@@ -395,29 +424,18 @@ angular.module('forumBody', ['ui.router', 'froala', 'infinite-scroll', 'angular-
 		  	if(res.data.error=="0001"){
 		  		console.log("if 0001");
 		  		// access code required
-
 		  		//redirect to page, pass form url
 		  		//$window.location.href = '/popular';
 		  	}
 		  	if(res.data.error=="0002"){
-		  		console.log("if 0002");
-		  		// Anonymous Users not allowed
-
-		  		// dont redirect here
 
 		  	}
-		  	// console.log("returning data 2");
-		  	// console.log(res);
-		  	// console.log(status);
-		  	// console.log("res.data");
-
-		  	// console.log(res.data);
 
 		  	$window.location.href = '/locked/'+res.data.URL;
 		    //console.error('Gists error', res.status, res.data);
 		  });
 		  //);
-		 return b;
+		 return u;
 		  
 		};
 		u.getAllByCreater = function(createrID) {
@@ -437,6 +455,73 @@ angular.module('forumBody', ['ui.router', 'froala', 'infinite-scroll', 'angular-
 		  return b;
 		  };
 		return u;
+
+	}])
+
+.factory('Forum', ['$http', '$window', function($http, $window){
+		var Forum = function() {
+	      this.items = [];
+	      this.busy = false;
+	      this.after = '';
+	    };
+
+		Forum.prototype.nextPage = function(murl) {
+			// console.log(Forum);
+			// console.log(this.busy);
+			// console.log(this.items);
+			console.log(" next page : " + murl);
+			if (this.busy) return;
+    		this.busy = true;
+    		murl = murl + "?start=" + this.after;
+    		$http.get('api/' + murl).success(function(data) {
+    			console.log(this.busy);
+				console.log(this.items);
+				console.log(data);
+		      var items = data.posts;
+		    for (var i = 0; i < items.length; i++) {
+		    	console.log(items[i]._id);
+		    	if( typeof items[i]._id != 'undefined' ){
+		    		console.log("test");
+		    		this.items.push(items[i]);
+		    	}
+		      	
+		    }
+		    console.log(this.items);
+		    console.log(this.items[this.items.length - 1]);
+		    console.log(this.items[this.items.length - 1].date);
+		      this.after = this.items[this.items.length - 1].date;
+		      this.busy = false;
+		    }.bind(this));
+
+		 //  $http.get('api/' + murl).then(function(res){
+		 //  	console.log(Forum);
+			// console.log(this.items);
+		  	
+		 //  	//console.log(JSON.stringify(res.data.posts));
+		 //  	if(res.data.posts.length <= 0){
+		 //  		res.data.posts = [{"__v":0,"_id":"55186abbac189b11007a864f","forumtype":"55186a07ac189b11007a864e","title":"Welcome to Discuss One","user":{"__v":0,"_id":"551869feac189b11007a864d","ip":"75.185.195.141","profilepic":"1ad4641475d9fa66c23e0b7ebe67cbec.jpg","username":"Drew","updated":"2015-03-29T21:09:18.798Z","datejoined":"2015-03-29T21:09:18.798Z","local":{"password":"$2a$08$qVEo3tRmKNqK52eCa4AGvebAjAVCWS2nO.9Igj8bW1ysBa7I46gn.","email":"tecfcst@fccctest.com"}},"forumcategory":[],"bode":"<h3 class=\"\" style=\"text-align: center;\">This is place to build forums quickly and share what's important.</h3><p class=\"\" style=\"text-align: center;\"><br></p><blockquote class=\"\">Like a killer &nbsp;quote</blockquote><p class=\"\"><br></p><pre class=\"\">&lt;h1&gt;Or some nice functionality&lt;/h1&gt;</pre><p class=\"\"><br></p><p class=\"\"><br></p><p class=\"\"><img class=\"fr-fin\" data-fr-image-preview=\"false\" alt=\"Image title\" src=\"http://rack.0.mshcdn.com/media/ZgkyMDEyLzEyLzA0LzlkLzE1YmVzdGNhdG1lLmFIOC5q…B4NTM0IwplCWpwZw/81fb5716/5f7/15-best-cat-memes-ever-meow--3283dd863e.jpg\" width=\"300\"></p><p class=\"\"><br></p>","comments":[],"upvotes":0,"date":"2015-03-29T21:12:27.296Z"}]
+		 //  	}
+		 //  	//$window.location.href = '/popular';
+		 //  	console.log("returning data");
+		 //  	console.log(res.data);
+
+		 //  	var items = res.data.posts;
+
+		 //    for (var i = 0; i < items.length; i++) {
+		 //    	console.log(items[i]);
+		 //      	this.items.push(items[i]);
+		 //    }
+
+		 //      this.after = "t3_" + this.items[this.items.length - 1].id;
+		 //      this.busy = false;
+
+		 //  	angular.copy(res.data, this);
+		 //  	return this;
+		 //  }).catch(function(res, status) {
+		 //  	$window.location.href = '/locked/'+res.data.URL;
+		 //  });
+		};
+	return Forum;
 
 	}])
 
@@ -557,16 +642,20 @@ angular.module('forumBody', ['ui.router', 'froala', 'infinite-scroll', 'angular-
 
 
 	.controller('MainCtrl', 
-		['$scope', '$timeout', '$filter', '$location', '$moment', 'forum', 'posts', 'user', 
-			function($scope, $timeout, $filter, $location, $moment, forum, posts, user){
-				// console.log("scope");
-				// console.log($scope);
+		['$scope',  '$timeout', '$filter', '$location', '$moment', 'Forum', 'forum', 'posts', 'user', 
+			function($scope,$timeout, $filter, $location, $moment, Forum, forum, posts, user){
+
 			  $scope.user = user.user.username;
 
 			  $scope.test = 'Hello world!';
 
 			  $scope.posts = posts.posts;
-			  $scope.forum = forum.forum;
+
+			  $scope.murl = forum;
+			  console.log("scope");
+				console.log($scope);
+			  console.log($scope.murl);
+			  $scope.forum = new Forum();
 
 			  $scope.relDate = function(bomb){
 					console.log("Meow: " + bomb);

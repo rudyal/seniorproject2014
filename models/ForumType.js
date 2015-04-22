@@ -11,6 +11,5 @@ var ForumTypeSchema = new mongoose.Schema({
   posts: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Post' }]
 });
 
-//May need a url checker
 
 mongoose.model('ForumType', ForumTypeSchema);

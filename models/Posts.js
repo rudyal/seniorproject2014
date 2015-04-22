@@ -14,14 +14,4 @@ var PostSchema = new mongoose.Schema({
   forumtype: { type: mongoose.Schema.Types.ObjectId, ref: 'ForumType' }
 });
 
-PostSchema.methods.anon = function() {
-  this.upvotes += 1;
-  this.save(cb);
-};
-
-PostSchema.methods.upvote = function(cb) {
-  this.upvotes += 1;
-  this.save(cb);
-};
-
 mongoose.model('Post', PostSchema);

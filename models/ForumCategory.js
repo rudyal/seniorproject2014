@@ -6,7 +6,6 @@ var ForumCategorySchema = new mongoose.Schema({
   forumtype: { type: mongoose.Schema.Types.ObjectId, ref: 'ForumType' }
 });
 
-//May need a url checker
 
 
 mongoose.model('ForumCategory', ForumCategorySchema);

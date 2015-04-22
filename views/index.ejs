@@ -1,6 +1,6 @@
 <html>
   <head>
-    <title>Discuss One | Forum Home</title>
+    <title>DiscussOne | Forum Home</title>
     <meta charset="utf-8">
     <meta name="keywords" content="created forum, made forum, built forum, hosted forum">
   	<meta name="description" content="This is forum created using our forum builder tool.">
@@ -27,7 +27,7 @@
     <script type='text/javascript' src="/javascripts/moment.min.js"></script>
     <script type='text/javascript' src="/javascripts/ga.js"></script>
 	<script type='text/javascript' src="/javascripts/angular-momentjs/angular-momentjs.js"></script>
-
+	<script src="/javascripts/ng-infinite-scroll.min.js"></script>
 
 	<script src="/javascripts/angularApp.js"></script>
 	  <!-- Initialize the editor. -->
@@ -48,7 +48,7 @@
 		<nav class="front top-nav">
 	    		<div class="nav-content-wrapper">
 		    		<div class="logo-wrapper">
-		    			<h1>{{forum.title}}</h1>
+		    			<h1>{{murl.murl}}</h1>
 		    		</div>
 
 		    		<div class="account-wrapper">
@@ -96,6 +96,7 @@
 							<a ng-click="hideShit()"  ui-sref=".post">+Post</a>
 				    	</div>
 			    	</div>
+			    	<!--
 			    	<div perfect-scrollbar class="post-list-wrapper scroller">
 				    	<div class="post-list">
 						  	<div class="post-link-wrapper {{findActive(post)}}" ng-repeat="post in forum.posts | filter:searchText | orderBy: '-date'" >
@@ -111,6 +112,27 @@
 						  	</div>
 						</div>
 					</div>
+					-->
+
+					  <div perfect-scrollbar class="post-list-wrapper scroller" >
+					    <div class="post-list" infinite-scroll='forum.nextPage(murl.murl)' infinite-scroll-disabled='forum.busy' infinite-scroll-distance='1'>
+							<div class="post-link-wrapper {{findActive(item)}}" ng-repeat="item in forum.items | filter:searchText | orderBy: '-date'">
+						      <a class="po-link" ui-sref=".posts({id: item._id })"><span class="empty"></span></a>
+							  		</a>
+						  		<div class="post-link">
+							  		{{item.title}}
+							  	</div>
+							  	<div class="post-meta">
+							  		<span class="date">{{dateMaster(item.date)}} </span>
+							  		<span class="username"> {{item.user.username}}</span>
+							  	</div>
+						    </div>
+
+						    <div ng-show='forum.busy'>Loading data...</div>
+					    </div>
+					    
+					  </div>
+
 				</div>
 
 				<div ng-class="infoSelector()">
