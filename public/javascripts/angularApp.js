@@ -391,7 +391,8 @@ angular.module('forumBody', ['ui.router', 'froala', 'infinite-scroll', 'angular-
 		    });
 		  };
 		u.getAllByUrl = function(murl) {
-			console.log("test");
+			console.log("current scope");
+			console.log($scope);
 			if (this.busy) return;
     		this.busy = true;
 
@@ -405,8 +406,8 @@ angular.module('forumBody', ['ui.router', 'froala', 'infinite-scroll', 'angular-
 		  		res.data.posts = [{"__v":0,"_id":"55186abbac189b11007a864f","forumtype":"55186a07ac189b11007a864e","title":"Welcome to Discuss One","user":{"__v":0,"_id":"551869feac189b11007a864d","ip":"75.185.195.141","profilepic":"1ad4641475d9fa66c23e0b7ebe67cbec.jpg","username":"Drew","updated":"2015-03-29T21:09:18.798Z","datejoined":"2015-03-29T21:09:18.798Z","local":{"password":"$2a$08$qVEo3tRmKNqK52eCa4AGvebAjAVCWS2nO.9Igj8bW1ysBa7I46gn.","email":"tecfcst@fccctest.com"}},"forumcategory":[],"bode":"<h3 class=\"\" style=\"text-align: center;\">This is place to build forums quickly and share what's important.</h3><p class=\"\" style=\"text-align: center;\"><br></p><blockquote class=\"\">Like a killer &nbsp;quote</blockquote><p class=\"\"><br></p><pre class=\"\">&lt;h1&gt;Or some nice functionality&lt;/h1&gt;</pre><p class=\"\"><br></p><p class=\"\"><br></p><p class=\"\"><img class=\"fr-fin\" data-fr-image-preview=\"false\" alt=\"Image title\" src=\"http://rack.0.mshcdn.com/media/ZgkyMDEyLzEyLzA0LzlkLzE1YmVzdGNhdG1lLmFIOC5q…B4NTM0IwplCWpwZw/81fb5716/5f7/15-best-cat-memes-ever-meow--3283dd863e.jpg\" width=\"300\"></p><p class=\"\"><br></p>","comments":[],"upvotes":0,"date":"2015-03-29T21:12:27.296Z"}]
 		  	}
 		  	//$window.location.href = '/popular';
-		  	console.log("returning data");
-		  	console.log(res.data);
+		  	// console.log("returning data");
+		  	// console.log(res.data);
 
 		  	var items = res.data.children;
 
@@ -474,21 +475,20 @@ angular.module('forumBody', ['ui.router', 'froala', 'infinite-scroll', 'angular-
     		this.busy = true;
     		murl = murl + "?start=" + this.after;
     		$http.get('api/' + murl).success(function(data) {
-    			console.log(this.busy);
-				console.log(this.items);
-				console.log(data);
+    // 			console.log(this.busy);
+				// console.log(this.items);
+				// console.log(data);
 		      var items = data.posts;
 		    for (var i = 0; i < items.length; i++) {
 		    	console.log(items[i]._id);
 		    	if( typeof items[i]._id != 'undefined' ){
-		    		console.log("test");
 		    		this.items.push(items[i]);
 		    	}
 		      	
 		    }
-		    console.log(this.items);
-		    console.log(this.items[this.items.length - 1]);
-		    console.log(this.items[this.items.length - 1].date);
+		    // console.log(this.items);
+		    // console.log(this.items[this.items.length - 1]);
+		    // console.log(this.items[this.items.length - 1].date);
 		      this.after = this.items[this.items.length - 1].date;
 		      this.busy = false;
 		    }.bind(this));
@@ -524,30 +524,24 @@ angular.module('forumBody', ['ui.router', 'froala', 'infinite-scroll', 'angular-
 	return Forum;
 
 	}])
-
-// .filter('postOrderBy', function () {
-//    return function (arr) {
-
-//    	console.log("custom sort");
-//    	console.log(arr);
-
-//      var numbers = [];
-//      var newWorldOrder = [];
-
-// 			return arr.sort(
-// 				(function(index){
-// 				    return function(a, b){
-// 				    	console.log("a");
-// 				    	console.log(a);
-// 				    	console.log(a.comments);
-// 				        return (a[index] === b[index] ? 0 : (a[index] < b[index] ? -1 : 1));
-// 				    };
-// 				})(3)
-// 			); // 2 is the index
-//         //return numbers.sort().concat(newWorldOrder);
-//      };
-// })
-
+.directive('scrolly', function () {
+    return {
+        restrict: 'A',
+        link: function (scope, element, attrs) {
+            var raw = element[0];
+            console.log('loading directive');
+                
+            element.bind('scroll', function () {
+                console.log('in scroll');
+                console.log(raw.scrollTop + raw.offsetHeight);
+                console.log(raw.scrollHeight);
+                if (raw.scrollTop + raw.offsetHeight > raw.scrollHeight) {
+                    scope.$apply(attrs.scrolly);
+                }
+            });
+        }
+    };
+})
 .directive('wcUnique', ['uniqueService', function (uniqueService) {
     return {
         restrict: 'A',
@@ -645,6 +639,21 @@ angular.module('forumBody', ['ui.router', 'froala', 'infinite-scroll', 'angular-
 		['$scope',  '$timeout', '$filter', '$location', '$moment', 'Forum', 'forum', 'posts', 'user', 
 			function($scope,$timeout, $filter, $location, $moment, Forum, forum, posts, user){
 
+			  $timeout(function() {
+			        console.log('update with timeout fired');
+			        console.log($scope);
+			    }, 3000);
+
+			  $timeout(function() {
+			        console.log('update with timeout fired 2');
+			        console.log($scope);
+			    }, 9000);
+
+			  $timeout(function() {
+			        console.log('update with timeout fired 3');
+			        console.log($scope);
+			    }, 15000);
+
 			  $scope.user = user.user.username;
 
 			  $scope.test = 'Hello world!';
@@ -656,6 +665,10 @@ angular.module('forumBody', ['ui.router', 'froala', 'infinite-scroll', 'angular-
 				console.log($scope);
 			  console.log($scope.murl);
 			  $scope.forum = new Forum();
+
+			  $scope.fillErUp = function(){
+			  	console.log("helloworld!");
+			  }
 
 			  $scope.relDate = function(bomb){
 					console.log("Meow: " + bomb);
@@ -1130,6 +1143,9 @@ angular.module('forumBody', ['ui.router', 'froala', 'infinite-scroll', 'angular-
 	    template: '<div><div ng-transclude></div></div>',
 	    replace: true,
 	    link: function($scope, $elem, $attr) {
+	    	var raw = $elem[0];
+	    	console.log('test thescope');
+	    	console.log($scope);
 	      var jqWindow = angular.element($window);
 	      var options = {};
 
@@ -1141,9 +1157,14 @@ angular.module('forumBody', ['ui.router', 'froala', 'infinite-scroll', 'angular-
 	      }
 
 	      $scope.$evalAsync(function() {
+	      	console.log("scollling");
 	        $elem.perfectScrollbar(options);
 	        var onScrollHandler = $parse($attr.onScroll)
 	        $elem.scroll(function(){
+                if (raw.scrollTop + raw.offsetHeight >= raw.scrollHeight) {
+                    $scope.$apply($attr.infiniteScroll); 
+                }
+
 	          var scrollTop = $elem.scrollTop()
 	          var scrollHeight = $elem.prop('scrollHeight') - $elem.height()
 	          $scope.$apply(function() {

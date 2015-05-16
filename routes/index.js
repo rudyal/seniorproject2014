@@ -491,7 +491,7 @@ router.get('/api/:murl', function(req, res, next) {
     var myPath = req.params.murl;
     var forumT = new ForumType();
 
-    var matchQuery = {path: 'posts', model: Post, options: { sort: '-date', limit: 10} };
+    var matchQuery = {path: 'posts', model: Post, options: { sort: '-date', limit: 15} };
     console.log(req.query.start);
 
     if(req.query.start){

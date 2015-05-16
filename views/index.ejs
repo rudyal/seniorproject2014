@@ -45,31 +45,7 @@
 	<script type="text/ng-template" id="/home.html">
 
 
-		<nav class="front top-nav">
-	    		<div class="nav-content-wrapper">
-		    		<div class="logo-wrapper">
-		    			<h1>{{murl.murl}}</h1>
-		    		</div>
-
-		    		<div class="account-wrapper">
-		    			<div class="second-account">
-		    				<div class="social">
-			    				<a href="https://www.facebook.com/DiscussOne" target="_blank"><img src="/images/facebook-gray.png" class="img-laptop" alt="Facebook Icon"></a>
-		    					<a href="https://twitter.com/discussone" target="_blank"><img src="/images/twitter-gray.png" class="img-laptop" alt="Twitter Icon"></a>
-			    				<a href="/" target="_self"><img src="/images/home-gray.png" class="img-laptop" alt="Forum Design Preview"></a>
-			    			</div>
-			    			<ul>
-			    				<li class="left" ng-show="!isLoggedIn()"><a href="/login" target="_self">Login</a></li>
-							    <li class="right" ng-show="!isLoggedIn()"><a href="/signup" target="_self">Sign-up</a></li>
-							    <li class="left" ng-show="isLoggedIn()"><a href="/profile"  target="_self">{{$$childTail.user}}</a></li>
-							    <li class="right" ng-show="isLoggedIn()"><a href="/logout"  target="_self">logout</a></li>
-							    
-			    			</ul>
-			    			
-		    			</div>
-		    		</div>
-		    	</div>
-	    </nav>
+		
 
 
 	    <div class="content-wrapper">
@@ -81,6 +57,9 @@
 			</ul>
 	    	<div class="second-wrapper">
 		    	<div class="sidebar-wrapper">
+		    		<div class="logo-wrapper">
+		    			<h1>{{murl.murl}}</h1>
+		    		</div>
 
 			    	<div class="sidebar-buttons">
 				    	<div class="search">
@@ -114,8 +93,8 @@
 					</div>
 					-->
 
-					  <div perfect-scrollbar class="post-list-wrapper scroller" >
-					    <div class="post-list" infinite-scroll='forum.nextPage(murl.murl)' infinite-scroll-disabled='forum.busy' infinite-scroll-distance='1'>
+					  <div perfect-scrollbar class="post-list-wrapper scroller" infinite-scroll='forum.nextPage(murl.murl)' infinite-scroll-disabled='forum.busy' infinite-scroll-distance='1'>
+					    <div class="post-list" >
 							<div class="post-link-wrapper {{findActive(item)}}" ng-repeat="item in forum.items | filter:searchText | orderBy: '-date'">
 						      <a class="po-link" ui-sref=".posts({id: item._id })"><span class="empty"></span></a>
 							  		</a>
@@ -128,7 +107,6 @@
 							  	</div>
 						    </div>
 
-						    <div ng-show='forum.busy'>Loading data...</div>
 					    </div>
 					    
 					  </div>
@@ -136,6 +114,23 @@
 				</div>
 
 				<div ng-class="infoSelector()">
+				<nav class="front top-nav">
+			    		<div class="nav-content-wrapper">
+				    		<div class="account-wrapper">
+				    			<div class="second-account">
+					    			<ul>
+					    				<li class="left" ng-show="!isLoggedIn()"><a href="/login" target="_self">Login</a></li>
+									    <li class="right" ng-show="!isLoggedIn()"><a href="/signup" target="_self">Sign-up</a></li>
+									    <li class="left" ng-show="isLoggedIn()"><a href="/profile"  target="_self">{{$$childTail.user}}</a></li>
+									    <li class="right" ng-show="isLoggedIn()"><a href="/logout"  target="_self">logout</a></li>
+									    <li class="right"><a href="#"  target="_self">Invite </a></li> 
+									    
+					    			</ul>
+					    			
+				    			</div>
+				    		</div>
+				    	</div>
+			    </nav>
 		            <ui-view></ui-view>
 		        </div>
 
@@ -353,9 +348,14 @@
 					    <div class="comment-area">
 					    	<textarea froala="edit2" class="form-control" froala="" id="edit" name="content" rows="4" cols="50" type="text" placeholder="Insert text here ..." ng-model="body"> </textarea>
 					    </div>
-					    <div class="comment-footer">
+					    <div class="comment-button">
 					    	<div class="cb">
 								<button type="submit" class="bu-post">Post</button>
+							</div>
+					    </div>
+					    <div class="comment-footer">
+					    	<div class="cb">
+								
 							</div>
 					    </div>
 					    

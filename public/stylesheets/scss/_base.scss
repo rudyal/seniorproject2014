@@ -27,9 +27,12 @@ body.main-app{
 	background-color: white;
 }
 body.main-app.pat{
-	background-color: white;
-	@include background-image('bg-pattern2-690-717');
-  	background-repeat: repeat;
+	// background-color: white;
+	// @include background-image('bg-pattern2-690-717');
+ //  	background-repeat: repeat;
+  //@include background-image(linear-gradient(white, white 5%, #eee 70%, #eee));
+  @include background-image(linear-gradient(white 1%, #F0F0F0 25%, #F0F0F0));
+
 }
 body.white{
 	background-color: white;
@@ -267,7 +270,7 @@ h1.contact-us{
 
 	.main-content-wrapper{
 		background-color:white;
-		@include background-image('bg-pattern-690-717');
+		@include background-imager('bg-pattern-690-717');
 	  	background-repeat: repeat;
 	  	
 		.front.cheesy-sentance{
@@ -715,110 +718,51 @@ h1.contact-us{
 
 body.main-app{
 
-	nav{
-		//background-color: #555555;
-		//background-color: #333333;
-		position: fixed;
-		z-index: 10;
-		background-color: #404040;
-		height: 60px;
-		width: 100%;
-		@include breakpoint(phablet) {height: 50px;}
-		@include breakpoint(mobileonly) {height: 50px;}
-		.nav-content-wrapper{
-			width: 90%;
-			height: 40px;
-			
-			padding-top: 10px;
-			@include breakpoint(tablet) {padding-top: 8px;}
-			@include breakpoint(phablet) {padding-top: 5px;}
-			@include breakpoint(mobileonly) { padding-top: 4px;}
-			margin-right:auto;
-			margin-left:auto;
-		}
-		.logo-wrapper{
-			width: 39%;
-			display: inline-block;
-			margin-top: -2px;
-			h1{
-				font-size: 40px;
-				@include breakpoint(tablet) {font-size: 28px;margin-top: 7px;}
-				@include breakpoint(phablet) {font-size: 18px;margin-top: 9.5px;}
-				@include breakpoint(mobileonly) { font-size: 14px;margin-top: 7px;}
-				color: white;
-				//font-family: sans-serif;
-				font-family: "soft";
-			}
-		}
-		.account-wrapper{
-			float: right;
-			width: 60%;
-			display: inline-block;
-			.second-account{
-				width: 100%;
-				float: right;
-				padding-top:5px;
-			}
-			a{
-				font-size: 20px;
-				@include breakpoint(phablet) {font-size: 17px;}
-				@include breakpoint(mobileonly) {font-size: 14px;}
-				font-family: "soft";
-				color: #7D7D7D;
-				//color: #A8A8A8;
-			}
-			ul{
-				display: inline-block;
-				vertical-align: top;
-				padding-top: 5px;
-				@include breakpoint(mobileonly) {padding-top: 0;}
-				float: right;
-			}
-			li{
-				display: inline-block;
-				list-style-type:none;
-			}
-			li.right{
-				padding-left: 7px;
-			}
-			li.left{
-				border-right: 1px solid #7D7D7D;
-				padding-right:10px;
-			}
-			.social{
-				display: inline-block;
-				padding-left:10px;
-				float: right;
-				img{
-					width: 35px;
-					margin-left:10px;
-					@include breakpoint(phablet) {width: 25px;margin-left:8px;}
-					@include breakpoint(mobileonly) { width: 21px;margin-left:6px;}
-				}
-			}
-		}
-	}
+	
 	.content-wrapper{
 		//background-color:yellow;
 		.sidebar-wrapper{
+			// This stuff is added
+			position: relative;
+			height: 100vh;
+			//end
 			@include transition(all 0.3s ease-in-out);
 			transition: display 1s linear;
 			display: inline-block;
-			width: 32%;
+			vertical-align: top;
+			width: 36%;
 			@include breakpoint(laptop) {width: 32%;}
 				@include breakpoint(tablet) {width: 32%;}
 				@include breakpoint(phablet) {width: 100%;}
 				@include breakpoint(mobileonly) {width: 100%;}
-			.sidebar-buttons{
-				position: fixed;
-				width: 32%;
-				height: 40px;
-				padding: 13px 5px 10px 5px;
-				@include breakpoint(laptop) {width: 32%;}
-				@include breakpoint(tablet) {width: 32%;}
+				.logo-wrapper{
+					position: relative;
+					width: 82%;
+					margin: 0 auto;
+					margin-top: 12px;
+					@include breakpoint(laptop) {width: 80%;}
+				@include breakpoint(tablet) {width: 80%;}
 				@include breakpoint(phablet) {width: 100%;height: 20px;padding: 2px 5px 2px 5px;}
 				@include breakpoint(mobileonly) {width: 100%;height: 20px;padding: 2px 5px 2px 5px;}
-				top: 60px;
+					h1{
+						font-size: 40px;
+						@include breakpoint(tablet) {font-size: 28px;margin-top: 7px;}
+						@include breakpoint(phablet) {font-size: 18px;margin-top: 9.5px;}
+						@include breakpoint(mobileonly) { font-size: 14px;margin-top: 7px;}
+						color: black;
+						//font-family: sans-serif;
+						font-family: "soft";
+					}
+				}
+			.sidebar-buttons{
+				position: relative;
+				width: 82%;
+				margin: 0 auto;
+				margin-top: 20px;
+				@include breakpoint(laptop) {width: 80%;}
+				@include breakpoint(tablet) {width: 80%;}
+				@include breakpoint(phablet) {width: 100%;height: 20px;padding: 2px 5px 2px 5px;}
+				@include breakpoint(mobileonly) {width: 100%;height: 20px;padding: 2px 5px 2px 5px;}
 				.search{
 					@include breakpoint(laptop) {margin-left: 3%;}
 					@include breakpoint(tablet) {margin-left: 1%;}
@@ -831,6 +775,7 @@ body.main-app{
 						width: 90px;
 						@include breakpoint(tablet) {width: 50px;}
 						border: 0;
+						background: none;
 						border-bottom: 1px solid black;
 					}
 				}
@@ -877,25 +822,31 @@ body.main-app{
 			}
 			.post-list-wrapper{
 				@include animation(fadeIn 0.75s);
-				background-color: #404040;
-				width: 32%;
-				@include breakpoint(laptop) {width: 32%;}
-				@include breakpoint(tablet) {width: 32%;}
+				border: 1px solid #E4E4E2;
+				border-radius: 3px;
+				width: 82%;
+				@include breakpoint(laptop) {width: 25%;}
+				@include breakpoint(tablet) {width: 25%;}
 				@include breakpoint(phablet) {width: 100%; top: 90px;}
 				@include breakpoint(mobileonly) {width: 100%; top: 90px;}
 				overflow-x: hidden;
 				overflow-y: hidden;
-				position: fixed;
-				top: 105px;
-				bottom: 0;
+				position: absolute;
+				top: 104px;
+				bottom: 20px;
+				margin-left: auto;
+				margin-right: auto;
 				left: 0;
 				right: 0;
+				// top: 50%; 
+			 //    left: 50%;
+			 //    transform: translate(-50%, -50%);
 			}
 			.post-list{
 				// height: 80%;
 				// overflow: auto;
 				position: relative;
-				background-color: #404040;
+				background-color: white;
 				.active{
 					border: 1px solid #5FC6FF !important;
 				}
@@ -908,7 +859,8 @@ body.main-app{
 					@include breakpoint(phablet) {height: 50px; padding: 15px 2% 0 9%;}
 					@include breakpoint(mobileonly) {height: 50px; padding: 15px 2% 0 9%;}
 					position:relative;
-					border-bottom: 1px solid #424242;
+					border-bottom: 1px solid #F7F7F7;
+					border-radius: 3px;
 					a.po-link{}
 						span.empty{
 							position:absolute; 
@@ -923,7 +875,7 @@ body.main-app{
 						font-weight: thin;
 						font-size: 22px;
 						font-family: "thin";
-						color: white;
+						color: black;
 						text-decoration: none;
 						width: 100%;
 						display: inline-block;
@@ -957,30 +909,104 @@ body.main-app{
 					}
 				}
 				.post-link-wrapper:hover{
-					background-color: #474747;
+					background-color: #F4FAFF;
 				}
 			}
 		}
 		.info-wrapper{
 			display: inline-block;
 			z-index: 2;
-			width: 67%;
-			top: 50px;
+			width: 61%;
+			//height: 100vh;
 			margin-left: -4px;
 			position: relative;
+			nav.front.top-nav{
+				//background-color: #555555;
+				//background-color: #333333;
+				position: relative;
+				z-index: 10;
+				background-color: transparent;
+				height: 30px;
+				width: 100%;
+				@include breakpoint(phablet) {height: 50px;}
+				@include breakpoint(mobileonly) {height: 50px;}
+				.nav-content-wrapper{
+					width: 82%;
+					height: 40px;
+					
+					padding-top: 4px;
+					@include breakpoint(tablet) {padding-top: 4px;}
+					@include breakpoint(phablet) {padding-top: 4px;}
+					@include breakpoint(mobileonly) { padding-top: 4px;}
+					margin-right:auto;
+					margin-left:auto;
+				}
+				
+				.account-wrapper{
+					float: right;
+					width: 80%;
+					display: inline-block;
+					.second-account{
+						width: 100%;
+						float: right;
+					}
+					a{
+						font-size: 14px;
+						@include breakpoint(phablet) {font-size: 17px;}
+						@include breakpoint(mobileonly) {font-size: 14px;}
+						font-family: "soft";
+						color: #7D7D7D;
+						//color: #A8A8A8;
+					}
+					ul{
+						display: inline-block;
+						vertical-align: top;
+						padding-top: 1px;
+						@include breakpoint(mobileonly) {padding-top: 0;}
+						float: right;
+					}
+					li{
+						display: inline-block;
+						list-style-type:none;
+					}
+					li.right{
+						padding-left: 7px;
+					}
+					li.left{
+						border-right: 1px solid #7D7D7D;
+						padding-right:10px;
+					}
+					.social{
+						display: inline-block;
+						padding-left:10px;
+						float: right;
+						img{
+							width: 35px;
+							margin-left:10px;
+							@include breakpoint(phablet) {width: 25px;margin-left:8px;}
+							@include breakpoint(mobileonly) { width: 21px;margin-left:6px;}
+						}
+					}
+				}
+			} // NAV END
 			.post-wrapper{
 				@include animation(fadeIn 0.75s);
 				.content-wrapper{
+
 					background-color:white;
 					bottom: 109;
+					border: 1px solid #E4E4E2;
+					border-radius: 3px;
+					padding: 11px;
 					position: fixed;
 					overflow: auto;
 					overflow-x: hidden;
 					overflow-y: auto;
-					top: 60;
+					top: 34;
 					@include breakpoint(phablet) {top: 50;}
 					@include breakpoint(mobileonly) {top: 50;}
-					width: 68%;
+					width: 64%;
+					
 					.first-post{
 						//border-bottom: 1px solid #F2F2F2;
 						.page-header{
@@ -1106,7 +1132,7 @@ body.main-app{
 						}
 					}
 					.comment-wrapper{
-						border-top: 1px solid #F2F2F2;
+						border-top: 1px solid #FAFAFA;
 						.page-header2{
 							height: 47px;
 							border: 0;
@@ -1182,7 +1208,8 @@ body.main-app{
 					}
 				}
 				.reply-wrapper{
-					width: 80%;
+					width: 60%;
+					padding: 20px;
 					@include breakpoint(laptop) {width: 80%;}
 					@include breakpoint(tablet) {width: 80%;}
 					@include breakpoint(phablet) {width: 100%;}
@@ -1193,30 +1220,43 @@ body.main-app{
 					bottom: 0;
 					margin-right: auto;
 					margin-left: auto;
-					background-color:#F7F7F7;
+					background-color:#F0F0F0;
 					.r2{
-						background-color:#F7F7F7;
-						width: 86%;
+						
 						margin: 0;
 						@include breakpoint(phablet) {margin: 0 auto;}
 						@include breakpoint(mobileonly) {margin: 0 auto;}
 						form{
-							background-color:#FAFAFA;
+							.comment-area{
+								display: inline-block;
+								border: 1px solid #E4E4E2;
+  								border-radius: 3px;
+  								width: 85%;
+  								background-color:#FAFAFA;
+							}
+							.comment-button{
+								vertical-align: top;
+  								padding: 23px 20px 20px 20px;
+								display: inline-block;
+								width: 14%;
+								button{
+									font-size: 26px;
+									border: none;
+  									background: none;
+								}
+							}
+							
 							margin-right: auto;
 							margin-left: auto;
 							width: 80%;
 							@include breakpoint(phablet) {width:100%;}
 							@include breakpoint(mobileonly) {width:100%;}
 							.froala-element{
-								height: 80px;
+								height: 75px;
 							}
 						}
 						.comment-footer{
-							border-left: solid 1px #252525;
-							border-right: solid 1px #252525;
-							border-bottom: solid 1px #252525;
-							background-color:#F7F7F7;
-							border-radius:0;
+							background-color:#F0F0F0;
 							.cb{
 								text-align: right;
 							}
@@ -1242,7 +1282,7 @@ body.main-app{
 			@include breakpoint(mobileonly) {display: none;}
 		}
 		.info-wrapper.post-mode{
-			width: 67%;
+			width: 61%;
 			@include breakpoint(laptop) {width: 67%;}
 			@include breakpoint(tablet) {width: 67%;}
 			@include breakpoint(phablet) {width: 100%;}
@@ -1279,7 +1319,7 @@ body.main-app{
 			}
 			.post-wrapper{
 				.content-wrapper{
-					width: 68%;
+					width: 60%;
 					@include breakpoint(laptop) {width: 68%;}
 					@include breakpoint(tablet) {width: 68%;}
 					@include breakpoint(phablet) {width: 100%;}
@@ -1556,7 +1596,7 @@ body.main-app{
 
 .main-content-wrapper.pro{
 	height:100vh;
-	@include background-image('bg-pattern-690-717');
+	@include background-imager('bg-pattern-690-717');
 	background-repeat: repeat;
 	.page-header{
 		h1{
@@ -1637,3 +1677,16 @@ body.main-app{
 	}
 
 }
+
+
+
+
+
+
+
+
+
+
+
+
+

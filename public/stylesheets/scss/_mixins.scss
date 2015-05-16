@@ -21,7 +21,8 @@
 $image-path: '/images' !default;
 $fallback-extension: 'png' !default;
 $retina-suffix: '@2x';
-@mixin background-image($name, $size:false){
+
+@mixin background-imager($name, $size:false){
     background-image: url(#{$image-path}/#{$name}.svg);
     @if($size){
         background-size: $size;
