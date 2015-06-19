@@ -12,7 +12,11 @@ $toy : none;
 //@include border-box-sizing;
 @include font-face("soft", font-files("LaoUI.ttf", "LaoUI.eot"));
 @include font-face("thin", font-files("DistProTh.otf", "DistProTh.eot"));
-
+@include font-face("stag", font-files("STAGSANS-LIGHT.otf"));
+@include font-face("open", font-files("OpenSans-Regular.ttf"));
+@include font-face("HellCon", font-files("HelveticaLTStd-Cond.otf"));
+@include font-face("HellNewCon", font-files("HelveticaNeueLTStd-Cn.otf"));
+@include font-face("HellNewLightCon", font-files("HelveticaNeueLTStd-LtCn.otf"));
 // Landing Page
 .html{
 	background-color: #333333;
@@ -740,25 +744,27 @@ body.main-app{
 					width: 82%;
 					margin: 0 auto;
 					margin-top: 12px;
+					overflow: auto;
+					min-height: 32px;
 					@include breakpoint(laptop) {width: 80%;}
 				@include breakpoint(tablet) {width: 80%;}
 				@include breakpoint(phablet) {width: 100%;height: 20px;padding: 2px 5px 2px 5px;}
 				@include breakpoint(mobileonly) {width: 100%;height: 20px;padding: 2px 5px 2px 5px;}
 					h1{
-						font-size: 40px;
+						font-size: 55px;
 						@include breakpoint(tablet) {font-size: 28px;margin-top: 7px;}
 						@include breakpoint(phablet) {font-size: 18px;margin-top: 9.5px;}
 						@include breakpoint(mobileonly) { font-size: 14px;margin-top: 7px;}
 						color: black;
 						//font-family: sans-serif;
-						font-family: "soft";
+						font-family: "stag";
 					}
 				}
 			.sidebar-buttons{
 				position: relative;
 				width: 82%;
 				margin: 0 auto;
-				margin-top: 20px;
+				margin-top: 9px;
 				@include breakpoint(laptop) {width: 80%;}
 				@include breakpoint(tablet) {width: 80%;}
 				@include breakpoint(phablet) {width: 100%;height: 20px;padding: 2px 5px 2px 5px;}
@@ -770,9 +776,13 @@ body.main-app{
 					@include breakpoint(mobileonly) {margin-left: 9%;}
 					display: inline-block;
 					margin-left: 7%;
+					margin-top: -2px;
 					vertical-align: top;
+					i.fa{
+						font-size: 15px;
+					}
 					input{
-						width: 90px;
+						width: 78px;
 						@include breakpoint(tablet) {width: 50px;}
 						border: 0;
 						background: none;
@@ -790,8 +800,7 @@ body.main-app{
 					a{
 						@include breakpoint(laptop) {font-size: 15px;}
 						@include breakpoint(tablet) {font-size: 15px;}
-						font-family: "soft";
-						font-weight: bold;
+						font-family: "open";
 						font-size: 20px;
 						color: black;
 					}
@@ -810,8 +819,7 @@ body.main-app{
 					a{
 						@include breakpoint(laptop) {font-size: 15px;}
 						@include breakpoint(tablet) {font-size: 15px;}
-						font-family: "soft";
-						font-weight: bold;
+						font-family: "open";
 						font-size: 20px;
 						color: black;
 					}
@@ -832,7 +840,7 @@ body.main-app{
 				overflow-x: hidden;
 				overflow-y: hidden;
 				position: absolute;
-				top: 104px;
+				top: 102px;
 				bottom: 20px;
 				margin-left: auto;
 				margin-right: auto;
@@ -852,12 +860,12 @@ body.main-app{
 				}
 				.post-link-wrapper{
 					@include transition(background-color 0.5s ease);
-					height: 60px;
-					padding: 19px 2% 0 9%;
-					@include breakpoint(laptop) {height: 60px; padding: 19px 2% 0 9%;}
-					@include breakpoint(tablet) {height: 60px; padding: 19px 2% 0 9%;}
-					@include breakpoint(phablet) {height: 50px; padding: 15px 2% 0 9%;}
-					@include breakpoint(mobileonly) {height: 50px; padding: 15px 2% 0 9%;}
+					height: 57px;
+					padding: 19px 2% 0 4%;
+					@include breakpoint(laptop) {height: 57px; padding: 19px 2% 0 4%;}
+					@include breakpoint(tablet) {height: 57px; padding: 19px 2% 0 4%;}
+					@include breakpoint(phablet) {height: 50px; padding: 15px 2% 0 4%;}
+					@include breakpoint(mobileonly) {height: 50px; padding: 15px 2% 0 4%;}
 					position:relative;
 					border-bottom: 1px solid #F7F7F7;
 					border-radius: 3px;
@@ -872,9 +880,11 @@ body.main-app{
 							  background-image: image-url('empty.gif', false, false);
 						}
 					.post-link{
-						font-weight: thin;
-						font-size: 22px;
-						font-family: "thin";
+						font-size: 18px;
+						//font-family: "thin";
+						font-family: "HellCon";
+						//font-family: "HellNewCon";
+						//font-family: "HellNewLightCon";
 						color: black;
 						text-decoration: none;
 						width: 100%;
@@ -1056,21 +1066,25 @@ body.main-app{
 								display: none;
 							}
 							.title-wrapper{
-								width: 60%;
+								width: 62%;
 								text-align: center;
 								display: inline-block;
 								font-family: "thin";
 								font-size:28px;
 								vertical-align: top;
-								padding-top: 12px;
-								text-overflow: ellipsis;
-							    white-space: nowrap;
-							    overflow: hidden;
+								padding-top: 5px;
+								// text-overflow: ellipsis;
+							 //    white-space: nowrap;
+							 //    overflow: hidden;
+							  //  height: 50px;
+							    font-size: 28px;
 							    h3{
 							    	  padding-bottom: 4px;
-									  text-overflow: ellipsis;
-									  white-space: nowrap;
-									  overflow: hidden;
+							    	  font-size: 28px;
+									  // text-overflow: ellipsis;
+									  // white-space: nowrap;
+									  // overflow: hidden;
+									  //width: 100%;
 							    }
 							}
 						}
@@ -1123,6 +1137,37 @@ body.main-app{
 							}
 							blockquote p {
 							  display: inline;
+							}
+						}
+						form{
+							.title-wrapper{
+								width: 60%;
+								text-align: center;
+								display: inline-block;
+								vertical-align: top;
+								padding-top: 12px;
+							    input{
+									text-align: center;
+									font-family: "thin";
+									font-size:24px;
+								}
+							}
+							.butt-wrap{
+								display: inline-block;
+								vertical-align: top;
+								padding-top: 16px;
+  								padding-left: 33px;
+							}
+							button.save-edit{
+								border: none;
+								background: none;
+								font-size: 27px;
+							}
+							.body-wrapper{
+								width: 93% !important;
+								span.fr-placeholder{
+									display: none;
+								}
 							}
 						}
 					}
@@ -1343,7 +1388,7 @@ body.main-app{
 								width: 100%;
 							}
 							.title-wrapper{
-								width: 60%;
+								//width: 60%;
 
 							}
 						}
@@ -1388,10 +1433,48 @@ body.main-app{
 	}
 
 	.post-form-wrapper{
+		.new-post-outer{
+			width: 82%;			
+		}
+		.post-selector{
+
+			ul{
+				li{
+					padding: 10px 25px 10px 25px;
+					margin-left: 3px;
+					margin-bottom: -1px;
+					display: inline-block;
+					a{
+						text-decoration: none;
+						color: black;
+						font-family: 'thin';
+						font-size: 33px;
+					}
+					a:hover{
+						font-weight: bold;
+					}
+				}
+				li.active{
+					border: 1px solid #E4E4E2;
+					border-radius: 3px;
+					background-color:white;
+					border-bottom:none;
+				}
+				li.first{
+					margin-left: 27px;
+				}
+			}
+		}
+		.post-selection-wrapper{
+			border: 1px solid #E4E4E2;
+			border-radius: 3px;
+			background-color:white;
+			padding-bottom:30px;
+		}
 		@include animation(fadeIn 0.75s);
 		@include animation(fadeOut 0.75s);
 		.title-wrapper{
-			padding: 40px 50px 10px 25%;
+			padding: 30px 50px 20px 50px;
 			margin-left: auto;
 			text-align: center;
 			margin-right: auto;
@@ -1399,15 +1482,21 @@ body.main-app{
 			@include breakpoint(tablet) {padding: 40px 50px 10px 15%;}
 			@include breakpoint(phablet) {padding: 40px 50px 10px 15%;}
 			@include breakpoint(mobileonly) {padding: 40px 50px 10px 15%;}
-
+			.title-label-wrap{
+				font-family: "soft";
+				font-size: 21px;
+				color: #878787;
+				text-align: left;
+				margin-bottom: 5px;
+			}
 			input{
-				width: 400px;
+				width: 320px;
 				@include breakpoint(laptop) {width: 80%;}
 				@include breakpoint(tablet) {width: 80%;}
 				@include breakpoint(phablet) {width: 80%;}
 				@include breakpoint(mobileonly) {width: 80%;}
-				border: solid 1px #252525;
-				background-color:#F7F7F7;
+				// border: solid 1px #252525;
+				// background-color:#F7F7F7;
 				border-radius:0;
 				@include input-placeholder {
 					font-family: "soft";
@@ -1422,7 +1511,13 @@ body.main-app{
 			}
 		}
 		.body-wrapper{
-			
+			.title-label-wrap{
+				font-family: "soft";
+				font-size: 21px;
+				color: #878787;
+				text-align: left;
+				margin-bottom: 5px;
+			}
 			padding: 5px 50px 5px 50px;
 			.froala-box{
 				h1{
@@ -1468,7 +1563,7 @@ body.main-app{
 				
 			}
 			.froala-element.not-msie.f-basic{
-				height: 250px;
+				height: 200px;
 				@include breakpoint(phablet) {height: 150px;}
 				@include breakpoint(mobileonly) {height: 150px;}
 				background-color:#F7F7F7;

@@ -398,7 +398,7 @@ router.post('/posts', function(req, res, next) {
                 //console.log(post.user);
                 console.log("col1");
               }else{
-                console.log("col2");
+                console.log("NOT FUCKING SIGNED IN");
                 //Can set User here
 
                 //Maybe call a function that create anonymous user ex. "anon-4523452", then set set session with that, returns user_id
@@ -572,6 +572,7 @@ router.get('/api/:murl', function(req, res, next) {
           // CHECK ALLOW ANON USERS
 
             if (err) return err;
+            console.log("test 1");
             if(forumtype!=null){
               console.log("More than 5?");
               console.log(forumtype);
@@ -606,6 +607,63 @@ router.get('/api/:murl', function(req, res, next) {
 
 
     
+});
+
+router.get('/apimeta/:murl', function(req, res, next) {
+
+    var myPath = req.params.murl;
+    var forumT = new ForumType();
+
+      ForumType
+        .findOne({ url: myPath })
+        .exec(function (err, forumtype) {
+
+          var access = 3403;
+          var redirectGuy = false;
+
+          // CHECK ACCESS CODE
+          if(forumtype != null){
+            if(forumtype.access != null){
+              if(typeof forumtype.access != 'undefined'){
+                // If so, check if access code is set as param
+                var code = forumtype.access + forumtype.url;
+                if(req.cookies.accesscode == code){
+                  console.log("settt");
+                }else{
+                  //console.log("redirect 1");
+                  //console.log(forumtype.url);
+                  return res.status(500).json({"error": "0001", "URL": forumtype.url});
+                  next();
+                }
+              }
+            }
+          }
+            if (err) return err;
+            console.log("test 1");
+            if(forumtype!=null){
+              console.log("More than 5?");
+              console.log(forumtype);
+              //console.log(forumtype);
+              req.forumtype = forumtype;
+                
+                req.forumtype.populate({
+                  path: 'posts.user',
+                  model: user
+                }, function (err, forumtype) {
+
+                    req.forumtype.populate({
+                      path: 'posts.comments',
+                      model: Comment
+                    }, function (err, forumtype) {
+                        res.json(req.forumtype);
+                      });
+
+                });
+            }else{
+              res.redirect('/');
+            }
+
+    });
 });
 
 router.post('/*/posts', function(req, res, next) {

@@ -1,6 +1,6 @@
 
 
-angular.module('forumBody', ['ui.router', 'froala', 'infinite-scroll', 'angular-momentjs'])
+angular.module('forumBody', ['ui.router', 'froala', 'infinite-scroll', 'angular-momentjs','ngFitText'])
 	.value('froalaConfig', {
         inlineMode: false,
         placeholder: 'Enter Text Here'
@@ -163,10 +163,10 @@ angular.module('forumBody', ['ui.router', 'froala', 'infinite-scroll', 'angular-
 					   //      $urlRouterProvider.url('/popular');
 					   //  }
 					   console.log("return all dis");
-					   return forum.setMurl($stateParams.murl);
+					   //return forum.setMurl($stateParams.murl);
 					   //console.log(forum.getAllByUrl($stateParams.murl));
 
-					   //return forum.getAllByUrl($stateParams.murl);
+					   return forum.getAllByUrl($stateParams.murl);
 					   //return $stateParams.murl;
 					  }],
 					  userPromise: ['user', function(user){
@@ -362,11 +362,6 @@ angular.module('forumBody', ['ui.router', 'froala', 'infinite-scroll', 'angular-
 
 	}])
 	.factory('forum', ['$http', '$window', function($http, $window){
-		var Forum = function() {
-	      this.items = [];
-	      this.busy = false;
-	      this.after = '';
-	    };
 		var u = {
 			forum: [
 				{title: 'forum itelle'}
@@ -392,11 +387,11 @@ angular.module('forumBody', ['ui.router', 'froala', 'infinite-scroll', 'angular-
 		  };
 		u.getAllByUrl = function(murl) {
 			console.log("current scope");
-			console.log($scope);
+			//console.log($scope);
 			if (this.busy) return;
     		this.busy = true;
 
-		  var b =  $http.get('api/' + murl).then(function(res){
+		  var b =  $http.get('apimeta/' + murl).then(function(res){
 		  	
 		  	//console.log(JSON.stringify(res.data.posts));
 		  	if(res.data.posts.length <= 0){
@@ -406,17 +401,8 @@ angular.module('forumBody', ['ui.router', 'froala', 'infinite-scroll', 'angular-
 		  		res.data.posts = [{"__v":0,"_id":"55186abbac189b11007a864f","forumtype":"55186a07ac189b11007a864e","title":"Welcome to Discuss One","user":{"__v":0,"_id":"551869feac189b11007a864d","ip":"75.185.195.141","profilepic":"1ad4641475d9fa66c23e0b7ebe67cbec.jpg","username":"Drew","updated":"2015-03-29T21:09:18.798Z","datejoined":"2015-03-29T21:09:18.798Z","local":{"password":"$2a$08$qVEo3tRmKNqK52eCa4AGvebAjAVCWS2nO.9Igj8bW1ysBa7I46gn.","email":"tecfcst@fccctest.com"}},"forumcategory":[],"bode":"<h3 class=\"\" style=\"text-align: center;\">This is place to build forums quickly and share what's important.</h3><p class=\"\" style=\"text-align: center;\"><br></p><blockquote class=\"\">Like a killer &nbsp;quote</blockquote><p class=\"\"><br></p><pre class=\"\">&lt;h1&gt;Or some nice functionality&lt;/h1&gt;</pre><p class=\"\"><br></p><p class=\"\"><br></p><p class=\"\"><img class=\"fr-fin\" data-fr-image-preview=\"false\" alt=\"Image title\" src=\"http://rack.0.mshcdn.com/media/ZgkyMDEyLzEyLzA0LzlkLzE1YmVzdGNhdG1lLmFIOC5q…B4NTM0IwplCWpwZw/81fb5716/5f7/15-best-cat-memes-ever-meow--3283dd863e.jpg\" width=\"300\"></p><p class=\"\"><br></p>","comments":[],"upvotes":0,"date":"2015-03-29T21:12:27.296Z"}]
 		  	}
 		  	//$window.location.href = '/popular';
-		  	// console.log("returning data");
-		  	// console.log(res.data);
-
-		  	var items = res.data.children;
-
-		    for (var i = 0; i < items.length; i++) {
-		      this.items.push(items[i].data);
-		    }
-
-		      this.after = "t3_" + this.items[this.items.length - 1].id;
-		      this.busy = false;
+		  	 console.log("returning data");
+		  	 console.log(res.data);
 
 		  	angular.copy(res.data, u.forum);
 		  	return u.forum;
@@ -636,35 +622,23 @@ angular.module('forumBody', ['ui.router', 'froala', 'infinite-scroll', 'angular-
 
 
 	.controller('MainCtrl', 
-		['$scope',  '$timeout', '$filter', '$location', '$moment', 'Forum', 'forum', 'posts', 'user', 
-			function($scope,$timeout, $filter, $location, $moment, Forum, forum, posts, user){
+		['$scope',  '$timeout', '$filter', '$location', '$sce', '$moment', 'Forum', 'forum', 'posts', 'user', 
+			function($scope,$timeout, $filter, $location, $sce, $moment, Forum, forum, posts, user){
 
-			  $timeout(function() {
-			        console.log('update with timeout fired');
-			        console.log($scope);
-			    }, 3000);
-
-			  $timeout(function() {
-			        console.log('update with timeout fired 2');
-			        console.log($scope);
-			    }, 9000);
-
-			  $timeout(function() {
-			        console.log('update with timeout fired 3');
-			        console.log($scope);
-			    }, 15000);
+			  // $timeout(function() {
+			  //       console.log('update with timeout fired');
+			  //       console.log($scope);
+			  //   }, 3000);
 
 			  $scope.user = user.user.username;
 
-			  $scope.test = 'Hello world!';
-
 			  $scope.posts = posts.posts;
 
-			  $scope.murl = forum;
-			  console.log("scope");
-				console.log($scope);
-			  console.log($scope.murl);
+			  $scope.murl = forum.forum;
 			  $scope.forum = new Forum();
+
+
+
 
 			  $scope.fillErUp = function(){
 			  	console.log("helloworld!");
@@ -761,6 +735,62 @@ angular.module('forumBody', ['ui.router', 'froala', 'infinite-scroll', 'angular-
 				  return false;
 				};
 
+				// EDIT POST FUNCITONALITY
+
+				$scope.editorEnabled = false;
+  
+			  $scope.enableEditor = function(body, title) {
+			  	console.log("test");
+			  	console.log(body);
+			    $scope.editorEnabled = true;
+				$scope.title = title;  	
+			    $scope.bode = body.$$unwrapTrustedValue();
+			   // $scope.editableTitle = $scope.title;
+			  };
+			  
+			  $scope.disableEditor = function() {
+			    $scope.editorEnabled = false;
+			  };
+			  
+			  $scope.save = function() {
+			    $scope.disableEditor();
+			  };
+
+			  // END EDIT POST
+
+			  // EDIT COMMENT FUNCITONALITY
+
+				$scope.cEditorEnabled= false;
+				$scope.editorID;
+
+			// For editing comments 
+			$scope.editorCheck = function(com_id) {
+				if($scope.cEditorEnabled){
+					if(com_id == $scope.editorID){
+						return true;
+					}
+					return false;
+				}
+				return false;
+			};
+
+			  $scope.enablecEditor = function(com) {
+			  	//console.log(com);
+			    $scope.cEditorEnabled = true;
+			    $scope.editorID = com._id;
+			    $scope.comEditText = com.body.$$unwrapTrustedValue();
+			  };
+			  
+			  $scope.disablecEditor = function() {
+			    $scope.cEditorEnabled = false;
+			  };
+			  
+			  $scope.saveE = function() {
+			    $scope.disablecEditor();
+			  };
+
+			  // END EDIT POST
+
 				$scope.loadComment = function(comment) {
 
 					
@@ -784,16 +814,21 @@ angular.module('forumBody', ['ui.router', 'froala', 'infinite-scroll', 'angular-
 			    }
 			  };
 
-			  $scope.addPost = function(forumtypeid){
+			  $scope.addPost = function(forumtypeid, type){
 			  	if($scope.title === '') { return; }
 			  	posts.create({
 						title: $scope.title,
-						link: $scope.link,
+						type: type,
+						category: $scope.category,
 						bode: $scope.bode,
+						imagelink: $scope.imagelink,
+						videolink: $scope.videolink,
+						linklink: $scope.linklink,
 						expirationdate: $scope.exdate,
 						forumtype: forumtypeid
 					}).success(function(post) {
-						$scope.forum.posts.push(post);
+
+						$scope.$parent.forum.items.push(post);
 						$location.path(forum.forum.url);
 				  });
      			
@@ -803,15 +838,91 @@ angular.module('forumBody', ['ui.router', 'froala', 'infinite-scroll', 'angular-
 				$scope.exdate = '';
 			  }
 
+			  $scope.editPost = function(postid, title, bode){
+			  	//if($scope.title === '') { return; }
+			  	// console.log("editing post");
+			  	// console.log($scope);
+			  	// console.log(postid);
+			  	// console.log(title);
+			  	// console.log(bode);
+			  	
+				posts.edit({
+					title: title,
+					link: " ",
+					bode: bode
+				}, postid).success(function(post) {
+					$scope.$$childTail.$$childTail.post.title = title;
+					// get scope, get post by id, assign this post, return enadble eitor to false
+					for (var key in $scope.forum.items) {
+					  if ($scope.forum.items.hasOwnProperty(key)) {
+					    console.log(key + " -> " + $scope.forum.items[key]._id);
+					    if($scope.forum.items[key]._id == postid){
+					    	$scope.forum.items[key].bode = bode;
+					    	$scope.$$childTail.$$childTail.post.bode = $sce.trustAsHtml(bode);
+					    	//$sce.trustAsHtml(post.bode);
+					    	console.log($scope.forum.items[key].bode);
+					    	console.log($scope);
+					    	$scope.forum.items[key].title = title;
+					    	$scope.disableEditor();
+					    	break;
+					    }
+					  }
+					}
+				  });
+				$scope.title = '';
+				$scope.bode = '';
+				$scope.link = '';
+				$scope.exdate = '';
+			  }
+			  $scope.makeSafe = function(body){
+			  	return $sce.trustAsHtml(bode);
+			  }
+
+			  $scope.editComment = function(comment, comEditText){
+			  	console.log(comment);
+			  	console.log("here");
+			  	console.log(comEditText);
+			  	//if($scope.title === '') { return; }
+			  	// console.log("editing post");
+			  	// console.log($scope);
+			  	// console.log(postid);
+			  	// console.log(title);
+			  	// console.log(bode);
+			  	
+				posts.editCom({
+					body: comEditText
+				}, comment._id).success(function(commen) {
+					console.log("success! cur scope");
+					console.log($scope);
+					for (var key in $scope.$$childTail.$$childTail.post.comments) {
+					  if ($scope.$$childTail.$$childTail.post.comments.hasOwnProperty(key)) {
+					    console.log(key + " -> " + $scope.$$childTail.$$childTail.post.comments[key]._id);
+					    if($scope.$$childTail.$$childTail.post.comments[key]._id == comment._id){
+					    	//$scope.forum.items[key].bode = bode;
+					    	$scope.$$childTail.$$childTail.post.comments[key].body = $sce.trustAsHtml(comEditText);
+					    	//$sce.trustAsHtml(post.bode);
+					    	// console.log($scope.forum.items[key].bode);
+					    	// console.log($scope);
+					    	// $scope.forum.items[key].title = title;
+					    	// $scope.disableEditor();
+					    	break;
+					    }
+					  }
+					}
+				  });
+				$scope.title = '';
+				$scope.bode = '';
+				$scope.link = '';
+				$scope.exdate = '';
+			  }
+
+			  
+
 			  	var n = $location.path().lastIndexOf('/');
 				var result = $location.path().substring(n + 1);
 				$scope.location = result;
-				//console.log("current location");
-				//console.log($location);
 				var lo = $location.$$path.indexOf("posts") > -1;
 				var lo2 = $location.$$path.indexOf("post") > -1;
-				//console.log("lo: " + lo);
-				//console.log("lo2: " + lo2);
 
 				$scope.hideShit = function(){
 					$('.info-wrapper').removeClass('info-wrapper').addClass('info-wrapper post-mode');
@@ -839,6 +950,40 @@ angular.module('forumBody', ['ui.router', 'froala', 'infinite-scroll', 'angular-
 					$('.mobile-menu').toggle();
 				}
 
+				// New Post Page, Tabbed Pages
+				var postVarApp = 'text';
+				$scope.showText=true;
+				$scope.postSelector = function(type){
+					$scope.showText=false;
+					$scope.showImage=false;
+					$scope.showVideo=false;
+					$scope.showLink=false;
+					if(type=="text"){
+						$scope.showText=true;
+					}else if(type=="image"){
+						$scope.showImage=true;
+					}else if(type=="video"){
+						$scope.showVideo=true;
+					}else if(type=="link"){
+						$scope.showLink=true;
+					}
+					postVarApp = type;
+				}
+				$scope.postGetter = function(){
+					return postVarApp;
+				}
+
+				// WINDOW ON LCICK
+				window.onclick = function() {
+			        // hide the editor
+			        console.log(" jus clickn ");
+			        if($scope.editorEnabled == true){
+			        	console.log(" Disable the editor ");
+			        	$scope.disableEditor();
+			        	$scope.$apply();
+			        }
+			        
+			    };
 
 			}
 		]
@@ -1002,6 +1147,8 @@ angular.module('forumBody', ['ui.router', 'froala', 'infinite-scroll', 'angular-
 				$('.info-wrapper').removeClass('info-wrapper').addClass('info-wrapper post-mode');
 				$('.sidebar-wrapper').removeClass('sidebar-wrapper').addClass('sidebar-wrapper post-mode');
 
+				
+
 				$scope.infoSelector = function(){
 					if(lo){
 						return 'info-wrapper-post';
@@ -1030,6 +1177,11 @@ angular.module('forumBody', ['ui.router', 'froala', 'infinite-scroll', 'angular-
 				$scope.edit2 = {
 			        inlineMode : ["true"],
 			        placeholder: ['Reply Here ...']
+			    }
+
+			    $scope.edit3 = {
+			        inlineMode : ["true"],
+			        placeholder: [' ']
 			    }
 
 				$scope.addComment = function(){
@@ -1079,24 +1231,24 @@ angular.module('forumBody', ['ui.router', 'froala', 'infinite-scroll', 'angular-
 					$('.mobile-menu').toggle();
 				}
 
-				  	 $scope.editPost = function(postid, forumurl){
-					  	if($scope.title === '') { return; }
-					  	//if($scope.$$childTail.title === '') { return; }
+				  // 	 $scope.editPost = function(postid, forumurl){
+					 //  	if($scope.title === '') { return; }
+					 //  	//if($scope.$$childTail.title === '') { return; }
 					  	
-						posts.edit({
-							title: $scope.title,
-							link: $scope.link,
-							bode: $scope.bode
-						}, postid).success(function(post) {
-							console.log("started from the bottom now we here");
-						    //$scope.forum.posts.push(post);
-						    $location.path(forum.forum.url);
-						  });
-						$scope.title = '';
-						$scope.bode = '';
-						$scope.link = '';
-						$scope.exdate = '';
-					  }
+						// posts.edit({
+						// 	title: $scope.title,
+						// 	link: $scope.link,
+						// 	bode: $scope.bode
+						// }, postid).success(function(post) {
+						// 	console.log("started from the bottom now we here");
+						//     //$scope.forum.posts.push(post);
+						//     $location.path(forum.forum.url);
+						//   });
+						// $scope.title = '';
+						// $scope.bode = '';
+						// $scope.link = '';
+						// $scope.exdate = '';
+					 //  }
 
 
 
@@ -1129,6 +1281,19 @@ angular.module('forumBody', ['ui.router', 'froala', 'infinite-scroll', 'angular-
 		}	
 		]
 	)
+	//
+	.directive('stopEvent', function () {
+        return {
+            restrict: 'A',
+            link: function (scope, element, attr) {
+                element.bind(attr.stopEvent, function (e) {
+                	console.log("stop EVENT");
+                    e.stopPropagation();
+                });
+            }
+        };
+     })
+
 	.directive('perfectScrollbar',
 	  ['$parse', '$window', function($parse, $window) {
 	  var psOptions = [

@@ -27,7 +27,9 @@
     <script type='text/javascript' src="/javascripts/moment.min.js"></script>
     <script type='text/javascript' src="/javascripts/ga.js"></script>
 	<script type='text/javascript' src="/javascripts/angular-momentjs/angular-momentjs.js"></script>
+	<script type='text/javascript' src="/javascripts/angular-smooth-scroll.js"></script>
 	<script src="/javascripts/ng-infinite-scroll.min.js"></script>
+	<script src="/javascripts/ng-FitText.js"></script>
 
 	<script src="/javascripts/angularApp.js"></script>
 	  <!-- Initialize the editor. -->
@@ -58,7 +60,7 @@
 	    	<div class="second-wrapper">
 		    	<div class="sidebar-wrapper">
 		    		<div class="logo-wrapper">
-		    			<h1>{{murl.murl}}</h1>
+		    			<h1 data-fittext=".9" data-fittext-min="12" data-fittext-max="55">{{murl.title}}</h1>
 		    		</div>
 
 			    	<div class="sidebar-buttons">
@@ -82,7 +84,7 @@
 						  		<a class="po-link" ui-sref=".posts({id: post._id })"><span class="empty"></span></a>
 							  		</a>
 						  		<div class="post-link">
-							  		{{post.title}}
+							  		{{post.title}} 
 							  	</div>
 							  	<div class="post-meta">
 							  		<span class="date">{{dateMaster(post.date)}} </span>
@@ -93,7 +95,7 @@
 					</div>
 					-->
 
-					  <div perfect-scrollbar class="post-list-wrapper scroller" infinite-scroll='forum.nextPage(murl.murl)' infinite-scroll-disabled='forum.busy' infinite-scroll-distance='1'>
+					  <div perfect-scrollbar class="post-list-wrapper scroller" infinite-scroll='forum.nextPage(murl.url)' infinite-scroll-disabled='forum.busy' infinite-scroll-distance='1'>
 					    <div class="post-list" >
 							<div class="post-link-wrapper {{findActive(item)}}" ng-repeat="item in forum.items | filter:searchText | orderBy: '-date'">
 						      <a class="po-link" ui-sref=".posts({id: item._id })"><span class="empty"></span></a>
@@ -159,46 +161,176 @@
 			  	</div>
 			</div>
 
-			    <form ng-submit="addPost(forum._id)">
-			    	<div class="title-wrapper">
-			  			<input class="form-control"type="text" placeholder="Title" ng-model="title"> </input>
-			  		</div>
-			  		<br>
-			  		<div class="body-wrapper">
-			  			<textarea class="form-control" froala="" id="edit" name="content" rows="15" cols="50" type="text" placeholder="Body" ng-model="bode"> </textarea>
-			  		</div>
-			  		<br>
-			  		<div class="icon-wrapper">
-			  			<div class="icon bomb">
-			  			<i class="fa fa-bomb fa-2x"></i>
-			  				<select class="setext" ng-model="bomb" ng-change="relDate(bomb)">
-			  					<option value="null" selected>- None -</option>
-			  					<option><span>Minute</span></option>
-						        <option><span>Hour</span></option>
-						        <option><span>Day</span></option>
-						        <option><span>Month</span></option>
-						    </select>
-						
-			  			</div>
-			  			<div class="icon pencil">
-			  				<i class="fa fa-pencil fa-2x"></i>
-			  			</div>
-			  			<div class="icon camera">
-			  				<i class="fa fa-camera fa-2x"></i>
-			  			</div>
-			  			<div class="icon soundcloud">
-			  				<i class="fa fa-soundcloud fa-2x"></i>
-			  			</div>
-			  		</div>
-			  		<div class="date-wrapper">
-			  			<input class="form-control" type="datetime" placeholder="Expiration Date" ng-model="exdate"> </input>
-			  		</div>
-			  		<div class="button-wrapper">
-			  			<button ng-click="showShit()" class="btn btn-warning btn-lg" type="submit">Post</button>
-			  		</div>
-			  	</form>
+			<div class="new-post-outer">
+				<div class="post-selector">
+					<ul>
+						<li class="first" ng-class="{active:showText}"><a ng-click="postSelector('text')">Text</a></li>
+						<li ng-class="{active:showImage}"><a ng-click="postSelector('image')">Image</a></li>
+						<li ng-class="{active:showVideo}"><a ng-click="postSelector('video')">Video</a></li>
+						<li ng-class="{active:showLink}"><a ng-click="postSelector('link')">Link</a></li>
+					</ul>
+				</div>
+
+				<div class="post-selection-wrapper">
+					<div ng-show="postGetter() == 'text'" class="post-text">
+						<form ng-submit="addPost(murl._id, 'text')">
+					    	<div class="title-wrapper">
+					    		<div class="title-label-wrap">
+					    			Title
+					    		</div>
+					  			<input class="form-control"type="text" ng-model="title"> </input>
+					  		</div>
+					  		<div class="body-wrapper">
+					  			<div class="title-label-wrap">
+					    			Text
+					    		</div>
+					  			<textarea class="form-control" froala="" id="edit" name="content" rows="15" cols="50" type="text" ng-model="bode"> </textarea>
+					  		</div>
+					  		<br>
+					  		<div class="icon-wrapper">
+					  			<div class="icon bomb">
+					  			<i class="fa fa-bomb fa-2x"></i>
+					  				<select class="setext" ng-model="bomb" ng-change="relDate(bomb)">
+					  					<option value="null" selected>- None -</option>
+					  					<option><span>Minute</span></option>
+								        <option><span>Hour</span></option>
+								        <option><span>Day</span></option>
+								        <option><span>Month</span></option>
+								    </select>
+								
+					  			</div>
+					  			<div class="icon pencil">
+					  				<i class="fa fa-pencil fa-2x"></i>
+					  			</div>
+					  			<div class="icon camera">
+					  				<i class="fa fa-camera fa-2x"></i>
+					  			</div>
+					  			<div class="icon soundcloud">
+					  				<i class="fa fa-soundcloud fa-2x"></i>
+					  			</div>
+					  		</div>
+					  		<div class="date-wrapper">
+					  			<input class="form-control" type="datetime" placeholder="Expiration Date" ng-model="exdate"> </input>
+					  		</div>
+					  		<div class="button-wrapper">
+					  			<button ng-click="showShit()" class="btn btn-warning btn-lg" type="submit">Post</button>
+					  		</div>
+					  	</form>
+					</div>
+					<div ng-show="postGetter() == 'image'" class="post-image">
+						<form ng-submit="addPost(murl._id, 'image')">
+					    	<div class="title-wrapper">
+					    		<div class="title-label-wrap">
+					    			Title
+					    		</div>
+					  			<input class="form-control"type="text" ng-model="title"> </input>
+					  		</div>
+					  		<div class="body-wrapper">
+					  			<div class="title-label-wrap">
+					    			Image Link
+					    		</div>
+					    		<input class="form-control"type="text" ng-model="title"> </input>
+					  		</div>
+					  		<br>
+					  		<div class="icon-wrapper">
+					  			<div class="icon bomb">
+					  			<i class="fa fa-bomb fa-2x"></i>
+					  				<select class="setext" ng-model="bomb" ng-change="relDate(bomb)">
+					  					<option value="null" selected>- None -</option>
+					  					<option><span>Minute</span></option>
+								        <option><span>Hour</span></option>
+								        <option><span>Day</span></option>
+								        <option><span>Month</span></option>
+								    </select>
+								
+					  			</div>
+					  		</div>
+					  		<div class="date-wrapper">
+					  			<input class="form-control" type="datetime" placeholder="Expiration Date" ng-model="exdate"> </input>
+					  		</div>
+					  		<div class="button-wrapper">
+					  			<button ng-click="showShit()" class="btn btn-warning btn-lg" type="submit">Post</button>
+					  		</div>
+					  	</form>
+					</div>
+					<div ng-show="postGetter() == 'video'" class="post-video">
+						<form ng-submit="addPost(murl._id, 'video')">
+					    	<div class="title-wrapper">
+					    		<div class="title-label-wrap">
+					    			Title
+					    		</div>
+					  			<input class="form-control"type="text" ng-model="title"> </input>
+					  		</div>
+					  		<div class="body-wrapper">
+					  			<div class="title-label-wrap">
+					    			Video Link
+					    		</div>
+					    		<input class="form-control"type="text" ng-model="title"> </input>
+					  		</div>
+					  		<br>
+					  		<div class="icon-wrapper">
+					  			<div class="icon bomb">
+					  			<i class="fa fa-bomb fa-2x"></i>
+					  				<select class="setext" ng-model="bomb" ng-change="relDate(bomb)">
+					  					<option value="null" selected>- None -</option>
+					  					<option><span>Minute</span></option>
+								        <option><span>Hour</span></option>
+								        <option><span>Day</span></option>
+								        <option><span>Month</span></option>
+								    </select>
+								
+					  			</div>
+					  		</div>
+					  		<div class="date-wrapper">
+					  			<input class="form-control" type="datetime" placeholder="Expiration Date" ng-model="exdate"> </input>
+					  		</div>
+					  		<div class="button-wrapper">
+					  			<button ng-click="showShit()" class="btn btn-warning btn-lg" type="submit">Post</button>
+					  		</div>
+					  	</form>
+					</div>
+					<div ng-show="postGetter() == 'link'" class="post-link">
+						<form ng-submit="addPost(murl._id, 'link')">
+					    	<div class="title-wrapper">
+					    		<div class="title-label-wrap">
+					    			Title
+					    		</div>
+					  			<input class="form-control"type="text" ng-model="title"> </input>
+					  		</div>
+					  		<div class="body-wrapper">
+					  			<div class="title-label-wrap">
+					    			Link
+					    		</div>
+					    		<input class="form-control"type="text" ng-model="title"> </input>
+					  		</div>
+					  		<br>
+					  		<div class="icon-wrapper">
+					  			<div class="icon bomb">
+					  			<i class="fa fa-bomb fa-2x"></i>
+					  				<select class="setext" ng-model="bomb" ng-change="relDate(bomb)">
+					  					<option value="null" selected>- None -</option>
+					  					<option><span>Minute</span></option>
+								        <option><span>Hour</span></option>
+								        <option><span>Day</span></option>
+								        <option><span>Month</span></option>
+								    </select>
+								
+					  			</div>
+					  		</div>
+					  		<div class="date-wrapper">
+					  			<input class="form-control" type="datetime" placeholder="Expiration Date" ng-model="exdate"> </input>
+					  		</div>
+					  		<div class="button-wrapper">
+					  			<button ng-click="showShit()" class="btn btn-warning btn-lg" type="submit">Post</button>
+					  		</div>
+					  	</form>
+					</div>
+
+				</div>
+			</div>
+
+			    
 		  	</div>
-		  	<!-- <a ui-sref="forum">back</a> -->
 		
 		</script>
 
@@ -218,7 +350,7 @@
 			  			<input class="form-control"type="text" placeholder="Title" ng-model="title"> </input>
 			  		</div>
 			  		<br>
-			  		<div class="body-wrapper edit-mode">
+			  		<div class="post-form-wrapper body-wrapper edit-mode">
 			  			<textarea class="form-control edit-mode" froala="" id="edit" name="content" rows="15" cols="50" type="text" placeholder="Body" ng-model="bode"> </textarea>
 			  		</div>
 			  		<br>
@@ -267,7 +399,44 @@
 			  	</div>
 			  </div>
 
-			  	<div class="first-post">
+			  	<div class="first-post" stop-event='click' ng-hide="editorEnabled">
+				  <div class="page-header">
+				  	<div class="profilepic-wrapper">
+				  		<img ng-src="/uploads/{{post.user.profilepic}}" height="47" width="47" />
+				  	</div>
+				  	<div class="username-wrapper">
+				  		<span class="username">{{post.user.username}}</span>
+				  		<div class="edit-delete-wrapper">
+					  		<div ng-show="isCreater(post.user._id)">  
+					  		  <div class="in">
+					  		  	<a href="" ng-click="enableEditor(post.bode, post.title)">Edit</a> 
+
+					  		  </div>
+					  		  <div class="in">
+					  		  	<form ng-submit="deletePost(post._id)">
+							      <button type="submit" class="delete">Delete</button>
+							    </form>
+					  		  </div>
+						    </div>
+					  	</div>
+				  	</div>
+				  	
+				  	<div data-fittext=".395" data-fittext-min="14" data-fittext-max="28" class="title-wrapper">
+						<!--<h3> -->
+						{{post.title}} 
+						<!--</h3> -->
+				  	</div>
+				  </div>
+				  <div class="body-wrapper">
+				  	<br> 
+				  	<div class="body">
+						<div ng-bind-html="post.bode"></div>
+				  	</div>
+				  </div>
+				</div>
+
+				<div class="first-post" stop-event='click' ng-show="editorEnabled">
+				<form ng-submit="editPost(post._id, title, bode)"> 
 				  <div class="page-header">
 				  	<div class="profilepic-wrapper">
 				  		<img ng-src="/uploads/{{post.user.profilepic}}" height="47" width="47" />
@@ -280,56 +449,105 @@
 					  		  	<a ui-sref="forum.edit({id: post._id })">Edit</a> 
 					  		  </div>
 					  		  <div class="in">
-					  		  	<form ng-submit="deletePost(post._id)">
-							      <button type="submit" class="delete">Delete</button>
-							    </form>
 					  		  </div>
 						    </div>
 					  	</div>
 				  	</div>
-				  	
+				 	
 				  	<div class="title-wrapper">
-						<h3> {{post.title}} </h3> 
+			  			<input class="form-control"type="text" ng-model="title"> </input>
+			  		
 				  	</div>
+				  	<div class="butt-wrap">
+						<button class="save-edit" type="submit">Save</button>
+				  	</div>
+				  	
 				  </div>
 				  <div class="body-wrapper">
 				  	<br> 
 				  	<div class="body">
-						<div ng-bind-html="post.bode"></div>
+						<div class="body-wrapper edit-mode">
+			  				<textarea class="form-control edit-mode" froala="" id="edit" name="content" rows="10" cols="50" type="text" ng-model="bode"> </textarea>
+			  			</div>
 				  	</div>
 				  </div>
+				  
+				</form>
 				</div>
 
 				  <div class="comment-wrapper" ng-repeat="commenter in post.comments | orderBy:'date'">
-				  	<div class="page-header2">
-					  	<div class="profilepic-wrapper" ng-if="commenter.user.profilepic">
-				            <img ng-src="/uploads/{{commenter.user.profilepic}}" height="47" width="47" />
-				        </div>
 
-				        <div class="profilepic-wrapper" ng-if="!commenter.user.profilepic">
-				            <img ng-src="/uploads/user.png" height="47" width="47" /> 
-				        </div>
+				  	 <div ng-hide="editorCheck(commenter._id)">
+					  	<div class="page-header2">
+						  	<div class="profilepic-wrapper" ng-if="commenter.user.profilepic">
+					            <img ng-src="/uploads/{{commenter.user.profilepic}}" height="47" width="47" />
+					        </div>
 
-				        <div class="username-wrapper">
-					  		<span class="username">{{commenter.user.username}}</span>
-					  		<div class="edit-delete-wrapper">
-						  		<div ng-show="isCreater(commenter.user._id)">  
-						  		  <div class="in">
-						  		  	<button ng-click='loadComment(commenter)' type="submit" class="btn btn-primary">Edit</button>
-						  		  </div>
-						  		  <div class="in">
-						  		  	<form ng-submit="deletePost(commenter._id)">
-								      <!-- <button type="submit" class="delete">Delete</button> -->
-								    </form>
-						  		  </div>
-							    </div>
+					        <div class="profilepic-wrapper" ng-if="!commenter.user.profilepic">
+					            <img ng-src="/uploads/user.png" height="47" width="47" /> 
+					        </div>
+
+					        <div class="username-wrapper">
+						  		<span class="username">{{commenter.user.username}}</span>
+						  		<div class="edit-delete-wrapper">
+							  		<div ng-show="isCreater(commenter.user._id)">  
+							  		  <div class="in">
+							  		  	<!-- <button ng-click='loadComment(commenter)' type="submit" class="btn btn-primary">Edit</button> -->
+							  		  	<a href="" ng-click="enablecEditor(commenter)">Edit</a> 
+							  		  </div>
+							  		  <div class="in">
+							  		  	<form ng-submit="deletePost(commenter._id)">
+									      <!-- <button type="submit" class="delete">Delete</button> -->
+									    </form>
+							  		  </div>
+								    </div>
+							  	</div>
 						  	</div>
-					  	</div>
-					</div>
+						</div>
+					    <div class="comment-body"> 
+					    	<p ng-bind-html="commenter.body"></p>
+					    </div>
+					 </div>
 
-				    <div class="comment-body"> 
-				    	<p ng-bind-html="commenter.body"></p>
-				    </div>
+					 <div ng-show="editorCheck(commenter._id)">
+						
+					  	<div class="page-header2">
+						  	<div class="profilepic-wrapper" ng-if="commenter.user.profilepic">
+					            <img ng-src="/uploads/{{commenter.user.profilepic}}" height="47" width="47" />
+					        </div>
+
+					        <div class="profilepic-wrapper" ng-if="!commenter.user.profilepic">
+					            <img ng-src="/uploads/user.png" height="47" width="47" /> 
+					        </div>
+
+					        <div class="username-wrapper">
+						  		<span class="username">{{commenter.user.username}}</span>
+						  		<div class="edit-delete-wrapper">
+							  		<div ng-show="isCreater(commenter.user._id)">  
+							  		  <div class="in">
+							  		  	<!-- <button ng-click='loadComment(commenter)' type="submit" class="btn btn-primary">Edit</button> -->
+							  		  	<a href="" ng-click="enableEditor(post.bode, post.title)">Edit</a> 
+							  		  </div>
+							  		  <div class="in">
+							  		  	<form ng-submit="deletePost(commenter._id)">
+									      <!-- <button type="submit" class="delete">Delete</button> -->
+									    </form>
+							  		  </div>
+								    </div>
+							  	</div>
+						  	</div>
+						</div>
+						<p> EDITOR ENABLED</p>
+					    <div class="comment-body edit-mode"> 
+						    <form ng-submit="editComment(commenter, comEditText)"> 
+
+								<textarea froala="edit3" class="form-control" placeholder="" type="text" ng-model="comEditText"> </textarea>
+			  		
+								<button class="save-edit" type="submit">Save</button>
+						    </form>
+					    </div>
+					 </div>
+
 				  </div>
 			  </div>
 
@@ -362,6 +580,8 @@
 				    </form>
 				  </div>
 				</div>
+
+
 
 			</div>
 
