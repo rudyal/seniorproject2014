@@ -1418,7 +1418,7 @@ h1.contact-us {
   font-family: "soft";
 }
 
-/* line 728, ../scss/_base.scss */
+/* line 729, ../scss/_base.scss */
 body.main-app .content-wrapper .sidebar-wrapper {
   position: relative;
   height: 100vh;
@@ -1432,30 +1432,30 @@ body.main-app .content-wrapper .sidebar-wrapper {
   width: 36%;
 }
 @media (max-width: 74em) {
-  /* line 728, ../scss/_base.scss */
+  /* line 729, ../scss/_base.scss */
   body.main-app .content-wrapper .sidebar-wrapper {
     width: 32%;
   }
 }
 @media (max-width: 58em) {
-  /* line 728, ../scss/_base.scss */
+  /* line 729, ../scss/_base.scss */
   body.main-app .content-wrapper .sidebar-wrapper {
     width: 32%;
   }
 }
 @media (max-width: 40em) {
-  /* line 728, ../scss/_base.scss */
+  /* line 729, ../scss/_base.scss */
   body.main-app .content-wrapper .sidebar-wrapper {
     width: 100%;
   }
 }
 @media (max-width: 27.5em) {
-  /* line 728, ../scss/_base.scss */
+  /* line 729, ../scss/_base.scss */
   body.main-app .content-wrapper .sidebar-wrapper {
     width: 100%;
   }
 }
-/* line 742, ../scss/_base.scss */
+/* line 743, ../scss/_base.scss */
 body.main-app .content-wrapper .sidebar-wrapper .logo-wrapper {
   position: relative;
   width: 82%;
@@ -1465,19 +1465,19 @@ body.main-app .content-wrapper .sidebar-wrapper .logo-wrapper {
   min-height: 32px;
 }
 @media (max-width: 74em) {
-  /* line 742, ../scss/_base.scss */
+  /* line 743, ../scss/_base.scss */
   body.main-app .content-wrapper .sidebar-wrapper .logo-wrapper {
     width: 80%;
   }
 }
 @media (max-width: 58em) {
-  /* line 742, ../scss/_base.scss */
+  /* line 743, ../scss/_base.scss */
   body.main-app .content-wrapper .sidebar-wrapper .logo-wrapper {
     width: 80%;
   }
 }
 @media (max-width: 40em) {
-  /* line 742, ../scss/_base.scss */
+  /* line 743, ../scss/_base.scss */
   body.main-app .content-wrapper .sidebar-wrapper .logo-wrapper {
     width: 100%;
     height: 20px;
@@ -1485,41 +1485,41 @@ body.main-app .content-wrapper .sidebar-wrapper .logo-wrapper {
   }
 }
 @media (max-width: 27.5em) {
-  /* line 742, ../scss/_base.scss */
+  /* line 743, ../scss/_base.scss */
   body.main-app .content-wrapper .sidebar-wrapper .logo-wrapper {
     width: 100%;
     height: 20px;
     padding: 2px 5px 2px 5px;
   }
 }
-/* line 753, ../scss/_base.scss */
+/* line 754, ../scss/_base.scss */
 body.main-app .content-wrapper .sidebar-wrapper .logo-wrapper h1 {
   font-size: 55px;
   color: black;
   font-family: "stag";
 }
 @media (max-width: 58em) {
-  /* line 753, ../scss/_base.scss */
+  /* line 754, ../scss/_base.scss */
   body.main-app .content-wrapper .sidebar-wrapper .logo-wrapper h1 {
     font-size: 28px;
     margin-top: 7px;
   }
 }
 @media (max-width: 40em) {
-  /* line 753, ../scss/_base.scss */
+  /* line 754, ../scss/_base.scss */
   body.main-app .content-wrapper .sidebar-wrapper .logo-wrapper h1 {
     font-size: 18px;
     margin-top: 9.5px;
   }
 }
 @media (max-width: 27.5em) {
-  /* line 753, ../scss/_base.scss */
+  /* line 754, ../scss/_base.scss */
   body.main-app .content-wrapper .sidebar-wrapper .logo-wrapper h1 {
     font-size: 14px;
     margin-top: 7px;
   }
 }
-/* line 763, ../scss/_base.scss */
+/* line 764, ../scss/_base.scss */
 body.main-app .content-wrapper .sidebar-wrapper .sidebar-buttons {
   position: relative;
   width: 82%;
@@ -1527,19 +1527,19 @@ body.main-app .content-wrapper .sidebar-wrapper .sidebar-buttons {
   margin-top: 9px;
 }
 @media (max-width: 74em) {
-  /* line 763, ../scss/_base.scss */
+  /* line 764, ../scss/_base.scss */
   body.main-app .content-wrapper .sidebar-wrapper .sidebar-buttons {
     width: 80%;
   }
 }
 @media (max-width: 58em) {
-  /* line 763, ../scss/_base.scss */
+  /* line 764, ../scss/_base.scss */
   body.main-app .content-wrapper .sidebar-wrapper .sidebar-buttons {
     width: 80%;
   }
 }
 @media (max-width: 40em) {
-  /* line 763, ../scss/_base.scss */
+  /* line 764, ../scss/_base.scss */
   body.main-app .content-wrapper .sidebar-wrapper .sidebar-buttons {
     width: 100%;
     height: 20px;
@@ -1547,14 +1547,14 @@ body.main-app .content-wrapper .sidebar-wrapper .sidebar-buttons {
   }
 }
 @media (max-width: 27.5em) {
-  /* line 763, ../scss/_base.scss */
+  /* line 764, ../scss/_base.scss */
   body.main-app .content-wrapper .sidebar-wrapper .sidebar-buttons {
     width: 100%;
     height: 20px;
     padding: 2px 5px 2px 5px;
   }
 }
-/* line 772, ../scss/_base.scss */
+/* line 773, ../scss/_base.scss */
 body.main-app .content-wrapper .sidebar-wrapper .sidebar-buttons .search {
   display: inline-block;
   margin-left: 7%;
@@ -1562,34 +1562,34 @@ body.main-app .content-wrapper .sidebar-wrapper .sidebar-buttons .search {
   vertical-align: top;
 }
 @media (max-width: 74em) {
-  /* line 772, ../scss/_base.scss */
+  /* line 773, ../scss/_base.scss */
   body.main-app .content-wrapper .sidebar-wrapper .sidebar-buttons .search {
     margin-left: 3%;
   }
 }
 @media (max-width: 58em) {
-  /* line 772, ../scss/_base.scss */
+  /* line 773, ../scss/_base.scss */
   body.main-app .content-wrapper .sidebar-wrapper .sidebar-buttons .search {
     margin-left: 1%;
   }
 }
 @media (max-width: 40em) {
-  /* line 772, ../scss/_base.scss */
+  /* line 773, ../scss/_base.scss */
   body.main-app .content-wrapper .sidebar-wrapper .sidebar-buttons .search {
     margin-left: 9%;
   }
 }
 @media (max-width: 27.5em) {
-  /* line 772, ../scss/_base.scss */
+  /* line 773, ../scss/_base.scss */
   body.main-app .content-wrapper .sidebar-wrapper .sidebar-buttons .search {
     margin-left: 9%;
   }
 }
-/* line 781, ../scss/_base.scss */
+/* line 782, ../scss/_base.scss */
 body.main-app .content-wrapper .sidebar-wrapper .sidebar-buttons .search i.fa {
   font-size: 15px;
 }
-/* line 784, ../scss/_base.scss */
+/* line 785, ../scss/_base.scss */
 body.main-app .content-wrapper .sidebar-wrapper .sidebar-buttons .search input {
   width: 78px;
   border: 0;
@@ -1597,116 +1597,116 @@ body.main-app .content-wrapper .sidebar-wrapper .sidebar-buttons .search input {
   border-bottom: 1px solid black;
 }
 @media (max-width: 58em) {
-  /* line 784, ../scss/_base.scss */
+  /* line 785, ../scss/_base.scss */
   body.main-app .content-wrapper .sidebar-wrapper .sidebar-buttons .search input {
     width: 50px;
   }
 }
-/* line 792, ../scss/_base.scss */
+/* line 793, ../scss/_base.scss */
 body.main-app .content-wrapper .sidebar-wrapper .sidebar-buttons .categories {
   vertical-align: top;
   display: inline-block;
   margin-left: 7%;
 }
 @media (max-width: 74em) {
-  /* line 792, ../scss/_base.scss */
+  /* line 793, ../scss/_base.scss */
   body.main-app .content-wrapper .sidebar-wrapper .sidebar-buttons .categories {
     margin-left: 5%;
   }
 }
 @media (max-width: 58em) {
-  /* line 792, ../scss/_base.scss */
+  /* line 793, ../scss/_base.scss */
   body.main-app .content-wrapper .sidebar-wrapper .sidebar-buttons .categories {
     margin-left: 1%;
   }
 }
 @media (max-width: 40em) {
-  /* line 792, ../scss/_base.scss */
+  /* line 793, ../scss/_base.scss */
   body.main-app .content-wrapper .sidebar-wrapper .sidebar-buttons .categories {
     margin-left: 9%;
   }
 }
 @media (max-width: 27.5em) {
-  /* line 792, ../scss/_base.scss */
+  /* line 793, ../scss/_base.scss */
   body.main-app .content-wrapper .sidebar-wrapper .sidebar-buttons .categories {
     margin-left: 9%;
   }
 }
-/* line 800, ../scss/_base.scss */
+/* line 801, ../scss/_base.scss */
 body.main-app .content-wrapper .sidebar-wrapper .sidebar-buttons .categories a {
   font-family: "open";
   font-size: 20px;
   color: black;
 }
 @media (max-width: 74em) {
-  /* line 800, ../scss/_base.scss */
+  /* line 801, ../scss/_base.scss */
   body.main-app .content-wrapper .sidebar-wrapper .sidebar-buttons .categories a {
     font-size: 15px;
   }
 }
 @media (max-width: 58em) {
-  /* line 800, ../scss/_base.scss */
+  /* line 801, ../scss/_base.scss */
   body.main-app .content-wrapper .sidebar-wrapper .sidebar-buttons .categories a {
     font-size: 15px;
   }
 }
-/* line 807, ../scss/_base.scss */
+/* line 808, ../scss/_base.scss */
 body.main-app .content-wrapper .sidebar-wrapper .sidebar-buttons .categories a:hover {
   text-decoration: none;
 }
-/* line 811, ../scss/_base.scss */
+/* line 812, ../scss/_base.scss */
 body.main-app .content-wrapper .sidebar-wrapper .sidebar-buttons .post {
   display: inline-block;
   margin-left: 7%;
   vertical-align: top;
 }
 @media (max-width: 74em) {
-  /* line 811, ../scss/_base.scss */
+  /* line 812, ../scss/_base.scss */
   body.main-app .content-wrapper .sidebar-wrapper .sidebar-buttons .post {
     margin-left: 5%;
   }
 }
 @media (max-width: 58em) {
-  /* line 811, ../scss/_base.scss */
+  /* line 812, ../scss/_base.scss */
   body.main-app .content-wrapper .sidebar-wrapper .sidebar-buttons .post {
     margin-left: 1%;
   }
 }
 @media (max-width: 40em) {
-  /* line 811, ../scss/_base.scss */
+  /* line 812, ../scss/_base.scss */
   body.main-app .content-wrapper .sidebar-wrapper .sidebar-buttons .post {
     margin-left: 14%;
   }
 }
 @media (max-width: 27.5em) {
-  /* line 811, ../scss/_base.scss */
+  /* line 812, ../scss/_base.scss */
   body.main-app .content-wrapper .sidebar-wrapper .sidebar-buttons .post {
     margin-left: 14%;
   }
 }
-/* line 819, ../scss/_base.scss */
+/* line 820, ../scss/_base.scss */
 body.main-app .content-wrapper .sidebar-wrapper .sidebar-buttons .post a {
   font-family: "open";
   font-size: 20px;
   color: black;
 }
 @media (max-width: 74em) {
-  /* line 819, ../scss/_base.scss */
+  /* line 820, ../scss/_base.scss */
   body.main-app .content-wrapper .sidebar-wrapper .sidebar-buttons .post a {
     font-size: 15px;
   }
 }
 @media (max-width: 58em) {
-  /* line 819, ../scss/_base.scss */
+  /* line 820, ../scss/_base.scss */
   body.main-app .content-wrapper .sidebar-wrapper .sidebar-buttons .post a {
     font-size: 15px;
   }
 }
-/* line 826, ../scss/_base.scss */
+/* line 827, ../scss/_base.scss */
 body.main-app .content-wrapper .sidebar-wrapper .sidebar-buttons .post a:hover {
   text-decoration: none;
 }
-/* line 831, ../scss/_base.scss */
+/* line 832, ../scss/_base.scss */
 body.main-app .content-wrapper .sidebar-wrapper .post-list-wrapper {
   -moz-animation: fadeIn 0.75s;
   -webkit-animation: fadeIn 0.75s;
@@ -1725,41 +1725,41 @@ body.main-app .content-wrapper .sidebar-wrapper .post-list-wrapper {
   right: 0;
 }
 @media (max-width: 74em) {
-  /* line 831, ../scss/_base.scss */
+  /* line 832, ../scss/_base.scss */
   body.main-app .content-wrapper .sidebar-wrapper .post-list-wrapper {
     width: 25%;
   }
 }
 @media (max-width: 58em) {
-  /* line 831, ../scss/_base.scss */
+  /* line 832, ../scss/_base.scss */
   body.main-app .content-wrapper .sidebar-wrapper .post-list-wrapper {
     width: 25%;
   }
 }
 @media (max-width: 40em) {
-  /* line 831, ../scss/_base.scss */
+  /* line 832, ../scss/_base.scss */
   body.main-app .content-wrapper .sidebar-wrapper .post-list-wrapper {
     width: 100%;
     top: 90px;
   }
 }
 @media (max-width: 27.5em) {
-  /* line 831, ../scss/_base.scss */
+  /* line 832, ../scss/_base.scss */
   body.main-app .content-wrapper .sidebar-wrapper .post-list-wrapper {
     width: 100%;
     top: 90px;
   }
 }
-/* line 853, ../scss/_base.scss */
+/* line 854, ../scss/_base.scss */
 body.main-app .content-wrapper .sidebar-wrapper .post-list {
   position: relative;
   background-color: white;
 }
-/* line 858, ../scss/_base.scss */
+/* line 859, ../scss/_base.scss */
 body.main-app .content-wrapper .sidebar-wrapper .post-list .active {
   border: 1px solid #5FC6FF !important;
 }
-/* line 861, ../scss/_base.scss */
+/* line 862, ../scss/_base.scss */
 body.main-app .content-wrapper .sidebar-wrapper .post-list .post-link-wrapper {
   -moz-transition: background-color 0.5s ease;
   -o-transition: background-color 0.5s ease;
@@ -1772,34 +1772,34 @@ body.main-app .content-wrapper .sidebar-wrapper .post-list .post-link-wrapper {
   border-radius: 3px;
 }
 @media (max-width: 74em) {
-  /* line 861, ../scss/_base.scss */
+  /* line 862, ../scss/_base.scss */
   body.main-app .content-wrapper .sidebar-wrapper .post-list .post-link-wrapper {
     height: 57px;
     padding: 19px 2% 0 4%;
   }
 }
 @media (max-width: 58em) {
-  /* line 861, ../scss/_base.scss */
+  /* line 862, ../scss/_base.scss */
   body.main-app .content-wrapper .sidebar-wrapper .post-list .post-link-wrapper {
     height: 57px;
     padding: 19px 2% 0 4%;
   }
 }
 @media (max-width: 40em) {
-  /* line 861, ../scss/_base.scss */
+  /* line 862, ../scss/_base.scss */
   body.main-app .content-wrapper .sidebar-wrapper .post-list .post-link-wrapper {
     height: 50px;
     padding: 15px 2% 0 4%;
   }
 }
 @media (max-width: 27.5em) {
-  /* line 861, ../scss/_base.scss */
+  /* line 862, ../scss/_base.scss */
   body.main-app .content-wrapper .sidebar-wrapper .post-list .post-link-wrapper {
     height: 50px;
     padding: 15px 2% 0 4%;
   }
 }
-/* line 873, ../scss/_base.scss */
+/* line 874, ../scss/_base.scss */
 body.main-app .content-wrapper .sidebar-wrapper .post-list .post-link-wrapper span.empty {
   position: absolute;
   width: 100%;
@@ -1809,7 +1809,7 @@ body.main-app .content-wrapper .sidebar-wrapper .post-list .post-link-wrapper sp
   z-index: 1;
   background-image: url('../../images/empty.gif');
 }
-/* line 882, ../scss/_base.scss */
+/* line 883, ../scss/_base.scss */
 body.main-app .content-wrapper .sidebar-wrapper .post-list .post-link-wrapper .post-link {
   font-size: 18px;
   font-family: "HellCon";
@@ -1824,30 +1824,30 @@ body.main-app .content-wrapper .sidebar-wrapper .post-list .post-link-wrapper .p
   overflow: hidden;
 }
 @media (max-width: 74em) {
-  /* line 882, ../scss/_base.scss */
+  /* line 883, ../scss/_base.scss */
   body.main-app .content-wrapper .sidebar-wrapper .post-list .post-link-wrapper .post-link {
     font-size: 22px;
   }
 }
 @media (max-width: 58em) {
-  /* line 882, ../scss/_base.scss */
+  /* line 883, ../scss/_base.scss */
   body.main-app .content-wrapper .sidebar-wrapper .post-list .post-link-wrapper .post-link {
     font-size: 14px;
   }
 }
 @media (max-width: 40em) {
-  /* line 882, ../scss/_base.scss */
+  /* line 883, ../scss/_base.scss */
   body.main-app .content-wrapper .sidebar-wrapper .post-list .post-link-wrapper .post-link {
     font-size: 16px;
   }
 }
 @media (max-width: 27.5em) {
-  /* line 882, ../scss/_base.scss */
+  /* line 883, ../scss/_base.scss */
   body.main-app .content-wrapper .sidebar-wrapper .post-list .post-link-wrapper .post-link {
     font-size: 14px;
   }
 }
-/* line 902, ../scss/_base.scss */
+/* line 903, ../scss/_base.scss */
 body.main-app .content-wrapper .sidebar-wrapper .post-list .post-link-wrapper .post-meta {
   width: 100%;
   float: right;
@@ -1857,22 +1857,22 @@ body.main-app .content-wrapper .sidebar-wrapper .post-list .post-link-wrapper .p
   font-family: "soft";
   margin-right: 25px;
 }
-/* line 910, ../scss/_base.scss */
+/* line 911, ../scss/_base.scss */
 body.main-app .content-wrapper .sidebar-wrapper .post-list .post-link-wrapper .post-meta span.username {
   display: inline-block;
   float: right;
 }
-/* line 914, ../scss/_base.scss */
+/* line 915, ../scss/_base.scss */
 body.main-app .content-wrapper .sidebar-wrapper .post-list .post-link-wrapper .post-meta span.date {
   margin-left: 10px;
   display: inline-block;
   float: right;
 }
-/* line 921, ../scss/_base.scss */
+/* line 922, ../scss/_base.scss */
 body.main-app .content-wrapper .sidebar-wrapper .post-list .post-link-wrapper:hover {
   background-color: #F4FAFF;
 }
-/* line 926, ../scss/_base.scss */
+/* line 927, ../scss/_base.scss */
 body.main-app .content-wrapper .info-wrapper {
   display: inline-block;
   z-index: 2;
@@ -1880,7 +1880,7 @@ body.main-app .content-wrapper .info-wrapper {
   margin-left: -4px;
   position: relative;
 }
-/* line 933, ../scss/_base.scss */
+/* line 934, ../scss/_base.scss */
 body.main-app .content-wrapper .info-wrapper nav.front.top-nav {
   position: relative;
   z-index: 10;
@@ -1889,18 +1889,18 @@ body.main-app .content-wrapper .info-wrapper nav.front.top-nav {
   width: 100%;
 }
 @media (max-width: 40em) {
-  /* line 933, ../scss/_base.scss */
+  /* line 934, ../scss/_base.scss */
   body.main-app .content-wrapper .info-wrapper nav.front.top-nav {
     height: 50px;
   }
 }
 @media (max-width: 27.5em) {
-  /* line 933, ../scss/_base.scss */
+  /* line 934, ../scss/_base.scss */
   body.main-app .content-wrapper .info-wrapper nav.front.top-nav {
     height: 50px;
   }
 }
-/* line 943, ../scss/_base.scss */
+/* line 944, ../scss/_base.scss */
 body.main-app .content-wrapper .info-wrapper nav.front.top-nav .nav-content-wrapper {
   width: 82%;
   height: 40px;
@@ -1909,53 +1909,53 @@ body.main-app .content-wrapper .info-wrapper nav.front.top-nav .nav-content-wrap
   margin-left: auto;
 }
 @media (max-width: 58em) {
-  /* line 943, ../scss/_base.scss */
+  /* line 944, ../scss/_base.scss */
   body.main-app .content-wrapper .info-wrapper nav.front.top-nav .nav-content-wrapper {
     padding-top: 4px;
   }
 }
 @media (max-width: 40em) {
-  /* line 943, ../scss/_base.scss */
+  /* line 944, ../scss/_base.scss */
   body.main-app .content-wrapper .info-wrapper nav.front.top-nav .nav-content-wrapper {
     padding-top: 4px;
   }
 }
 @media (max-width: 27.5em) {
-  /* line 943, ../scss/_base.scss */
+  /* line 944, ../scss/_base.scss */
   body.main-app .content-wrapper .info-wrapper nav.front.top-nav .nav-content-wrapper {
     padding-top: 4px;
   }
 }
-/* line 955, ../scss/_base.scss */
+/* line 956, ../scss/_base.scss */
 body.main-app .content-wrapper .info-wrapper nav.front.top-nav .account-wrapper {
   float: right;
   width: 80%;
   display: inline-block;
 }
-/* line 959, ../scss/_base.scss */
+/* line 960, ../scss/_base.scss */
 body.main-app .content-wrapper .info-wrapper nav.front.top-nav .account-wrapper .second-account {
   width: 100%;
   float: right;
 }
-/* line 963, ../scss/_base.scss */
+/* line 964, ../scss/_base.scss */
 body.main-app .content-wrapper .info-wrapper nav.front.top-nav .account-wrapper a {
   font-size: 14px;
   font-family: "soft";
   color: #7D7D7D;
 }
 @media (max-width: 40em) {
-  /* line 963, ../scss/_base.scss */
+  /* line 964, ../scss/_base.scss */
   body.main-app .content-wrapper .info-wrapper nav.front.top-nav .account-wrapper a {
     font-size: 17px;
   }
 }
 @media (max-width: 27.5em) {
-  /* line 963, ../scss/_base.scss */
+  /* line 964, ../scss/_base.scss */
   body.main-app .content-wrapper .info-wrapper nav.front.top-nav .account-wrapper a {
     font-size: 14px;
   }
 }
-/* line 971, ../scss/_base.scss */
+/* line 972, ../scss/_base.scss */
 body.main-app .content-wrapper .info-wrapper nav.front.top-nav .account-wrapper ul {
   display: inline-block;
   vertical-align: top;
@@ -1963,57 +1963,204 @@ body.main-app .content-wrapper .info-wrapper nav.front.top-nav .account-wrapper 
   float: right;
 }
 @media (max-width: 27.5em) {
-  /* line 971, ../scss/_base.scss */
+  /* line 972, ../scss/_base.scss */
   body.main-app .content-wrapper .info-wrapper nav.front.top-nav .account-wrapper ul {
     padding-top: 0;
   }
 }
-/* line 978, ../scss/_base.scss */
+/* line 979, ../scss/_base.scss */
 body.main-app .content-wrapper .info-wrapper nav.front.top-nav .account-wrapper li {
   display: inline-block;
   list-style-type: none;
 }
-/* line 982, ../scss/_base.scss */
+/* line 983, ../scss/_base.scss */
 body.main-app .content-wrapper .info-wrapper nav.front.top-nav .account-wrapper li.right {
   padding-left: 7px;
 }
-/* line 985, ../scss/_base.scss */
+/* line 986, ../scss/_base.scss */
 body.main-app .content-wrapper .info-wrapper nav.front.top-nav .account-wrapper li.left {
   border-right: 1px solid #7D7D7D;
   padding-right: 10px;
 }
-/* line 989, ../scss/_base.scss */
+/* line 990, ../scss/_base.scss */
 body.main-app .content-wrapper .info-wrapper nav.front.top-nav .account-wrapper .social {
   display: inline-block;
   padding-left: 10px;
   float: right;
 }
-/* line 993, ../scss/_base.scss */
+/* line 994, ../scss/_base.scss */
 body.main-app .content-wrapper .info-wrapper nav.front.top-nav .account-wrapper .social img {
   width: 35px;
   margin-left: 10px;
 }
 @media (max-width: 40em) {
-  /* line 993, ../scss/_base.scss */
+  /* line 994, ../scss/_base.scss */
   body.main-app .content-wrapper .info-wrapper nav.front.top-nav .account-wrapper .social img {
     width: 25px;
     margin-left: 8px;
   }
 }
 @media (max-width: 27.5em) {
-  /* line 993, ../scss/_base.scss */
+  /* line 994, ../scss/_base.scss */
   body.main-app .content-wrapper .info-wrapper nav.front.top-nav .account-wrapper .social img {
     width: 21px;
     margin-left: 6px;
   }
 }
-/* line 1002, ../scss/_base.scss */
+/* line 1003, ../scss/_base.scss */
+body.main-app .content-wrapper .info-wrapper .admin-panel {
+  background-color: white;
+  border: 2px dashed #E4E4E2;
+  border-radius: 3px;
+  padding: 5px;
+  position: fixed;
+  top: 31px;
+  width: 60%;
+}
+/* line 1011, ../scss/_base.scss */
+body.main-app .content-wrapper .info-wrapper .admin-panel span.gear {
+  display: inline-block;
+}
+/* line 1012, ../scss/_base.scss */
+body.main-app .content-wrapper .info-wrapper .admin-panel ul {
+  color: #707070;
+  font-family: "thin";
+}
+/* line 1015, ../scss/_base.scss */
+body.main-app .content-wrapper .info-wrapper .admin-panel ul a {
+  color: #707070;
+}
+/* line 1018, ../scss/_base.scss */
+body.main-app .content-wrapper .info-wrapper .admin-panel ul li.admin-first {
+  font-size: 25;
+  padding-left: 6%;
+  width: 20%;
+}
+/* line 1022, ../scss/_base.scss */
+body.main-app .content-wrapper .info-wrapper .admin-panel ul li.admin-first i {
+  display: inline-block;
+}
+/* line 1025, ../scss/_base.scss */
+body.main-app .content-wrapper .info-wrapper .admin-panel ul li.admin-first div {
+  padding-left: 11%;
+  display: inline-block;
+}
+/* line 1030, ../scss/_base.scss */
+body.main-app .content-wrapper .info-wrapper .admin-panel ul li {
+  display: inline-block;
+  font-size: 20px;
+  padding-left: 4%;
+}
+/* line 1035, ../scss/_base.scss */
+body.main-app .content-wrapper .info-wrapper .admin-panel ul li.ad-settings {
+  padding-left: 7%;
+}
+/* line 1040, ../scss/_base.scss */
+body.main-app .content-wrapper .info-wrapper .settings-container {
+  top: 84;
+  background-color: white;
+  border: 1px solid #E4E4E2;
+  border-radius: 3px;
+  padding: 11px;
+  position: fixed;
+  width: 60%;
+}
+/* line 1048, ../scss/_base.scss */
+body.main-app .content-wrapper .info-wrapper .settings-container .post-image {
+  width: 26em;
+}
+/* line 1051, ../scss/_base.scss */
+body.main-app .content-wrapper .info-wrapper .settings-container .ad-set {
+  padding: 30px;
+  padding-bottom: 0;
+  padding-top: 0;
+}
+/* line 1055, ../scss/_base.scss */
+body.main-app .content-wrapper .info-wrapper .settings-container .ad-set input.form-control {
+  width: 200px;
+  margin: 20px;
+  display: inline;
+}
+/* line 1061, ../scss/_base.scss */
+body.main-app .content-wrapper .info-wrapper .settings-container .forum-name {
+  padding-top: 20px;
+}
+/* line 1062, ../scss/_base.scss */
+body.main-app .content-wrapper .info-wrapper .settings-container .forum-cat {
+  padding-top: 20px;
+}
+/* line 1063, ../scss/_base.scss */
+body.main-app .content-wrapper .info-wrapper .settings-container .forum-req {
+  padding-top: 10px;
+}
+/* line 1064, ../scss/_base.scss */
+body.main-app .content-wrapper .info-wrapper .settings-container .forum-vis {
+  padding: 20px;
+  padding-left: 30px;
+}
+/* line 1067, ../scss/_base.scss */
+body.main-app .content-wrapper .info-wrapper .settings-container .forum-vis .rad-con.private {
+  display: inline-block;
+}
+/* line 1070, ../scss/_base.scss */
+body.main-app .content-wrapper .info-wrapper .settings-container .forum-vis .rad-con.first {
+  margin-top: 20px;
+  margin-left: 20px;
+}
+/* line 1074, ../scss/_base.scss */
+body.main-app .content-wrapper .info-wrapper .settings-container .forum-vis .rad-con.second {
+  margin-left: 20px;
+}
+/* line 1076, ../scss/_base.scss */
+body.main-app .content-wrapper .info-wrapper .settings-container .forum-vis .rad-con.second input {
+  margin-top: 10px;
+}
+/* line 1081, ../scss/_base.scss */
+body.main-app .content-wrapper .info-wrapper .settings-container .forum-vis .rad-con.third input {
+  margin-top: 10px;
+}
+/* line 1086, ../scss/_base.scss */
+body.main-app .content-wrapper .info-wrapper .settings-container .cat-form {
+  padding-top: 4px;
+}
+/* line 1089, ../scss/_base.scss */
+body.main-app .content-wrapper .info-wrapper .settings-container .cat-repeat {
+  width: 48%;
+  margin-left: 13%;
+  margin-top: 14px;
+}
+/* line 1093, ../scss/_base.scss */
+body.main-app .content-wrapper .info-wrapper .settings-container .cat-repeat li {
+  font-size: 23px;
+  font-family: "HellCon";
+  color: black;
+  display: inline;
+}
+/* line 1099, ../scss/_base.scss */
+body.main-app .content-wrapper .info-wrapper .settings-container .cat-repeat a {
+  float: right;
+  color: red;
+  font-size: 23px;
+  font-family: "HellCon";
+  text-decoration: none !important;
+  cursor: pointer;
+}
+/* line 1107, ../scss/_base.scss */
+body.main-app .content-wrapper .info-wrapper .settings-container .cat-repeat a:hover {
+  color: #B20000;
+}
+/* line 1113, ../scss/_base.scss */
+body.main-app .content-wrapper .info-wrapper .settings-container label {
+  font-family: "thin";
+  font-size: 31px;
+}
+/* line 1119, ../scss/_base.scss */
 body.main-app .content-wrapper .info-wrapper .post-wrapper {
   -moz-animation: fadeIn 0.75s;
   -webkit-animation: fadeIn 0.75s;
   animation: fadeIn 0.75s;
 }
-/* line 1004, ../scss/_base.scss */
+/* line 1122, ../scss/_base.scss */
 body.main-app .content-wrapper .info-wrapper .post-wrapper .content-wrapper {
   background-color: white;
   bottom: 109;
@@ -2028,33 +2175,33 @@ body.main-app .content-wrapper .info-wrapper .post-wrapper .content-wrapper {
   width: 64%;
 }
 @media (max-width: 40em) {
-  /* line 1004, ../scss/_base.scss */
+  /* line 1122, ../scss/_base.scss */
   body.main-app .content-wrapper .info-wrapper .post-wrapper .content-wrapper {
     top: 50;
   }
 }
 @media (max-width: 27.5em) {
-  /* line 1004, ../scss/_base.scss */
+  /* line 1122, ../scss/_base.scss */
   body.main-app .content-wrapper .info-wrapper .post-wrapper .content-wrapper {
     top: 50;
   }
 }
-/* line 1022, ../scss/_base.scss */
+/* line 1141, ../scss/_base.scss */
 body.main-app .content-wrapper .info-wrapper .post-wrapper .content-wrapper .first-post .page-header {
   height: 47px;
   border: 0;
   margin: 0;
 }
-/* line 1026, ../scss/_base.scss */
+/* line 1145, ../scss/_base.scss */
 body.main-app .content-wrapper .info-wrapper .post-wrapper .content-wrapper .first-post .page-header .profilepic-wrapper {
   width: 47px;
   display: inline-block;
 }
-/* line 1029, ../scss/_base.scss */
+/* line 1148, ../scss/_base.scss */
 body.main-app .content-wrapper .info-wrapper .post-wrapper .content-wrapper .first-post .page-header .profilepic-wrapper img {
   opacity: 0.67;
 }
-/* line 1033, ../scss/_base.scss */
+/* line 1152, ../scss/_base.scss */
 body.main-app .content-wrapper .info-wrapper .post-wrapper .content-wrapper .first-post .page-header .username-wrapper {
   font-family: "soft";
   font-size: 11px;
@@ -2064,12 +2211,12 @@ body.main-app .content-wrapper .info-wrapper .post-wrapper .content-wrapper .fir
   vertical-align: top;
   padding-top: 8px;
 }
-/* line 1041, ../scss/_base.scss */
+/* line 1160, ../scss/_base.scss */
 body.main-app .content-wrapper .info-wrapper .post-wrapper .content-wrapper .first-post .page-header .username-wrapper .in {
   display: inline-block;
   width: 30px;
 }
-/* line 1045, ../scss/_base.scss */
+/* line 1164, ../scss/_base.scss */
 body.main-app .content-wrapper .info-wrapper .post-wrapper .content-wrapper .first-post .page-header .username-wrapper a {
   font-family: "soft";
   font-size: 11px;
@@ -2077,26 +2224,26 @@ body.main-app .content-wrapper .info-wrapper .post-wrapper .content-wrapper .fir
   width: 10%;
   text-decoration: none;
 }
-/* line 1052, ../scss/_base.scss */
+/* line 1171, ../scss/_base.scss */
 body.main-app .content-wrapper .info-wrapper .post-wrapper .content-wrapper .first-post .page-header .username-wrapper a:hover {
   text-decoration: underline;
 }
-/* line 1055, ../scss/_base.scss */
+/* line 1174, ../scss/_base.scss */
 body.main-app .content-wrapper .info-wrapper .post-wrapper .content-wrapper .first-post .page-header .username-wrapper button {
   background: transparent;
   border: 0;
 }
-/* line 1059, ../scss/_base.scss */
+/* line 1178, ../scss/_base.scss */
 body.main-app .content-wrapper .info-wrapper .post-wrapper .content-wrapper .first-post .page-header .username-wrapper button:hover {
   text-decoration: underline;
 }
-/* line 1063, ../scss/_base.scss */
+/* line 1182, ../scss/_base.scss */
 body.main-app .content-wrapper .info-wrapper .post-wrapper .content-wrapper .first-post .page-header .edit-delete-wrapper {
   width: 100%;
   padding-top: 5px;
   display: none;
 }
-/* line 1068, ../scss/_base.scss */
+/* line 1187, ../scss/_base.scss */
 body.main-app .content-wrapper .info-wrapper .post-wrapper .content-wrapper .first-post .page-header .title-wrapper {
   width: 62%;
   text-align: center;
@@ -2107,12 +2254,12 @@ body.main-app .content-wrapper .info-wrapper .post-wrapper .content-wrapper .fir
   padding-top: 5px;
   font-size: 28px;
 }
-/* line 1081, ../scss/_base.scss */
+/* line 1200, ../scss/_base.scss */
 body.main-app .content-wrapper .info-wrapper .post-wrapper .content-wrapper .first-post .page-header .title-wrapper h3 {
   padding-bottom: 4px;
   font-size: 28px;
 }
-/* line 1091, ../scss/_base.scss */
+/* line 1210, ../scss/_base.scss */
 body.main-app .content-wrapper .info-wrapper .post-wrapper .content-wrapper .first-post .body-wrapper {
   width: 80%;
   margin-right: auto;
@@ -2121,39 +2268,39 @@ body.main-app .content-wrapper .info-wrapper .post-wrapper .content-wrapper .fir
   font-size: 14px;
   margin-bottom: 20px;
 }
-/* line 1092, ../scss/_base.scss */
+/* line 1211, ../scss/_base.scss */
 body.main-app .content-wrapper .info-wrapper .post-wrapper .content-wrapper .first-post .body-wrapper p {
   word-wrap: break-word;
 }
-/* line 1095, ../scss/_base.scss */
+/* line 1214, ../scss/_base.scss */
 body.main-app .content-wrapper .info-wrapper .post-wrapper .content-wrapper .first-post .body-wrapper span {
   word-wrap: break-word;
 }
-/* line 1104, ../scss/_base.scss */
+/* line 1223, ../scss/_base.scss */
 body.main-app .content-wrapper .info-wrapper .post-wrapper .content-wrapper .first-post .body-wrapper h1 {
   font-size: 26px;
 }
-/* line 1107, ../scss/_base.scss */
+/* line 1226, ../scss/_base.scss */
 body.main-app .content-wrapper .info-wrapper .post-wrapper .content-wrapper .first-post .body-wrapper h2 {
   font-size: 24px;
 }
-/* line 1110, ../scss/_base.scss */
+/* line 1229, ../scss/_base.scss */
 body.main-app .content-wrapper .info-wrapper .post-wrapper .content-wrapper .first-post .body-wrapper h3 {
   font-size: 22px;
 }
-/* line 1113, ../scss/_base.scss */
+/* line 1232, ../scss/_base.scss */
 body.main-app .content-wrapper .info-wrapper .post-wrapper .content-wrapper .first-post .body-wrapper h4 {
   font-size: 20px;
 }
-/* line 1116, ../scss/_base.scss */
+/* line 1235, ../scss/_base.scss */
 body.main-app .content-wrapper .info-wrapper .post-wrapper .content-wrapper .first-post .body-wrapper em {
   font-style: italic;
 }
-/* line 1119, ../scss/_base.scss */
+/* line 1238, ../scss/_base.scss */
 body.main-app .content-wrapper .info-wrapper .post-wrapper .content-wrapper .first-post .body-wrapper strong {
   font-weight: bold;
 }
-/* line 1122, ../scss/_base.scss */
+/* line 1241, ../scss/_base.scss */
 body.main-app .content-wrapper .info-wrapper .post-wrapper .content-wrapper .first-post .body-wrapper blockquote {
   background: #f9f9f9;
   border-left: 10px solid #ccc;
@@ -2162,7 +2309,7 @@ body.main-app .content-wrapper .info-wrapper .post-wrapper .content-wrapper .fir
   quotes: "\201C" "\201D" "\2018" "\2019";
   font-family: "times-new-roman";
 }
-/* line 1130, ../scss/_base.scss */
+/* line 1249, ../scss/_base.scss */
 body.main-app .content-wrapper .info-wrapper .post-wrapper .content-wrapper .first-post .body-wrapper blockquote:before {
   color: #ccc;
   content: open-quote;
@@ -2171,11 +2318,11 @@ body.main-app .content-wrapper .info-wrapper .post-wrapper .content-wrapper .fir
   margin-right: 0.25em;
   vertical-align: -0.4em;
 }
-/* line 1138, ../scss/_base.scss */
+/* line 1257, ../scss/_base.scss */
 body.main-app .content-wrapper .info-wrapper .post-wrapper .content-wrapper .first-post .body-wrapper blockquote p {
   display: inline;
 }
-/* line 1143, ../scss/_base.scss */
+/* line 1262, ../scss/_base.scss */
 body.main-app .content-wrapper .info-wrapper .post-wrapper .content-wrapper .first-post form .title-wrapper {
   width: 60%;
   text-align: center;
@@ -2183,58 +2330,58 @@ body.main-app .content-wrapper .info-wrapper .post-wrapper .content-wrapper .fir
   vertical-align: top;
   padding-top: 12px;
 }
-/* line 1149, ../scss/_base.scss */
+/* line 1268, ../scss/_base.scss */
 body.main-app .content-wrapper .info-wrapper .post-wrapper .content-wrapper .first-post form .title-wrapper input {
   text-align: center;
   font-family: "thin";
   font-size: 24px;
 }
-/* line 1155, ../scss/_base.scss */
+/* line 1274, ../scss/_base.scss */
 body.main-app .content-wrapper .info-wrapper .post-wrapper .content-wrapper .first-post form .butt-wrap {
   display: inline-block;
   vertical-align: top;
   padding-top: 16px;
   padding-left: 33px;
 }
-/* line 1161, ../scss/_base.scss */
+/* line 1280, ../scss/_base.scss */
 body.main-app .content-wrapper .info-wrapper .post-wrapper .content-wrapper .first-post form button.save-edit {
   border: none;
   background: none;
   font-size: 27px;
 }
-/* line 1166, ../scss/_base.scss */
+/* line 1285, ../scss/_base.scss */
 body.main-app .content-wrapper .info-wrapper .post-wrapper .content-wrapper .first-post form .body-wrapper {
   width: 93% !important;
 }
-/* line 1168, ../scss/_base.scss */
+/* line 1287, ../scss/_base.scss */
 body.main-app .content-wrapper .info-wrapper .post-wrapper .content-wrapper .first-post form .body-wrapper span.fr-placeholder {
   display: none;
 }
-/* line 1175, ../scss/_base.scss */
+/* line 1294, ../scss/_base.scss */
 body.main-app .content-wrapper .info-wrapper .post-wrapper .content-wrapper .first-post:hover .edit-delete-wrapper {
   display: inline-block;
 }
-/* line 1179, ../scss/_base.scss */
+/* line 1298, ../scss/_base.scss */
 body.main-app .content-wrapper .info-wrapper .post-wrapper .content-wrapper .comment-wrapper {
   border-top: 1px solid #FAFAFA;
 }
-/* line 1181, ../scss/_base.scss */
+/* line 1300, ../scss/_base.scss */
 body.main-app .content-wrapper .info-wrapper .post-wrapper .content-wrapper .comment-wrapper .page-header2 {
   height: 47px;
   border: 0;
   margin-bottom: 0;
 }
-/* line 1185, ../scss/_base.scss */
+/* line 1304, ../scss/_base.scss */
 body.main-app .content-wrapper .info-wrapper .post-wrapper .content-wrapper .comment-wrapper .page-header2 .profilepic-wrapper {
   width: 47px;
   height: 47px;
   display: inline-block;
 }
-/* line 1189, ../scss/_base.scss */
+/* line 1308, ../scss/_base.scss */
 body.main-app .content-wrapper .info-wrapper .post-wrapper .content-wrapper .comment-wrapper .page-header2 .profilepic-wrapper img {
   opacity: 0.67;
 }
-/* line 1193, ../scss/_base.scss */
+/* line 1312, ../scss/_base.scss */
 body.main-app .content-wrapper .info-wrapper .post-wrapper .content-wrapper .comment-wrapper .page-header2 .username-wrapper {
   font-family: "soft";
   font-size: 11px;
@@ -2244,12 +2391,12 @@ body.main-app .content-wrapper .info-wrapper .post-wrapper .content-wrapper .com
   vertical-align: top;
   padding-top: 8px;
 }
-/* line 1201, ../scss/_base.scss */
+/* line 1320, ../scss/_base.scss */
 body.main-app .content-wrapper .info-wrapper .post-wrapper .content-wrapper .comment-wrapper .page-header2 .username-wrapper .in {
   display: inline-block;
   width: 30px;
 }
-/* line 1205, ../scss/_base.scss */
+/* line 1324, ../scss/_base.scss */
 body.main-app .content-wrapper .info-wrapper .post-wrapper .content-wrapper .comment-wrapper .page-header2 .username-wrapper a {
   font-family: "soft";
   font-size: 11px;
@@ -2257,11 +2404,11 @@ body.main-app .content-wrapper .info-wrapper .post-wrapper .content-wrapper .com
   width: 10%;
   text-decoration: none;
 }
-/* line 1212, ../scss/_base.scss */
+/* line 1331, ../scss/_base.scss */
 body.main-app .content-wrapper .info-wrapper .post-wrapper .content-wrapper .comment-wrapper .page-header2 .username-wrapper a:hover {
   text-decoration: underline;
 }
-/* line 1215, ../scss/_base.scss */
+/* line 1334, ../scss/_base.scss */
 body.main-app .content-wrapper .info-wrapper .post-wrapper .content-wrapper .comment-wrapper .page-header2 .username-wrapper button {
   background: transparent;
   border: 0;
@@ -2271,17 +2418,17 @@ body.main-app .content-wrapper .info-wrapper .post-wrapper .content-wrapper .com
   font-size: 11px;
   color: #878787;
 }
-/* line 1224, ../scss/_base.scss */
+/* line 1343, ../scss/_base.scss */
 body.main-app .content-wrapper .info-wrapper .post-wrapper .content-wrapper .comment-wrapper .page-header2 .username-wrapper button:hover {
   text-decoration: underline;
 }
-/* line 1228, ../scss/_base.scss */
+/* line 1347, ../scss/_base.scss */
 body.main-app .content-wrapper .info-wrapper .post-wrapper .content-wrapper .comment-wrapper .page-header2 .edit-delete-wrapper {
   width: 100%;
   padding-top: 5px;
   display: none;
 }
-/* line 1234, ../scss/_base.scss */
+/* line 1353, ../scss/_base.scss */
 body.main-app .content-wrapper .info-wrapper .post-wrapper .content-wrapper .comment-wrapper .comment-body {
   width: 80%;
   margin-right: auto;
@@ -2290,19 +2437,23 @@ body.main-app .content-wrapper .info-wrapper .post-wrapper .content-wrapper .com
   font-size: 14px;
   margin-bottom: 20px;
 }
-/* line 1241, ../scss/_base.scss */
+/* line 1360, ../scss/_base.scss */
 body.main-app .content-wrapper .info-wrapper .post-wrapper .content-wrapper .comment-wrapper .comment-body p {
   word-wrap: break-word;
 }
-/* line 1244, ../scss/_base.scss */
+/* line 1363, ../scss/_base.scss */
 body.main-app .content-wrapper .info-wrapper .post-wrapper .content-wrapper .comment-wrapper .comment-body span {
   word-wrap: break-word;
 }
-/* line 1250, ../scss/_base.scss */
+/* line 1369, ../scss/_base.scss */
 body.main-app .content-wrapper .info-wrapper .post-wrapper .content-wrapper .comment-wrapper:hover .edit-delete-wrapper {
   display: inline-block;
 }
-/* line 1255, ../scss/_base.scss */
+/* line 1374, ../scss/_base.scss */
+body.main-app .content-wrapper .info-wrapper .post-wrapper .admintop {
+  top: 83;
+}
+/* line 1375, ../scss/_base.scss */
 body.main-app .content-wrapper .info-wrapper .post-wrapper .reply-wrapper {
   width: 60%;
   padding: 20px;
@@ -2315,52 +2466,52 @@ body.main-app .content-wrapper .info-wrapper .post-wrapper .reply-wrapper {
   background-color: #F0F0F0;
 }
 @media (max-width: 74em) {
-  /* line 1255, ../scss/_base.scss */
+  /* line 1375, ../scss/_base.scss */
   body.main-app .content-wrapper .info-wrapper .post-wrapper .reply-wrapper {
     width: 80%;
   }
 }
 @media (max-width: 58em) {
-  /* line 1255, ../scss/_base.scss */
+  /* line 1375, ../scss/_base.scss */
   body.main-app .content-wrapper .info-wrapper .post-wrapper .reply-wrapper {
     width: 80%;
   }
 }
 @media (max-width: 40em) {
-  /* line 1255, ../scss/_base.scss */
+  /* line 1375, ../scss/_base.scss */
   body.main-app .content-wrapper .info-wrapper .post-wrapper .reply-wrapper {
     width: 100%;
   }
 }
 @media (max-width: 27.5em) {
-  /* line 1255, ../scss/_base.scss */
+  /* line 1375, ../scss/_base.scss */
   body.main-app .content-wrapper .info-wrapper .post-wrapper .reply-wrapper {
     width: 100%;
   }
 }
-/* line 1269, ../scss/_base.scss */
+/* line 1389, ../scss/_base.scss */
 body.main-app .content-wrapper .info-wrapper .post-wrapper .reply-wrapper .r2 {
   margin: 0;
 }
 @media (max-width: 40em) {
-  /* line 1269, ../scss/_base.scss */
+  /* line 1389, ../scss/_base.scss */
   body.main-app .content-wrapper .info-wrapper .post-wrapper .reply-wrapper .r2 {
     margin: 0 auto;
   }
 }
 @media (max-width: 27.5em) {
-  /* line 1269, ../scss/_base.scss */
+  /* line 1389, ../scss/_base.scss */
   body.main-app .content-wrapper .info-wrapper .post-wrapper .reply-wrapper .r2 {
     margin: 0 auto;
   }
 }
-/* line 1274, ../scss/_base.scss */
+/* line 1394, ../scss/_base.scss */
 body.main-app .content-wrapper .info-wrapper .post-wrapper .reply-wrapper .r2 form {
   margin-right: auto;
   margin-left: auto;
   width: 80%;
 }
-/* line 1275, ../scss/_base.scss */
+/* line 1395, ../scss/_base.scss */
 body.main-app .content-wrapper .info-wrapper .post-wrapper .reply-wrapper .r2 form .comment-area {
   display: inline-block;
   border: 1px solid #E4E4E2;
@@ -2368,44 +2519,44 @@ body.main-app .content-wrapper .info-wrapper .post-wrapper .reply-wrapper .r2 fo
   width: 85%;
   background-color: #FAFAFA;
 }
-/* line 1282, ../scss/_base.scss */
+/* line 1402, ../scss/_base.scss */
 body.main-app .content-wrapper .info-wrapper .post-wrapper .reply-wrapper .r2 form .comment-button {
   vertical-align: top;
   padding: 23px 20px 20px 20px;
   display: inline-block;
   width: 14%;
 }
-/* line 1287, ../scss/_base.scss */
+/* line 1407, ../scss/_base.scss */
 body.main-app .content-wrapper .info-wrapper .post-wrapper .reply-wrapper .r2 form .comment-button button {
   font-size: 26px;
   border: none;
   background: none;
 }
 @media (max-width: 40em) {
-  /* line 1274, ../scss/_base.scss */
+  /* line 1394, ../scss/_base.scss */
   body.main-app .content-wrapper .info-wrapper .post-wrapper .reply-wrapper .r2 form {
     width: 100%;
   }
 }
 @media (max-width: 27.5em) {
-  /* line 1274, ../scss/_base.scss */
+  /* line 1394, ../scss/_base.scss */
   body.main-app .content-wrapper .info-wrapper .post-wrapper .reply-wrapper .r2 form {
     width: 100%;
   }
 }
-/* line 1299, ../scss/_base.scss */
+/* line 1419, ../scss/_base.scss */
 body.main-app .content-wrapper .info-wrapper .post-wrapper .reply-wrapper .r2 form .froala-element {
   height: 75px;
 }
-/* line 1303, ../scss/_base.scss */
+/* line 1423, ../scss/_base.scss */
 body.main-app .content-wrapper .info-wrapper .post-wrapper .reply-wrapper .r2 .comment-footer {
   background-color: #F0F0F0;
 }
-/* line 1305, ../scss/_base.scss */
+/* line 1425, ../scss/_base.scss */
 body.main-app .content-wrapper .info-wrapper .post-wrapper .reply-wrapper .r2 .comment-footer .cb {
   text-align: right;
 }
-/* line 1308, ../scss/_base.scss */
+/* line 1428, ../scss/_base.scss */
 body.main-app .content-wrapper .info-wrapper .post-wrapper .reply-wrapper .r2 .comment-footer button {
   width: 70px;
   border: solid 2px #252525;
@@ -2417,53 +2568,53 @@ body.main-app .content-wrapper .info-wrapper .post-wrapper .reply-wrapper .r2 .c
   height: 27px;
 }
 @media (max-width: 40em) {
-  /* line 1324, ../scss/_base.scss */
+  /* line 1444, ../scss/_base.scss */
   body.main-app .content-wrapper .sidebar-wrapper.post-mode {
     display: none;
   }
 }
 @media (max-width: 27.5em) {
-  /* line 1324, ../scss/_base.scss */
+  /* line 1444, ../scss/_base.scss */
   body.main-app .content-wrapper .sidebar-wrapper.post-mode {
     display: none;
   }
 }
-/* line 1329, ../scss/_base.scss */
+/* line 1449, ../scss/_base.scss */
 body.main-app .content-wrapper .info-wrapper.post-mode {
   width: 61%;
 }
 @media (max-width: 74em) {
-  /* line 1329, ../scss/_base.scss */
+  /* line 1449, ../scss/_base.scss */
   body.main-app .content-wrapper .info-wrapper.post-mode {
     width: 67%;
   }
 }
 @media (max-width: 58em) {
-  /* line 1329, ../scss/_base.scss */
+  /* line 1449, ../scss/_base.scss */
   body.main-app .content-wrapper .info-wrapper.post-mode {
     width: 67%;
   }
 }
 @media (max-width: 40em) {
-  /* line 1329, ../scss/_base.scss */
+  /* line 1449, ../scss/_base.scss */
   body.main-app .content-wrapper .info-wrapper.post-mode {
     width: 100%;
   }
 }
 @media (max-width: 27.5em) {
-  /* line 1329, ../scss/_base.scss */
+  /* line 1449, ../scss/_base.scss */
   body.main-app .content-wrapper .info-wrapper.post-mode {
     width: 100%;
   }
 }
-/* line 1335, ../scss/_base.scss */
+/* line 1455, ../scss/_base.scss */
 body.main-app .content-wrapper .info-wrapper.post-mode .back-div {
   border: 3px solid #7D7D7D;
   padding: 2px 10px 2px 30px;
   display: none;
   position: relative;
 }
-/* line 1340, ../scss/_base.scss */
+/* line 1460, ../scss/_base.scss */
 body.main-app .content-wrapper .info-wrapper.post-mode .back-div span.empty {
   position: absolute;
   width: 100%;
@@ -2473,7 +2624,7 @@ body.main-app .content-wrapper .info-wrapper.post-mode .back-div span.empty {
   z-index: 1;
   background-image: url('../../images/empty.gif');
 }
-/* line 1349, ../scss/_base.scss */
+/* line 1469, ../scss/_base.scss */
 body.main-app .content-wrapper .info-wrapper.post-mode .back-div a {
   font-family: "thin";
   font-size: 19px;
@@ -2481,103 +2632,103 @@ body.main-app .content-wrapper .info-wrapper.post-mode .back-div a {
   color: black;
   display: inline-block;
 }
-/* line 1356, ../scss/_base.scss */
+/* line 1476, ../scss/_base.scss */
 body.main-app .content-wrapper .info-wrapper.post-mode .back-div i {
   display: inline-block;
 }
 @media (max-width: 40em) {
-  /* line 1335, ../scss/_base.scss */
+  /* line 1455, ../scss/_base.scss */
   body.main-app .content-wrapper .info-wrapper.post-mode .back-div {
     display: block;
   }
 }
 @media (max-width: 27.5em) {
-  /* line 1335, ../scss/_base.scss */
+  /* line 1455, ../scss/_base.scss */
   body.main-app .content-wrapper .info-wrapper.post-mode .back-div {
     display: block;
   }
 }
-/* line 1362, ../scss/_base.scss */
+/* line 1482, ../scss/_base.scss */
 body.main-app .content-wrapper .info-wrapper.post-mode .back-div:hover {
   background-color: #EDEDED;
 }
-/* line 1366, ../scss/_base.scss */
+/* line 1486, ../scss/_base.scss */
 body.main-app .content-wrapper .info-wrapper.post-mode .post-wrapper .content-wrapper {
   width: 60%;
 }
 @media (max-width: 74em) {
-  /* line 1366, ../scss/_base.scss */
+  /* line 1486, ../scss/_base.scss */
   body.main-app .content-wrapper .info-wrapper.post-mode .post-wrapper .content-wrapper {
     width: 68%;
   }
 }
 @media (max-width: 58em) {
-  /* line 1366, ../scss/_base.scss */
+  /* line 1486, ../scss/_base.scss */
   body.main-app .content-wrapper .info-wrapper.post-mode .post-wrapper .content-wrapper {
     width: 68%;
   }
 }
 @media (max-width: 40em) {
-  /* line 1366, ../scss/_base.scss */
+  /* line 1486, ../scss/_base.scss */
   body.main-app .content-wrapper .info-wrapper.post-mode .post-wrapper .content-wrapper {
     width: 100%;
   }
 }
 @media (max-width: 27.5em) {
-  /* line 1366, ../scss/_base.scss */
+  /* line 1486, ../scss/_base.scss */
   body.main-app .content-wrapper .info-wrapper.post-mode .post-wrapper .content-wrapper {
     width: 100%;
   }
 }
-/* line 1375, ../scss/_base.scss */
+/* line 1495, ../scss/_base.scss */
 body.main-app .content-wrapper .info-wrapper.post-mode .post-wrapper .content-wrapper .first-post .page-header .profilepic-wrapper {
   width: 47px;
 }
-/* line 1378, ../scss/_base.scss */
+/* line 1498, ../scss/_base.scss */
 body.main-app .content-wrapper .info-wrapper.post-mode .post-wrapper .content-wrapper .first-post .page-header .username-wrapper {
   width: 15%;
 }
-/* line 1380, ../scss/_base.scss */
+/* line 1500, ../scss/_base.scss */
 body.main-app .content-wrapper .info-wrapper.post-mode .post-wrapper .content-wrapper .first-post .page-header .username-wrapper .in {
   width: 30px;
 }
-/* line 1383, ../scss/_base.scss */
+/* line 1503, ../scss/_base.scss */
 body.main-app .content-wrapper .info-wrapper.post-mode .post-wrapper .content-wrapper .first-post .page-header .username-wrapper a {
   width: 10%;
 }
-/* line 1387, ../scss/_base.scss */
+/* line 1507, ../scss/_base.scss */
 body.main-app .content-wrapper .info-wrapper.post-mode .post-wrapper .content-wrapper .first-post .page-header .edit-delete-wrapper {
   width: 100%;
 }
-/* line 1395, ../scss/_base.scss */
+/* line 1515, ../scss/_base.scss */
 body.main-app .content-wrapper .info-wrapper.post-mode .post-wrapper .content-wrapper .first-post .body-wrapper {
   width: 80%;
 }
-/* line 1401, ../scss/_base.scss */
+/* line 1521, ../scss/_base.scss */
 body.main-app .content-wrapper .info-wrapper.post-mode .post-wrapper .content-wrapper .comment-wrapper .page-header2 .profilepic-wrapper {
   width: 47px;
 }
-/* line 1404, ../scss/_base.scss */
+/* line 1524, ../scss/_base.scss */
 body.main-app .content-wrapper .info-wrapper.post-mode .post-wrapper .content-wrapper .comment-wrapper .page-header2 .username-wrapper {
   width: 15%;
 }
-/* line 1406, ../scss/_base.scss */
+/* line 1526, ../scss/_base.scss */
 body.main-app .content-wrapper .info-wrapper.post-mode .post-wrapper .content-wrapper .comment-wrapper .page-header2 .username-wrapper .in {
   width: 30px;
 }
-/* line 1409, ../scss/_base.scss */
+/* line 1529, ../scss/_base.scss */
 body.main-app .content-wrapper .info-wrapper.post-mode .post-wrapper .content-wrapper .comment-wrapper .page-header2 .username-wrapper a {
   width: 10%;
 }
-/* line 1413, ../scss/_base.scss */
+/* line 1533, ../scss/_base.scss */
 body.main-app .content-wrapper .info-wrapper.post-mode .post-wrapper .content-wrapper .comment-wrapper .page-header2 .edit-delete-wrapper {
   width: 100%;
 }
-/* line 1417, ../scss/_base.scss */
+/* line 1537, ../scss/_base.scss */
 body.main-app .content-wrapper .info-wrapper.post-mode .post-wrapper .content-wrapper .comment-wrapper .comment-body {
   width: 80%;
 }
-/* line 1435, ../scss/_base.scss */
+/* line 1556, ../scss/_base.scss */
 body.main-app .post-form-wrapper {
   -moz-animation: fadeIn 0.75s;
   -webkit-animation: fadeIn 0.75s;
@@ -2586,47 +2737,47 @@ body.main-app .post-form-wrapper {
   -webkit-animation: fadeOut 0.75s;
   animation: fadeOut 0.75s;
 }
-/* line 1436, ../scss/_base.scss */
+/* line 1557, ../scss/_base.scss */
 body.main-app .post-form-wrapper .new-post-outer {
   width: 82%;
 }
-/* line 1442, ../scss/_base.scss */
+/* line 1563, ../scss/_base.scss */
 body.main-app .post-form-wrapper .post-selector ul li {
   padding: 10px 25px 10px 25px;
   margin-left: 3px;
   margin-bottom: -1px;
   display: inline-block;
 }
-/* line 1447, ../scss/_base.scss */
+/* line 1568, ../scss/_base.scss */
 body.main-app .post-form-wrapper .post-selector ul li a {
   text-decoration: none;
   color: black;
   font-family: 'thin';
   font-size: 33px;
 }
-/* line 1453, ../scss/_base.scss */
+/* line 1574, ../scss/_base.scss */
 body.main-app .post-form-wrapper .post-selector ul li a:hover {
   font-weight: bold;
 }
-/* line 1457, ../scss/_base.scss */
+/* line 1578, ../scss/_base.scss */
 body.main-app .post-form-wrapper .post-selector ul li.active {
   border: 1px solid #E4E4E2;
   border-radius: 3px;
   background-color: white;
   border-bottom: none;
 }
-/* line 1463, ../scss/_base.scss */
+/* line 1584, ../scss/_base.scss */
 body.main-app .post-form-wrapper .post-selector ul li.first {
   margin-left: 27px;
 }
-/* line 1468, ../scss/_base.scss */
+/* line 1589, ../scss/_base.scss */
 body.main-app .post-form-wrapper .post-selection-wrapper {
   border: 1px solid #E4E4E2;
   border-radius: 3px;
   background-color: white;
   padding-bottom: 30px;
 }
-/* line 1476, ../scss/_base.scss */
+/* line 1597, ../scss/_base.scss */
 body.main-app .post-form-wrapper .title-wrapper {
   padding: 30px 50px 20px 50px;
   margin-left: auto;
@@ -2634,30 +2785,30 @@ body.main-app .post-form-wrapper .title-wrapper {
   margin-right: auto;
 }
 @media (max-width: 74em) {
-  /* line 1476, ../scss/_base.scss */
+  /* line 1597, ../scss/_base.scss */
   body.main-app .post-form-wrapper .title-wrapper {
     padding: 40px 50px 10px 15%;
   }
 }
 @media (max-width: 58em) {
-  /* line 1476, ../scss/_base.scss */
+  /* line 1597, ../scss/_base.scss */
   body.main-app .post-form-wrapper .title-wrapper {
     padding: 40px 50px 10px 15%;
   }
 }
 @media (max-width: 40em) {
-  /* line 1476, ../scss/_base.scss */
+  /* line 1597, ../scss/_base.scss */
   body.main-app .post-form-wrapper .title-wrapper {
     padding: 40px 50px 10px 15%;
   }
 }
 @media (max-width: 27.5em) {
-  /* line 1476, ../scss/_base.scss */
+  /* line 1597, ../scss/_base.scss */
   body.main-app .post-form-wrapper .title-wrapper {
     padding: 40px 50px 10px 15%;
   }
 }
-/* line 1485, ../scss/_base.scss */
+/* line 1606, ../scss/_base.scss */
 body.main-app .post-form-wrapper .title-wrapper .title-label-wrap {
   font-family: "soft";
   font-size: 21px;
@@ -2665,31 +2816,31 @@ body.main-app .post-form-wrapper .title-wrapper .title-label-wrap {
   text-align: left;
   margin-bottom: 5px;
 }
-/* line 1492, ../scss/_base.scss */
+/* line 1613, ../scss/_base.scss */
 body.main-app .post-form-wrapper .title-wrapper input {
   width: 320px;
   border-radius: 0;
 }
 @media (max-width: 74em) {
-  /* line 1492, ../scss/_base.scss */
+  /* line 1613, ../scss/_base.scss */
   body.main-app .post-form-wrapper .title-wrapper input {
     width: 80%;
   }
 }
 @media (max-width: 58em) {
-  /* line 1492, ../scss/_base.scss */
+  /* line 1613, ../scss/_base.scss */
   body.main-app .post-form-wrapper .title-wrapper input {
     width: 80%;
   }
 }
 @media (max-width: 40em) {
-  /* line 1492, ../scss/_base.scss */
+  /* line 1613, ../scss/_base.scss */
   body.main-app .post-form-wrapper .title-wrapper input {
     width: 80%;
   }
 }
 @media (max-width: 27.5em) {
-  /* line 1492, ../scss/_base.scss */
+  /* line 1613, ../scss/_base.scss */
   body.main-app .post-form-wrapper .title-wrapper input {
     width: 80%;
   }
@@ -2718,15 +2869,15 @@ body.main-app .post-form-wrapper .title-wrapper input::-webkit-input-placeholder
   color: #B3B3B3;
   font-style: italic;
 }
-/* line 1509, ../scss/_base.scss */
+/* line 1630, ../scss/_base.scss */
 body.main-app .post-form-wrapper .body-wrapper.edit-mode span.fr-placeholder {
   display: none;
 }
-/* line 1513, ../scss/_base.scss */
+/* line 1634, ../scss/_base.scss */
 body.main-app .post-form-wrapper .body-wrapper {
   padding: 5px 50px 5px 50px;
 }
-/* line 1514, ../scss/_base.scss */
+/* line 1635, ../scss/_base.scss */
 body.main-app .post-form-wrapper .body-wrapper .title-label-wrap {
   font-family: "soft";
   font-size: 21px;
@@ -2734,31 +2885,31 @@ body.main-app .post-form-wrapper .body-wrapper .title-label-wrap {
   text-align: left;
   margin-bottom: 5px;
 }
-/* line 1523, ../scss/_base.scss */
+/* line 1644, ../scss/_base.scss */
 body.main-app .post-form-wrapper .body-wrapper .froala-box h1 {
   font-size: 26px;
 }
-/* line 1526, ../scss/_base.scss */
+/* line 1647, ../scss/_base.scss */
 body.main-app .post-form-wrapper .body-wrapper .froala-box h2 {
   font-size: 24px;
 }
-/* line 1529, ../scss/_base.scss */
+/* line 1650, ../scss/_base.scss */
 body.main-app .post-form-wrapper .body-wrapper .froala-box h3 {
   font-size: 22px;
 }
-/* line 1532, ../scss/_base.scss */
+/* line 1653, ../scss/_base.scss */
 body.main-app .post-form-wrapper .body-wrapper .froala-box h4 {
   font-size: 20px;
 }
-/* line 1535, ../scss/_base.scss */
+/* line 1656, ../scss/_base.scss */
 body.main-app .post-form-wrapper .body-wrapper .froala-box em {
   font-style: italic;
 }
-/* line 1538, ../scss/_base.scss */
+/* line 1659, ../scss/_base.scss */
 body.main-app .post-form-wrapper .body-wrapper .froala-box strong {
   font-weight: bold;
 }
-/* line 1541, ../scss/_base.scss */
+/* line 1662, ../scss/_base.scss */
 body.main-app .post-form-wrapper .body-wrapper .froala-box blockquote {
   background: #f9f9f9;
   border-left: 10px solid #ccc;
@@ -2766,7 +2917,7 @@ body.main-app .post-form-wrapper .body-wrapper .froala-box blockquote {
   padding: 0.5em 10px;
   quotes: "\201C" "\201D" "\2018" "\2019";
 }
-/* line 1548, ../scss/_base.scss */
+/* line 1669, ../scss/_base.scss */
 body.main-app .post-form-wrapper .body-wrapper .froala-box blockquote:before {
   color: #ccc;
   content: open-quote;
@@ -2775,128 +2926,128 @@ body.main-app .post-form-wrapper .body-wrapper .froala-box blockquote:before {
   margin-right: 0.25em;
   vertical-align: -0.4em;
 }
-/* line 1556, ../scss/_base.scss */
+/* line 1677, ../scss/_base.scss */
 body.main-app .post-form-wrapper .body-wrapper .froala-box blockquote p {
   display: inline;
 }
 @media (max-width: 40em) {
-  /* line 1560, ../scss/_base.scss */
+  /* line 1681, ../scss/_base.scss */
   body.main-app .post-form-wrapper .body-wrapper .froala-editor.f-basic {
     display: none;
   }
 }
 @media (max-width: 27.5em) {
-  /* line 1560, ../scss/_base.scss */
+  /* line 1681, ../scss/_base.scss */
   body.main-app .post-form-wrapper .body-wrapper .froala-editor.f-basic {
     display: none;
   }
 }
-/* line 1565, ../scss/_base.scss */
+/* line 1686, ../scss/_base.scss */
 body.main-app .post-form-wrapper .body-wrapper .froala-element.not-msie.f-basic {
   height: 200px;
   background-color: #F7F7F7;
 }
 @media (max-width: 40em) {
-  /* line 1565, ../scss/_base.scss */
+  /* line 1686, ../scss/_base.scss */
   body.main-app .post-form-wrapper .body-wrapper .froala-element.not-msie.f-basic {
     height: 150px;
   }
 }
 @media (max-width: 27.5em) {
-  /* line 1565, ../scss/_base.scss */
+  /* line 1686, ../scss/_base.scss */
   body.main-app .post-form-wrapper .body-wrapper .froala-element.not-msie.f-basic {
     height: 150px;
   }
 }
 @media (max-width: 58em) {
-  /* line 1572, ../scss/_base.scss */
+  /* line 1693, ../scss/_base.scss */
   body.main-app .post-form-wrapper .body-wrapper [title~="Strikethrough"] {
     display: none;
   }
 }
 @media (max-width: 58em) {
-  /* line 1575, ../scss/_base.scss */
+  /* line 1696, ../scss/_base.scss */
   body.main-app .post-form-wrapper .body-wrapper [title~="Indent"] {
     display: none;
   }
 }
 @media (max-width: 58em) {
-  /* line 1578, ../scss/_base.scss */
+  /* line 1699, ../scss/_base.scss */
   body.main-app .post-form-wrapper .body-wrapper [title~="Format"] {
     display: none;
   }
 }
 @media (max-width: 74em) {
-  /* line 1581, ../scss/_base.scss */
+  /* line 1702, ../scss/_base.scss */
   body.main-app .post-form-wrapper .body-wrapper [title~="Undo"] {
     display: none;
   }
 }
 @media (max-width: 58em) {
-  /* line 1581, ../scss/_base.scss */
+  /* line 1702, ../scss/_base.scss */
   body.main-app .post-form-wrapper .body-wrapper [title~="Undo"] {
     display: none;
   }
 }
 @media (max-width: 74em) {
-  /* line 1585, ../scss/_base.scss */
+  /* line 1706, ../scss/_base.scss */
   body.main-app .post-form-wrapper .body-wrapper [title~="Redo"] {
     display: none;
   }
 }
 @media (max-width: 58em) {
-  /* line 1585, ../scss/_base.scss */
+  /* line 1706, ../scss/_base.scss */
   body.main-app .post-form-wrapper .body-wrapper [title~="Redo"] {
     display: none;
   }
 }
-/* line 1589, ../scss/_base.scss */
+/* line 1710, ../scss/_base.scss */
 body.main-app .post-form-wrapper .body-wrapper span.fr-placeholder {
   font-family: "soft" !important;
   color: #B3B3B3 !important;
 }
 @media (max-width: 40em) {
-  /* line 1589, ../scss/_base.scss */
+  /* line 1710, ../scss/_base.scss */
   body.main-app .post-form-wrapper .body-wrapper span.fr-placeholder {
     top: 15 !important;
   }
 }
 @media (max-width: 27.5em) {
-  /* line 1589, ../scss/_base.scss */
+  /* line 1710, ../scss/_base.scss */
   body.main-app .post-form-wrapper .body-wrapper span.fr-placeholder {
     top: 15 !important;
   }
 }
-/* line 1596, ../scss/_base.scss */
+/* line 1717, ../scss/_base.scss */
 body.main-app .post-form-wrapper .icon-wrapper {
   display: inline-block;
   padding: 5px 50px 5px 100px;
   width: 70%;
 }
 @media (max-width: 58em) {
-  /* line 1596, ../scss/_base.scss */
+  /* line 1717, ../scss/_base.scss */
   body.main-app .post-form-wrapper .icon-wrapper {
     display: none;
   }
 }
 @media (max-width: 40em) {
-  /* line 1596, ../scss/_base.scss */
+  /* line 1717, ../scss/_base.scss */
   body.main-app .post-form-wrapper .icon-wrapper {
     display: none;
   }
 }
 @media (max-width: 27.5em) {
-  /* line 1596, ../scss/_base.scss */
+  /* line 1717, ../scss/_base.scss */
   body.main-app .post-form-wrapper .icon-wrapper {
     display: none;
   }
 }
-/* line 1603, ../scss/_base.scss */
+/* line 1724, ../scss/_base.scss */
 body.main-app .post-form-wrapper .icon-wrapper .icon {
   display: inline-block;
   margin-right: 35px;
 }
-/* line 1608, ../scss/_base.scss */
+/* line 1729, ../scss/_base.scss */
 body.main-app .post-form-wrapper .icon-wrapper .bomb select.setext {
   vertical-align: top;
   margin-left: -40px;
@@ -2914,36 +3065,36 @@ body.main-app .post-form-wrapper .icon-wrapper .bomb select.setext {
   font-size: 14px;
   color: transparent;
 }
-/* line 1624, ../scss/_base.scss */
+/* line 1745, ../scss/_base.scss */
 body.main-app .post-form-wrapper .icon-wrapper .bomb select.setext span {
   font-family: "soft";
   font-size: 14px;
   color: white;
 }
-/* line 1630, ../scss/_base.scss */
+/* line 1751, ../scss/_base.scss */
 body.main-app .post-form-wrapper .icon-wrapper .bomb select:focus {
   background: transparent;
   color: white;
   opacity: 0;
 }
-/* line 1637, ../scss/_base.scss */
+/* line 1758, ../scss/_base.scss */
 body.main-app .post-form-wrapper .icon-wrapper .bomb option {
   border: 1px solid #111;
   background-color: #404040;
   color: white;
 }
-/* line 1644, ../scss/_base.scss */
+/* line 1765, ../scss/_base.scss */
 body.main-app .post-form-wrapper .date-wrapper {
   display: none;
 }
-/* line 1647, ../scss/_base.scss */
+/* line 1768, ../scss/_base.scss */
 body.main-app .post-form-wrapper .button-wrapper {
   vertical-align: top;
   display: inline-block;
   width: 120px;
 }
 @media (max-width: 58em) {
-  /* line 1647, ../scss/_base.scss */
+  /* line 1768, ../scss/_base.scss */
   body.main-app .post-form-wrapper .button-wrapper {
     margin-left: auto;
     margin-right: auto;
@@ -2951,7 +3102,7 @@ body.main-app .post-form-wrapper .button-wrapper {
   }
 }
 @media (max-width: 40em) {
-  /* line 1647, ../scss/_base.scss */
+  /* line 1768, ../scss/_base.scss */
   body.main-app .post-form-wrapper .button-wrapper {
     margin-left: auto;
     margin-right: auto;
@@ -2959,14 +3110,14 @@ body.main-app .post-form-wrapper .button-wrapper {
   }
 }
 @media (max-width: 27.5em) {
-  /* line 1647, ../scss/_base.scss */
+  /* line 1768, ../scss/_base.scss */
   body.main-app .post-form-wrapper .button-wrapper {
     margin-left: auto;
     margin-right: auto;
     display: block;
   }
 }
-/* line 1655, ../scss/_base.scss */
+/* line 1776, ../scss/_base.scss */
 body.main-app .post-form-wrapper .button-wrapper button {
   width: 120px;
   font-weight: bold;
@@ -2978,11 +3129,16 @@ body.main-app .post-form-wrapper .button-wrapper button {
   font-family: "soft";
   background-color: #595959;
 }
-/* line 1670, ../scss/_base.scss */
+/* line 1791, ../scss/_base.scss */
+body.main-app .admintop {
+  top: 84;
+  position: fixed;
+}
+/* line 1795, ../scss/_base.scss */
 body.main-app .comment-area {
   border: solid 1px #252525;
 }
-/* line 1672, ../scss/_base.scss */
+/* line 1797, ../scss/_base.scss */
 body.main-app .comment-area span.fr-placeholder {
   top: 5px !important;
   left: 5px;
@@ -2990,7 +3146,7 @@ body.main-app .comment-area span.fr-placeholder {
   font-family: "soft";
 }
 
-/* line 1692, ../scss/_base.scss */
+/* line 1817, ../scss/_base.scss */
 .main-content-wrapper.pro {
   height: 100vh;
   background-image: url(/images/bg-pattern-690-717.svg);
@@ -3006,13 +3162,13 @@ body.main-app .comment-area span.fr-placeholder {
     background-image: url(/images/bg-pattern-690-717@2x.png);
   }
 }
-/* line 1697, ../scss/_base.scss */
+/* line 1822, ../scss/_base.scss */
 .main-content-wrapper.pro .page-header h1 {
   font-size: 45px;
   font-family: "thin";
   margin-bottom: 10px;
 }
-/* line 1704, ../scss/_base.scss */
+/* line 1829, ../scss/_base.scss */
 .main-content-wrapper.pro .well h3 {
   font-size: 25px;
   font-family: "thin";
@@ -3020,28 +3176,28 @@ body.main-app .comment-area span.fr-placeholder {
   padding-bottom: 10px;
   border-bottom: 1px solid #eee;
 }
-/* line 1711, ../scss/_base.scss */
+/* line 1836, ../scss/_base.scss */
 .main-content-wrapper.pro .well li {
   font-family: "soft";
   margin-bottom: 10px;
 }
-/* line 1716, ../scss/_base.scss */
+/* line 1841, ../scss/_base.scss */
 .main-content-wrapper.pro .well table th {
   font-family: "soft";
   margin-bottom: 10px;
 }
-/* line 1720, ../scss/_base.scss */
+/* line 1845, ../scss/_base.scss */
 .main-content-wrapper.pro .well table td {
   font-family: "soft";
   margin-bottom: 10px;
 }
-/* line 1723, ../scss/_base.scss */
+/* line 1848, ../scss/_base.scss */
 .main-content-wrapper.pro .well table td a {
   font-family: "soft";
   margin-bottom: 10px;
 }
 
-/* line 1736, ../scss/_base.scss */
+/* line 1861, ../scss/_base.scss */
 .main-content-wrapper.pro.account h1 {
   font-family: "thin";
   font-size: 40px;
@@ -3050,14 +3206,14 @@ body.main-app .comment-area span.fr-placeholder {
   padding-bottom: 10px;
   border-bottom: 1px solid #eee;
 }
-/* line 1745, ../scss/_base.scss */
+/* line 1870, ../scss/_base.scss */
 .main-content-wrapper.pro.account form label {
   font-family: "soft";
   font-size: 16px;
   margin-bottom: 10px;
 }
 
-/* line 1758, ../scss/_base.scss */
+/* line 1883, ../scss/_base.scss */
 .main-content-wrapper.pro.locked h1 {
   font-family: "thin";
   font-size: 30px;
@@ -3066,7 +3222,7 @@ body.main-app .comment-area span.fr-placeholder {
   padding-bottom: 10px;
   border-bottom: 1px solid #eee;
 }
-/* line 1767, ../scss/_base.scss */
+/* line 1892, ../scss/_base.scss */
 .main-content-wrapper.pro.locked form label {
   font-family: "soft";
   font-size: 16px;

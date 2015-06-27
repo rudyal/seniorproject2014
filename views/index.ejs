@@ -27,7 +27,6 @@
     <script type='text/javascript' src="/javascripts/moment.min.js"></script>
     <script type='text/javascript' src="/javascripts/ga.js"></script>
 	<script type='text/javascript' src="/javascripts/angular-momentjs/angular-momentjs.js"></script>
-	<script type='text/javascript' src="/javascripts/angular-smooth-scroll.js"></script>
 	<script src="/javascripts/ng-infinite-scroll.min.js"></script>
 	<script src="/javascripts/ng-FitText.js"></script>
 
@@ -95,7 +94,7 @@
 					</div>
 					-->
 
-					  <div perfect-scrollbar class="post-list-wrapper scroller" infinite-scroll='forum.nextPage(murl.url)' infinite-scroll-disabled='forum.busy' infinite-scroll-distance='1'>
+					  <div smooth-scroll duration="800" easing="easeInQuint" perfect-scrollbar class="post-list-wrapper scroller" infinite-scroll='forum.nextPage(murl.url)' infinite-scroll-disabled='forum.busy' infinite-scroll-distance='1'>
 					    <div class="post-list" >
 							<div class="post-link-wrapper {{findActive(item)}}" ng-repeat="item in forum.items | filter:searchText | orderBy: '-date'">
 						      <a class="po-link" ui-sref=".posts({id: item._id })"><span class="empty"></span></a>
@@ -124,15 +123,21 @@
 					    				<li class="left" ng-show="!isLoggedIn()"><a href="/login" target="_self">Login</a></li>
 									    <li class="right" ng-show="!isLoggedIn()"><a href="/signup" target="_self">Sign-up</a></li>
 									    <li class="left" ng-show="isLoggedIn()"><a href="/profile"  target="_self">{{$$childTail.user}}</a></li>
-									    <li class="right" ng-show="isLoggedIn()"><a href="/logout"  target="_self">logout</a></li>
-									    <li class="right"><a href="#"  target="_self">Invite </a></li> 
-									    
+									    <li class="right" ng-show="isLoggedIn()"><a href="/logout"  target="_self">logout</a></li>						    
 					    			</ul>
 					    			
 				    			</div>
 				    		</div>
 				    	</div>
 			    </nav>
+			    <div ng-show="isAdmin(userID)" class="admin-panel">
+					<ul class="admin-settings">
+						<li class="admin-first"><span class="gear"><i class="fa fa-cog"></i></span><div><a ui-sref=".admin">Admin</a></div></li>
+						<li class="ad-settings"><span><a ui-sref=".admin">Settings</a></span></li>
+						<li><span><a ui-sref=".adembed">Embed</a></span></li>
+						<li><span><a ui-sref=".aduser">Users</a></span></li>
+					</ul>
+				</div>
 		            <ui-view></ui-view>
 		        </div>
 
@@ -149,9 +154,71 @@
 
 		</script>
 
+		<script type="text/ng-template" id="/admin.html">
+		  <div class="settings-container">
+		  	<div ng-show="myPage() == 'settings'" class="post-image">
+		  		<div class="ad-set forum-name">
+		  			<label>Forum Name</label>
+		  			<form ng-submit="editTitle()">
+		  				<input class="text form-control" type="text" ng-model="edittitle"> </input>
+		  				<button class="save-edit" type="submit">Save</button>
+		  			</form>
+		  		</div>
+		  		<div class="ad-set forum-cat" ng-init="cats = [{ title:'Good Fishin' },{ title:'Good Fryin' }]">
+		  			<label>Categories</label>
+		  			<form ng-submit="editCat()" class="cat-form">
+		  				<ul>
+		  					<div class="cat-repeat" ng-repeat="cat in cats | orderBy:'date'">
+		  						<div>
+		  							<li><span>{{cat.title}}</span></li>
+		  							<a class="cat-remove">X</a>
+		  						</div>
+		  					</div>	
+		  				</ul>
+		  				
+		  				<input class="form-control" type="text" ng-model="editcat"> </input> 
+		  				<button class="save-edit" type="submit">Add</button>
+
+		  			</form>
+		  		</div>	
+		  		<div class="ad-set forum-vis">
+		  			<label>Visibility</label>
+		  			<form ng-submit="editVis()">
+		  				<div class="rad-con first">
+		  					<div ng-init="editvis1='public'" />
+							<input value="public" name="visibility" class="rad" type="radio" ng-model="editvis1" checked="checked"/>
+							<span>Public</span>
+		  				</div>
+		  				<div class="rad-con private second">
+							<input value="private" name="visibility" class="rad" type="radio" ng-model="editvis1"> </input>
+							<span>Private</span>
+		  				</div>
+		  				<div class="rad-con private third" ng-hide="editvis1!='private'"> <input ng-disabled="editvis1!='private'" placeholder="Access Code" class="form-control" type="input" ng-model="editvis3"> </input> </div>
+		  				
+		  				<span></span>
+		  			</form>
+		  		</div>	
+		  		<div class="ad-set forum-req">
+		  			<label>Request Feature</label>
+		  			<form ng-submit="editReq()">
+		  				<input class="form-control" type="text" ng-model="editreq"> </input>
+		  				<button class="save-edit" type="submit">Submit</button>
+		  			</form>
+		  		</div>		
+		  	</div>
+		  	<div ng-show="myPage() == 'embed'" class="post-image">
+		  		<h3> Login Page 2 </h3>
+		  	</div>
+		  	<div ng-show="myPage() == 'users'" class="post-image">
+		  		<h3> Login Page 3 </h3>
+		  	</div>
+		    
+		  </div>
+		</script>
+
 
 		<script type="text/ng-template" id="/post.html">
-			<div class="post-form-wrapper">
+			<div class="post-form-wrapper admintop" ng-class="{admintop:isAdminTop}">
 
 			<div class="back-div">
 			  	<div class="back-box">
@@ -388,8 +455,10 @@
 
 
 		<script type="text/ng-template" id="/posts.html">
+			
+
 			<div class="post-wrapper">
-			  <div class="content-wrapper">
+			  <div class="content-wrapper" ng-class="{admintop:isAdminTop}">
 
 			  <div class="back-div">
 			  	<div class="back-box">

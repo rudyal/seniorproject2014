@@ -724,6 +724,7 @@ body.main-app{
 
 	
 	.content-wrapper{
+
 		//background-color:yellow;
 		.sidebar-wrapper{
 			// This stuff is added
@@ -999,8 +1000,125 @@ body.main-app{
 					}
 				}
 			} // NAV END
+			.admin-panel{
+				background-color:white;
+				border: 2px dashed #E4E4E2;
+				border-radius: 3px;
+				padding: 5px;
+				position: fixed;
+				top: 31px;
+				width: 60%;
+				span.gear{ display:inline-block; }
+				ul{
+					color: #707070;
+					font-family: "thin";
+					a{
+						color: #707070;
+					}
+					li.admin-first{
+						font-size: 25;
+  						padding-left: 6%;
+  						width: 20%;
+  						i{
+  							display: inline-block;
+  						}
+  						div{
+  							padding-left: 11%;
+  							display: inline-block;
+  						}
+					}
+					li{
+						display: inline-block;
+						font-size: 20px;
+						padding-left: 4%;
+					}
+					li.ad-settings{
+						padding-left:7%;
+					}
+				}
+			}
+			.settings-container{
+				top: 84;
+				background-color:white;
+				border: 1px solid #E4E4E2;
+				border-radius: 3px;
+				padding: 11px;
+				position: fixed;
+				width: 60%;
+				.post-image{
+					width:26em;
+				}
+				.ad-set{
+					padding:30px;
+					padding-bottom:0;
+					padding-top: 0;
+					input.form-control{
+					  width: 200px;
+					  margin: 20px;
+					  display: inline;
+					}
+				}
+				.forum-name{padding-top:20px;}
+				.forum-cat{padding-top:20px;}
+				.forum-req{padding-top:10px;}
+				.forum-vis{
+					padding: 20px;
+					padding-left:30px;
+					.rad-con.private{
+						display: inline-block;
+					}
+					.rad-con.first{
+						margin-top: 20px;
+						margin-left: 20px;
+					}
+					.rad-con.second{
+						margin-left: 20px;
+						input{
+							margin-top: 10px;
+						}
+					}
+					.rad-con.third{
+						input{
+							margin-top: 10px;
+						}
+					}
+				}
+				.cat-form{
+					padding-top: 4px;
+				}
+				.cat-repeat{
+					  width: 48%;
+					  margin-left: 13%;
+					  margin-top: 14px;
+					li{
+						font-size: 23px;
+						font-family: "HellCon";
+						color: black;
+						display: inline;
+					}
+					a{
+						float: right;
+						color: red;
+						font-size: 23px;
+						font-family: "HellCon";
+						text-decoration: none !important;
+  						cursor: pointer;
+					}
+					a:hover{
+						color: #B20000;
+					}
+				}
+				
+
+				label{
+					font-family: "thin";
+					font-size: 31px;
+				}
+			}
+
 			.post-wrapper{
 				@include animation(fadeIn 0.75s);
+				
 				.content-wrapper{
 
 					background-color:white;
@@ -1013,6 +1131,7 @@ body.main-app{
 					overflow-x: hidden;
 					overflow-y: auto;
 					top: 34;
+
 					@include breakpoint(phablet) {top: 50;}
 					@include breakpoint(mobileonly) {top: 50;}
 					width: 64%;
@@ -1252,6 +1371,7 @@ body.main-app{
 						}
 					}
 				}
+				.admintop{ top: 83;}
 				.reply-wrapper{
 					width: 60%;
 					padding: 20px;
@@ -1430,6 +1550,7 @@ body.main-app{
 				}
 			}
 		}
+
 	}
 
 	.post-form-wrapper{
@@ -1665,8 +1786,12 @@ body.main-app{
 			}
 			
 		}
-	}
 
+	}
+	.admintop{
+		top:84;
+		position:fixed;
+	}
 	.comment-area{
 		border: solid 1px #252525;
 		span.fr-placeholder{

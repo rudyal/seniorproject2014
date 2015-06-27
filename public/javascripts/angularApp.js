@@ -29,6 +29,30 @@ angular.module('forumBody', ['ui.router', 'froala', 'infinite-scroll', 'angular-
 					templateUrl: '/post.html',
 					controller: 'MainCtrl'
 				})
+				.state('forum.admin', {
+					url: '/admin',
+					templateUrl: '/admin.html',
+					controller: 'AdminCtrl',
+					data: {
+				        currentAdminPage: 'settings'
+				    } 
+				})
+				.state('forum.adembed', {
+					url: '/admin',
+					templateUrl: '/admin.html',
+					controller: 'AdminCtrl',
+					data: {
+				        currentAdminPage: 'embed'
+				    } 
+				})
+				.state('forum.advis', {
+					url: '/admin',
+					templateUrl: '/admin.html',
+					controller: 'AdminCtrl',
+					data: {
+				        currentAdminPage: 'vis'
+				    } 
+				})
 				.state('forum.edit', {
 					url: '/posts/edit/{id}',
 					templateUrl: '/edit.html',
@@ -727,12 +751,23 @@ angular.module('forumBody', ['ui.router', 'froala', 'infinite-scroll', 'angular-
 					});
 
 				};
+				$scope.isAdminTop = false;
 
 				$scope.isCreater = function(postuser) {
 				if (user.user._id == postuser)
 				  return true;
 				else 
 				  return false;
+				};
+				$scope.isAdmin = function(adminUser) {
+					console.log("admin stuff");
+					console.log(adminUser);
+					if($scope.murl.user==adminUser){
+						console.log("created this");
+						$scope.isAdminTop = true;
+						return true;
+					}
+					return false;
 				};
 
 				// EDIT POST FUNCITONALITY
@@ -1009,6 +1044,20 @@ angular.module('forumBody', ['ui.router', 'froala', 'infinite-scroll', 'angular-
 				};
 		}]
 	)
+	.controller('AdminCtrl', ['$scope','$state', 'user', 'forum', function($scope, $state, user, forum){
+			console.log("AdminCtrlerr");
+			$scope.myPage = function(){
+				return $state.current.data.currentAdminPage;
+			}
+			$scope.forum = $scope.$parent.$$childTail.$parent.$parent.murl;
+			$scope.edittitle = $scope.$parent.$$childTail.$parent.$parent.murl.title;
+			console.log($state.current.data.currentAdminPage);
+			console.log($state);
+			console.log($scope);
+			console.log($scope.$parent.$$childTail.$parent.$parent.murl);
+			console.log($scope.$parent.$$childTail.$parent.$parent.murl.title);
+		}]
+	)
 	.controller('AccessCtrl',
 		['$scope', '$stateParams', 'user', 'access',  function($scope, $stateParams, user, access){
 			// Get User
@@ -1035,6 +1084,7 @@ angular.module('forumBody', ['ui.router', 'froala', 'infinite-scroll', 'angular-
 	.controller('ForumCtrl',
 		['$scope', 'user', 'forum', function($scope, user, forum){
 			$scope.user = user.user.username;
+			$scope.userID = user.user._id;
 			$scope.showMobile = function(){
 				$('.mobile-menu').toggle();
 			}
